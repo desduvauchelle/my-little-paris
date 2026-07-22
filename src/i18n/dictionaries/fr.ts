@@ -380,7 +380,8 @@ const fr: Dictionary = {
 	'footer.copyright': '© {year} My Little Paris. Tous droits réservés.',
 	'footer.powered.by': 'Propulsé par Recursive Solutions',
 	'footer.contact.heading': 'Contact',
-	'footer.contact.calltext': 'Appel ou SMS au {phone}',
+	'footer.contact.call': 'Appeler le {phone}',
+	'footer.contact.text': 'Envoyer un SMS au {phone}',
 	'footer.hours.heading': 'Horaires',
 	'footer.hours.body': 'Nos horaires peuvent varier chaque semaine.',
 	'footer.hours.google': 'Consultez nos horaires à jour sur Google.',
@@ -408,42 +409,6 @@ const fr: Dictionary = {
 	'page.privacy.policy': 'Politique de confidentialité',
 	'page.terms.of.service': 'Conditions d’utilisation',
 	'page.cookie.policy': 'Politique de cookies',
-
-	// Legal (Terms of Service)
-	'legal.intro': 'Les présentes Conditions d’utilisation régissent votre utilisation de ce site web. En accédant au site ou en l’utilisant, vous acceptez d’être lié par ces conditions.',
-	'legal.section1.title': 'Utilisation du service',
-	'legal.section1.body': 'Vous vous engagez à utiliser ce site web uniquement à des fins licites et conformément aux présentes conditions. Il vous incombe de veiller à ce que votre utilisation respecte les lois et réglementations applicables.',
-	'legal.section2.title': 'Propriété intellectuelle',
-	'legal.section2.body': 'Tout le contenu de ce site web, y compris les textes, images et logos, est la propriété du propriétaire du site et est protégé par les lois applicables en matière de propriété intellectuelle.',
-	'legal.section3.title': 'Avertissement',
-	'legal.section3.body': 'Ce site web est fourni « tel quel », sans garantie d’aucune sorte, expresse ou implicite.',
-	'legal.section4.title': 'Contact',
-	'legal.section4.body': 'Pour toute question concernant ces conditions, veuillez visiter notre page de contact.',
-
-	// Privacy Policy
-	'privacy.intro': 'La présente Politique de confidentialité décrit comment nous collectons, utilisons et partageons vos informations personnelles lorsque vous visitez ce site web.',
-	'privacy.section1.title': 'Informations que nous collectons',
-	'privacy.section1.body': 'Nous pouvons collecter les informations que vous fournissez directement, par exemple lorsque vous remplissez un formulaire de contact, ainsi que des données d’utilisation collectées automatiquement via des outils d’analyse.',
-	'privacy.section2.title': 'Comment nous utilisons vos informations',
-	'privacy.section2.body': 'Nous utilisons les informations collectées pour exploiter et améliorer notre site web, répondre à vos demandes et analyser la façon dont les visiteurs utilisent le site.',
-	'privacy.section3.title': 'Partage des données',
-	'privacy.section3.body': 'Nous ne vendons pas vos informations personnelles. Nous pouvons partager des informations avec des prestataires de services qui nous aident à exploiter le site web.',
-	'privacy.section4.title': 'Vos droits',
-	'privacy.section4.body': 'Vous pouvez demander l’accès à vos données personnelles, leur rectification ou leur suppression en nous contactant via notre page de contact.',
-
-	// Cookie Policy
-	'cookies.intro': 'La présente Politique de cookies explique comment nous utilisons les cookies et technologies similaires sur ce site web.',
-	'cookies.section1.title': 'Que sont les cookies',
-	'cookies.section1.body': 'Les cookies sont de petits fichiers texte stockés sur votre appareil lorsque vous visitez un site web. Ils aident le site à mémoriser vos préférences et à améliorer votre expérience.',
-	'cookies.section2.title': 'Cookies que nous utilisons',
-	'cookies.section2.essential.label': 'Cookies essentiels :',
-	'cookies.section2.essential.body': 'Nécessaires au bon fonctionnement du site web, comme la préférence de thème.',
-	'cookies.section2.analytics.label': 'Cookies analytiques :',
-	'cookies.section2.analytics.body': 'Ils nous aident à comprendre comment les visiteurs interagissent avec le site afin de l’améliorer.',
-	'cookies.section3.title': 'Gestion des cookies',
-	'cookies.section3.body': 'Vous pouvez contrôler les cookies via les paramètres de votre navigateur. La désactivation des cookies peut affecter le fonctionnement de ce site web.',
-	'cookies.section4.title': 'Contact',
-	'cookies.section4.body': 'Pour toute question concernant notre utilisation des cookies, veuillez visiter notre page de contact.',
 
 	// Language names
 	'lang.en': 'English',

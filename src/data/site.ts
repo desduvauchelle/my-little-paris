@@ -26,6 +26,15 @@ export const BUSINESS = {
 	phoneHref: 'tel:+16266578811',
 	smsHref: 'sms:+16266578811',
 	email: 'hello@my-little-paris.com',
+	/**
+	 * ⚠️ TODO — replace with the registered entity name (e.g. "My Little Paris
+	 * LLC") before launch. This is the party that the Legal Notice and Privacy
+	 * Policy name as operator, i.e. the one actually on the hook. Appears on
+	 * /legal, /privacy and /cookies.
+	 */
+	legalEntity: '[LEGAL ENTITY NAME]',
+	/** ISO date the legal documents were last revised. Bump when you edit them. */
+	legalUpdated: '2026-07-22',
 } as const
 
 export const LINKS = {

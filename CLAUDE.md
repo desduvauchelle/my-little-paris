@@ -68,6 +68,8 @@ This is a Next.js 15 client site built on the Growth Engine platform. It connect
 | `src/lib/seo.ts` | `buildPageMetadata({ path, locale, title, … })` — self-referencing canonical + hreflang + OG/Twitter for every page's `generateMetadata` |
 | `src/proxy.ts` | CORS protection for `/api/` + locale detection/routing + 301 redirect of default-locale-prefixed URLs (`/en/…` → `/…`) |
 | `src/generated/forms.ts` | Auto-generated form Zod schemas (via `pnpm pull-forms`) |
+| `src/content/legal/{locale}.ts` | Long-form copy for `/legal`, `/privacy`, `/cookies` — structured (headings, paragraphs, bullets), **not** in the i18n dictionaries. English governs; `fr`/`zh` carry a `translationNote`. Contact details are `{entity}`/`{address}`/`{email}`/`{phone}` placeholders filled from `BUSINESS` at render time. |
+| `src/components/legal/LegalDocument.tsx` | Renderer shared by all three legal pages |
 | `src/app/globals.css` | Tailwind + DaisyUI + typography plugin imports |
 | `src/app/sitemap.xml/route.ts` | Sitemap index — points at `/sitemap/{id}.xml` shards |
 | `src/app/sitemap/[file]/route.ts` | Sitemap shards: id 0 = static pages, 1..N = blog batches, N+1 = authors |

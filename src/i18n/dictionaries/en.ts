@@ -378,7 +378,8 @@ const en = {
 	'footer.copyright': '© {year} My Little Paris. All Rights Reserved.',
 	'footer.powered.by': 'Powered by Recursive Solutions',
 	'footer.contact.heading': 'Contact',
-	'footer.contact.calltext': 'Call or Text at {phone}',
+	'footer.contact.call': 'Call {phone}',
+	'footer.contact.text': 'Text {phone}',
 	'footer.hours.heading': 'Hours',
 	'footer.hours.body': 'Our opening hours may vary weekly.',
 	'footer.hours.google': 'Check on Google for our updated hours.',
@@ -406,42 +407,6 @@ const en = {
 	'page.privacy.policy': 'Privacy Policy',
 	'page.terms.of.service': 'Terms of Service',
 	'page.cookie.policy': 'Cookie Policy',
-
-	// Legal (Terms of Service)
-	'legal.intro': 'These Terms of Service govern your use of this website. By accessing or using the site, you agree to be bound by these terms.',
-	'legal.section1.title': 'Use of Service',
-	'legal.section1.body': 'You agree to use this website only for lawful purposes and in accordance with these terms. You are responsible for ensuring that your use complies with all applicable laws and regulations.',
-	'legal.section2.title': 'Intellectual Property',
-	'legal.section2.body': 'All content on this website, including text, images, and logos, is the property of the site owner and is protected by applicable intellectual property laws.',
-	'legal.section3.title': 'Disclaimer',
-	'legal.section3.body': 'This website is provided "as is" without warranties of any kind, either express or implied.',
-	'legal.section4.title': 'Contact',
-	'legal.section4.body': 'If you have questions about these terms, please visit our contact page.',
-
-	// Privacy Policy
-	'privacy.intro': 'This Privacy Policy describes how we collect, use, and share your personal information when you visit this website.',
-	'privacy.section1.title': 'Information We Collect',
-	'privacy.section1.body': 'We may collect information you provide directly, such as when you fill out a contact form, as well as usage data collected automatically through analytics.',
-	'privacy.section2.title': 'How We Use Your Information',
-	'privacy.section2.body': 'We use the information we collect to operate and improve our website, respond to your inquiries, and analyze how visitors use the site.',
-	'privacy.section3.title': 'Data Sharing',
-	'privacy.section3.body': 'We do not sell your personal information. We may share information with service providers who help us operate the website.',
-	'privacy.section4.title': 'Your Rights',
-	'privacy.section4.body': 'You may request access to, correction of, or deletion of your personal data by contacting us through our contact page.',
-
-	// Cookie Policy
-	'cookies.intro': 'This Cookie Policy explains how we use cookies and similar technologies on this website.',
-	'cookies.section1.title': 'What Are Cookies',
-	'cookies.section1.body': 'Cookies are small text files stored on your device when you visit a website. They help the site remember your preferences and improve your experience.',
-	'cookies.section2.title': 'Cookies We Use',
-	'cookies.section2.essential.label': 'Essential cookies:',
-	'cookies.section2.essential.body': 'Required for the website to function properly, such as theme preference.',
-	'cookies.section2.analytics.label': 'Analytics cookies:',
-	'cookies.section2.analytics.body': 'Help us understand how visitors interact with the site so we can improve it.',
-	'cookies.section3.title': 'Managing Cookies',
-	'cookies.section3.body': 'You can control cookies through your browser settings. Disabling cookies may affect the functionality of this website.',
-	'cookies.section4.title': 'Contact',
-	'cookies.section4.body': 'If you have questions about our use of cookies, please visit our contact page.',
 
 	// Language names
 	'lang.en': 'English',

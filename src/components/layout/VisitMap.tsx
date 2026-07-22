@@ -1,6 +1,6 @@
 import type { Dictionary } from '@/i18n'
 import { BUSINESS, LINKS } from '@/data/site'
-import { MapPinIcon, PhoneIcon } from './ContactIcons'
+import { MapPinIcon, MessageIcon, PhoneIcon } from './ContactIcons'
 
 /**
  * "Visit Us" strip: address, phone and a Google map, sitting directly above
@@ -43,19 +43,28 @@ export function VisitMap({ dict }: { dict: Dictionary }) {
 							</span>
 						</a>
 
-						<a href={BUSINESS.phoneHref} className="mt-4 flex items-center gap-3 text-base-content/80 hover:text-primary">
-							<PhoneIcon className="h-5 w-5 shrink-0 text-secondary" />
-							<span>{dict['footer.contact.calltext'].replace('{phone}', BUSINESS.phoneDisplay)}</span>
-						</a>
-
 						<p className="mt-5 text-sm text-base-content/60">{dict['footer.hours.body']}</p>
 
-						<div className="mt-6 flex flex-wrap gap-3">
-							<a href={LINKS.directions} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+						<div className="mt-6">
+							<a href={LINKS.directions} target="_blank" rel="noopener noreferrer" className="btn btn-primary gap-2">
+								<MapPinIcon className="h-4 w-4" />
 								{dict['home.about.directions']}
 							</a>
-							<a href={BUSINESS.phoneHref} className="btn btn-outline btn-primary">
-								{BUSINESS.phoneDisplay}
+						</div>
+
+						{/* Calling and texting are separate actions on separate buttons
+						    (tel: vs sms:) — one combined "Call or Text" control left
+						    people unsure which one tapping it would start. Kept on
+						    their own row so the pair reads as two ways to reach the
+						    same number rather than three unrelated buttons. */}
+						<div className="mt-3 flex flex-wrap gap-3">
+							<a href={BUSINESS.phoneHref} className="btn btn-outline btn-primary gap-2">
+								<PhoneIcon className="h-4 w-4" />
+								{dict['footer.contact.call'].replace('{phone}', BUSINESS.phoneDisplay)}
+							</a>
+							<a href={BUSINESS.smsHref} className="btn btn-outline btn-primary gap-2">
+								<MessageIcon className="h-4 w-4" />
+								{dict['footer.contact.text'].replace('{phone}', BUSINESS.phoneDisplay)}
 							</a>
 						</div>
 					</div>

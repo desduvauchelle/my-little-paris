@@ -380,7 +380,8 @@ const zh: Dictionary = {
 	'footer.copyright': '© {year} My Little Paris. 保留所有权利。',
 	'footer.powered.by': '由 Recursive Solutions 提供技术支持',
 	'footer.contact.heading': '联系方式',
-	'footer.contact.calltext': '致电或短信 {phone}',
+	'footer.contact.call': '致电 {phone}',
+	'footer.contact.text': '发短信至 {phone}',
 	'footer.hours.heading': '营业时间',
 	'footer.hours.body': '营业时间可能每周有所调整。',
 	'footer.hours.google': '请在 Google 上查看最新营业时间。',
@@ -408,42 +409,6 @@ const zh: Dictionary = {
 	'page.privacy.policy': '隐私政策',
 	'page.terms.of.service': '服务条款',
 	'page.cookie.policy': 'Cookie 政策',
-
-	// Legal (Terms of Service)
-	'legal.intro': '本服务条款适用于您对本网站的使用。访问或使用本网站即表示您同意受这些条款约束。',
-	'legal.section1.title': '服务使用',
-	'legal.section1.body': '您同意仅出于合法目的并按照本条款使用本网站。您有责任确保您的使用符合所有适用的法律法规。',
-	'legal.section2.title': '知识产权',
-	'legal.section2.body': '本网站上的所有内容，包括文字、图片和标识，均为网站所有者的财产，受适用知识产权法律保护。',
-	'legal.section3.title': '免责声明',
-	'legal.section3.body': '本网站按“现状”提供，不作任何明示或暗示的保证。',
-	'legal.section4.title': '联系方式',
-	'legal.section4.body': '如对本条款有任何疑问，请访问我们的联系页面。',
-
-	// Privacy Policy
-	'privacy.intro': '本隐私政策说明我们在您访问本网站时如何收集、使用和共享您的个人信息。',
-	'privacy.section1.title': '我们收集的信息',
-	'privacy.section1.body': '我们可能收集您直接提供的信息（例如填写联系表单时），以及通过分析工具自动收集的使用数据。',
-	'privacy.section2.title': '我们如何使用您的信息',
-	'privacy.section2.body': '我们使用收集的信息来运营和改进网站、回复您的咨询，并分析访客如何使用本网站。',
-	'privacy.section3.title': '数据共享',
-	'privacy.section3.body': '我们不会出售您的个人信息。我们可能与帮助我们运营网站的服务提供商共享信息。',
-	'privacy.section4.title': '您的权利',
-	'privacy.section4.body': '您可以通过联系页面与我们联系，请求访问、更正或删除您的个人数据。',
-
-	// Cookie Policy
-	'cookies.intro': '本 Cookie 政策说明我们如何在本网站上使用 Cookie 及类似技术。',
-	'cookies.section1.title': '什么是 Cookie',
-	'cookies.section1.body': 'Cookie 是您访问网站时存储在设备上的小型文本文件，帮助网站记住您的偏好并改善您的体验。',
-	'cookies.section2.title': '我们使用的 Cookie',
-	'cookies.section2.essential.label': '必要 Cookie：',
-	'cookies.section2.essential.body': '网站正常运行所必需，例如主题偏好。',
-	'cookies.section2.analytics.label': '分析 Cookie：',
-	'cookies.section2.analytics.body': '帮助我们了解访客如何与网站互动，以便改进网站。',
-	'cookies.section3.title': '管理 Cookie',
-	'cookies.section3.body': '您可以通过浏览器设置控制 Cookie。禁用 Cookie 可能会影响本网站的功能。',
-	'cookies.section4.title': '联系方式',
-	'cookies.section4.body': '如对我们使用 Cookie 有任何疑问，请访问我们的联系页面。',
 
 	// Language names
 	'lang.en': 'English',

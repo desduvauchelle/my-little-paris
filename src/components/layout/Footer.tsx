@@ -4,6 +4,7 @@ import type { Dictionary } from '@/i18n'
 import { localizedPath } from '@/lib/i18n-utils'
 import { BUSINESS, LINKS } from '@/data/site'
 import { SocialIcon } from './SocialIcon'
+import { MessageIcon, PhoneIcon } from './ContactIcons'
 import { VisitMap } from './VisitMap'
 
 export function Footer({ dict, locale }: { dict: Dictionary; locale: string }) {
@@ -49,8 +50,13 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: string }) {
 					<div>
 						<h4 className="font-semibold mb-3 text-white">{dict['footer.contact.heading']}</h4>
 						<div className="flex flex-col gap-2 text-sm text-white/70">
-							<a href={BUSINESS.phoneHref} className="hover:text-white">
-								{dict['footer.contact.calltext'].replace('{phone}', BUSINESS.phoneDisplay)}
+							<a href={BUSINESS.phoneHref} className="flex items-center gap-2 hover:text-white">
+								<PhoneIcon className="h-4 w-4 shrink-0" />
+								{dict['footer.contact.call'].replace('{phone}', BUSINESS.phoneDisplay)}
+							</a>
+							<a href={BUSINESS.smsHref} className="flex items-center gap-2 hover:text-white">
+								<MessageIcon className="h-4 w-4 shrink-0" />
+								{dict['footer.contact.text'].replace('{phone}', BUSINESS.phoneDisplay)}
 							</a>
 							<a href={LINKS.directions} target="_blank" rel="noopener noreferrer" className="hover:text-white">
 								{BUSINESS.address.street}
