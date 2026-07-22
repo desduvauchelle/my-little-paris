@@ -12,6 +12,8 @@ const fr: Dictionary = {
 	'nav.events': 'Événements',
 	'nav.story': 'Notre Histoire',
 	'nav.book': 'Réserver',
+	'nav.visit': 'Adresse et itinéraire',
+	'nav.call': 'Appelez ou écrivez-nous',
 
 	// Hero (homepage)
 	'hero.title': 'My Little Paris Café & Play',
@@ -386,6 +388,7 @@ const fr: Dictionary = {
 	'footer.waiver': 'Signez votre décharge pour gagner du temps',
 	'footer.reserve': 'Réserver une table',
 	'footer.visit.heading': 'Venir nous voir',
+	'footer.map.title': 'Carte Google indiquant My Little Paris Café & Play à San Gabriel',
 
 	// Contact
 	'contact.heading': 'Contactez-nous',

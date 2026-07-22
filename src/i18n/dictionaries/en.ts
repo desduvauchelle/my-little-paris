@@ -10,6 +10,8 @@ const en = {
 	'nav.events': 'Events',
 	'nav.story': 'Our Story',
 	'nav.book': 'Book Now',
+	'nav.visit': 'Address & directions',
+	'nav.call': 'Call or text us',
 
 	// Hero (homepage)
 	'hero.title': 'My Little Paris Café & Play',
@@ -384,6 +386,7 @@ const en = {
 	'footer.waiver': 'Sign your waiver to save time',
 	'footer.reserve': 'Make a Reservation',
 	'footer.visit.heading': 'Visit Us',
+	'footer.map.title': 'Google map showing My Little Paris Café & Play in San Gabriel',
 
 	// Contact
 	'contact.heading': 'Contact Us',

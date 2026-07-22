@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import Link from 'next/link'
 import { LanguageSwitcher } from './LanguageSwitcher'
 
@@ -13,10 +13,13 @@ export function MobileMenu({
 	links,
 	locale,
 	locales,
+	extras,
 }: {
 	links: NavLink[]
 	locale: string
 	locales: string[]
+	/** Rendered below the nav links — the address/phone shortcuts. */
+	extras?: ReactNode
 }) {
 	const [menuOpen, setMenuOpen] = useState(false)
 
@@ -54,6 +57,14 @@ export function MobileMenu({
 								{link.label}
 							</Link>
 						))}
+						{extras && (
+							<div
+								className="flex flex-col gap-3 border-t border-base-200 pt-3"
+								onClick={() => setMenuOpen(false)}
+							>
+								{extras}
+							</div>
+						)}
 						<LanguageSwitcher locale={locale} locales={locales} />
 					</nav>
 				</div>

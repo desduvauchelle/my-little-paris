@@ -12,6 +12,8 @@ const zh: Dictionary = {
 	'nav.events': '活动',
 	'nav.story': '我们的故事',
 	'nav.book': '立即预订',
+	'nav.visit': '地址与路线',
+	'nav.call': '致电或发短信',
 
 	// Hero (homepage)
 	'hero.title': 'My Little Paris Café & Play',
@@ -386,6 +388,7 @@ const zh: Dictionary = {
 	'footer.waiver': '提前签署免责声明更省时',
 	'footer.reserve': '立即预订',
 	'footer.visit.heading': '到店地址',
+	'footer.map.title': '谷歌地图：位于圣盖博的 My Little Paris Café & Play',
 
 	// Contact
 	'contact.heading': '联系我们',

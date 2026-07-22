@@ -5,6 +5,7 @@ import { supportedLocales } from '@/i18n/config'
 import { localizedPath } from '@/lib/i18n-utils'
 import { LINKS } from '@/data/site'
 import { SocialIcon } from './SocialIcon'
+import { MapPinIcon, PhoneIcon } from './ContactIcons'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { MobileMenu } from './MobileMenu'
 
@@ -17,6 +18,30 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: string }) {
 		{ href: localizedPath('/party', locale), label: dict['nav.party'] },
 		{ href: localizedPath('/events', locale), label: dict['nav.events'] },
 	]
+
+	// Address and phone shortcuts. Both jump to the "Visit Us" strip above the
+	// footer, which carries the address, the map and a tap-to-call number —
+	// and which renders on every page, so these are never dead anchors.
+	const contactShortcuts = (
+		<>
+			<a
+				href="#visit"
+				aria-label={dict['nav.visit']}
+				title={dict['nav.visit']}
+				className="text-white/70 transition-colors hover:text-white"
+			>
+				<MapPinIcon className="h-[1.15rem] w-[1.15rem]" />
+			</a>
+			<a
+				href="#visit"
+				aria-label={dict['nav.call']}
+				title={dict['nav.call']}
+				className="text-white/70 transition-colors hover:text-white"
+			>
+				<PhoneIcon className="h-[1.15rem] w-[1.15rem]" />
+			</a>
+		</>
+	)
 
 	// Same element on desktop and mobile — on mobile it sits beside the
 	// hamburger so booking never costs a tap to find.
@@ -56,7 +81,8 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: string }) {
 							{link.label}
 						</Link>
 					))}
-					<span className="flex items-center gap-2 pl-2 border-l border-white/20">
+					<span className="flex items-center gap-3 border-l border-white/20 pl-3">{contactShortcuts}</span>
+					<span className="flex items-center gap-2 border-l border-white/20 pl-3">
 						<SocialIcon platform="facebook" href={LINKS.facebook} className="text-white/70 hover:text-white" />
 						<SocialIcon platform="instagram" href={LINKS.instagram} className="text-white/70 hover:text-white" />
 						<SocialIcon platform="yelp" href={LINKS.yelp} className="text-white/70 hover:text-white" />
@@ -68,7 +94,25 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: string }) {
 				{/* Mobile nav — client component handles toggle state */}
 				<div className="flex items-center gap-2 lg:hidden">
 					{bookButton}
-					<MobileMenu links={NAV_LINKS} locale={locale} locales={supportedLocales} />
+					<MobileMenu
+						links={NAV_LINKS}
+						locale={locale}
+						locales={supportedLocales}
+						extras={
+							// Same destination as the desktop icons, but labelled —
+							// bare glyphs in a dropdown make people guess.
+							<>
+								<a href="#visit" className="flex items-center gap-3 py-1 text-base-content/70 transition-colors hover:text-primary">
+									<MapPinIcon className="h-[1.15rem] w-[1.15rem] text-secondary" />
+									{dict['nav.visit']}
+								</a>
+								<a href="#visit" className="flex items-center gap-3 py-1 text-base-content/70 transition-colors hover:text-primary">
+									<PhoneIcon className="h-[1.15rem] w-[1.15rem] text-secondary" />
+									{dict['nav.call']}
+								</a>
+							</>
+						}
+					/>
 				</div>
 			</div>
 		</header>

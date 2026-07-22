@@ -4,6 +4,7 @@ import type { Dictionary } from '@/i18n'
 import { localizedPath } from '@/lib/i18n-utils'
 import { BUSINESS, LINKS } from '@/data/site'
 import { SocialIcon } from './SocialIcon'
+import { VisitMap } from './VisitMap'
 
 export function Footer({ dict, locale }: { dict: Dictionary; locale: string }) {
 	const year = new Date().getFullYear()
@@ -21,6 +22,10 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: string }) {
 
 	return (
 		<footer className="navy-section">
+			{/* Map strip sits above the footer proper — the header's address and
+			    phone shortcuts scroll here, on every page. */}
+			<VisitMap dict={dict} />
+
 			<div className="container mx-auto px-4 py-14">
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 					{/* Brand */}

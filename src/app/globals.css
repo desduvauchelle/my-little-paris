@@ -56,6 +56,18 @@ body {
   @apply bg-base-100 text-base-content font-sans;
 }
 
+/* In-page anchors (the header's #visit shortcuts) glide rather than jump.
+   Targets carry their own scroll-mt-* to clear the sticky header. */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 /* Serif display headings — the French-elegant voice of the /party page */
 .font-display {
   font-family: var(--font-display);
