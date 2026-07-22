@@ -38,7 +38,7 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 		label: 'Private Room',
 		catered: {
 			description: 'Your own party room next to the shared play space. Up to 30 guests max capacity.',
-			serviceFee: '18% mandatory service fee added to all packages — covers gratuity for all staff. 3% credit card fee.',
+			serviceFee: '18% mandatory service fee added to all packages, covering gratuity for all staff. 3% credit card fee.',
 			extraTime: 'Extra hour: $180 weekday / $280 weekend',
 			addOns: ['Chinese Food option', 'Dietary Restrictions menu'],
 			packages: [
@@ -94,8 +94,8 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 			],
 		},
 		rentalOnly: {
-			description: 'Your own party room, our tables and essentials — you bring the food, drinks and cake.',
-			serviceFee: '12% mandatory service fee added — covers gratuity for all staff. No sales tax. 3% credit card fee.',
+			description: 'Your own party room, our tables and essentials. You bring the food, drinks and cake.',
+			serviceFee: '12% mandatory service fee added, covering gratuity for all staff. No sales tax. 3% credit card fee.',
 			packages: [
 				{
 					id: 'rental-private-room',
@@ -110,7 +110,7 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 						'Table covers',
 						'Cake cutting service',
 						'Access to indoor play space',
-						'🍽️ Food and drinks not included — bring your own food, drinks, dinnerware, napkins, cake, and decorations',
+						'🍽️ Food and drinks not included: bring your own food, drinks, dinnerware, napkins, cake, and decorations',
 					],
 					deposit: ['$150 deposit to book'],
 				},
@@ -123,7 +123,7 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 		label: 'Full Space',
 		catered: {
 			description: 'The entire venue is exclusively yours, closed to the public. Ideal for 30+ guests or anyone wanting total privacy.',
-			serviceFee: '15% mandatory service fee added to all packages — covers gratuity for all staff. 3% credit card fee.',
+			serviceFee: '15% mandatory service fee added to all packages, covering gratuity for all staff. 3% credit card fee.',
 			extraTime: 'Extra hour: $300 weekday / $390 weekend',
 			addOns: ['Chinese Food option', 'Dietary Restrictions menu', 'Party Rentals'],
 			packages: [
@@ -181,8 +181,8 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 			],
 		},
 		rentalOnly: {
-			description: 'The entire venue exclusively yours, closed to the public — bring your own food, drinks and cake.',
-			serviceFee: '12% mandatory service fee added — covers gratuity for all staff. No sales tax. 3% credit card fee.',
+			description: 'The entire venue exclusively yours, closed to the public. Bring your own food, drinks and cake.',
+			serviceFee: '12% mandatory service fee added, covering gratuity for all staff. No sales tax. 3% credit card fee.',
 			packages: [
 				{
 					id: 'rental-entire-venue',
@@ -198,7 +198,7 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 						'Table covers',
 						'Cake cutting service',
 						'Access to indoor play space',
-						'🍽️ Food and drinks not included — bring your own food, drinks, dinnerware, napkins, cake, and decorations',
+						'🍽️ Food and drinks not included: bring your own food, drinks, dinnerware, napkins, cake, and decorations',
 					],
 					deposit: ['$300 deposit to book'],
 				},
@@ -252,7 +252,7 @@ export const PARTY_POLICIES = [
 			'No confetti (including confetti balloons, poppers, cannons, table confetti), glitter, or piñatas.',
 			'Socks are required in the play space and private room.',
 			'Food and drinks are not allowed in the play space.',
-			'A waiver must be signed by all families — sign yours online to save time on the day.',
+			'A waiver must be signed by all families. Sign yours online to save time on the day.',
 			'Babies under 12 months are free.',
 		],
 	},
@@ -275,8 +275,8 @@ export const PACKAGE_FORM_OPTIONS = [
 	'Vendôme Privé Full Space Package ($1,150 weekday / $1,400 weekend)',
 	'Champs-Élysée Full Space Package ($1,850 weekday / $2,200 weekend)',
 	'Versailles Full Space All-Inclusive Package ($4,500 weekday / $5,000 weekend)',
-	'Venue Rental — Private Room ($350 weekday / $450 weekend)',
-	'Venue Rental — Entire Venue ($850 weekday / $1,000 weekend)',
+	'Venue Rental: Private Room ($350 weekday / $450 weekend)',
+	'Venue Rental: Entire Venue ($850 weekday / $1,000 weekend)',
 	'Other',
 	'Not decided yet',
 ] as const

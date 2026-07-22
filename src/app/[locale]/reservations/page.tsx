@@ -29,26 +29,44 @@ export default async function ReservationsPage({
 	const { locale } = await params
 	const dict = await getDictionary(locale)
 
-	// Panel: up to 6 → book online right away (the common case, shown by default)
+	// Panel: up to 6 → straight out to Acuity.
+	//
+	// This used to be an inline iframe. Acuity never posts the `sizing` message
+	// its own embed.js listens for, so the frame can't auto-fit, and its content
+	// runs ~1900px tall on desktop and ~3000px on mobile for the first step
+	// alone. Any fixed height meant either a scrollbar inside a scrollbar or a
+	// vast empty box on the shorter steps. Sending people to Acuity's own
+	// responsive page is the honest fix.
 	const smallPanel = (
-		<div>
-			<h2 className="font-display text-3xl text-primary text-center mb-2">{dict['reservations.book.heading']}</h2>
-			<p className="text-center text-sm text-base-content/60 mb-6">{dict['reservations.small.note']}</p>
-			<div className="rounded-box overflow-hidden border border-base-300 bg-white">
-				<iframe
-					src={LINKS.acuityEmbed}
-					title={dict['reservations.book.heading']}
-					width="100%"
-					height="800"
-					loading="lazy"
-				/>
+		<div className="card bg-base-200 shadow-sm">
+			<div className="card-body items-center text-center">
+				<h2 className="font-display text-3xl text-primary">{dict['reservations.book.heading']}</h2>
+				<p className="text-sm text-base-content/60 max-w-sm">{dict['reservations.small.note']}</p>
+				<div className="card-actions mt-3">
+					<a href={LINKS.reservations} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
+						{dict['reservations.book.cta']}
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							strokeWidth={2}
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							className="w-4 h-4"
+							aria-hidden="true"
+						>
+							<path d="M7 17 17 7M9 7h8v8" />
+						</svg>
+					</a>
+				</div>
+				<p className="text-xs text-base-content/50">{dict['reservations.book.newtab']}</p>
+				<p className="text-sm text-base-content/70 mt-4">
+					{dict['reservations.book.callnote'].split('{phone}')[0]}
+					<a href={BUSINESS.phoneHref} className="link link-primary">{BUSINESS.phoneDisplay}</a>
+					{dict['reservations.book.callnote'].split('{phone}')[1]}
+				</p>
 			</div>
-			<p className="text-center text-sm text-base-content/60 mt-4">
-				{dict['reservations.book.fallback']}{' '}
-				<a href={LINKS.reservations} target="_blank" rel="noopener noreferrer" className="link link-primary">
-					{dict['reservations.book.cta']}
-				</a>
-			</p>
 		</div>
 	)
 

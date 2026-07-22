@@ -81,7 +81,7 @@ export const EAT_MENU: MenuSection[] = [
 		title: 'Desserts & Pastries',
 		items: [
 			{ name: 'Chocolate Mousse', description: 'Belgian dark chocolate mousse on a cookie crumble base', price: '$6.99', isNew: true },
-			{ name: 'Chocolate Lava Cake', description: 'Moist chocolate cake with a heart of creamy rich chocolate — add vanilla ice cream for $3', price: '$9.99', note: 'contains gluten' },
+			{ name: 'Chocolate Lava Cake', description: 'Moist chocolate cake with a heart of creamy rich chocolate. Add vanilla ice cream for $3', price: '$9.99', note: 'contains gluten' },
 			{ name: 'Tiramisu', description: 'Traditional tiramisu made with espresso-soaked ladyfingers and mascarpone cream, dusted with cocoa powder', price: '$9.99', note: 'contains gluten' },
 			{ name: 'Traditional NY Cheesecake', description: 'Creamy New York cheesecake on a graham cracker crust', price: '$8.49', note: 'contains gluten' },
 			{ name: 'Bear Gelato', description: 'Chocolate gelato', price: '$6.99', isNew: true },
@@ -155,9 +155,9 @@ export const DRINK_MENU: MenuSection[] = [
 		title: 'Coffee',
 		intro: 'Oat milk substitute +$0.50 / add vanilla or caramel syrup +$0.50',
 		items: [
-			{ name: 'Coffee — Hot/Iced', description: 'Freshly brewed black coffee', price: '$3.15' },
-			{ name: 'Café au Lait (Latte) — Hot/Iced', description: 'Brewed coffee with milk', price: '$3.65' },
-			{ name: 'Long Black Coffee — Hot/Iced', description: 'Brewed coffee with added hot water', price: '$3.65' },
+			{ name: 'Coffee, Hot or Iced', description: 'Freshly brewed black coffee', price: '$3.15' },
+			{ name: 'Café au Lait (Latte), Hot or Iced', description: 'Brewed coffee with milk', price: '$3.65' },
+			{ name: 'Long Black Coffee, Hot or Iced', description: 'Brewed coffee with added hot water', price: '$3.65' },
 		],
 	},
 	{
@@ -223,28 +223,28 @@ export const DRINK_MENU: MenuSection[] = [
 export const FEATURED_DISHES = [
 	{
 		name: 'Handcrafted Toasts',
-		description: 'Sourdough, six ways — smoked salmon, figs, prosciutto, artichoke & more',
+		description: 'Sourdough, six ways: smoked salmon, figs, prosciutto, artichoke & more',
 		price: 'from $18.99',
 		image: '/images/toast.webp',
 		imagePosition: 'object-center',
 	},
 	{
 		name: 'Grilled Chicken Pesto Sandwich',
-		description: 'Housemade basil pesto, shaved Parmesan, arugula — with fries or salad',
+		description: 'Housemade basil pesto, shaved Parmesan, arugula, served with fries or salad',
 		price: '$18.99',
 		image: '/images/pesto-sandwich.webp',
 		imagePosition: 'object-center',
 	},
 	{
 		name: 'Cheeseburger',
-		description: 'Beef patty, bacon, cheddar, arugula, shallot aioli on a brioche bun — with fries',
+		description: 'Beef patty, bacon, cheddar, arugula, shallot aioli on a brioche bun, served with fries',
 		price: '$19.99',
 		image: '/images/party-photo-3.webp',
 		imagePosition: 'object-center',
 	},
 	{
 		name: 'Coffee & French Pastries',
-		description: 'Proper lattes, macarons, mini croissants and house desserts — the Parisian finish',
+		description: 'Proper lattes, macarons, mini croissants and house desserts. The Parisian finish',
 		price: 'from $3.15',
 		image: '/images/gallery-3.webp',
 		imagePosition: 'object-center',

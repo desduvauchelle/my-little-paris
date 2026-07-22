@@ -23,7 +23,7 @@ export function MobileMenu({
 	return (
 		<>
 			<button
-				className="md:hidden btn btn-ghost btn-square"
+				className="btn btn-ghost btn-square text-white"
 				onClick={() => setMenuOpen(!menuOpen)}
 				aria-label="Toggle menu"
 			>
@@ -42,7 +42,7 @@ export function MobileMenu({
 			</button>
 
 			{menuOpen && (
-				<div className="md:hidden border-t border-base-200 bg-base-100 absolute top-full left-0 right-0 shadow-lg">
+				<div className="border-t border-base-200 bg-base-100 absolute top-full left-0 right-0 shadow-lg">
 					<nav className="container mx-auto px-4 py-4 flex flex-col gap-3">
 						{links.map((link) => (
 							<Link

@@ -64,36 +64,6 @@ export default async function HomePage({
 		<>
 			<Hero dict={dict} locale={locale} />
 
-			{/* Summer promo */}
-			<section className="py-16 bg-base-100">
-				<div className="container mx-auto px-4">
-					<ScrollReveal y={30} className="card lg:card-side bg-primary text-primary-content max-w-4xl mx-auto overflow-hidden shadow-lg">
-						<div className="card-body lg:flex-row lg:items-center gap-8">
-							<div className="flex-1">
-								<div className="badge badge-secondary mb-3">☀️ {dict['home.promo.badge']}</div>
-								<h2 className="font-display text-4xl mb-3">{dict['home.promo.title']}</h2>
-								<p className="opacity-90 mb-2">{dict['home.promo.body']}</p>
-								<p className="text-sm opacity-70 mb-4">{dict['home.promo.valid']}</p>
-								<ul className="text-sm space-y-1 opacity-90">
-									<li>✔ {dict['home.promo.point1']}</li>
-									<li>✔ {dict['home.promo.point2']}</li>
-									<li>✔ {dict['home.promo.point3']}</li>
-									<li>✔ {dict['home.promo.point4']}</li>
-								</ul>
-							</div>
-							<div className="shrink-0">
-								<Link
-									href={localizedPath('/reservations', locale)}
-									className="btn btn-lg bg-white text-[#001d61] border-0 hover:bg-white/90"
-								>
-									{dict['home.promo.cta']}
-								</Link>
-							</div>
-						</div>
-					</ScrollReveal>
-				</div>
-			</section>
-
 			{/* Play / Party / Eat / Drinks pillars */}
 			<Pillars dict={dict} locale={locale} />
 
@@ -134,6 +104,36 @@ export default async function HomePage({
 							{dict['menu.kids']}
 						</Link>
 					</div>
+				</div>
+			</section>
+
+			{/* Summer promo */}
+			<section className="py-16 bg-base-100">
+				<div className="container mx-auto px-4">
+					<ScrollReveal y={30} className="card lg:card-side bg-primary text-primary-content max-w-4xl mx-auto overflow-hidden shadow-lg">
+						<div className="card-body lg:flex-row lg:items-center gap-8">
+							<div className="flex-1">
+								<div className="badge badge-secondary mb-3">☀️ {dict['home.promo.badge']}</div>
+								<h2 className="font-display text-4xl mb-3">{dict['home.promo.title']}</h2>
+								<p className="opacity-90 mb-2">{dict['home.promo.body']}</p>
+								<p className="text-sm opacity-70 mb-4">{dict['home.promo.valid']}</p>
+								<ul className="text-sm space-y-1 opacity-90">
+									<li>✔ {dict['home.promo.point1']}</li>
+									<li>✔ {dict['home.promo.point2']}</li>
+									<li>✔ {dict['home.promo.point3']}</li>
+									<li>✔ {dict['home.promo.point4']}</li>
+								</ul>
+							</div>
+							<div className="shrink-0">
+								<Link
+									href={localizedPath('/reservations', locale)}
+									className="btn btn-lg bg-white text-[#001d61] border-0 hover:bg-white/90"
+								>
+									{dict['home.promo.cta']}
+								</Link>
+							</div>
+						</div>
+					</ScrollReveal>
 				</div>
 			</section>
 

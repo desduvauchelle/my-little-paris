@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 		template: '%s | My Little Paris Café & Play',
 	},
 	description:
-		'French café + indoor playground in San Gabriel, CA. Two-hour Eat & Play sessions, all-inclusive birthday parties, memberships — and real food for parents and kids.',
+		'French café + indoor playground in San Gabriel, CA. Two-hour Eat & Play sessions, all-inclusive birthday parties, memberships, and real food for parents and kids.',
 	// Dev/staging kill switch — pages inherit this unless they set their own
 	// `robots`, keeping the whole portal out of search until launch.
 	...(SITE_NOINDEX && { robots: { index: false, follow: false } }),

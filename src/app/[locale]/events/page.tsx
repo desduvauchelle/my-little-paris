@@ -39,7 +39,7 @@ const CURRENT_EVENT = {
 		'📸 Photo opportunities, 🍍 Open Play',
 	],
 	pricing: [
-		'🌴 Regular Admission: $25 per guest — includes the character experience, picture opportunities, delicious tea party buffet, and a memorable afternoon of island fun.',
+		'🌴 Regular Admission: $25 per guest, including the character experience, picture opportunities, delicious tea party buffet, and a memorable afternoon of island fun.',
 		'Adults and children attending the event each require a ticket. Babies under 1 are free.',
 		'🥤 Beverages will be available for purchase from our café.',
 	],
@@ -49,7 +49,7 @@ const CURRENT_EVENT = {
 		'Cancellations made within 24 hours of the event, as well as no-shows, will be charged 100% of the ticket price',
 		'Final headcount is due 24 hours prior to the event',
 	],
-	outro: "Space is limited, so reserve your seats today—we can't wait to welcome your family for a magical island celebration!",
+	outro: "Space is limited, so reserve your seats today. We can't wait to welcome your family for a magical island celebration!",
 }
 
 export default async function EventsPage({

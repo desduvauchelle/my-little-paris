@@ -36,8 +36,6 @@ export const LINKS = {
 	facebook: 'https://www.facebook.com/mylittlepariscafeplay',
 	instagram: 'https://www.instagram.com/mylittlepariscafeplay/',
 	yelp: 'https://www.yelp.com/biz/my-little-paris-cafe-and-play-san-gabriel',
-	acuityEmbed:
-		'https://app.acuityscheduling.com/schedule.php?owner=22945936&ref=embedded_csp',
 } as const
 
 /** Cities called out on the party page for local SEO. */

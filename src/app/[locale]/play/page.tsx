@@ -18,7 +18,7 @@ export async function generateMetadata({
 	return buildPageMetadata({
 		path: '/play',
 		locale,
-		title: `${dict['play.title']} — Indoor Playground, Open Play, Memberships & Play Passes`,
+		title: `${dict['play.title']}: Indoor Playground, Open Play, Memberships & Play Passes`,
 		description: dict['play.intro1'],
 	})
 }
