@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" role="img" aria-label="Superhero Day event poster">
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#001d61"/><stop offset="1" stop-color="#1e2d4a"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="750" fill="url(#night)"/>
+  <!-- stars -->
+  <g fill="#ffffff" opacity="0.85">
+    <circle cx="80" cy="90" r="3"/><circle cx="200" cy="50" r="2"/><circle cx="520" cy="80" r="3"/>
+    <circle cx="420" cy="140" r="2"/><circle cx="60" cy="220" r="2"/><circle cx="550" cy="240" r="2"/>
+    <circle cx="140" cy="160" r="2.5"/><circle cx="480" cy="180" r="2"/>
+  </g>
+  <!-- comic burst -->
+  <g transform="translate(300 340)">
+    <path d="M0 -170 L38 -84 L128 -118 L86 -34 L170 0 L86 34 L128 118 L38 84 L0 170 L-38 84 L-128 118 L-86 34 L-170 0 L-86 -34 L-128 -118 L-38 -84 Z"
+      fill="#d9a441" stroke="#fdfbf8" stroke-width="7"/>
+    <path d="M18 -92 L-36 6 L-2 6 L-22 92 L44 -22 L8 -22 Z" fill="#001d61"/>
+  </g>
+  <!-- cape kid silhouette -->
+  <g transform="translate(300 560)" stroke="#fdfbf8" stroke-width="7" fill="none" stroke-linecap="round">
+    <circle cx="0" cy="-44" r="22"/>
+    <path d="M0 -22 L0 30 M0 -6 L-34 12 M0 -6 L36 -20 M0 30 L-22 68 M0 30 L22 68"/>
+    <path d="M-6 -14 Q-70 30 -46 74 Q-14 52 -2 34" fill="#f6a6c9" stroke="#f6a6c9"/>
+  </g>
+  <text x="300" y="700" text-anchor="middle" font-family="Georgia, 'Playfair Display', serif" font-size="34" font-style="italic" fill="#fdfbf8">Superhero Day</text>
+</svg>

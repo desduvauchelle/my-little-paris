@@ -1,0 +1,68 @@
+@import 'tailwindcss';
+@source '../../node_modules/@growth-engine/sdk-client/components.js';
+@plugin '@tailwindcss/typography';
+@plugin 'daisyui' {
+  themes: false;
+}
+
+/*
+ * My Little Paris Café & Play — brand theme.
+ * Navy #001D61 (site-wide primary, from the original Squarespace site) over
+ * the cream/pink/french-blue palette introduced by the newer /party landing
+ * page. Light theme is the brand default.
+ */
+@plugin 'daisyui/theme' {
+  name: 'light';
+  default: true;
+  color-scheme: 'light';
+
+  --color-base-100: #fdfbf8;
+  --color-base-200: #f5f2ee;
+  --color-base-300: #e8e2db;
+  --color-base-content: #152238;
+
+  --color-primary: #001d61;
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #e08aad;
+  --color-secondary-content: #3d1424;
+
+  --color-accent: #3d6b9e;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #152238;
+  --color-neutral-content: #fdfbf8;
+
+  --color-info: #6a9bbf;
+  --color-info-content: #0d1b2a;
+  --color-success: #4e7d43;
+  --color-success-content: #ffffff;
+  --color-warning: #d9a441;
+  --color-warning-content: #2a1f05;
+  --color-error: #b3402e;
+  --color-error-content: #ffffff;
+
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+}
+
+@theme {
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-playfair), Georgia, serif;
+}
+
+body {
+  @apply bg-base-100 text-base-content font-sans;
+}
+
+/* Serif display headings — the French-elegant voice of the /party page */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Deep-navy hero sections (original site's signature look) */
+.navy-section {
+  background-color: #001d61;
+  color: #ffffff;
+}
