@@ -14,7 +14,8 @@ import { Pillars } from '@/components/landing/Pillars'
 import { Newsletter } from '@/components/landing/Newsletter'
 import { CTA } from '@/components/landing/CTA'
 import { ScrollReveal } from '@/components/landing/ScrollReveal'
-import { SocialIcon } from '@/components/layout/SocialIcon'
+import { HowItWorks } from '@/components/landing/HowItWorks'
+import { PhotoGallery } from '@/components/gallery/PhotoGallery'
 import { cn } from '@/lib/utils'
 
 export const revalidate = 60
@@ -36,15 +37,6 @@ export async function generateMetadata({
 	})
 }
 
-const GALLERY = [
-	{ src: '/images/party-photo-1.webp', alt: 'Kids playing in the My Little Paris play space' },
-	{ src: '/images/gallery-3.webp', alt: 'Coffee and a French pastry at the café' },
-	{ src: '/images/party-photo-2.webp', alt: 'Birthday party room set up with balloon arch' },
-	{ src: '/images/superhero-kid.webp', alt: 'Little superhero at a themed event' },
-	{ src: '/images/gallery-2.webp', alt: 'Party balloons and decorations' },
-	{ src: '/images/gallery-1.webp', alt: 'Little hands playing with toy cars' },
-] as const
-
 export default async function HomePage({
 	params,
 }: {
@@ -53,12 +45,7 @@ export default async function HomePage({
 	const { locale } = await params
 	const dict = await getDictionary(locale)
 	const posts = await safeQuery([], () => getBlogPosts(getDb(), { locale, limit: 3 }))
-
-	const HOW_STEPS = [
-		{ title: dict['home.how.step1.title'], body: dict['home.how.step1.body'], emoji: '📅' },
-		{ title: dict['home.how.step2.title'], body: dict['home.how.step2.body'], emoji: '🛝' },
-		{ title: dict['home.how.step3.title'], body: dict['home.how.step3.body'], emoji: '🥐' },
-	]
+	const gallerySeed = new Date().getUTCDate() + locale.length * 31
 
 	return (
 		<>
@@ -66,6 +53,43 @@ export default async function HomePage({
 
 			{/* Play / Party / Eat / Drinks pillars */}
 			<Pillars dict={dict} locale={locale} />
+
+			{/* The space — real venue photography, surfaced early for first-time visitors */}
+			<section className="overflow-hidden bg-base-200 py-20">
+				<div className="container mx-auto px-4">
+					<div className="mx-auto mb-10 flex max-w-6xl flex-col gap-5 md:flex-row md:items-end md:justify-between">
+						<div className="max-w-2xl">
+							<p className="mb-3 text-sm font-semibold text-accent">{dict['home.gallery.kicker']}</p>
+							<h2 className="font-display text-4xl text-primary md:text-5xl">{dict['home.gallery.heading']}</h2>
+							<p className="mt-4 text-base-content/70">{dict['home.gallery.sub']}</p>
+						</div>
+						<div className="flex shrink-0 flex-wrap gap-2 self-start md:self-auto">
+							<Link href={localizedPath('/gallery', locale)} className="btn btn-primary">
+								{dict['home.gallery.view']}
+							</Link>
+							<Link href={localizedPath('/reservations', locale)} className="btn btn-outline btn-primary">
+								{dict['home.gallery.book']}
+							</Link>
+						</div>
+					</div>
+
+					<ScrollReveal y={36} className="mx-auto max-w-6xl">
+						<PhotoGallery
+							dict={dict}
+							seed={gallerySeed}
+							filteredLimit={8}
+							shuffleFiltered
+							variant="compact"
+						/>
+					</ScrollReveal>
+
+					<p className="mt-8 text-center">
+						<a href={LINKS.instagram} target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-sm text-primary">
+							{dict['home.gallery.follow']} →
+						</a>
+					</p>
+				</div>
+			</section>
 
 			{/* Food showcase */}
 			<section className="py-20 bg-base-200">
@@ -107,62 +131,8 @@ export default async function HomePage({
 				</div>
 			</section>
 
-			{/* Summer promo */}
-			<section className="py-16 bg-base-100">
-				<div className="container mx-auto px-4">
-					<ScrollReveal y={30} className="card lg:card-side bg-primary text-primary-content max-w-4xl mx-auto overflow-hidden shadow-lg">
-						<div className="card-body lg:flex-row lg:items-center gap-8">
-							<div className="flex-1">
-								<div className="badge badge-secondary mb-3">☀️ {dict['home.promo.badge']}</div>
-								<h2 className="font-display text-4xl mb-3">{dict['home.promo.title']}</h2>
-								<p className="opacity-90 mb-2">{dict['home.promo.body']}</p>
-								<p className="text-sm opacity-70 mb-4">{dict['home.promo.valid']}</p>
-								<ul className="text-sm space-y-1 opacity-90">
-									<li>✔ {dict['home.promo.point1']}</li>
-									<li>✔ {dict['home.promo.point2']}</li>
-									<li>✔ {dict['home.promo.point3']}</li>
-									<li>✔ {dict['home.promo.point4']}</li>
-								</ul>
-							</div>
-							<div className="shrink-0">
-								<Link
-									href={localizedPath('/reservations', locale)}
-									className="btn btn-lg bg-white text-[#001d61] border-0 hover:bg-white/90"
-								>
-									{dict['home.promo.cta']}
-								</Link>
-							</div>
-						</div>
-					</ScrollReveal>
-				</div>
-			</section>
-
 			{/* How it works (Acuity booking) */}
-			<section className="py-20 bg-base-100">
-				<div className="container mx-auto px-4 max-w-5xl">
-					<div className="text-center mb-12">
-						<h2 className="font-display text-4xl text-primary mb-3">{dict['home.how.heading']}</h2>
-						<p className="text-base-content/70">{dict['home.how.sub']}</p>
-					</div>
-					<ScrollReveal y={30} stagger={0.12} className="grid grid-cols-1 md:grid-cols-3 gap-6">
-						{HOW_STEPS.map((step, i) => (
-							<div key={step.title} className="card bg-base-200 shadow-sm">
-								<div className="card-body items-center text-center">
-									<span className="text-4xl" aria-hidden>{step.emoji}</span>
-									<span className="font-display text-3xl text-secondary">{i + 1}</span>
-									<h3 className="font-semibold">{step.title}</h3>
-									<p className="text-sm text-base-content/70">{step.body}</p>
-								</div>
-							</div>
-						))}
-					</ScrollReveal>
-					<div className="text-center mt-10">
-						<Link href={localizedPath('/reservations', locale)} className="btn btn-primary btn-lg">
-							{dict['hero.cta.reserve']}
-						</Link>
-					</div>
-				</div>
-			</section>
+			<HowItWorks dict={dict} locale={locale} />
 
 			{/* About / story */}
 			<section className="py-20 bg-base-200">
@@ -217,71 +187,45 @@ export default async function HomePage({
 				</div>
 			</section>
 
-			{/* Upcoming events strip */}
-			<section className="py-16 bg-base-200">
+			{/* Cleaning & sanitizing */}
+			<section className="py-20 bg-base-100">
 				<div className="container mx-auto px-4">
-					<ScrollReveal y={30} className="flex flex-col md:flex-row items-center gap-8 max-w-4xl mx-auto">
-						<Image
-							src="/images/event-tea-party.svg"
-							alt="Princess Tea Party event poster"
-							width={220}
-							height={275}
-							className="rounded-box shadow-md w-48"
-						/>
-						<div className="text-center md:text-left">
-							<h2 className="font-display text-4xl text-primary mb-3">{dict['home.events.heading']}</h2>
-							<p className="text-base-content/70 mb-5">{dict['home.events.body']}</p>
-							<Link href={localizedPath('/events', locale)} className="btn btn-primary">
-								{dict['home.events.cta']}
-							</Link>
+					<ScrollReveal
+						y={30}
+						className="grid max-w-6xl mx-auto overflow-hidden rounded-box bg-primary text-primary-content shadow-lg lg:grid-cols-[1.08fr_0.92fr]"
+					>
+						<div className="relative min-h-72 sm:min-h-96 lg:min-h-[30rem]">
+							<Image
+								src="/images/sparkling-clean-playground.webp"
+								alt={dict['home.cleaning.image.alt']}
+								fill
+								sizes="(max-width: 1024px) 100vw, 55vw"
+								className="object-cover"
+							/>
+						</div>
+						<div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14">
+							<p className="mb-4 text-sm font-semibold text-primary-content/75">
+								<span aria-hidden>✦</span> {dict['home.cleaning.eyebrow']}
+							</p>
+							<h2 className="font-display text-4xl text-balance sm:text-5xl">
+								{dict['home.cleaning.heading']}
+							</h2>
+							<p className="mt-7 font-display text-3xl text-secondary sm:text-4xl">
+								{dict['home.cleaning.frequency']}
+							</p>
+							<p className="mt-4 max-w-xl text-primary-content/85">
+								{dict['home.cleaning.p1']}
+							</p>
+							<div className="mt-8 border-t border-primary-content/25 pt-6">
+								<p className="font-semibold text-primary-content">
+									{dict['home.cleaning.pause']}
+								</p>
+								<p className="mt-2 max-w-xl text-sm leading-relaxed text-primary-content/75">
+									{dict['home.cleaning.p2']}
+								</p>
+							</div>
 						</div>
 					</ScrollReveal>
-				</div>
-			</section>
-
-			{/* Cleaning & sanitizing */}
-			<section className="py-14 bg-base-100">
-				<div className="container mx-auto px-4 max-w-3xl text-center">
-					<ScrollReveal y={30}>
-						<h2 className="font-display text-3xl text-primary mb-4">🧼 {dict['home.cleaning.heading']}</h2>
-						<p className="text-base-content/70 mb-2">{dict['home.cleaning.p1']}</p>
-						<p className="text-base-content/70">{dict['home.cleaning.p2']}</p>
-					</ScrollReveal>
-				</div>
-			</section>
-
-			{/* Instagram feed */}
-			<section className="py-16 bg-base-200">
-				<div className="container mx-auto px-4">
-					<div className="flex items-center justify-center gap-2 mb-2">
-						<SocialIcon platform="instagram" href={LINKS.instagram} className="text-primary" />
-						<h2 className="font-display text-4xl text-primary text-center">{dict['home.gallery.heading']}</h2>
-					</div>
-					<p className="text-center text-base-content/70 mb-10">{dict['home.gallery.sub']}</p>
-					<ScrollReveal y={40} stagger={0.08} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 max-w-6xl mx-auto">
-						{GALLERY.map((img) => (
-							<a
-								key={img.src}
-								href={LINKS.instagram}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="relative aspect-square overflow-hidden rounded-box group"
-							>
-								<Image
-									src={img.src}
-									alt={img.alt}
-									fill
-									sizes="(max-width: 768px) 50vw, 16vw"
-									className="object-cover group-hover:scale-105 transition-transform duration-300"
-								/>
-							</a>
-						))}
-					</ScrollReveal>
-					<p className="text-center mt-8">
-						<a href={LINKS.instagram} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-primary">
-							{dict['home.gallery.follow']}
-						</a>
-					</p>
 				</div>
 			</section>
 

@@ -21,6 +21,8 @@ interface PageMetadataInput {
 	description?: string | null
 	/** Absolute or root-relative OG image (resolved against metadataBase). */
 	image?: string | null
+	/** Descriptive alternative text for the Open Graph image. */
+	imageAlt?: string | null
 	type?: 'website' | 'article'
 	/** Set false to use `title` verbatim (e.g. the homepage already is the brand). */
 	brand?: boolean
@@ -40,6 +42,7 @@ export function buildPageMetadata({
 	title,
 	description,
 	image,
+	imageAlt,
 	type = 'website',
 	brand = true,
 }: PageMetadataInput): Metadata {
@@ -71,7 +74,7 @@ export function buildPageMetadata({
 			url: canonical,
 			siteName: SITE_NAME,
 			type,
-			...(image ? { images: [{ url: image }] } : {}),
+			...(image ? { images: [{ url: image, ...(imageAlt ? { alt: imageAlt } : {}) }] } : {}),
 		},
 		twitter: {
 			card: image ? 'summary_large_image' : 'summary',

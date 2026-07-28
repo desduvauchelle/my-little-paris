@@ -1,4 +1,6 @@
 import { defaultLocale, supportedLocales, isMultiLang } from '@/i18n/config'
+import en from '@/i18n/dictionaries/en'
+import { GALLERY_CATEGORIES, GALLERY_PHOTOS } from '@/data/gallery'
 
 // Canonical host for every absolute URL the site emits (canonical tags,
 // sitemap, OG images). MUST be the single canonical host — pick www-or-apex
@@ -23,8 +25,8 @@ export const STATIC_PAGES = [
 	'/drink',
 	'/play',
 	'/party',
-	'/party-reservation',
 	'/events',
+	'/gallery',
 	'/our-story',
 	'/blog',
 	'/blog/authors',
@@ -49,6 +51,12 @@ export interface SitemapEntry {
 	changeFrequency?: ChangeFrequency
 	priority?: number
 	alternates?: Record<string, string>
+	images?: SitemapImage[]
+}
+
+export interface SitemapImage {
+	loc: string
+	caption: string
 }
 
 interface BlogSitemapPost {
@@ -127,12 +135,19 @@ export function getBlogSitemapCount(total: number): number {
 
 export function buildStaticEntries(): SitemapEntry[] {
 	const entries: SitemapEntry[] = []
+	const galleryImages = GALLERY_CATEGORIES.flatMap((category) =>
+		GALLERY_PHOTOS[category].map((photo) => ({
+			loc: `${SITE_URL}${photo.src}`,
+			caption: en[photo.altKey],
+		})),
+	)
 	for (const page of STATIC_PAGES) {
 		entries.push({
 			url: buildUrl(page, defaultLocale),
 			changeFrequency: 'monthly',
 			priority: page === '' ? 1.0 : 0.7,
 			alternates: buildAlternates(page),
+			...(page === '/gallery' ? { images: galleryImages } : {}),
 		})
 	}
 	return entries
@@ -227,7 +242,7 @@ export function escapeXml(value: string): string {
 export function renderSitemapXml(entries: SitemapEntry[]): string {
 	const lines: string[] = [
 		'<?xml version="1.0" encoding="UTF-8"?>',
-		'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+		'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
 	]
 	for (const entry of entries) {
 		lines.push('  <url>')
@@ -246,6 +261,14 @@ export function renderSitemapXml(entries: SitemapEntry[]): string {
 				lines.push(
 					`    <xhtml:link rel="alternate" hreflang="${escapeXml(lang)}" href="${escapeXml(href)}" />`,
 				)
+			}
+		}
+		if (entry.images) {
+			for (const sitemapImage of entry.images) {
+				lines.push('    <image:image>')
+				lines.push(`      <image:loc>${escapeXml(sitemapImage.loc)}</image:loc>`)
+				lines.push(`      <image:caption>${escapeXml(sitemapImage.caption)}</image:caption>`)
+				lines.push('    </image:image>')
 			}
 		}
 		lines.push('  </url>')

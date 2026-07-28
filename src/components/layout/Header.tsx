@@ -8,6 +8,7 @@ import { SocialIcon } from './SocialIcon'
 import { MapPinIcon, PhoneIcon } from './ContactIcons'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { MobileMenu } from './MobileMenu'
+import { HeaderBookButton } from './HeaderBookButton'
 
 export function Header({ dict, locale }: { dict: Dictionary; locale: string }) {
 	// Reservations is promoted out of this list into the booking button below;
@@ -17,6 +18,7 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: string }) {
 		{ href: localizedPath('/play', locale), label: dict['nav.play'] },
 		{ href: localizedPath('/party', locale), label: dict['nav.party'] },
 		{ href: localizedPath('/events', locale), label: dict['nav.events'] },
+		{ href: localizedPath('/gallery', locale), label: dict['nav.gallery'] },
 	]
 
 	// Address and phone shortcuts. Both jump to the "Visit Us" strip above the
@@ -43,15 +45,15 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: string }) {
 		</>
 	)
 
-	// Same element on desktop and mobile — on mobile it sits beside the
-	// hamburger so booking never costs a tap to find.
-	const bookButton = (
-		<Link
-			href={localizedPath('/reservations', locale)}
-			className="btn btn-sm bg-white text-[#001d61] border-0 font-semibold hover:bg-white/90"
-		>
-			{dict['nav.book']}
-		</Link>
+	// Same primary action on desktop and mobile — on mobile it sits beside the
+	// hamburger so it never costs a tap to find.
+	const primaryAction = (
+		<HeaderBookButton
+			partyPath={localizedPath('/party', locale)}
+			reservationsPath={localizedPath('/reservations', locale)}
+			defaultLabel={dict['nav.book']}
+			partyInquiryLabel={dict['party.hero.cta']}
+		/>
 	)
 
 	return (
@@ -88,12 +90,12 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: string }) {
 						<SocialIcon platform="yelp" href={LINKS.yelp} className="text-white/70 hover:text-white" />
 					</span>
 					<LanguageSwitcher locale={locale} locales={supportedLocales} variant="onDark" />
-					{bookButton}
+					{primaryAction}
 				</nav>
 
 				{/* Mobile nav — client component handles toggle state */}
 				<div className="flex items-center gap-2 lg:hidden">
-					{bookButton}
+					{primaryAction}
 					<MobileMenu
 						links={NAV_LINKS}
 						locale={locale}

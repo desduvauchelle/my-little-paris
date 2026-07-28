@@ -8,7 +8,6 @@ export interface PartyPackage {
 	weekend: string
 	capacity: string
 	includes: string[]
-	deposit: string[]
 	badge?: 'popular' | 'all-inclusive'
 }
 
@@ -30,6 +29,8 @@ export interface PackageGroup {
 }
 
 export const TIME_SLOTS = ['10:00 am – 12:00 pm', '1:00 pm – 3:00 pm', '4:00 pm – 6:00 pm'] as const
+
+export const PARTY_DEPOSIT = '$200 deposit required to reserve any package.'
 
 export const PACKAGE_GROUPS: PackageGroup[] = [
 	{
@@ -56,7 +57,6 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 					'Juice pouches for kids',
 					'Babies under 1 are free',
 				],
-				deposit: ['$200 deposit to book', '$350 deposit if booking less than 2 weeks before'],
 			},
 			{
 				id: 'concorde',
@@ -66,13 +66,10 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 				weekend: '$690',
 				capacity: 'Up to 20 guests (adults + kids) · +$25/extra guest · Max 30',
 				includes: [
-					'2-hour private party',
-					'1 Appetizer + 1 Entrée + 1 Side',
-					'1 Dessert + 1 Drink + 1 Water Jar',
-					'Juice pouches for kids',
-					'Babies under 1 are free',
+					'Everything in Opéra, plus:',
+					'1 Appetizer',
+					'1 Dessert',
 				],
-				deposit: ['$200 deposit to book', 'Second deposit: 50% due 10 days before'],
 				badge: 'popular',
 			},
 			{
@@ -83,13 +80,12 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 				weekend: '$990',
 				capacity: 'Up to 20 guests (adults + kids) · +$30/extra guest · Max 30',
 				includes: [
-					'2-hour private party',
-					'2 Appetizers + 2 Entrées + 2 Sides',
-					'1 Dessert + 2 Drinks + 1 Water Jar',
-					'Juice pouches for kids',
-					'Babies under 1 are free',
+					'Everything in Concorde, plus:',
+					'1 additional appetizer (2 total)',
+					'1 additional entrée (2 total)',
+					'1 additional side (2 total)',
+					'1 additional drink (2 total)',
 				],
-				deposit: ['$250 deposit to book', 'Second deposit: 50% due 10 days before'],
 			},
 			],
 		},
@@ -112,7 +108,6 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 						'Access to indoor play space',
 						'🍽️ Food and drinks not included: bring your own food, drinks, dinnerware, napkins, cake, and decorations',
 					],
-					deposit: ['$150 deposit to book'],
 				},
 			],
 		},
@@ -141,7 +136,6 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 					'Juice pouches for kids',
 					'Babies under 1 are free',
 				],
-				deposit: ['$350 deposit to book', 'Second deposit: 50% due 10 days before'],
 			},
 			{
 				id: 'champs-elysee',
@@ -151,13 +145,13 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 				weekend: '$2,200',
 				capacity: 'Up to 40 people (25 adults + 15 kids) · +$35/adult, $25/child · Max 88',
 				includes: [
-					'2-hour party · Entire venue private',
-					"2 Appetizers + 2 Entrées + 1 Kids' Entrée",
-					'2 Sides + 2 Desserts + 2 Drinks',
-					'1 Water Fountain + juice pouches for kids',
-					'Babies under 1 are free',
+					'Everything in Vendôme Privé, plus:',
+					'1 additional appetizer (2 total)',
+					"1 kids' entrée",
+					'1 additional side (2 total)',
+					'1 additional dessert (2 total)',
+					'1 additional drink (2 total)',
 				],
-				deposit: ['$550 deposit to book', 'Second deposit: 50% due 10 days before'],
 				badge: 'popular',
 			},
 			{
@@ -168,14 +162,13 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 				weekend: '$5,000',
 				capacity: 'Up to 50 people (30 adults + 20 kids) · +$45/adult, $30/child · Max 88',
 				includes: [
-					'3-hour party · Entire venue private',
-					"3 Appetizers + 2 Entrées + 2 Kids' Entrées",
-					'2 Sides + 2 Desserts + 2 Drinks + 1 Alcohol Drink',
-					'1 Water Fountain + juice pouches for kids',
+					'Everything in Champs-Élysée, plus:',
+					'1 additional hour (3 hours total)',
+					'1 additional appetizer (3 total)',
+					"1 additional kids' entrée (2 total)",
+					'1 alcohol drink',
 					'🎂 Decoration, cake & party favors included',
-					'Babies under 1 are free',
 				],
-				deposit: ['$1,250 deposit to book', 'Second deposit: 50% due 10 days before'],
 				badge: 'all-inclusive',
 			},
 			],
@@ -200,7 +193,6 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 						'Access to indoor play space',
 						'🍽️ Food and drinks not included: bring your own food, drinks, dinnerware, napkins, cake, and decorations',
 					],
-					deposit: ['$300 deposit to book'],
 				},
 			],
 		},
@@ -209,16 +201,16 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 
 export const PARTY_PROCESS = [
 	{
-		title: 'Submit Your Request',
-		body: 'Fill out our inquiry form with your preferred date, time, and package. Takes 2 minutes.',
+		title: 'Send Your Inquiry',
+		body: 'Share your preferred package, date, time, and guest count. This does not reserve your date.',
 	},
 	{
-		title: 'We Confirm & Customize',
-		body: "We'll follow up by text or email to confirm availability and discuss any special requests.",
+		title: 'We Confirm by Email',
+		body: "We'll email you to confirm availability, answer questions, and explain the next steps.",
 	},
 	{
-		title: 'Pay Deposit to Lock In',
-		body: 'A deposit secures your date and time. The remaining balance is due closer to the event.',
+		title: 'Pay Deposit to Reserve',
+		body: 'Once availability is confirmed, your $200 deposit secures the date and time.',
 	},
 	{
 		title: 'Show Up & Celebrate',
@@ -230,8 +222,8 @@ export const PARTY_POLICIES = [
 	{
 		title: 'Deposits & Cancellation Policy',
 		items: [
-			'A non-refundable deposit is required to secure your date and time.',
-			'A second deposit of 50% of the party total is due 10 days before your event.',
+			'A non-refundable $200 deposit is required to secure your date and time.',
+			'50% of the remaining balance is due 10 days before your event.',
 			'The remaining balance can be paid on the day of the party.',
 			"Deposits are not refundable if you cancel. You may postpone with at least 30 days' notice at no extra charge. Less than 30 days' notice requires a new deposit.",
 		],

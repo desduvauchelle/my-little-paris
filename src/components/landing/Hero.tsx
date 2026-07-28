@@ -65,13 +65,13 @@ export function Hero({ dict, locale }: { dict: Dictionary; locale: string }) {
 						start="top 95%"
 						className="lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-center"
 					>
-						{/* Bottom padding leaves room for the overhanging tartine
+						{/* Bottom padding leaves room for the overhanging food
 						    frame and the chip, which sit outside the main photo. */}
 						<div className="relative mx-auto w-full max-w-[19rem] pb-12 sm:max-w-md lg:max-w-none lg:pb-16">
-							{/* The room, mid-shriek */}
+							{/* The café and playroom together */}
 							<div className="relative ml-auto aspect-[3/4] w-[80%] rotate-2 overflow-hidden rounded-[1.5rem] border-[6px] border-base-100 shadow-2xl shadow-black/40 lg:rounded-[1.75rem]">
 								<Image
-									src="/images/party-photo-1.webp"
+									src="/images/hero-cafe-play.webp"
 									alt={dict['hero.photo.play.alt']}
 									fill
 									priority
@@ -83,7 +83,7 @@ export function Hero({ dict, locale }: { dict: Dictionary; locale: string }) {
 							{/* The café, overlapping — the "two worlds" beat */}
 							<div className="absolute bottom-0 left-0 aspect-[2/3] w-[42%] -rotate-3 overflow-hidden rounded-[1.1rem] border-[6px] border-base-100 shadow-xl shadow-black/40 lg:rounded-[1.25rem]">
 								<Image
-									src="/images/toast.webp"
+									src="/images/hero-salad.webp"
 									alt={dict['hero.photo.food.alt']}
 									fill
 									priority

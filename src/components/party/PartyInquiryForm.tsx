@@ -6,9 +6,9 @@ import type { Dictionary } from '@/i18n'
 import { BUSINESS } from '@/data/site'
 import { PACKAGE_FORM_OPTIONS } from '@/data/party'
 import { trackEvent } from '@/components/analytics/GoogleAnalytics'
+import { MailIcon, MessageIcon, PhoneIcon } from '@/components/layout/ContactIcons'
 
 const FORM_SLUG = 'party-inquiry'
-const TABLE_COVER_COLORS = ['Undecided', 'White', 'Pink', 'Purple', 'Blue'] as const
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
 
@@ -24,7 +24,7 @@ function Field({
 	className?: string
 }) {
 	return (
-		<label className={className}>
+		<label className={`block${className ? ` ${className}` : ''}`}>
 			<span className="label-text font-medium block mb-1">
 				{label}
 				{required && <span className="text-error ml-0.5">*</span>}
@@ -34,7 +34,15 @@ function Field({
 	)
 }
 
-export function PartyInquiryForm({ dict }: { dict: Dictionary }) {
+export function PartyInquiryForm({
+	dict,
+	selectedPackage,
+	onPackageChange,
+}: {
+	dict: Dictionary
+	selectedPackage: string
+	onPackageChange: (value: string) => void
+}) {
 	const [status, setStatus] = useState<Status>('idle')
 
 	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -56,151 +64,65 @@ export function PartyInquiryForm({ dict }: { dict: Dictionary }) {
 
 	if (status === 'success') {
 		return (
-			<div className="alert alert-success">
+			<div className="alert alert-success" role="status">
 				<span>{dict['partyform.success']}</span>
 			</div>
 		)
 	}
 
-	const inputCls = 'input w-full'
+	const inputCls = 'input w-full placeholder:text-base-content/65'
 
 	return (
-		<form onSubmit={handleSubmit} className="space-y-8">
-			{/* Celebrant */}
-			<fieldset className="space-y-3">
-				<legend className="font-display text-xl text-primary mb-2">{dict['partyform.celebrant']}</legend>
-				<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-					<Field label={dict['partyform.first']} required>
-						<input name="celebrantFirstName" required className={inputCls} autoComplete="off" />
-					</Field>
-					<Field label={dict['partyform.last']} required>
-						<input name="celebrantLastName" required className={inputCls} autoComplete="off" />
-					</Field>
-				</div>
-				<Field label={dict['partyform.dob']} required>
-					<input type="date" name="celebrantDob" required className={inputCls} />
-				</Field>
-			</fieldset>
-
-			{/* Second celebrant */}
-			<fieldset className="space-y-3">
-				<legend className="font-display text-xl text-primary mb-2">{dict['partyform.celebrant2']}</legend>
-				<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-					<Field label={dict['partyform.first']}>
-						<input name="celebrant2FirstName" className={inputCls} autoComplete="off" />
-					</Field>
-					<Field label={dict['partyform.last']}>
-						<input name="celebrant2LastName" className={inputCls} autoComplete="off" />
-					</Field>
-				</div>
-				<Field label={dict['partyform.dob']}>
-					<input type="date" name="celebrant2Dob" className={inputCls} />
-				</Field>
-			</fieldset>
-
-			{/* Host */}
-			<fieldset className="space-y-3">
-				<legend className="font-display text-xl text-primary mb-2">{dict['partyform.host']}</legend>
-				<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-					<Field label={dict['partyform.first']} required>
-						<input name="hostFirstName" required className={inputCls} autoComplete="given-name" />
-					</Field>
-					<Field label={dict['partyform.last']} required>
-						<input name="hostLastName" required className={inputCls} autoComplete="family-name" />
-					</Field>
-				</div>
-				<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-					<Field label={dict['partyform.email']} required>
-						<input type="email" name="email" required className={inputCls} autoComplete="email" />
-					</Field>
-					<Field label={dict['partyform.phone']} required>
-						<input type="tel" name="phone" required className={inputCls} autoComplete="tel" />
-					</Field>
-				</div>
-			</fieldset>
-
-			{/* Address */}
-			<fieldset className="space-y-3">
-				<legend className="font-display text-xl text-primary mb-2">{dict['partyform.address']}</legend>
-				<Field label={dict['partyform.address1']} required>
-					<input name="address1" required className={inputCls} autoComplete="address-line1" />
-				</Field>
-				<Field label={dict['partyform.address2']}>
-					<input name="address2" className={inputCls} autoComplete="address-line2" />
-				</Field>
-				<div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-					<Field label={dict['partyform.city']} required>
-						<input name="city" required className={inputCls} autoComplete="address-level2" />
-					</Field>
-					<Field label={dict['partyform.state']} required>
-						<input name="state" required className={inputCls} autoComplete="address-level1" />
-					</Field>
-					<Field label={dict['partyform.zip']} required>
-						<input name="zip" required className={inputCls} autoComplete="postal-code" />
-					</Field>
-				</div>
-			</fieldset>
-
-			{/* Contact preference */}
-			<fieldset>
-				<legend className="font-medium mb-2">{dict['partyform.contactpref']}</legend>
-				<div className="flex flex-col gap-2">
-					{[
-						{ value: 'text', label: dict['partyform.pref.text'] },
-						{ value: 'email', label: dict['partyform.pref.email'] },
-						{ value: 'both', label: dict['partyform.pref.both'] },
-					].map((option) => (
-						<label key={option.value} className="flex items-center gap-2 cursor-pointer">
-							<input type="radio" name="contactPreference" value={option.value} defaultChecked={option.value === 'both'} className="radio radio-primary radio-sm" />
-							<span className="text-sm">{option.label}</span>
-						</label>
+		<form onSubmit={handleSubmit} className="space-y-6">
+			<Field label={dict['partyform.package']} required>
+				<select
+					name="partyPackage"
+					required
+					className="select w-full"
+					value={selectedPackage}
+					onChange={(event) => onPackageChange(event.target.value)}
+				>
+					<option value="" disabled>{dict['partyform.select.placeholder']}</option>
+					{PACKAGE_FORM_OPTIONS.map((option) => (
+						<option key={option} value={option}>{option}</option>
 					))}
-				</div>
-			</fieldset>
+				</select>
+			</Field>
 
-			{/* Party details */}
-			<fieldset className="space-y-3">
-				<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-					<Field label={dict['partyform.date']} required>
-						<input type="date" name="partyDate" required className={inputCls} />
-					</Field>
-					<Field label={dict['partyform.time']} required>
-						<select name="partyTime" required className="select w-full" defaultValue="">
-							<option value="" disabled>{dict['partyform.select.placeholder']}</option>
-							<option>10:00 am – 12:00 pm</option>
-							<option>1:00 pm – 3:00 pm</option>
-							<option>4:00 pm – 6:00 pm</option>
-							<option>Other</option>
-						</select>
-					</Field>
-				</div>
-				<Field label={dict['partyform.package']} required>
-					<select name="partyPackage" required className="select w-full" defaultValue="">
+			<Field label={dict['partyform.host']} required>
+				<input name="name" required className={inputCls} autoComplete="name" placeholder={dict['partyform.placeholder.name']} />
+			</Field>
+
+			<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+				<Field label={dict['partyform.email']} required>
+					<input type="email" name="email" required className={inputCls} autoComplete="email" placeholder={dict['partyform.placeholder.email']} />
+				</Field>
+				<Field label={dict['partyform.phone']} required>
+					<input type="tel" name="phone" required className={inputCls} autoComplete="tel" placeholder={dict['partyform.placeholder.phone']} />
+				</Field>
+			</div>
+
+			<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+				<Field label={dict['partyform.date']} required>
+					<input type="date" name="partyDate" required className={inputCls} />
+				</Field>
+				<Field label={dict['partyform.time']} required>
+					<select name="partyTime" required className="select w-full" defaultValue="">
 						<option value="" disabled>{dict['partyform.select.placeholder']}</option>
-						{PACKAGE_FORM_OPTIONS.map((option) => (
-							<option key={option}>{option}</option>
-						))}
+						<option>10:00 am – 12:00 pm</option>
+						<option>1:00 pm – 3:00 pm</option>
+						<option>4:00 pm – 6:00 pm</option>
+						<option>Other</option>
 					</select>
 				</Field>
-				<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-					<Field label={dict['partyform.guests']}>
-						<input type="number" name="guestCount" min={1} max={88} className={inputCls} />
-					</Field>
-					<Field label={dict['partyform.tablecover']}>
-						<select name="tableCoverColor" className="select w-full" defaultValue="Undecided">
-							{TABLE_COVER_COLORS.map((color) => (
-								<option key={color}>{color}</option>
-							))}
-						</select>
-					</Field>
-				</div>
-				<Field label={dict['partyform.message']}>
-					<textarea name="message" rows={4} className="textarea w-full" />
-				</Field>
-			</fieldset>
+			</div>
+
+			<Field label={dict['partyform.guests']} required>
+				<input type="number" name="guestCount" min={1} max={88} required className={inputCls} placeholder={dict['partyform.placeholder.guests']} />
+			</Field>
 
 			{status === 'error' && (
-				<div className="alert alert-warning text-sm">
+				<div className="alert alert-warning text-sm" role="alert">
 					<span>
 						{dict['partyform.error']
 							.replace('{phone}', BUSINESS.phoneDisplay)
@@ -210,8 +132,34 @@ export function PartyInquiryForm({ dict }: { dict: Dictionary }) {
 			)}
 
 			<button type="submit" className="btn btn-primary btn-lg btn-block" disabled={status === 'loading'}>
-				{status === 'loading' ? <span className="loading loading-spinner" /> : dict['partyform.submit']}
+				{status === 'loading' && <span className="loading loading-spinner" aria-hidden="true" />}
+				{dict['partyform.submit']}
 			</button>
+			<p className="text-xs leading-relaxed text-center text-base-content/60">
+				{dict['partyform.confirmation.note']}
+			</p>
+
+			<div className="space-y-3 pt-2">
+				<div className="flex items-center gap-3">
+					<span className="h-px flex-1 bg-base-300" aria-hidden="true" />
+					<p className="text-sm text-base-content/75 text-center">{dict['partyform.contact.alternative']}</p>
+					<span className="h-px flex-1 bg-base-300" aria-hidden="true" />
+				</div>
+				<div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+					<a href={BUSINESS.phoneHref} className="btn btn-outline btn-primary gap-2 bg-base-100">
+						<PhoneIcon className="h-4 w-4" />
+						{dict['partyform.contact.call']}
+					</a>
+					<a href={BUSINESS.smsHref} className="btn btn-outline btn-primary gap-2 bg-base-100">
+						<MessageIcon className="h-4 w-4" />
+						{dict['partyform.contact.text']}
+					</a>
+					<a href={`mailto:${BUSINESS.email}`} className="btn btn-outline btn-primary gap-2 bg-base-100">
+						<MailIcon className="h-4 w-4" />
+						{dict['partyform.contact.email']}
+					</a>
+				</div>
+			</div>
 		</form>
 	)
 }

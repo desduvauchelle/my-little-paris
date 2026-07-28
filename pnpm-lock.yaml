@@ -14,6 +14,9 @@ importers:
       '@growth-engine/sdk-server':
         specifier: github:recursive-solutions-ai/growth-engine-sdk-server#v0.1.48
         version: https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-server/tar.gz/e9a83390d528e62931b2240ba4d7d7044ca64174(@types/react@19.2.3)(react@19.2.4)
+      canvas-confetti:
+        specifier: 1.9.4
+        version: 1.9.4
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -45,6 +48,9 @@ importers:
       '@tailwindcss/typography':
         specifier: 0.5.16
         version: 0.5.16(tailwindcss@4.1.4)
+      '@types/canvas-confetti':
+        specifier: ^1.9.0
+        version: 1.9.0
       '@types/node':
         specifier: 22.15.3
         version: 22.15.3
@@ -239,14 +245,14 @@ packages:
     os: [win32]
 
   '@growth-engine/sdk-client@https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-client/tar.gz/bb0c203b820d0dc482f2a263900a00d93cb49560':
-    resolution: {tarball: https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-client/tar.gz/bb0c203b820d0dc482f2a263900a00d93cb49560}
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-client/tar.gz/bb0c203b820d0dc482f2a263900a00d93cb49560}
     version: 0.1.48
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
       zod: ^3.0.0
 
   '@growth-engine/sdk-server@https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-server/tar.gz/e9a83390d528e62931b2240ba4d7d7044ca64174':
-    resolution: {tarball: https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-server/tar.gz/e9a83390d528e62931b2240ba4d7d7044ca64174}
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-server/tar.gz/e9a83390d528e62931b2240ba4d7d7044ca64174}
     version: 0.1.48
     hasBin: true
 
@@ -763,6 +769,9 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20 || >=4.0.0-beta.1'
 
+  '@types/canvas-confetti@1.9.0':
+    resolution: {integrity: sha512-aBGj/dULrimR1XDZLtG9JwxX1b4HPRF6CX9Yfwh3NvstZEm1ZL7RBnel4keCPSqs1ANRu1u2Aoz9R+VmtjYuTg==}
+
   '@types/chai@5.2.3':
     resolution: {integrity: sha512-Mw558oeA9fFbv65/y4mHtXDs9bPnFMZAL/jxdPFUpOHHIXX91mcgEHbS5Lahr+pwZFR8A7GQleRWeI6cGFC2UA==}
 
@@ -845,6 +854,9 @@ packages:
 
   caniuse-lite@1.0.30001806:
     resolution: {integrity: sha512-72Cuvd95zbSYPKq6Fhg8eDJRlzgWDf7/mtoZv6Qe/DYNCEBdNxoA3+rZAU2ZhGCpZlns3EssFavaZomckT5Uuw==}
+
+  canvas-confetti@1.9.4:
+    resolution: {integrity: sha512-yxQbJkAVrFXWNbTUjPqjF7G+g6pDotOUHGbkZq2NELZUMDpiJ85rIEazVb8GTaAptNW2miJAXbs1BtioA251Pw==}
 
   chai@5.3.3:
     resolution: {integrity: sha512-4zNhdJD/iOjSH0A05ea+Ke6MU5mmpQcbQsSOkgdaUMJ9zTlDTD/GYlwohmIE2u0gaxHYiVHEn1Fw9mZ/ktJWgw==}
@@ -1992,6 +2004,8 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 4.1.4
 
+  '@types/canvas-confetti@1.9.0': {}
+
   '@types/chai@5.2.3':
     dependencies:
       '@types/deep-eql': 4.0.2
@@ -2078,6 +2092,8 @@ snapshots:
   cac@6.7.14: {}
 
   caniuse-lite@1.0.30001806: {}
+
+  canvas-confetti@1.9.4: {}
 
   chai@5.3.3:
     dependencies:

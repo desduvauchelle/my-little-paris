@@ -5,6 +5,9 @@ import { localizedPath } from '@/lib/i18n-utils'
 import { buildPageMetadata } from '@/lib/seo'
 import { BUSINESS, LINKS } from '@/data/site'
 import { GroupSizeSelector } from '@/components/reservations/GroupSizeSelector'
+import { MailIcon, MessageIcon, PhoneIcon } from '@/components/layout/ContactIcons'
+import { BalloonCelebration } from '@/components/ui/BalloonCelebration'
+import { SpaceGallery } from '@/components/gallery/SpaceGallery'
 
 export async function generateMetadata({
 	params,
@@ -43,24 +46,31 @@ export default async function ReservationsPage({
 				<h2 className="font-display text-3xl text-primary">{dict['reservations.book.heading']}</h2>
 				<p className="text-sm text-base-content/60 max-w-sm">{dict['reservations.small.note']}</p>
 				<div className="card-actions mt-3">
-					<a href={LINKS.reservations} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
-						{dict['reservations.book.cta']}
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							strokeWidth={2}
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							className="w-4 h-4"
-							aria-hidden="true"
-						>
-							<path d="M7 17 17 7M9 7h8v8" />
-						</svg>
-					</a>
+					<BalloonCelebration>
+						<a href={LINKS.reservations} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
+							{dict['reservations.book.cta']}
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth={2}
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								className="w-4 h-4"
+								aria-hidden="true"
+							>
+								<path d="M7 17 17 7M9 7h8v8" />
+							</svg>
+						</a>
+					</BalloonCelebration>
 				</div>
 				<p className="text-xs text-base-content/50">{dict['reservations.book.newtab']}</p>
+				<div className="mt-6 w-full max-w-2xl border-t border-base-300 pt-6 text-left">
+					<h3 className="font-display text-2xl text-primary">{dict['reservations.space.heading']}</h3>
+					<p className="mb-4 mt-2 text-sm text-base-content/65">{dict['reservations.space.sub']}</p>
+					<SpaceGallery variant="compact" ariaLabel={dict['home.gallery.aria']} />
+				</div>
 				<p className="text-sm text-base-content/70 mt-4">
 					{dict['reservations.book.callnote'].split('{phone}')[0]}
 					<a href={BUSINESS.phoneHref} className="link link-primary">{BUSINESS.phoneDisplay}</a>
@@ -70,16 +80,12 @@ export default async function ReservationsPage({
 		</div>
 	)
 
-	// Panel: 7–12 → group booking by email, credit card required
+	// Panel: 7–12 → group booking by email, text, or phone; credit card required
 	const mediumPanel = (
 		<div className="card bg-base-200 shadow-sm">
 			<div className="card-body">
 				<h2 className="card-title text-primary">{dict['reservations.groups.heading']}</h2>
-				<p>
-					{dict['reservations.groups.intro'].split('{email}')[0]}
-					<a href={`mailto:${BUSINESS.email}`} className="link link-primary">{BUSINESS.email}</a>
-					{dict['reservations.groups.intro'].split('{email}')[1]}
-				</p>
+				<p>{dict['reservations.groups.intro']}</p>
 				<ul className="list-disc pl-5 space-y-1">
 					<li>{dict['reservations.groups.item1']}</li>
 					<li>{dict['reservations.groups.item2']}</li>
@@ -87,9 +93,28 @@ export default async function ReservationsPage({
 				</ul>
 				<p className="text-sm text-base-content/70">{dict['reservations.groups.note']}</p>
 				<p className="text-sm text-base-content/70">{dict['reservations.groups.limit']}</p>
-				<div className="card-actions mt-2">
-					<a href={`mailto:${BUSINESS.email}`} className="btn btn-primary">
-						{BUSINESS.email}
+				<p className="font-medium text-primary">{dict['reservations.groups.languages']}</p>
+				<div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
+					<a href={BUSINESS.phoneHref} className="btn btn-outline btn-primary h-auto min-h-14 justify-start gap-3 bg-base-100 px-4 py-3">
+						<PhoneIcon className="h-5 w-5 shrink-0" />
+						<span className="flex min-w-0 flex-col items-start leading-tight">
+							<span>{dict['partyform.contact.call']}</span>
+							<span className="text-xs font-normal opacity-75">{BUSINESS.phoneDisplay}</span>
+						</span>
+					</a>
+					<a href={BUSINESS.smsHref} className="btn btn-outline btn-primary h-auto min-h-14 justify-start gap-3 bg-base-100 px-4 py-3">
+						<MessageIcon className="h-5 w-5 shrink-0" />
+						<span className="flex min-w-0 flex-col items-start leading-tight">
+							<span>{dict['partyform.contact.text']}</span>
+							<span className="text-xs font-normal opacity-75">{BUSINESS.phoneDisplay}</span>
+						</span>
+					</a>
+					<a href={`mailto:${BUSINESS.email}`} className="btn btn-outline btn-primary h-auto min-h-14 justify-start gap-3 bg-base-100 px-4 py-3">
+						<MailIcon className="h-5 w-5 shrink-0" />
+						<span className="flex min-w-0 flex-col items-start leading-tight">
+							<span>{dict['partyform.contact.email']}</span>
+							<span className="max-w-full truncate text-xs font-normal opacity-75">{BUSINESS.email}</span>
+						</span>
 					</a>
 				</div>
 			</div>

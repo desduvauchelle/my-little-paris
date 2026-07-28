@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { getDictionary } from '@/i18n'
-import { localizedPath } from '@/lib/i18n-utils'
 import { buildPageMetadata } from '@/lib/seo'
 import { BUSINESS, LINKS, SERVICE_AREA } from '@/data/site'
 import { PARTY_PROCESS, PARTY_POLICIES } from '@/data/party'
 import { PackageTabs } from '@/components/party/PackageTabs'
 import { ScrollReveal } from '@/components/landing/ScrollReveal'
-import { TrackedLink } from '@/components/landing/TrackedLink'
+import { BalloonCelebrationOnLoad } from '@/components/ui/BalloonCelebration'
+import { PhotoGallery } from '@/components/gallery/PhotoGallery'
+import { localizedPath } from '@/lib/i18n-utils'
 
 export async function generateMetadata({
 	params,
@@ -32,6 +32,7 @@ export default async function PartyPage({
 }) {
 	const { locale } = await params
 	const dict = await getDictionary(locale)
+	const gallerySeed = new Date().getUTCDate() + locale.length * 47
 
 	const badges = [
 		dict['party.hero.badge1'],
@@ -42,11 +43,7 @@ export default async function PartyPage({
 
 	return (
 		<>
-			{/* Announcement bar */}
-			<div className="bg-secondary text-secondary-content text-center text-sm py-2 px-4">
-				{dict['party.announcement']}
-			</div>
-
+			<BalloonCelebrationOnLoad />
 			{/* Hero */}
 			<section className="navy-section py-20 relative overflow-hidden">
 				<div className="container mx-auto px-4 max-w-4xl text-center relative">
@@ -60,9 +57,6 @@ export default async function PartyPage({
 							</span>
 						))}
 					</div>
-					<a href="#book" className="btn btn-lg bg-white text-[#001d61] border-0 hover:bg-white/90">
-						{dict['party.hero.cta']} →
-					</a>
 				</div>
 			</section>
 
@@ -79,13 +73,29 @@ export default async function PartyPage({
 			</section>
 
 			{/* Party moments */}
-			<section className="py-16 bg-base-100">
+			<section className="overflow-hidden bg-base-100 py-20">
 				<div className="container mx-auto px-4">
-					<ScrollReveal y={30} stagger={0.1} className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl mx-auto">
-						<Image src="/images/party-photo-2.webp" alt="Party room set up with long tables and balloon arch" width={400} height={400} className="rounded-box object-cover aspect-square" />
-						<Image src="/images/party-photo-1.webp" alt="Kids playing in the indoor playground" width={400} height={400} className="rounded-box object-cover aspect-square" />
-						<Image src="/images/superhero-kid.webp" alt="Little superhero at a themed party" width={400} height={400} className="rounded-box object-cover aspect-square" />
-						<Image src="/images/party-balloon.webp" alt="Party balloons" width={400} height={400} className="rounded-box object-cover aspect-square" />
+					<div className="mx-auto mb-9 flex max-w-6xl flex-col gap-5 md:flex-row md:items-end md:justify-between">
+						<div className="max-w-2xl">
+							<p className="mb-3 text-sm font-semibold text-accent">{dict['party.gallery.kicker']}</p>
+							<h2 className="font-display text-4xl text-primary md:text-5xl">{dict['party.gallery.heading']}</h2>
+							<p className="mt-4 text-base-content/70">{dict['party.gallery.sub']}</p>
+						</div>
+						<Link href={`${localizedPath('/gallery', locale)}?category=events`} className="btn btn-outline btn-primary shrink-0 self-start md:self-auto">
+							{dict['party.gallery.view']}
+						</Link>
+					</div>
+					<ScrollReveal y={30} className="mx-auto max-w-6xl">
+						<PhotoGallery
+							dict={dict}
+							initialCategory="events"
+							seed={gallerySeed}
+							filteredLimit={8}
+							shuffleFiltered
+							showFilters={false}
+							showSummary={false}
+							variant="compact"
+						/>
 					</ScrollReveal>
 				</div>
 			</section>
@@ -147,29 +157,6 @@ export default async function PartyPage({
 				</div>
 			</section>
 
-			{/* Book CTA */}
-			<section id="book" className="navy-section py-20 scroll-mt-20">
-				<div className="container mx-auto px-4 text-center max-w-2xl">
-					<h2 className="font-display text-4xl text-white mb-3">{dict['party.cta.heading']}</h2>
-					<p className="text-white/80 mb-8">{dict['party.cta.body']}</p>
-					<div className="flex flex-wrap justify-center gap-4 mb-4">
-						<TrackedLink
-							href={localizedPath('/party-reservation', locale)}
-							className="btn btn-lg bg-white text-[#001d61] border-0 hover:bg-white/90"
-							eventName="cta_click"
-						>
-							{dict['party.cta.inquiry']}
-						</TrackedLink>
-						<a href={BUSINESS.smsHref} className="btn btn-lg btn-outline text-white border-white/50 hover:bg-white hover:text-[#001d61] hover:border-white">
-							{dict['party.cta.text']}
-						</a>
-					</div>
-					<a href={BUSINESS.phoneHref} className="text-white/80 hover:text-white underline">
-						{dict['party.cta.call'].replace('{phone}', `(626) 657-8811`)}
-					</a>
-				</div>
-			</section>
-
 			{/* SEO blurb */}
 			<section className="py-12 bg-base-200">
 				<div className="container mx-auto px-4 max-w-3xl text-center text-sm text-base-content/60 space-y-3">
@@ -178,11 +165,6 @@ export default async function PartyPage({
 					<p className="font-medium text-base-content/80">
 						📍 {BUSINESS.address.street}, {BUSINESS.address.city}, {BUSINESS.address.state} {BUSINESS.address.zip} · 📞{' '}
 						<a href={BUSINESS.phoneHref} className="link">(626) 657-8811</a>
-					</p>
-					<p>
-						<Link href={localizedPath('/party-reservation', locale)} className="link link-primary">
-							{dict['party.cta.inquiry']}
-						</Link>
 					</p>
 				</div>
 			</section>

@@ -100,6 +100,16 @@ describe('sitemap-shared', () => {
 			}
 		})
 
+		it('includes every gallery photo in the gallery image sitemap entry', async () => {
+			const { buildStaticEntries } = await load()
+			const gallery = buildStaticEntries().find((entry) => entry.url === 'https://example.com/gallery')
+			expect(gallery?.images).toHaveLength(59)
+			expect(gallery?.images?.[0]).toEqual({
+				loc: 'https://example.com/gallery/processed/events/pink-floral-first-birthday-table-san-gabriel.jpg',
+				caption: 'Pink and peach floral first birthday table with a balloon arch at My Little Paris in San Gabriel',
+			})
+		})
+
 		it('omits alternates in single-lang mode', async () => {
 			const { buildStaticEntries } = await load({ isMultiLang: false })
 			const result = buildStaticEntries()
@@ -335,6 +345,22 @@ describe('sitemap-shared', () => {
 			expect(xml).toContain(
 				'<xhtml:link rel="alternate" hreflang="fr" href="https://example.com/fr/blog/x" />',
 			)
+		})
+
+		it('emits image locations and captions with the Google image namespace', async () => {
+			const { renderSitemapXml } = await load()
+			const xml = renderSitemapXml([
+				{
+					url: 'https://example.com/gallery',
+					images: [{
+						loc: 'https://example.com/gallery/photo.jpg',
+						caption: 'Cake & balloons',
+					}],
+				},
+			])
+			expect(xml).toContain('xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"')
+			expect(xml).toContain('<image:loc>https://example.com/gallery/photo.jpg</image:loc>')
+			expect(xml).toContain('<image:caption>Cake &amp; balloons</image:caption>')
 		})
 
 		it('escapes ampersands in URLs', async () => {

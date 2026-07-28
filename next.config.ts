@@ -7,6 +7,20 @@ const nextConfig: NextConfig = {
 		'libsql',
 		'drizzle-orm',
 	],
+	async redirects() {
+		return [
+			{
+				source: '/party-reservation',
+				destination: '/party#party-inquiry',
+				permanent: true,
+			},
+			{
+				source: '/:locale/party-reservation',
+				destination: '/:locale/party#party-inquiry',
+				permanent: true,
+			},
+		]
+	},
 }
 
 export default nextConfig
