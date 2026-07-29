@@ -9,7 +9,8 @@
  */
 
 import Image from 'next/image'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useId, useMemo, useRef, useState } from 'react'
+import type { CSSProperties, MouseEvent as ReactMouseEvent } from 'react'
 import type { Dictionary } from '@/i18n'
 import {
 	GALLERY_CATEGORIES,
@@ -82,6 +83,11 @@ export function PhotoGallery({
 	variant?: 'default' | 'compact'
 }) {
 	const [activeCategory, setActiveCategory] = useState<GallerySelection>(initialCategory)
+	const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+	const [lightboxOrigin, setLightboxOrigin] = useState({ x: '50vw', y: '50vh' })
+	const dialogRef = useRef<HTMLDialogElement>(null)
+	const lightboxTitleId = useId()
+	const lightboxDescriptionId = useId()
 
 	useEffect(() => {
 		setActiveCategory(initialCategory)
@@ -120,6 +126,10 @@ export function PhotoGallery({
 	const summary = dict['gallery.summary']
 		.replace('{count}', String(visiblePhotos.length))
 		.replace('{category}', activeLabel)
+	const lightboxPhoto = lightboxIndex === null ? null : visiblePhotos[lightboxIndex]
+	const lightboxAlt = lightboxPhoto
+		? dict[lightboxPhoto.altKey as keyof Dictionary]
+		: ''
 
 	const selectCategory = (category: GallerySelection) => {
 		setActiveCategory(category)
@@ -129,6 +139,30 @@ export function PhotoGallery({
 		else url.searchParams.set('category', category)
 		window.history.pushState({}, '', url)
 	}
+
+	const openLightbox = (index: number, event: ReactMouseEvent<HTMLButtonElement>) => {
+		const bounds = event.currentTarget.getBoundingClientRect()
+		setLightboxOrigin({
+			x: `${bounds.left + bounds.width / 2}px`,
+			y: `${bounds.top + bounds.height / 2}px`,
+		})
+		setLightboxIndex(index)
+	}
+
+	const closeLightbox = () => dialogRef.current?.close()
+
+	const moveLightbox = (direction: -1 | 1) => {
+		setLightboxIndex((currentIndex) => {
+			if (currentIndex === null) return null
+			return (currentIndex + direction + visiblePhotos.length) % visiblePhotos.length
+		})
+	}
+
+	useEffect(() => {
+		if (lightboxIndex !== null && !dialogRef.current?.open) {
+			dialogRef.current?.showModal()
+		}
+	}, [lightboxIndex])
 
 	return (
 		<div className="w-full">
@@ -181,6 +215,7 @@ export function PhotoGallery({
 			>
 				{visiblePhotos.map((photo, index) => {
 					const landscape = index % 5 === 0 || index % 7 === 0
+					const alt = dict[photo.altKey as keyof Dictionary]
 					return (
 						<figure
 							key={photo.src}
@@ -189,20 +224,28 @@ export function PhotoGallery({
 								landscape ? 'aspect-[4/3]' : 'aspect-[4/5]',
 							)}
 						>
-							<Image
-								src={photo.src}
-								alt={dict[photo.altKey as keyof Dictionary]}
-								fill
-								sizes={
-									variant === 'compact'
-										? '(max-width: 768px) 50vw, 25vw'
-										: '(max-width: 768px) 50vw, 33vw'
-								}
-								className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
-							/>
+							<button
+								type="button"
+								onClick={(event) => openLightbox(index, event)}
+								aria-label={dict['gallery.lightbox.open'].replace('{description}', alt)}
+								className="absolute inset-0 cursor-zoom-in overflow-hidden rounded-box focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-white"
+							>
+								<Image
+									src={photo.src}
+									alt={alt}
+									fill
+									loading={index === 0 ? 'eager' : 'lazy'}
+									sizes={
+										variant === 'compact'
+											? '(max-width: 768px) 50vw, 25vw'
+											: '(max-width: 768px) 50vw, 33vw'
+									}
+									className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+								/>
+							</button>
 							<figcaption
 								aria-hidden="true"
-								className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/80 to-transparent px-3 pb-3 pt-10 text-xs font-semibold text-white opacity-100 transition-opacity duration-300 sm:opacity-0 sm:group-hover:opacity-100"
+								className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/80 to-transparent px-3 pb-3 pt-10 text-xs font-semibold text-white opacity-100 transition-opacity duration-300 sm:opacity-0 sm:group-hover:opacity-100"
 							>
 								{dict[CATEGORY_KEYS[photo.category]]}
 							</figcaption>
@@ -210,6 +253,95 @@ export function PhotoGallery({
 					)
 				})}
 			</div>
+
+			<dialog
+				ref={dialogRef}
+				onClose={() => setLightboxIndex(null)}
+				onCancel={(event) => {
+					event.preventDefault()
+					closeLightbox()
+				}}
+				onKeyDown={(event) => {
+					if (event.key === 'Escape') {
+						event.preventDefault()
+						closeLightbox()
+					}
+					if (event.key === 'ArrowLeft') moveLightbox(-1)
+					if (event.key === 'ArrowRight') moveLightbox(1)
+				}}
+				aria-modal="true"
+				aria-labelledby={lightboxTitleId}
+				aria-describedby={lightboxDescriptionId}
+				className="gallery-lightbox"
+			>
+				{lightboxPhoto && lightboxIndex !== null && (
+					<div
+						className="gallery-lightbox-balloon"
+						style={{
+							'--lightbox-origin-x': lightboxOrigin.x,
+							'--lightbox-origin-y': lightboxOrigin.y,
+						} as CSSProperties}
+						onClick={(event) => {
+							if (event.target === event.currentTarget) closeLightbox()
+						}}
+					>
+						<h2 id={lightboxTitleId} className="sr-only">
+							{dict['gallery.lightbox.label']}
+						</h2>
+
+						<button
+							type="button"
+							onClick={closeLightbox}
+							autoFocus
+							aria-label={dict['gallery.lightbox.close']}
+							className="gallery-lightbox-control absolute end-4 top-4 z-20 sm:end-6 sm:top-6"
+						>
+							<span aria-hidden="true">×</span>
+						</button>
+
+						<button
+							type="button"
+							onClick={() => moveLightbox(-1)}
+							aria-label={dict['gallery.lightbox.previous']}
+							className="gallery-lightbox-control absolute start-3 top-1/2 z-20 -translate-y-1/2 sm:start-6"
+						>
+							<span aria-hidden="true">‹</span>
+						</button>
+
+						<figure className="relative h-full w-full overflow-hidden">
+							<Image
+								key={lightboxPhoto.src}
+								src={lightboxPhoto.src}
+								alt={lightboxAlt}
+								fill
+								sizes="100vw"
+								className="gallery-lightbox-image object-contain p-3 pb-24 sm:p-6 sm:pb-28"
+							/>
+							<figcaption
+								id={lightboxDescriptionId}
+								aria-live="polite"
+								className="absolute inset-x-0 bottom-0 bg-primary/80 px-4 py-3 text-center text-sm text-white backdrop-blur-sm sm:px-6"
+							>
+								<span className="block font-medium">{lightboxAlt}</span>
+								<span className="mt-1 block text-xs text-white/70">
+									{dict['gallery.lightbox.count']
+										.replace('{current}', String(lightboxIndex + 1))
+										.replace('{total}', String(visiblePhotos.length))}
+								</span>
+							</figcaption>
+						</figure>
+
+						<button
+							type="button"
+							onClick={() => moveLightbox(1)}
+							aria-label={dict['gallery.lightbox.next']}
+							className="gallery-lightbox-control absolute end-3 top-1/2 z-20 -translate-y-1/2 sm:end-6"
+						>
+							<span aria-hidden="true">›</span>
+						</button>
+					</div>
+				)}
+			</dialog>
 		</div>
 	)
 }

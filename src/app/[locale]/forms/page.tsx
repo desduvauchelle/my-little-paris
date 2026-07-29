@@ -33,14 +33,14 @@ export default async function FormsPage({
 	const activeForms = await safeQuery([], () => getActiveForms(getDb()))
 
 	return (
-		<main className="container mx-auto px-4 py-12">
+		<div className="container mx-auto px-4 py-12">
 			<h1 className="text-4xl font-bold text-center mb-2">{dict['forms.heading']}</h1>
-			<p className="text-center text-base-content/60 mb-10">
+			<p className="text-center text-base-content/70 mb-10">
 				{dict['forms.subtitle']}
 			</p>
 
 			{activeForms.length === 0 && (
-				<p className="text-center text-base-content/60 py-16">
+				<p className="text-center text-base-content/70 py-16">
 					{dict['forms.empty']}
 				</p>
 			)}
@@ -59,6 +59,6 @@ export default async function FormsPage({
 					))}
 				</div>
 			)}
-		</main>
+		</div>
 	)
 }

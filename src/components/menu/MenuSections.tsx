@@ -35,7 +35,7 @@ export function MenuSections({ sections, dict }: { sections: MenuSection[]; dict
 					<section id={section.id} className="scroll-mt-28">
 						<h2 className="font-display text-3xl text-primary text-center mb-1">{section.title}</h2>
 						{section.intro && (
-							<p className="text-center text-sm text-base-content/60 italic mb-6">{section.intro}</p>
+							<p className="text-center text-sm text-base-content/70 italic mb-6">{section.intro}</p>
 						)}
 						<div className="divider mt-0 mb-4" />
 						<ul className="space-y-5">
@@ -47,7 +47,7 @@ export function MenuSections({ sections, dict }: { sections: MenuSection[]; dict
 											{item.isNew && <span className="badge badge-secondary badge-sm ml-2 align-middle">{dict['eat.new']}</span>}
 										</h3>
 										{item.description && <p className="text-sm text-base-content/70">{item.description}</p>}
-										{item.note && <p className="text-xs text-base-content/50 italic">* {item.note}</p>}
+										{item.note && <p className="text-xs text-base-content/65 italic">* {item.note}</p>}
 									</div>
 									<span className="font-medium text-primary whitespace-nowrap">{item.price}</span>
 								</li>

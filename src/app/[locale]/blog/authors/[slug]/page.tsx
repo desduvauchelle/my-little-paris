@@ -41,7 +41,7 @@ export default async function AuthorDetailPage({
 	const posts = await safeQuery([], () => getAuthorPosts(getDb(), slug, { locale, limit: 0 }))
 
 	return (
-		<main className="container mx-auto px-4 py-12">
+		<div className="container mx-auto px-4 py-12">
 			<nav className="mb-8">
 				<Link
 					href={localizedPath('/blog/authors', locale)}
@@ -87,7 +87,7 @@ export default async function AuthorDetailPage({
 				</h2>
 
 				{posts.length === 0 ? (
-					<div className="text-center py-16 text-base-content/50">
+					<div className="text-center py-16 text-base-content/65">
 						<p className="text-lg">{dict['authors.posts.empty']}</p>
 					</div>
 				) : (
@@ -103,6 +103,6 @@ export default async function AuthorDetailPage({
 					/>
 				)}
 			</section>
-		</main>
+		</div>
 	)
 }

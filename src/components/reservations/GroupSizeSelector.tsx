@@ -44,7 +44,8 @@ export function GroupSizeSelector({
 	useEffect(() => {
 		if (selected === null || hasScrolled.current) return
 		hasScrolled.current = true
-		panelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+		const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+		panelRef.current?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' })
 	}, [selected])
 
 	return (
@@ -80,7 +81,7 @@ export function GroupSizeSelector({
 								<span className="text-3xl" aria-hidden="true">{option.icon}</span>
 								<span>
 									<span className="block font-semibold">{option.title}</span>
-									<span className={cn('block text-sm', active ? 'text-primary-content/80' : 'text-base-content/60')}>
+									<span className={cn('block text-sm', active ? 'text-primary-content/80' : 'text-base-content/70')}>
 										{option.body}
 									</span>
 								</span>
@@ -90,7 +91,7 @@ export function GroupSizeSelector({
 				})}
 			</div>
 
-			<div ref={panelRef} className={cn(selected && 'mt-10 scroll-mt-24')}>
+			<div ref={panelRef} className={cn(selected && 'mt-12 scroll-mt-24 sm:mt-14')}>
 				{options.map((option) => (
 					<div key={option.key} id={`panel-${option.key}`} hidden={option.key !== selected}>
 						{panels[option.key]}

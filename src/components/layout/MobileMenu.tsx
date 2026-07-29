@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, type ReactNode } from 'react'
+import { useEffect, useId, useRef, useState, type ReactNode } from 'react'
 import Link from 'next/link'
 import { LanguageSwitcher } from './LanguageSwitcher'
 
@@ -13,22 +13,49 @@ export function MobileMenu({
 	links,
 	locale,
 	locales,
+	openLabel,
+	closeLabel,
+	navLabel,
+	languageLabel,
 	extras,
 }: {
 	links: NavLink[]
 	locale: string
 	locales: string[]
+	openLabel: string
+	closeLabel: string
+	navLabel: string
+	languageLabel: string
 	/** Rendered below the nav links — the address/phone shortcuts. */
 	extras?: ReactNode
 }) {
 	const [menuOpen, setMenuOpen] = useState(false)
+	const menuId = useId()
+	const triggerRef = useRef<HTMLButtonElement>(null)
+
+	useEffect(() => {
+		if (!menuOpen) return
+
+		function handleKeyDown(event: KeyboardEvent) {
+			if (event.key !== 'Escape') return
+			setMenuOpen(false)
+			triggerRef.current?.focus()
+		}
+
+		document.addEventListener('keydown', handleKeyDown)
+		return () => document.removeEventListener('keydown', handleKeyDown)
+	}, [menuOpen])
 
 	return (
 		<>
 			<button
-				className="btn btn-ghost btn-square text-white"
+				ref={triggerRef}
+				type="button"
+				className="btn btn-ghost btn-square min-h-11 min-w-11 text-white"
 				onClick={() => setMenuOpen(!menuOpen)}
-				aria-label="Toggle menu"
+				aria-label={menuOpen ? closeLabel : openLabel}
+				aria-expanded={menuOpen}
+				aria-controls={menuId}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -45,13 +72,13 @@ export function MobileMenu({
 			</button>
 
 			{menuOpen && (
-				<div className="border-t border-base-200 bg-base-100 absolute top-full left-0 right-0 shadow-lg">
-					<nav className="container mx-auto px-4 py-4 flex flex-col gap-3">
+				<div id={menuId} className="border-t border-base-200 bg-base-100 absolute top-full left-0 right-0 shadow-lg">
+					<nav aria-label={navLabel} className="container mx-auto px-4 py-4 flex flex-col gap-1">
 						{links.map((link) => (
 							<Link
 								key={link.href}
 								href={link.href}
-								className="text-base-content/70 hover:text-primary transition-colors py-1"
+								className="flex min-h-11 items-center text-base-content/70 hover:text-primary transition-colors"
 								onClick={() => setMenuOpen(false)}
 							>
 								{link.label}
@@ -65,7 +92,7 @@ export function MobileMenu({
 								{extras}
 							</div>
 						)}
-						<LanguageSwitcher locale={locale} locales={locales} />
+						<LanguageSwitcher locale={locale} locales={locales} label={languageLabel} />
 					</nav>
 				</div>
 			)}

@@ -40,11 +40,11 @@ export default async function ContactPage({
 	])
 
 	return (
-		<main className="container mx-auto px-4 py-12">
+		<div className="container mx-auto px-4 py-12">
 			<ContactAnalytics />
 
 			<h1 className="text-4xl font-bold text-center mb-2">{dict['contact.heading']}</h1>
-			<p className="text-center text-base-content/60 mb-10">
+			<p className="text-center text-base-content/70 mb-10">
 				{dict['contact.subtitle']}
 			</p>
 
@@ -72,6 +72,6 @@ export default async function ContactPage({
 					</div>
 				)}
 			</div>
-		</main>
+		</div>
 	)
 }

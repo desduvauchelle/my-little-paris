@@ -24,7 +24,7 @@ export function SocialIcon({
 			target="_blank"
 			rel="noopener noreferrer"
 			aria-label={platform.charAt(0).toUpperCase() + platform.slice(1)}
-			className={cn('transition-colors', className)}
+			className={cn('inline-flex h-11 w-11 items-center justify-center transition-colors', className)}
 		>
 			<svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden="true">
 				<path d={PATHS[platform]} />

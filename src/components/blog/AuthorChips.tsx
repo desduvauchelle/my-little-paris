@@ -13,7 +13,7 @@ export function AuthorChips({ authors, locale, label }: AuthorChipsProps) {
 
 	return (
 		<nav aria-label={label} className="mb-6">
-			<p className="text-xs uppercase tracking-wider text-base-content/50 mb-2">
+			<p className="text-xs uppercase tracking-wider text-base-content/65 mb-2">
 				{label}
 			</p>
 			<div className="flex flex-wrap gap-2">

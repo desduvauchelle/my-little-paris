@@ -38,7 +38,8 @@ export const BUSINESS = {
 } as const
 
 export const LINKS = {
-	reservations: 'https://mylittleparis.as.me/',
+	reservations: 'https://mylittleparis.as.me/schedule/829c0aaf/appointment/22832985/calendar/5514130',
+	memberships: 'https://app.acuityscheduling.com/catalog/829c0aaf',
 	waiver: 'https://waiver.smartwaiver.com/v/mylittleparis/',
 	directions: 'https://maps.app.goo.gl/Hx6W7bYgCP7UjneV9',
 	hoursGoogle: 'https://goo.gl/maps/xs235PD7Z3v4p9M66',

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { submitForm } from '@growth-engine/sdk-client'
 import type { Dictionary } from '@/i18n'
 import { BUSINESS } from '@/data/site'
-import { PACKAGE_FORM_OPTIONS } from '@/data/party'
+import type { PartyPackageSelection } from '@/data/party'
 import { trackEvent } from '@/components/analytics/GoogleAnalytics'
 import { MailIcon, MessageIcon, PhoneIcon } from '@/components/layout/ContactIcons'
 
@@ -37,11 +37,11 @@ function Field({
 export function PartyInquiryForm({
 	dict,
 	selectedPackage,
-	onPackageChange,
+	onChoosePackage,
 }: {
 	dict: Dictionary
-	selectedPackage: string
-	onPackageChange: (value: string) => void
+	selectedPackage: PartyPackageSelection | null
+	onChoosePackage: () => void
 }) {
 	const [status, setStatus] = useState<Status>('idle')
 
@@ -74,20 +74,47 @@ export function PartyInquiryForm({
 
 	return (
 		<form onSubmit={handleSubmit} className="space-y-6">
-			<Field label={dict['partyform.package']} required>
-				<select
-					name="partyPackage"
-					required
-					className="select w-full"
-					value={selectedPackage}
-					onChange={(event) => onPackageChange(event.target.value)}
-				>
-					<option value="" disabled>{dict['partyform.select.placeholder']}</option>
-					{PACKAGE_FORM_OPTIONS.map((option) => (
-						<option key={option} value={option}>{option}</option>
-					))}
-				</select>
-			</Field>
+			<div>
+				<p className="label-text font-medium mb-1">{dict['partyform.package']}<span className="text-error ml-0.5">*</span></p>
+				{selectedPackage ? (
+					<div className="rounded-box border border-base-300 bg-base-200/60 p-4 sm:p-5" aria-live="polite">
+						<input type="hidden" name="partyPackage" value={selectedPackage.formValue} />
+						<div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+							<div>
+								<p className="text-xs font-semibold uppercase tracking-wide text-base-content/70">
+									{dict['partyform.package.selected']}
+								</p>
+								<h3 className="font-display text-2xl leading-tight text-primary mt-1">
+									{selectedPackage.package.name}
+								</h3>
+								<p className="text-sm text-base-content/70 mt-1">{selectedPackage.package.tier}</p>
+							</div>
+							<button type="button" onClick={onChoosePackage} className="btn btn-outline btn-primary btn-sm sm:shrink-0">
+								{dict['partyform.package.change']}
+							</button>
+						</div>
+						<div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-base-300">
+							<div>
+								<p className="text-xs uppercase tracking-wide text-base-content/70">{dict['party.weekday']}</p>
+								<p className="text-lg font-bold text-primary">{selectedPackage.package.weekday}</p>
+							</div>
+							<div>
+								<p className="text-xs uppercase tracking-wide text-base-content/70">{dict['party.weekend']}</p>
+								<p className="text-lg font-bold text-primary">{selectedPackage.package.weekend}</p>
+							</div>
+						</div>
+						<p className="text-sm leading-relaxed text-base-content/70 mt-3">{selectedPackage.package.capacity}</p>
+					</div>
+				) : (
+					<div className="rounded-box border border-dashed border-primary/35 bg-base-200/50 p-5 text-center">
+						<p className="font-medium text-primary">{dict['partyform.package.choose']}</p>
+						<p className="text-sm text-base-content/70 mt-1">{dict['partyform.package.choose.help']}</p>
+						<button type="button" onClick={onChoosePackage} className="btn btn-outline btn-primary mt-4">
+							{dict['partyform.package.choose']} ↑
+						</button>
+					</div>
+				)}
+			</div>
 
 			<Field label={dict['partyform.host']} required>
 				<input name="name" required className={inputCls} autoComplete="name" placeholder={dict['partyform.placeholder.name']} />
@@ -131,11 +158,11 @@ export function PartyInquiryForm({
 				</div>
 			)}
 
-			<button type="submit" className="btn btn-primary btn-lg btn-block" disabled={status === 'loading'}>
+			<button type="submit" className="btn btn-primary btn-lg btn-block" disabled={status === 'loading' || !selectedPackage}>
 				{status === 'loading' && <span className="loading loading-spinner" aria-hidden="true" />}
 				{dict['partyform.submit']}
 			</button>
-			<p className="text-xs leading-relaxed text-center text-base-content/60">
+			<p className="text-xs leading-relaxed text-center text-base-content/70">
 				{dict['partyform.confirmation.note']}
 			</p>
 

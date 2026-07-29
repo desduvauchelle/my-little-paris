@@ -57,7 +57,7 @@ export default async function BlogPostPage({
 	const date = formatDate(post.createdAt, locale)
 
 	return (
-		<main className="container mx-auto px-4 py-12">
+		<div className="container mx-auto px-4 py-12">
 			<nav className="mb-8">
 				<Link href={localizedPath('/blog', locale)} className="text-sm text-primary hover:underline">
 					← {dict['blog.back']}
@@ -75,7 +75,7 @@ export default async function BlogPostPage({
 					</figure>
 				)}
 
-				<time className="text-sm text-base-content/50">{date}</time>
+				<time className="text-sm text-base-content/65">{date}</time>
 				<h1 className="text-4xl font-bold mt-2 mb-4">{post.title}</h1>
 
 				{author && (
@@ -102,6 +102,6 @@ export default async function BlogPostPage({
 					heading={dict['blog.related.posts']}
 				/>
 			</div>
-		</main>
+		</div>
 	)
 }

@@ -41,41 +41,49 @@ export default async function ReservationsPage({
 	// vast empty box on the shorter steps. Sending people to Acuity's own
 	// responsive page is the honest fix.
 	const smallPanel = (
-		<div className="card bg-base-200 shadow-sm">
-			<div className="card-body items-center text-center">
-				<h2 className="font-display text-3xl text-primary">{dict['reservations.book.heading']}</h2>
-				<p className="text-sm text-base-content/60 max-w-sm">{dict['reservations.small.note']}</p>
-				<div className="card-actions mt-3">
-					<BalloonCelebration>
-						<a href={LINKS.reservations} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
-							{dict['reservations.book.cta']}
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								strokeWidth={2}
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								className="w-4 h-4"
-								aria-hidden="true"
+		<div className="space-y-12">
+			<section className="overflow-hidden rounded-box bg-primary text-primary-content shadow-[0_16px_36px_-18px_rgba(0,29,97,0.8)]">
+				<div className="flex flex-col items-center px-6 py-10 text-center sm:px-10 sm:py-12">
+					<h2 className="max-w-xl font-display text-3xl text-white sm:text-4xl">{dict['reservations.book.heading']}</h2>
+					<p className="mt-3 max-w-md text-sm leading-relaxed text-white/80 sm:text-base">{dict['reservations.small.note']}</p>
+					<div className="mt-7 flex w-full justify-center">
+						<BalloonCelebration>
+							<a
+								href={LINKS.reservations}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="btn btn-secondary btn-lg min-h-16 w-full max-w-sm text-lg font-bold shadow-[0_8px_0_#fdfbf8] transition-transform hover:-translate-y-1 hover:shadow-[0_10px_0_#fdfbf8] active:translate-y-1 active:shadow-[0_3px_0_#fdfbf8]"
 							>
-								<path d="M7 17 17 7M9 7h8v8" />
-							</svg>
-						</a>
-					</BalloonCelebration>
+								{dict['reservations.book.cta']}
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									strokeWidth={2}
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									className="w-4 h-4"
+									aria-hidden="true"
+								>
+									<path d="M7 17 17 7M9 7h8v8" />
+								</svg>
+							</a>
+						</BalloonCelebration>
+					</div>
+					<p className="mt-5 text-xs text-white/70">{dict['reservations.book.newtab']}</p>
+					<p className="mt-7 border-t border-white/20 pt-6 text-sm text-white/80">
+						{dict['reservations.book.callnote'].split('{phone}')[0]}
+						<a href={BUSINESS.phoneHref} className="font-semibold text-white underline underline-offset-4">{BUSINESS.phoneDisplay}</a>
+						{dict['reservations.book.callnote'].split('{phone}')[1]}
+					</p>
 				</div>
-				<p className="text-xs text-base-content/50">{dict['reservations.book.newtab']}</p>
-				<div className="mt-6 w-full max-w-2xl border-t border-base-300 pt-6 text-left">
-					<h3 className="font-display text-2xl text-primary">{dict['reservations.space.heading']}</h3>
-					<p className="mb-4 mt-2 text-sm text-base-content/65">{dict['reservations.space.sub']}</p>
-					<SpaceGallery variant="compact" ariaLabel={dict['home.gallery.aria']} />
-				</div>
-				<p className="text-sm text-base-content/70 mt-4">
-					{dict['reservations.book.callnote'].split('{phone}')[0]}
-					<a href={BUSINESS.phoneHref} className="link link-primary">{BUSINESS.phoneDisplay}</a>
-					{dict['reservations.book.callnote'].split('{phone}')[1]}
-				</p>
+			</section>
+
+			<div className="w-full text-left">
+				<h3 className="font-display text-2xl text-primary">{dict['reservations.space.heading']}</h3>
+				<p className="mb-4 mt-2 text-sm text-base-content/65">{dict['reservations.space.sub']}</p>
+				<SpaceGallery variant="compact" ariaLabel={dict['home.gallery.aria']} />
 			</div>
 		</div>
 	)
@@ -186,7 +194,7 @@ export default async function ReservationsPage({
 						</div>
 					</details>
 
-					<p className="text-center text-sm text-base-content/60 mt-8">{dict['reservations.thanks']}</p>
+					<p className="text-center text-sm text-base-content/70 mt-8">{dict['reservations.thanks']}</p>
 				</div>
 			</section>
 		</>

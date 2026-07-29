@@ -25,7 +25,7 @@ export function HeaderBookButton({
 	return (
 		<Link
 			href={isPartyPage ? `${partyPath}#party-inquiry` : reservationsPath}
-			className="btn btn-sm bg-white text-[#001d61] border-0 font-semibold hover:bg-white/90"
+			className="btn btn-sm min-h-11 bg-white text-[#001d61] border-0 font-semibold hover:bg-white/90"
 		>
 			{isPartyPage ? partyInquiryLabel : defaultLabel}
 		</Link>

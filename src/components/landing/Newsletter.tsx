@@ -36,7 +36,7 @@ export function Newsletter({ dict }: { dict: Dictionary }) {
 				<p className="text-white/75 mb-6">{dict['newsletter.body']}</p>
 
 				{status === 'success' ? (
-					<div className="alert alert-success max-w-md mx-auto">
+					<div className="alert alert-success max-w-md mx-auto" role="status">
 						<span>{dict['newsletter.success']}</span>
 					</div>
 				) : (
@@ -50,14 +50,14 @@ export function Newsletter({ dict }: { dict: Dictionary }) {
 							className="input join-item flex-1 text-base-content"
 							aria-label={dict['newsletter.placeholder']}
 						/>
-						<button type="submit" className="btn join-item bg-white text-[#001d61] border-0 hover:bg-white/90" disabled={status === 'loading'}>
-							{status === 'loading' ? <span className="loading loading-spinner loading-sm" /> : dict['newsletter.cta']}
+						<button type="submit" className="btn join-item bg-white text-[#001d61] border-0 hover:bg-white/90" disabled={status === 'loading'} aria-busy={status === 'loading'}>
+							{status === 'loading' ? <><span className="loading loading-spinner loading-sm" aria-hidden="true" /><span className="sr-only">{dict['newsletter.cta']}</span></> : dict['newsletter.cta']}
 						</button>
 					</form>
 				)}
 
 				{status === 'error' && (
-					<p className="text-sm text-white/70 mt-3">{dict['newsletter.error']}</p>
+					<p className="text-sm text-white/70 mt-3" role="alert">{dict['newsletter.error']}</p>
 				)}
 			</div>
 		</section>

@@ -103,7 +103,7 @@ describe('sitemap-shared', () => {
 		it('includes every gallery photo in the gallery image sitemap entry', async () => {
 			const { buildStaticEntries } = await load()
 			const gallery = buildStaticEntries().find((entry) => entry.url === 'https://example.com/gallery')
-			expect(gallery?.images).toHaveLength(59)
+			expect(gallery?.images).toHaveLength(72)
 			expect(gallery?.images?.[0]).toEqual({
 				loc: 'https://example.com/gallery/processed/events/pink-floral-first-birthday-table-san-gabriel.jpg',
 				caption: 'Pink and peach floral first birthday table with a balloon arch at My Little Paris in San Gabriel',

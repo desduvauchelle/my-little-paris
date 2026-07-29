@@ -37,8 +37,11 @@ export default async function LocaleLayout({
 		<>
 			{/* Site-wide Organization / LocalBusiness structured data */}
 			{business && <BusinessJsonLd config={business} />}
+			<a href="#main-content" className="skip-link">
+				{dict['nav.skip']}
+			</a>
 			<Header dict={dict} locale={locale} />
-			<main className="flex-1">{children}</main>
+			<main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">{children}</main>
 			<Footer dict={dict} locale={locale} />
 		</>
 	)

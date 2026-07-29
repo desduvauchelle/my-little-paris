@@ -39,7 +39,7 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: string }) {
 							height={46}
 							className="h-10 w-auto mb-4"
 						/>
-						<p className="text-white/60 text-sm mb-4">{dict['menu.tagline']}</p>
+						<p className="text-white/70 text-sm mb-4">{dict['menu.tagline']}</p>
 						<div className="flex items-center gap-3">
 							<SocialIcon platform="facebook" href={LINKS.facebook} className="text-white/60 hover:text-white" />
 							<SocialIcon platform="instagram" href={LINKS.instagram} className="text-white/60 hover:text-white" />
@@ -49,7 +49,7 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: string }) {
 
 					{/* Contact */}
 					<div>
-						<h4 className="font-semibold mb-3 text-white">{dict['footer.contact.heading']}</h4>
+						<h3 className="font-semibold mb-3 text-white">{dict['footer.contact.heading']}</h3>
 						<div className="flex flex-col gap-2 text-sm text-white/70">
 							<a href={BUSINESS.phoneHref} className="flex items-center gap-2 hover:text-white">
 								<PhoneIcon className="h-4 w-4 shrink-0" />
@@ -75,7 +75,7 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: string }) {
 
 					{/* Hours */}
 					<div>
-						<h4 className="font-semibold mb-3 text-white">{dict['footer.hours.heading']}</h4>
+						<h3 className="font-semibold mb-3 text-white">{dict['footer.hours.heading']}</h3>
 						<div className="flex flex-col gap-2 text-sm text-white/70">
 							<p>{dict['footer.hours.body']}</p>
 							<a href={LINKS.hoursGoogle} target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
@@ -97,7 +97,7 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: string }) {
 
 					{/* Explore */}
 					<div>
-						<h4 className="font-semibold mb-3 text-white">{dict['footer.navigation']}</h4>
+						<h3 className="font-semibold mb-3 text-white">{dict['footer.navigation']}</h3>
 						<nav className="grid grid-cols-2 gap-1">
 							{EXPLORE.map((link) => (
 								<Link key={link.href} href={link.href} className="text-sm text-white/70 hover:text-white">
@@ -105,7 +105,7 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: string }) {
 								</Link>
 							))}
 						</nav>
-						<h4 className="font-semibold mt-5 mb-2 text-white">{dict['footer.legal']}</h4>
+						<h3 className="font-semibold mt-5 mb-2 text-white">{dict['footer.legal']}</h3>
 						<nav className="flex flex-col gap-1">
 							<Link href={localizedPath('/legal', locale)} className="text-sm text-white/70 hover:text-white">{dict['footer.legal.notice']}</Link>
 							<Link href={localizedPath('/privacy', locale)} className="text-sm text-white/70 hover:text-white">{dict['footer.privacy.policy']}</Link>
@@ -118,7 +118,7 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: string }) {
 					<p className="text-sm text-white/50">
 						{dict['footer.copyright'].replace('{year}', String(year))}
 					</p>
-					<p className="text-xs text-white/35">{dict['footer.powered.by']}</p>
+					<p className="text-xs text-white/60">{dict['footer.powered.by']}</p>
 				</div>
 			</div>
 		</footer>

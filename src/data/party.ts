@@ -1,7 +1,17 @@
 /** Party packages, process and policies (scraped 2026-07-20). */
 
+export type PartyPackageId =
+	| 'opera'
+	| 'concorde'
+	| 'saint-germain'
+	| 'rental-private-room'
+	| 'vendome'
+	| 'champs-elysee'
+	| 'versailles'
+	| 'rental-entire-venue'
+
 export interface PartyPackage {
-	id: string
+	id: PartyPackageId
 	name: string
 	tier: string
 	weekday: string
@@ -9,6 +19,11 @@ export interface PartyPackage {
 	capacity: string
 	includes: string[]
 	badge?: 'popular' | 'all-inclusive'
+}
+
+export interface PartyPackageSelection {
+	formValue: string
+	package: PartyPackage
 }
 
 /** One catering mode of a space: full catering, or venue-only (bring your own food). */
@@ -214,7 +229,7 @@ export const PARTY_PROCESS = [
 	},
 	{
 		title: 'Show Up & Celebrate',
-		body: 'We handle setup and cleanup. You bring the birthday kid and enjoy every moment.',
+		body: 'We handle setup and cleanup. You bring your guest of honor and enjoy every moment.',
 	},
 ] as const
 
@@ -259,16 +274,14 @@ export const PARTY_POLICIES = [
 	},
 ] as const
 
-/** Options for the party-inquiry form's package select. */
-export const PACKAGE_FORM_OPTIONS = [
-	'Opéra Private Room Package ($460 weekday / $590 weekend)',
-	'Concorde Private Room Package ($560 weekday / $690 weekend)',
-	'Saint-Germain Private Room Package ($860 weekday / $990 weekend)',
-	'Vendôme Privé Full Space Package ($1,150 weekday / $1,400 weekend)',
-	'Champs-Élysée Full Space Package ($1,850 weekday / $2,200 weekend)',
-	'Versailles Full Space All-Inclusive Package ($4,500 weekday / $5,000 weekend)',
-	'Venue Rental: Private Room ($350 weekday / $450 weekend)',
-	'Venue Rental: Entire Venue ($850 weekday / $1,000 weekend)',
-	'Other',
-	'Not decided yet',
-] as const
+/** Exact values submitted to the party-inquiry backend from each package card. */
+export const PACKAGE_FORM_VALUES: Record<PartyPackageId, string> = {
+	opera: 'Opéra Private Room Package ($460 weekday / $590 weekend)',
+	concorde: 'Concorde Private Room Package ($560 weekday / $690 weekend)',
+	'saint-germain': 'Saint-Germain Private Room Package ($860 weekday / $990 weekend)',
+	'rental-private-room': 'Venue Rental: Private Room ($350 weekday / $450 weekend)',
+	vendome: 'Vendôme Privé Full Space Package ($1,150 weekday / $1,400 weekend)',
+	'champs-elysee': 'Champs-Élysée Full Space Package ($1,850 weekday / $2,200 weekend)',
+	versailles: 'Versailles Full Space All-Inclusive Package ($4,500 weekday / $5,000 weekend)',
+	'rental-entire-venue': 'Venue Rental: Entire Venue ($850 weekday / $1,000 weekend)',
+}

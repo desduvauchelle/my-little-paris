@@ -30,7 +30,7 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: string }) {
 				href="#visit"
 				aria-label={dict['nav.visit']}
 				title={dict['nav.visit']}
-				className="text-white/70 transition-colors hover:text-white"
+				className="inline-flex h-11 w-11 items-center justify-center text-white/70 transition-colors hover:text-white"
 			>
 				<MapPinIcon className="h-[1.15rem] w-[1.15rem]" />
 			</a>
@@ -38,7 +38,7 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: string }) {
 				href="#visit"
 				aria-label={dict['nav.call']}
 				title={dict['nav.call']}
-				className="text-white/70 transition-colors hover:text-white"
+				className="inline-flex h-11 w-11 items-center justify-center text-white/70 transition-colors hover:text-white"
 			>
 				<PhoneIcon className="h-[1.15rem] w-[1.15rem]" />
 			</a>
@@ -60,7 +60,7 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: string }) {
 		<header className="navy-section sticky top-0 z-50 shadow-md">
 			<div className="navbar container mx-auto px-4">
 				<div className="flex-1">
-					<Link href={localizedPath('/', locale)} className="inline-flex items-center" aria-label="My Little Paris Café & Play Home">
+					<Link href={localizedPath('/', locale)} className="inline-flex min-h-11 items-center" aria-label={`My Little Paris Café & Play — ${dict['nav.home']}`}>
 						<Image
 							src="/images/logo-white.webp"
 							alt="My Little Paris Café & Play"
@@ -78,7 +78,7 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: string }) {
 						<Link
 							key={link.href}
 							href={link.href}
-							className="text-sm text-white/85 hover:text-white transition-colors"
+							className="inline-flex min-h-11 items-center text-sm text-white/85 hover:text-white transition-colors"
 						>
 							{link.label}
 						</Link>
@@ -89,7 +89,7 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: string }) {
 						<SocialIcon platform="instagram" href={LINKS.instagram} className="text-white/70 hover:text-white" />
 						<SocialIcon platform="yelp" href={LINKS.yelp} className="text-white/70 hover:text-white" />
 					</span>
-					<LanguageSwitcher locale={locale} locales={supportedLocales} variant="onDark" />
+					<LanguageSwitcher locale={locale} locales={supportedLocales} label={dict['nav.selectLanguage']} variant="onDark" />
 					{primaryAction}
 				</nav>
 
@@ -100,15 +100,19 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: string }) {
 						links={NAV_LINKS}
 						locale={locale}
 						locales={supportedLocales}
+						openLabel={dict['nav.openMenu']}
+						closeLabel={dict['nav.closeMenu']}
+						navLabel={dict['footer.navigation']}
+						languageLabel={dict['nav.selectLanguage']}
 						extras={
 							// Same destination as the desktop icons, but labelled —
 							// bare glyphs in a dropdown make people guess.
 							<>
-								<a href="#visit" className="flex items-center gap-3 py-1 text-base-content/70 transition-colors hover:text-primary">
+				<a href="#visit" className="flex min-h-11 items-center gap-3 text-base-content/70 transition-colors hover:text-primary">
 									<MapPinIcon className="h-[1.15rem] w-[1.15rem] text-secondary" />
 									{dict['nav.visit']}
 								</a>
-								<a href="#visit" className="flex items-center gap-3 py-1 text-base-content/70 transition-colors hover:text-primary">
+				<a href="#visit" className="flex min-h-11 items-center gap-3 text-base-content/70 transition-colors hover:text-primary">
 									<PhoneIcon className="h-[1.15rem] w-[1.15rem] text-secondary" />
 									{dict['nav.call']}
 								</a>

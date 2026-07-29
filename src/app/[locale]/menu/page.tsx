@@ -66,7 +66,7 @@ export default async function MenuPage({
 							</Link>
 						))}
 					</ScrollReveal>
-					<p className="text-center font-display italic text-2xl text-base-content/60 mt-14">
+					<p className="text-center font-display italic text-2xl text-base-content/70 mt-14">
 						{dict['menu.tagline']}
 					</p>
 				</div>

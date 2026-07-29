@@ -28,6 +28,7 @@ Visitors typically browse on the public marketing site before reserving a two-ho
 - Reservations and party inquiries are existing conversion paths and must remain distinct.
 - The gallery is organized around four existing content categories: Events, Food, The Space, and Moments (the internal `misc` image folder).
 - Gallery surfaces should support a mixed overview, category filtering, and a configurable preselected category for contextual reuse.
+- Gallery photographs open into an accessible full-screen lightbox with previous and next navigation.
 - The site is a responsive Next.js application and must retain semantic HTML, keyboard access, reduced-motion support, and performant image delivery.
 
 ## Brand Commitments

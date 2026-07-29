@@ -12,7 +12,7 @@ const allPhotos = GALLERY_CATEGORIES.flatMap((category) => GALLERY_PHOTOS[catego
 
 describe('gallery SEO metadata', () => {
 	it('keeps every gallery photo in the manifest with a descriptive filename', () => {
-		expect(allPhotos).toHaveLength(59)
+		expect(allPhotos).toHaveLength(72)
 		expect(new Set(allPhotos.map((photo) => photo.src)).size).toBe(allPhotos.length)
 
 		for (const photo of allPhotos) {

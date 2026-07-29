@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server'
 import { isMultiLang, supportedLocales, defaultLocale } from './i18n/config'
 import { defaultLocaleRedirectTarget } from './lib/i18n-utils'
 
-const SKIP_PREFIXES = ['/_next/', '/sitemap']
+const SKIP_PREFIXES = ['/_next/', '/sitemap', '/admin']
 const SKIP_PATHS = ['/favicon.ico', '/sitemap.xml', '/robots.txt']
 
 function getLocaleFromHeaders(request: NextRequest): string {

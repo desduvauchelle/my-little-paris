@@ -35,10 +35,10 @@ export function LegalDocument({ locale, doc, title }: { locale: string; doc: Leg
 	const { intro, sections } = content[doc]
 
 	return (
-		<main className="container mx-auto max-w-3xl px-4 py-12">
+		<article className="container mx-auto max-w-3xl px-4 py-12">
 			<h1 className="font-display text-4xl text-primary">{title}</h1>
 
-			<p className="mt-3 text-sm text-base-content/55">
+			<p className="mt-3 text-sm text-base-content/65">
 				{content.lastUpdatedLabel} {formatDate(localDate(BUSINESS.legalUpdated), locale)}
 			</p>
 
@@ -69,6 +69,6 @@ export function LegalDocument({ locale, doc, title }: { locale: string; doc: Leg
 					</section>
 				))}
 			</div>
-		</main>
+		</article>
 	)
 }

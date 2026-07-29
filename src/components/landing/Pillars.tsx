@@ -28,9 +28,9 @@ export function Pillars({ dict, locale }: { dict: Dictionary; locale: string }) 
 								/>
 							</figure>
 							<div className="card-body">
-								<h3 className="card-title font-display text-2xl text-primary">
+								<h2 className="card-title font-display text-2xl text-primary">
 									{dict[`home.pillar.${pillar.key}.title`]}
-								</h3>
+								</h2>
 								<p className="font-semibold text-sm">{dict[`home.pillar.${pillar.key}.tagline`]}</p>
 								<p className="text-sm text-base-content/70">{dict[`home.pillar.${pillar.key}.body`]}</p>
 								<div className="card-actions mt-2">

@@ -42,7 +42,7 @@ export const MEMBERSHIP = {
 		'Unlimited visits during regular business hours',
 		'10% off food for the member child and the caretaker or parent',
 		'No food purchase required on weekdays before 4PM for the member and the caretaker',
-		'Free party add-on when you book a birthday party',
+		'Free party add-on when you reserve a birthday party',
 		'Exclusive pricing on select special events',
 	],
 	foodPolicy: [

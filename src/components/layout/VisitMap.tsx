@@ -43,7 +43,7 @@ export function VisitMap({ dict }: { dict: Dictionary }) {
 							</span>
 						</a>
 
-						<p className="mt-5 text-sm text-base-content/60">{dict['footer.hours.body']}</p>
+						<p className="mt-5 text-sm text-base-content/70">{dict['footer.hours.body']}</p>
 
 						<div className="mt-6">
 							<a href={LINKS.directions} target="_blank" rel="noopener noreferrer" className="btn btn-primary gap-2">

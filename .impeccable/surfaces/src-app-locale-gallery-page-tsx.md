@@ -15,5 +15,5 @@ related_targets: ["src/components/gallery/PhotoGallery.tsx","src/app/[locale]/pa
 - Proof/content: the real categorized photo library in `public/gallery`.
 - Constraints: preserve the incumbent My Little Paris brand, localize all interface copy, keep filters keyboard accessible, respect reduced motion, use browser-compatible optimized derivatives, and keep compact embeds from overwhelming their host pages.
 - Direction: “A living Parisian family album” — photography leads, controls recede, and the masonry rhythm mixes intimate details with broad venue scenes.
-- Memorable moment: selecting a category gently re-composes the album while a handwritten-feeling count confirms what is now in view.
-- Unresolved: none for the initial release; lightbox behavior remains deliberately out of scope.
+- Memorable moment: a selected photograph inflates from its thumbnail like a balloon, then settles into an edge-to-edge lightbox; category changes still gently re-compose the album.
+- Unresolved: none for the initial release.

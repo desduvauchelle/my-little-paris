@@ -20,6 +20,12 @@ const LOCALE_LABELS: Record<string, string> = {
 	ru: 'RU',
 }
 
+const LOCALE_ACCESSIBLE_NAMES: Record<string, string> = {
+	en: 'English',
+	fr: 'Français',
+	zh: '中文',
+}
+
 // `locales` MUST be passed from a server component: the list is derived from
 // server-only env vars (DEFAULT_LANGUAGE / ADDITIONAL_LANGUAGES), which are
 // undefined in the browser bundle. Reading them here made SSR render the
@@ -27,10 +33,12 @@ const LOCALE_LABELS: Record<string, string> = {
 export function LanguageSwitcher({
 	locale,
 	locales,
+	label,
 	variant = 'onLight',
 }: {
 	locale: string
 	locales: string[]
+	label: string
 	variant?: 'onDark' | 'onLight'
 }) {
 	const pathname = usePathname()
@@ -60,7 +68,7 @@ export function LanguageSwitcher({
 	return (
 		<div
 			role="group"
-			aria-label="Select language"
+			aria-label={label}
 			className={cn(
 				'inline-flex w-fit items-center gap-0.5 rounded-full p-0.5',
 				onDark ? 'bg-white/10 ring-1 ring-white/20' : 'bg-base-200 ring-1 ring-base-300',
@@ -74,15 +82,17 @@ export function LanguageSwitcher({
 						type="button"
 						onClick={() => switchTo(loc)}
 						aria-pressed={active}
+						aria-label={LOCALE_ACCESSIBLE_NAMES[loc] ?? loc.toUpperCase()}
+						lang={loc}
 						className={cn(
-							'rounded-full px-2.5 py-1 text-xs font-semibold uppercase tracking-wide transition-colors',
+							'min-h-11 min-w-11 rounded-full px-2.5 py-1 text-xs font-semibold uppercase tracking-wide transition-colors',
 							active
 								? onDark
 									? 'bg-white text-primary shadow-sm'
 									: 'bg-primary text-primary-content shadow-sm'
 								: onDark
 									? 'text-white/70 hover:text-white'
-									: 'text-base-content/60 hover:text-base-content',
+									: 'text-base-content/70 hover:text-base-content',
 						)}
 					>
 						{LOCALE_LABELS[loc] ?? loc.toUpperCase()}

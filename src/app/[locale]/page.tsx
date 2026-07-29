@@ -149,7 +149,7 @@ export default async function HomePage({
 						</ScrollReveal>
 						<ScrollReveal y={30} delay={0.1}>
 							<h2 className="font-display text-4xl text-primary mb-4">{dict['home.about.heading']}</h2>
-							<p className="font-display italic text-lg text-base-content/60 border-l-4 border-secondary pl-4 mb-5">
+							<p className="font-display italic text-lg text-base-content/70 border-l-4 border-secondary pl-4 mb-5">
 								{dict['home.about.quote']}
 							</p>
 							<p className="mb-4 text-base-content/80">{dict['home.about.p1']}</p>

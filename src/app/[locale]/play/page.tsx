@@ -7,6 +7,7 @@ import { buildPageMetadata } from '@/lib/seo'
 import { LINKS } from '@/data/site'
 import { PLAY_PASS, MEMBERSHIP, PLAYGROUND_POLICY } from '@/data/play'
 import { ScrollReveal } from '@/components/landing/ScrollReveal'
+import { PhotoGallery } from '@/components/gallery/PhotoGallery'
 
 export async function generateMetadata({
 	params,
@@ -46,6 +47,7 @@ export default async function PlayPage({
 }) {
 	const { locale } = await params
 	const dict = await getDictionary(locale)
+	const gallerySeed = new Date().getUTCDate() + locale.length * 47
 
 	return (
 		<>
@@ -100,14 +102,14 @@ export default async function PlayPage({
 										<span className="font-semibold text-primary">{dict['play.rates.children.price']}</span>
 									</li>
 								</ul>
-								<p className="text-sm text-base-content/60 italic">{dict['play.rates.adults']}</p>
+								<p className="text-sm text-base-content/70 italic">{dict['play.rates.adults']}</p>
 								<div className="alert bg-secondary/15 border-secondary/30 mt-2">
 									<div>
 										<h4 className="font-semibold">☀️ {dict['play.happyhour.heading']}</h4>
 										<p className="text-sm">{dict['play.happyhour.body']}</p>
 									</div>
 								</div>
-								<p className="text-sm text-base-content/60 mt-2">{dict['play.reservation.note']}</p>
+								<p className="text-sm text-base-content/70 mt-2">{dict['play.reservation.note']}</p>
 								<div className="card-actions mt-3">
 									<Link href={localizedPath('/reservations', locale)} className="btn btn-primary">
 										{dict['hero.cta.reserve']}
@@ -115,6 +117,33 @@ export default async function PlayPage({
 								</div>
 							</div>
 						</div>
+					</ScrollReveal>
+				</div>
+			</section>
+
+			{/* A contextual look at the play space, placed below the practical visit details */}
+			<section className="bg-base-200 pb-16 sm:pb-20">
+				<div className="container mx-auto px-4">
+					<div className="mx-auto mb-10 flex max-w-6xl flex-col gap-5 md:flex-row md:items-end md:justify-between">
+						<div className="max-w-2xl">
+							<p className="mb-3 text-sm font-semibold text-accent">{dict['home.gallery.kicker']}</p>
+							<h2 className="font-display text-4xl text-primary md:text-5xl">{dict['home.gallery.heading']}</h2>
+							<p className="mt-4 text-base-content/70">{dict['home.gallery.sub']}</p>
+						</div>
+						<Link href={localizedPath('/gallery', locale)} className="btn btn-outline btn-primary shrink-0 self-start md:self-auto">
+							{dict['home.gallery.view']}
+						</Link>
+					</div>
+
+					<ScrollReveal y={36} className="mx-auto max-w-6xl">
+						<PhotoGallery
+							dict={dict}
+							initialCategory="the-space"
+							seed={gallerySeed}
+							filteredLimit={8}
+							shuffleFiltered
+							variant="compact"
+						/>
 					</ScrollReveal>
 				</div>
 			</section>
@@ -163,7 +192,7 @@ export default async function PlayPage({
 						</div>
 
 						<div className="text-center mt-8">
-							<a href={LINKS.reservations} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
+							<a href={LINKS.memberships} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
 								{dict['play.membership.cta']}
 							</a>
 						</div>

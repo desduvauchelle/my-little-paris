@@ -114,13 +114,13 @@ export function Hero({ dict, locale }: { dict: Dictionary; locale: string }) {
 							<div className="mt-7 flex flex-wrap justify-center gap-3 lg:justify-start">
 								<Link
 									href={localizedPath('/reservations', locale)}
-									className="btn border-0 bg-white text-[#001d61] shadow-lg shadow-black/20 transition-transform hover:-translate-y-0.5 hover:bg-white sm:btn-lg"
+									className="btn btn-secondary border-0 shadow-lg shadow-black/20 transition-transform hover:-translate-y-0.5 sm:btn-lg"
 								>
 									{dict['hero.cta.reserve']}
 								</Link>
 								<Link
 									href={localizedPath('/party', locale)}
-									className="btn btn-outline border-white/40 text-white transition-transform hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#001d61] sm:btn-lg"
+									className="btn btn-outline border-secondary text-secondary transition-transform hover:-translate-y-0.5 hover:border-secondary hover:bg-secondary hover:text-secondary-content sm:btn-lg"
 								>
 									{dict['hero.cta.party']}
 								</Link>
