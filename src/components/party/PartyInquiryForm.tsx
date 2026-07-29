@@ -1,16 +1,10 @@
 'use client'
 
-import { useState } from 'react'
-import { submitForm } from '@growth-engine/sdk-client'
 import type { Dictionary } from '@/i18n'
 import { BUSINESS } from '@/data/site'
 import type { PartyPackageSelection } from '@/data/party'
 import { trackEvent } from '@/components/analytics/GoogleAnalytics'
 import { MailIcon, MessageIcon, PhoneIcon } from '@/components/layout/ContactIcons'
-
-const FORM_SLUG = 'party-inquiry'
-
-type Status = 'idle' | 'loading' | 'success' | 'error'
 
 function Field({
 	label,
@@ -43,31 +37,31 @@ export function PartyInquiryForm({
 	selectedPackage: PartyPackageSelection | null
 	onChoosePackage: () => void
 }) {
-	const [status, setStatus] = useState<Status>('idle')
-
-	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault()
-		setStatus('loading')
 		const data = Object.fromEntries(new FormData(e.currentTarget).entries())
-		try {
-			const result = await submitForm(FORM_SLUG, data)
-			if (result.ok) {
-				trackEvent('party_inquiry_submit', {})
-				setStatus('success')
-			} else {
-				setStatus('error')
-			}
-		} catch {
-			setStatus('error')
-		}
-	}
+		const value = (key: string) => String(data[key] ?? '').trim()
+		const subject = dict['partyform.email.subject']
+			.replace('{date}', value('partyDate'))
+			.replace('{name}', value('name'))
+		const body = [
+			dict['partyform.email.greeting'],
+			'',
+			dict['partyform.email.intro'],
+			'',
+			`${dict['partyform.package']}: ${value('partyPackage')}`,
+			`${dict['partyform.host']}: ${value('name')}`,
+			`${dict['partyform.email']}: ${value('email')}`,
+			`${dict['partyform.phone']}: ${value('phone')}`,
+			`${dict['partyform.date']}: ${value('partyDate')}`,
+			`${dict['partyform.time']}: ${value('partyTime')}`,
+			`${dict['partyform.guests']}: ${value('guestCount')}`,
+			'',
+			dict['partyform.email.closing'],
+		].join('\n')
 
-	if (status === 'success') {
-		return (
-			<div className="alert alert-success" role="status">
-				<span>{dict['partyform.success']}</span>
-			</div>
-		)
+		trackEvent('party_inquiry_email_open', { party_package: value('partyPackage') })
+		window.location.href = `mailto:${BUSINESS.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 	}
 
 	const inputCls = 'input w-full placeholder:text-base-content/65'
@@ -148,18 +142,8 @@ export function PartyInquiryForm({
 				<input type="number" name="guestCount" min={1} max={88} required className={inputCls} placeholder={dict['partyform.placeholder.guests']} />
 			</Field>
 
-			{status === 'error' && (
-				<div className="alert alert-warning text-sm" role="alert">
-					<span>
-						{dict['partyform.error']
-							.replace('{phone}', BUSINESS.phoneDisplay)
-							.replace('{email}', BUSINESS.email)}
-					</span>
-				</div>
-			)}
-
-			<button type="submit" className="btn btn-primary btn-lg btn-block" disabled={status === 'loading' || !selectedPackage}>
-				{status === 'loading' && <span className="loading loading-spinner" aria-hidden="true" />}
+			<button type="submit" className="btn btn-primary btn-lg btn-block" disabled={!selectedPackage}>
+				<MailIcon className="h-5 w-5" />
 				{dict['partyform.submit']}
 			</button>
 			<p className="text-xs leading-relaxed text-center text-base-content/70">

@@ -49,10 +49,8 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: string }) {
 	// hamburger so it never costs a tap to find.
 	const primaryAction = (
 		<HeaderBookButton
-			partyPath={localizedPath('/party', locale)}
 			reservationsPath={localizedPath('/reservations', locale)}
-			defaultLabel={dict['nav.book']}
-			partyInquiryLabel={dict['party.hero.cta']}
+			label={dict['nav.book']}
 		/>
 	)
 
