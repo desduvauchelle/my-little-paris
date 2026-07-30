@@ -4,7 +4,7 @@ import { isMultiLang, supportedLocales, defaultLocale } from './i18n/config'
 import { defaultLocaleRedirectTarget } from './lib/i18n-utils'
 
 const SKIP_PREFIXES = ['/_next/', '/sitemap', '/admin']
-const SKIP_PATHS = ['/favicon.ico', '/sitemap.xml', '/robots.txt']
+const SKIP_PATHS = ['/favicon.ico', '/sitemap.xml', '/robots.txt', '/opengraph-image']
 
 function getLocaleFromHeaders(request: NextRequest): string {
 	const acceptLanguage = request.headers.get('accept-language')

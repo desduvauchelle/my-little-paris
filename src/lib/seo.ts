@@ -3,6 +3,8 @@ import { defaultLocale } from '@/i18n/config'
 import { SITE_URL, buildUrl, buildAlternates } from './sitemap-shared'
 
 export const SITE_NAME = 'My Little Paris Café & Play'
+export const DEFAULT_OG_IMAGE = '/opengraph-image'
+export const DEFAULT_OG_IMAGE_ALT = 'My Little Paris Cafe & Play — one room, two worlds'
 
 /**
  * Site-wide noindex kill switch for development/staging deployments.
@@ -49,6 +51,8 @@ export function buildPageMetadata({
 	const canonical = buildUrl(path, locale)
 	const languages = buildAlternates(path)
 	const fullTitle = brand ? `${title} | ${SITE_NAME}` : title
+	const resolvedImage = image || DEFAULT_OG_IMAGE
+	const resolvedImageAlt = imageAlt || (resolvedImage === DEFAULT_OG_IMAGE ? DEFAULT_OG_IMAGE_ALT : undefined)
 
 	const languagesWithDefault = languages
 		? { ...languages, 'x-default': buildUrl(path, defaultLocale) }
@@ -74,13 +78,13 @@ export function buildPageMetadata({
 			url: canonical,
 			siteName: SITE_NAME,
 			type,
-			...(image ? { images: [{ url: image, ...(imageAlt ? { alt: imageAlt } : {}) }] } : {}),
+			images: [{ url: resolvedImage, ...(resolvedImageAlt ? { alt: resolvedImageAlt } : {}) }],
 		},
 		twitter: {
-			card: image ? 'summary_large_image' : 'summary',
+			card: 'summary_large_image',
 			title: fullTitle,
 			...(description ? { description } : {}),
-			...(image ? { images: [image] } : {}),
+			images: [resolvedImage],
 		},
 	}
 }

@@ -4,7 +4,7 @@ import { DM_Sans, Playfair_Display } from 'next/font/google'
 import { GrowthEngineProvider } from '@growth-engine/sdk-client'
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics'
 import { SITE_URL } from '@/lib/sitemap-shared'
-import { SITE_NOINDEX } from '@/lib/seo'
+import { DEFAULT_OG_IMAGE, DEFAULT_OG_IMAGE_ALT, SITE_NAME, SITE_NOINDEX } from '@/lib/seo'
 import './globals.css'
 
 const dmSans = DM_Sans({
@@ -32,6 +32,21 @@ export const metadata: Metadata = {
 	},
 	description:
 		'French café + indoor playground in San Gabriel, CA. Two-hour Eat & Play sessions, all-inclusive birthday parties, memberships, and real food for parents and kids.',
+	openGraph: {
+		title: SITE_NAME,
+		description:
+			'French café + indoor playground in San Gabriel, CA. Two-hour Eat & Play sessions, all-inclusive birthday parties, memberships, and real food for parents and kids.',
+		siteName: SITE_NAME,
+		type: 'website',
+		images: [{ url: DEFAULT_OG_IMAGE, alt: DEFAULT_OG_IMAGE_ALT }],
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title: SITE_NAME,
+		description:
+			'French café + indoor playground in San Gabriel, CA. Two-hour Eat & Play sessions, all-inclusive birthday parties, memberships, and real food for parents and kids.',
+		images: [DEFAULT_OG_IMAGE],
+	},
 	// Dev/staging kill switch — pages inherit this unless they set their own
 	// `robots`, keeping the whole portal out of search until launch.
 	...(SITE_NOINDEX && { robots: { index: false, follow: false } }),
