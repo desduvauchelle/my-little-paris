@@ -39,10 +39,11 @@ export default async function EatPage({
 				<div className="container mx-auto px-4">
 					<MenuJumpNav
 						label={dict['eat.jump']}
-						sections={EAT_MENU}
-						extraLinks={[
+						links={[
+							{ href: localizedPath('/eat', locale), label: dict['menu.heading'], active: true },
 							{ href: localizedPath('/kidsmenu', locale), label: dict['eat.kids.link'] },
 							{ href: localizedPath('/drink', locale), label: dict['eat.drinks.link'] },
+							{ href: '#desserts', label: dict['eat.desserts.link'] },
 						]}
 					/>
 					<MenuSections sections={EAT_MENU} dict={dict} />

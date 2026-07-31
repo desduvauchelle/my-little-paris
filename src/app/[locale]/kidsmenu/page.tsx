@@ -39,10 +39,11 @@ export default async function KidsMenuPage({
 				<div className="container mx-auto px-4">
 					<MenuJumpNav
 						label={dict['eat.jump']}
-						sections={KIDS_MENU}
-						extraLinks={[
-							{ href: localizedPath('/eat', locale), label: dict['kids.main.link'] },
+						links={[
+							{ href: localizedPath('/eat', locale), label: dict['menu.heading'] },
+							{ href: localizedPath('/kidsmenu', locale), label: dict['eat.kids.link'], active: true },
 							{ href: localizedPath('/drink', locale), label: dict['eat.drinks.link'] },
+							{ href: `${localizedPath('/eat', locale)}#desserts`, label: dict['eat.desserts.link'] },
 						]}
 					/>
 					<MenuSections sections={KIDS_MENU} dict={dict} />

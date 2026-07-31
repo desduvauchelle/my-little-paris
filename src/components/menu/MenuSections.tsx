@@ -3,23 +3,21 @@ import type { MenuSection } from '@/data/menu'
 import { ScrollReveal } from '@/components/landing/ScrollReveal'
 
 export function MenuJumpNav({
-	sections,
-	extraLinks,
+	links,
 	label,
 }: {
-	sections: MenuSection[]
-	extraLinks?: { href: string; label: string }[]
+	links: { href: string; label: string; active?: boolean }[]
 	label: string
 }) {
 	return (
 		<nav aria-label={label} className="flex flex-wrap justify-center gap-2 mb-12">
-			{sections.map((section) => (
-				<a key={section.id} href={`#${section.id}`} className="btn btn-sm btn-outline btn-primary rounded-full">
-					{section.title}
-				</a>
-			))}
-			{extraLinks?.map((link) => (
-				<a key={link.href} href={link.href} className="btn btn-sm btn-primary rounded-full">
+			{links.map((link) => (
+				<a
+					key={link.href}
+					href={link.href}
+					aria-current={link.active ? 'page' : undefined}
+					className={`btn btn-sm btn-primary rounded-full ${link.active ? '' : 'btn-outline'}`}
+				>
 					{link.label}
 				</a>
 			))}

@@ -16,6 +16,8 @@ import { CTA } from '@/components/landing/CTA'
 import { ScrollReveal } from '@/components/landing/ScrollReveal'
 import { HowItWorks } from '@/components/landing/HowItWorks'
 import { PhotoGallery } from '@/components/gallery/PhotoGallery'
+import { InstagramPostEmbed } from '@/components/social/InstagramPostEmbed'
+import { getInstagramPost } from '@/lib/instagram'
 import { cn } from '@/lib/utils'
 
 export const revalidate = 60
@@ -46,30 +48,23 @@ export default async function HomePage({
 	const dict = await getDictionary(locale)
 	const posts = await safeQuery([], () => getBlogPosts(getDb(), { locale, limit: 3 }))
 	const gallerySeed = new Date().getUTCDate() + locale.length * 31
+	const instagramPost = getInstagramPost(process.env.INSTAGRAM_POST_URL)
 
 	return (
 		<>
 			<Hero dict={dict} locale={locale} />
 
-			{/* Play / Party / Eat / Drinks pillars */}
+			{/* Eat / Drink / Play / Party pillars */}
 			<Pillars dict={dict} locale={locale} />
 
 			{/* The space — real venue photography, surfaced early for first-time visitors */}
 			<section className="overflow-hidden bg-base-200 py-20">
 				<div className="container mx-auto px-4">
-					<div className="mx-auto mb-10 flex max-w-6xl flex-col gap-5 md:flex-row md:items-end md:justify-between">
+					<div className="mx-auto mb-10 max-w-6xl">
 						<div className="max-w-2xl">
 							<p className="mb-3 text-sm font-semibold text-accent">{dict['home.gallery.kicker']}</p>
 							<h2 className="font-display text-4xl text-primary md:text-5xl">{dict['home.gallery.heading']}</h2>
 							<p className="mt-4 text-base-content/70">{dict['home.gallery.sub']}</p>
-						</div>
-						<div className="flex shrink-0 flex-wrap gap-2 self-start md:self-auto">
-							<Link href={localizedPath('/gallery', locale)} className="btn btn-primary">
-								{dict['home.gallery.view']}
-							</Link>
-							<Link href={localizedPath('/reservations', locale)} className="btn btn-outline btn-primary">
-								{dict['home.gallery.book']}
-							</Link>
 						</div>
 					</div>
 
@@ -83,11 +78,21 @@ export default async function HomePage({
 						/>
 					</ScrollReveal>
 
-					<p className="mt-8 text-center">
+					{instagramPost && (
+						<InstagramPostEmbed
+							embedUrl={instagramPost.embedUrl}
+							title={dict['home.gallery.follow']}
+						/>
+					)}
+
+					<div className={`${instagramPost ? 'mt-5' : 'mt-8'} flex flex-wrap justify-center gap-3`}>
+						<Link href={localizedPath('/gallery', locale)} className="btn btn-primary">
+							{dict['home.gallery.view']}
+						</Link>
 						<a href={LINKS.instagram} target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-sm text-primary">
 							{dict['home.gallery.follow']} →
 						</a>
-					</p>
+					</div>
 				</div>
 			</section>
 

@@ -12,13 +12,28 @@ import {
 import {
 	PRIVATE_ROOM_DETAIL_ROWS,
 	PRIVATE_ROOM_PACKAGE_DETAILS,
+	type PackageDetailCell,
 	type PrivateRoomPackageId,
 } from '@/data/private-room-package-details'
+import {
+	FULL_SPACE_DETAIL_ROWS,
+	FULL_SPACE_PACKAGE_DETAILS,
+	type FullSpacePackageId,
+} from '@/data/full-space-package-details'
 import { cn } from '@/lib/utils'
 import { BalloonCelebration } from '@/components/ui/BalloonCelebration'
 import { PartyInquiryForm } from './PartyInquiryForm'
 
 const POPULAR_PRIVATE_ROOM_PACKAGE_ID: PrivateRoomPackageId = 'concorde'
+const POPULAR_FULL_SPACE_PACKAGE_ID: FullSpacePackageId = 'champs-elysee'
+
+interface PackageComparisonDetail {
+	id: string
+	name: string
+	level: string
+	summary: string
+	details: Record<string, PackageDetailCell>
+}
 
 export function PackageTabs({ dict }: { dict: Dictionary }) {
 	const [active, setActive] = useState(0)
@@ -26,7 +41,15 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 	const [selectedPackage, setSelectedPackage] = useState<PartyPackageSelection | null>(null)
 	const group = PACKAGE_GROUPS[active]
 	const variant = catered ? group.catered : group.rentalOnly
-	const showPrivateRoomDetails = group.id === 'private-room' && catered
+	const detailRows = group.id === 'private-room' ? PRIVATE_ROOM_DETAIL_ROWS : FULL_SPACE_DETAIL_ROWS
+	const packageDetails: PackageComparisonDetail[] = group.id === 'private-room'
+		? PRIVATE_ROOM_PACKAGE_DETAILS
+		: FULL_SPACE_PACKAGE_DETAILS
+	const popularPackageId = group.id === 'private-room' ? POPULAR_PRIVATE_ROOM_PACKAGE_ID : POPULAR_FULL_SPACE_PACKAGE_ID
+	const showPackageDetails = catered
+	const detailsHeading = group.id === 'private-room'
+		? dict['party.details.heading']
+		: dict['party.details.fullspace.heading']
 
 	function handlePackageInquiry(partyPackage: PartyPackage) {
 		setSelectedPackage({ formValue: PACKAGE_FORM_VALUES[partyPackage.id], package: partyPackage })
@@ -50,7 +73,7 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 		})
 	}
 
-	function handleViewDetails(packageId: PrivateRoomPackageId) {
+	function handleViewDetails(packageId: PrivateRoomPackageId | FullSpacePackageId) {
 		requestAnimationFrame(() => {
 			const scroller = document.getElementById('package-details-table-scroll')
 			const column = document.querySelector<HTMLElement>(`[data-detail-package="${packageId}"]`)
@@ -108,7 +131,7 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 				)}
 			>
 				{variant.packages.map((pkg) => {
-					const hasDetails = PRIVATE_ROOM_PACKAGE_DETAILS.some((details) => details.id === pkg.id)
+					const hasDetails = packageDetails.some((details) => details.id === pkg.id)
 
 					return (
 					<div
@@ -163,10 +186,10 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 								</ul>
 							</div>
 							<div className="card-actions flex-col gap-2 mt-6">
-								{showPrivateRoomDetails && hasDetails && (
+								{showPackageDetails && hasDetails && (
 									<a
 										href="#package-details"
-										onClick={() => handleViewDetails(pkg.id as PrivateRoomPackageId)}
+										onClick={() => handleViewDetails(pkg.id as PrivateRoomPackageId | FullSpacePackageId)}
 										className="btn btn-ghost btn-sm btn-block text-primary font-medium"
 									>
 										{dict['party.details.view']} ↓
@@ -197,11 +220,11 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 				)}
 			</div>
 
-			{showPrivateRoomDetails && (
+			{showPackageDetails && (
 				<section id="package-details" className="scroll-mt-24 mt-16" aria-labelledby="package-details-heading">
 					<div className="text-center max-w-2xl mx-auto mb-8">
 						<h3 id="package-details-heading" className="font-display text-3xl text-primary">
-							{dict['party.details.heading']}
+							{detailsHeading}
 						</h3>
 						<p className="text-sm text-base-content/65 mt-2">{dict['party.details.sub']}</p>
 						<p className="sm:hidden text-xs font-medium text-primary mt-3">{dict['party.details.swipe']} →</p>
@@ -210,14 +233,14 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 					<div
 						id="package-details-table-scroll"
 						tabIndex={0}
-						aria-label={dict['party.details.heading']}
+						aria-label={detailsHeading}
 						className="overflow-x-auto overscroll-x-contain rounded-box border border-base-300 bg-base-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
 					>
 						<table className="table table-fixed min-w-[64rem] align-top">
-							<caption className="sr-only">{dict['party.details.heading']}</caption>
+							<caption className="sr-only">{detailsHeading}</caption>
 							<colgroup>
 								<col className="w-36" />
-								{PRIVATE_ROOM_PACKAGE_DETAILS.map((details) => (
+								{packageDetails.map((details) => (
 									<col key={details.id} className="w-72" />
 								))}
 							</colgroup>
@@ -226,24 +249,24 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 									<th scope="col" className="sticky left-0 z-20 bg-base-200 text-base-content/65">
 										{dict['party.details.category']}
 									</th>
-								{PRIVATE_ROOM_PACKAGE_DETAILS.map((details) => (
-									<th
-										key={details.id}
-										data-detail-package={details.id}
-										scope="col"
-										className={cn(
-											'align-top py-5',
-											details.id === POPULAR_PRIVATE_ROOM_PACKAGE_ID && 'bg-secondary/10',
-										)}
-									>
-										<span className="block text-xs uppercase tracking-wide text-base-content/65">{details.level}</span>
-										<span className="block font-display text-2xl normal-case text-primary mt-1">{details.name}</span>
-										{details.id === POPULAR_PRIVATE_ROOM_PACKAGE_ID && (
-											<span className="badge badge-secondary badge-sm mt-2 normal-case">
-												{dict['party.badge.popular']}
-											</span>
-										)}
-										<span className="block text-xs normal-case font-normal text-base-content/65 mt-2 leading-relaxed">
+									{packageDetails.map((details) => (
+										<th
+											key={details.id}
+											data-detail-package={details.id}
+											scope="col"
+											className={cn(
+												'align-top py-5',
+												details.id === popularPackageId && 'bg-secondary/10',
+											)}
+										>
+											<span className="block text-xs uppercase tracking-wide text-base-content/65">{details.level}</span>
+											<span className="block font-display text-2xl normal-case text-primary mt-1">{details.name}</span>
+											{details.id === popularPackageId && (
+												<span className="badge badge-secondary badge-sm mt-2 normal-case">
+													{dict['party.badge.popular']}
+												</span>
+											)}
+											<span className="block text-xs normal-case font-normal text-base-content/65 mt-2 leading-relaxed">
 												{details.summary}
 											</span>
 										</th>
@@ -251,12 +274,12 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 								</tr>
 							</thead>
 							<tbody>
-								{PRIVATE_ROOM_DETAIL_ROWS.map((row) => (
+								{detailRows.map((row) => (
 									<tr key={row.id} className="border-base-300">
 										<th scope="row" className="sticky left-0 z-10 align-top bg-base-200 text-sm text-primary py-5">
 											{row.label}
 										</th>
-										{PRIVATE_ROOM_PACKAGE_DETAILS.map((details) => {
+										{packageDetails.map((details) => {
 											const cell = details.details[row.id]
 
 											return (
@@ -264,7 +287,7 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 													key={details.id}
 													className={cn(
 														'align-top py-5',
-														details.id === POPULAR_PRIVATE_ROOM_PACKAGE_ID && 'bg-secondary/10',
+														details.id === popularPackageId && 'bg-secondary/10',
 													)}
 												>
 													<p className="text-sm font-semibold text-base-content">{cell.selection}</p>

@@ -24,6 +24,7 @@ export type GallerySelection = GalleryCategory | 'all'
 
 const CATEGORY_KEYS = {
 	events: 'gallery.filter.events',
+	buffet: 'gallery.filter.buffet',
 	food: 'gallery.filter.food',
 	'the-space': 'gallery.filter.space',
 	moments: 'gallery.filter.moments',
@@ -67,7 +68,6 @@ export function PhotoGallery({
 	filteredLimit,
 	shuffleFiltered = false,
 	showFilters = true,
-	showSummary = true,
 	syncSelectionToUrl = false,
 	variant = 'default',
 }: {
@@ -78,7 +78,6 @@ export function PhotoGallery({
 	filteredLimit?: number
 	shuffleFiltered?: boolean
 	showFilters?: boolean
-	showSummary?: boolean
 	syncSelectionToUrl?: boolean
 	variant?: 'default' | 'compact'
 }) {
@@ -119,13 +118,6 @@ export function PhotoGallery({
 		return filteredLimit ? categoryPhotos.slice(0, filteredLimit) : categoryPhotos
 	}, [activeCategory, filteredLimit, overview, seed, shuffleFiltered])
 
-	const activeLabel =
-		activeCategory === 'all'
-			? dict['gallery.filter.all']
-			: dict[CATEGORY_KEYS[activeCategory]]
-	const summary = dict['gallery.summary']
-		.replace('{count}', String(visiblePhotos.length))
-		.replace('{category}', activeLabel)
 	const lightboxPhoto = lightboxIndex === null ? null : visiblePhotos[lightboxIndex]
 	const lightboxAlt = lightboxPhoto
 		? dict[lightboxPhoto.altKey as keyof Dictionary]
@@ -166,40 +158,33 @@ export function PhotoGallery({
 
 	return (
 		<div className="w-full">
-			{(showFilters || showSummary) && (
+			{showFilters && (
 				<div className="mb-7 flex flex-col gap-4 border-b border-primary/15 pb-5 sm:flex-row sm:items-center sm:justify-between">
-					{showFilters && (
-						<div
-							className="flex max-w-full gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible"
-							aria-label={dict['gallery.filter.label']}
-						>
-							{(['all', ...GALLERY_CATEGORIES] as GallerySelection[]).map((category) => {
-								const isActive = activeCategory === category
-								const label = category === 'all' ? dict['gallery.filter.all'] : dict[CATEGORY_KEYS[category]]
-								return (
-									<button
-										key={category}
-										type="button"
-										aria-pressed={isActive}
-										onClick={() => selectCategory(category)}
-										className={cn(
-											'focus-visible:outline-primary shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
-											isActive
-												? 'border-primary bg-primary text-primary-content'
-												: 'border-primary/20 bg-base-100 text-primary hover:border-secondary hover:bg-secondary/10',
-										)}
-									>
-										{label}
-									</button>
-								)
-							})}
-						</div>
-					)}
-					{showSummary && (
-						<p className="shrink-0 font-display text-sm italic text-primary/70" aria-live="polite">
-							{summary}
-						</p>
-					)}
+					<div
+						className="flex max-w-full gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible"
+						aria-label={dict['gallery.filter.label']}
+					>
+						{(['all', ...GALLERY_CATEGORIES] as GallerySelection[]).map((category) => {
+							const isActive = activeCategory === category
+							const label = category === 'all' ? dict['gallery.filter.all'] : dict[CATEGORY_KEYS[category]]
+							return (
+								<button
+									key={category}
+									type="button"
+									aria-pressed={isActive}
+									onClick={() => selectCategory(category)}
+									className={cn(
+										'focus-visible:outline-primary shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
+										isActive
+											? 'border-primary bg-primary text-primary-content'
+											: 'border-primary/20 bg-base-100 text-primary hover:border-secondary hover:bg-secondary/10',
+									)}
+								>
+									{label}
+								</button>
+							)
+						})}
+					</div>
 				</div>
 			)}
 
@@ -245,9 +230,9 @@ export function PhotoGallery({
 							</button>
 							<figcaption
 								aria-hidden="true"
-								className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/80 to-transparent px-3 pb-3 pt-10 text-xs font-semibold text-white opacity-100 transition-opacity duration-300 sm:opacity-0 sm:group-hover:opacity-100"
+								className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/85 via-primary/45 to-transparent px-3 pb-3 pt-12 text-xs font-medium leading-snug text-white opacity-100 transition-opacity duration-300 sm:opacity-0 sm:group-hover:opacity-100"
 							>
-								{dict[CATEGORY_KEYS[photo.category]]}
+								{alt}
 							</figcaption>
 						</figure>
 					)

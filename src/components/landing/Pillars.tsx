@@ -5,10 +5,10 @@ import { localizedPath } from '@/lib/i18n-utils'
 import { ScrollReveal } from './ScrollReveal'
 
 const PILLARS = [
-	{ key: 'play', href: '/play', image: '/images/playspace.webp' },
-	{ key: 'party', href: '/party', image: '/images/party-photo-2.webp' },
 	{ key: 'eat', href: '/eat', image: '/images/pesto-sandwich.webp' },
 	{ key: 'drink', href: '/drink', image: '/images/drink-menu-tile.webp' },
+	{ key: 'play', href: '/play', image: '/images/playspace.webp' },
+	{ key: 'party', href: '/party', image: '/images/party-photo-2.webp' },
 ] as const
 
 export function Pillars({ dict, locale }: { dict: Dictionary; locale: string }) {

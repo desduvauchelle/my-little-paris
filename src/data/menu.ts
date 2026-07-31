@@ -80,7 +80,6 @@ export const EAT_MENU: MenuSection[] = [
 		id: 'desserts',
 		title: 'Desserts & Pastries',
 		items: [
-			{ name: 'Chocolate Mousse', description: 'Belgian dark chocolate mousse on a cookie crumble base', price: '$6.99', isNew: true },
 			{ name: 'Chocolate Lava Cake', description: 'Moist chocolate cake with a heart of creamy rich chocolate. Add vanilla ice cream for $3', price: '$9.99', note: 'contains gluten' },
 			{ name: 'Tiramisu', description: 'Traditional tiramisu made with espresso-soaked ladyfingers and mascarpone cream, dusted with cocoa powder', price: '$9.99', note: 'contains gluten' },
 			{ name: 'Traditional NY Cheesecake', description: 'Creamy New York cheesecake on a graham cracker crust', price: '$8.49', note: 'contains gluten' },

@@ -65,7 +65,7 @@ const en = {
 	'home.about.quote':
 		'“A place where children can play, explore, and imagine freely in a safe, beautiful space while parents relax, connect, and enjoy a great café experience: together, but each in your own perfect way.”',
 	'home.about.p1':
-		'We’re a French family from Paris who discovered, on a trip to Taiwan, the joy of a restaurant where kids could play while parents actually dined. We brought that idea to San Gabriel and wrapped it in the art de vivre we grew up with: real cooking, French pastries, and the time to enjoy them.',
+		'My Little Paris is family-owned and operated by a French family from Paris. On a trip to Taiwan, we discovered the joy of a restaurant where kids could play while parents actually dined. We brought that idea to San Gabriel and wrapped it in the art de vivre we grew up with: real cooking, French pastries, and the time to enjoy them.',
 	'home.about.p2':
 		'One promise to make us both look good: reserve ahead. Nothing stings like promising the playground and finding a full house. Reserve a table and your little ones walk straight in.',
 	'home.about.directions': 'Get Directions',
@@ -84,7 +84,7 @@ const en = {
 	// Homepage — space gallery
 	'home.gallery.kicker': 'Our café, playground & private event space',
 	'home.gallery.heading': 'Come See Where the Magic Happens',
-	'home.gallery.sub': 'One welcoming space, made for the whole family: a bright indoor playground for little explorers, café tables close enough to relax, and a private room that transforms for celebrations.',
+	'home.gallery.sub': 'Designed for families with children ages 0–7, our bright San Gabriel space brings together Montessori-inspired wooden play structures, a café where grown-ups can relax nearby, and a private room ready for birthdays and special events.',
 	'home.gallery.book': 'Come Play With Us',
 	'home.gallery.view': 'Explore the Full Gallery',
 	'home.gallery.follow': 'See more moments on Instagram',
@@ -101,10 +101,10 @@ const en = {
 	'gallery.filter.label': 'Filter gallery photos',
 	'gallery.filter.all': 'A Little of Everything',
 	'gallery.filter.events': 'Events',
-	'gallery.filter.food': 'Food',
+	'gallery.filter.buffet': 'Buffet',
+	'gallery.filter.food': 'Dishes',
 	'gallery.filter.space': 'The Space',
 	'gallery.filter.moments': 'Little Moments',
-	'gallery.summary': '{count} photos · {category}',
 	'gallery.aria': 'Photo gallery of My Little Paris',
 	'gallery.lightbox.open': 'Open larger view: {description}',
 	'gallery.lightbox.label': 'Expanded gallery photo',
@@ -202,6 +202,13 @@ const en = {
 	'gallery.photo.parent-afternoon-tea-beside-playground': 'Parent enjoying afternoon tea beside children playing in the indoor playground',
 	'gallery.photo.wooden-playhouse-indoor-play-area': 'Wooden playhouse and soft elephant toy inside the children’s play area',
 	'gallery.photo.private-party-room-pink-table-setup': 'Private party room prepared with a long pink children’s table and gray chairs',
+	'gallery.photo.bright-indoor-playground-corner-overview': 'Corner-to-corner view of the bright My Little Paris indoor playground with wooden slides and imaginative play stations',
+	'gallery.photo.soft-play-room-foam-steps': 'Quiet soft-play room with blue foam steps, floor mats, toy shelves, and a window into the main playground',
+	'gallery.photo.red-toddler-slide-playground-center': 'Red toddler slide centered between the wooden climbing structures in the My Little Paris indoor playground',
+	'gallery.photo.wooden-playhouse-pretend-kitchen-area': 'Wooden playhouse and colorful pretend kitchen area inside the children’s indoor playground',
+	'gallery.photo.wooden-climbing-slide-ride-on-toys': 'Wooden climbing structure with a mint slide and a row of ride-on toys for young children',
+	'gallery.photo.playhouse-activity-tables-wide-view': 'Wide view across the wooden playhouse, child-sized activity tables, slides, and open play floor',
+	'gallery.photo.colorful-indoor-playground-rear-view': 'Rear view of the colorful indoor playground with a playhouse, climbing frames, toddler slide, and soft play equipment',
 	'gallery.photo.cafe-sandwich-beside-indoor-playground': 'Open-faced café sandwich and salad served beside the softly focused indoor playground',
 	'gallery.photo.toddler-montessori-pretend-play': 'Toddler exploring Montessori-style pretend play toys on a soft rug',
 	'gallery.photo.baby-playing-with-wooden-tricycle': 'Baby sitting beside a colorful wooden tricycle in the indoor play area',
@@ -344,6 +351,7 @@ const en = {
 	'party.addons': 'Add-ons',
 	'party.details.view': 'View details',
 	'party.details.heading': 'Compare Private Room Packages',
+	'party.details.fullspace.heading': 'Compare Full Space Packages',
 	'party.details.sub': 'See exactly how many menu items you can choose and which options are available with each package.',
 	'party.details.category': 'Package detail',
 	'party.details.note': 'Menu options are subject to change without notice.',
@@ -464,6 +472,7 @@ const en = {
 	'menu.eat': 'Eat Menu',
 	'menu.drink': 'Drink Menu',
 	'menu.kids': "Kid's Menu",
+	'menu.all': '← All Menus',
 
 	// Eat page
 	'eat.heading': 'Eat',
@@ -471,6 +480,7 @@ const en = {
 	'eat.jump': 'Jump to',
 	'eat.kids.link': "Kid's Menu",
 	'eat.drinks.link': 'Drinks',
+	'eat.desserts.link': 'Desserts',
 	'eat.new': 'NEW',
 
 	// Kids menu page

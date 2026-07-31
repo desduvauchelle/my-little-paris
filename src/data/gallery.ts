@@ -1,4 +1,4 @@
-export const GALLERY_CATEGORIES = ['events', 'food', 'the-space', 'moments'] as const
+export const GALLERY_CATEGORIES = ['events', 'buffet', 'food', 'the-space', 'moments'] as const
 
 export type GalleryCategory = (typeof GALLERY_CATEGORIES)[number]
 
@@ -45,7 +45,7 @@ const GALLERY_PHOTO_SLUGS = {
 		'peach-pink-first-birthday-favor-table',
 		'dinosaur-birthday-party-table',
 	],
-	food: [
+	buffet: [
 		'assorted-savory-party-catering-platter',
 		'fresh-catering-buffet-spread',
 		'party-catering-table-salads-sandwiches',
@@ -57,22 +57,31 @@ const GALLERY_PHOTO_SLUGS = {
 		'fresh-fruit-platter-berries-pineapple',
 		'fresh-berry-melon-party-fruit-platter',
 		'croissants-pain-au-chocolat-party-breakfast',
+	],
+	food: [
 		'kids-turkey-sandwich-fries-cafe',
 		'steak-avocado-feta-salad',
 		'prosciutto-salad-party-appetizers',
 		'smoked-salmon-avocado-salad',
 		'smoked-salmon-radish-avocado-salad',
+		'cafe-sandwich-beside-indoor-playground',
 	],
 	'the-space': [
 		'bright-indoor-playground-wide-view',
 		'colorful-indoor-playground-wide-view',
 		'montessori-inspired-cafe-play-space',
-		'parent-afternoon-tea-beside-playground',
 		'wooden-playhouse-indoor-play-area',
 		'private-party-room-pink-table-setup',
-		'cafe-sandwich-beside-indoor-playground',
+		'bright-indoor-playground-corner-overview',
+		'soft-play-room-foam-steps',
+		'red-toddler-slide-playground-center',
+		'wooden-playhouse-pretend-kitchen-area',
+		'wooden-climbing-slide-ride-on-toys',
+		'playhouse-activity-tables-wide-view',
+		'colorful-indoor-playground-rear-view',
 	],
 	moments: [
+		'parent-afternoon-tea-beside-playground',
 		'toddler-montessori-pretend-play',
 		'baby-playing-with-wooden-tricycle',
 		'toddlers-riding-wooden-elephant-toys',
@@ -96,12 +105,18 @@ export type GalleryPhoto = {
 	altKey: GalleryPhotoAltKey
 }
 
+const SOURCE_DIRECTORY_OVERRIDES: Partial<Record<GalleryPhotoSlug, GalleryCategory>> = {
+	'cafe-sandwich-beside-indoor-playground': 'the-space',
+	'parent-afternoon-tea-beside-playground': 'the-space',
+}
+
 function photos(
 	category: GalleryCategory,
 	slugs: readonly GalleryPhotoSlug[],
+	directory: GalleryCategory = category,
 ): GalleryPhoto[] {
 	return slugs.map((slug) => ({
-		src: `/gallery/processed/${category}/${slug}.jpg`,
+		src: `/gallery/processed/${SOURCE_DIRECTORY_OVERRIDES[slug] ?? directory}/${slug}.jpg`,
 		category,
 		altKey: `gallery.photo.${slug}`,
 	}))
@@ -109,6 +124,7 @@ function photos(
 
 export const GALLERY_PHOTOS: Record<GalleryCategory, GalleryPhoto[]> = {
 	events: photos('events', GALLERY_PHOTO_SLUGS.events),
+	buffet: photos('buffet', GALLERY_PHOTO_SLUGS.buffet, 'food'),
 	food: photos('food', GALLERY_PHOTO_SLUGS.food),
 	'the-space': photos('the-space', GALLERY_PHOTO_SLUGS['the-space']),
 	moments: photos('moments', GALLERY_PHOTO_SLUGS.moments),

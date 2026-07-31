@@ -147,7 +147,6 @@ export default async function PartyPage({
 							filteredLimit={8}
 							shuffleFiltered
 							showFilters={false}
-							showSummary={false}
 							variant="compact"
 						/>
 					</ScrollReveal>

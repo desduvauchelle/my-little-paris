@@ -67,7 +67,7 @@ const fr: Dictionary = {
 	'home.about.quote':
 		'« Un lieu où les enfants jouent, explorent et imaginent librement dans un espace sûr et charmant, pendant que les parents se détendent, échangent et profitent d’un vrai moment de café : ensemble, mais chacun à sa façon. »',
 	'home.about.p1':
-		'Nous sommes une famille parisienne qui a découvert, lors d’un voyage à Taïwan, le bonheur d’un restaurant où les enfants jouent pendant que les parents dînent vraiment. Nous avons apporté cette idée à San Gabriel, enveloppée dans l’art de vivre qui nous a vus grandir : une vraie cuisine, des pâtisseries françaises, et le temps d’en profiter.',
+		'My Little Paris est une entreprise familiale, fondée et gérée par une famille parisienne. Lors d’un voyage à Taïwan, nous avons découvert le bonheur d’un restaurant où les enfants jouent pendant que les parents dînent vraiment. Nous avons apporté cette idée à San Gabriel, enveloppée dans l’art de vivre qui nous a vus grandir : une vraie cuisine, des pâtisseries françaises, et le temps d’en profiter.',
 	'home.about.p2':
 		'Une promesse qui nous rendra service à tous : réservez à l’avance. Rien ne pique plus que de promettre l’aire de jeux et de trouver salle comble. Réservez une table et vos petits entrent directement.',
 	'home.about.directions': 'Itinéraire',
@@ -86,7 +86,7 @@ const fr: Dictionary = {
 	// Homepage — galerie du lieu
 	'home.gallery.kicker': 'Notre café, aire de jeux & espace événementiel privé',
 	'home.gallery.heading': 'Entrez là où la magie opère',
-	'home.gallery.sub': 'Un lieu accueillant pensé pour toute la famille : une aire de jeux lumineuse pour les petits explorateurs, des tables de café juste à côté pour souffler, et un salon privé qui se transforme pour chaque fête.',
+	'home.gallery.sub': 'Conçu pour les familles avec des enfants de 0 à 7 ans, notre espace lumineux de San Gabriel réunit des structures de jeu en bois d’inspiration Montessori, un café où les adultes peuvent se détendre à proximité et un salon privé prêt pour les anniversaires et événements.',
 	'home.gallery.book': 'Venez jouer avec nous',
 	'home.gallery.view': 'Explorer toute la galerie',
 	'home.gallery.follow': 'Voir plus de moments sur Instagram',
@@ -103,10 +103,10 @@ const fr: Dictionary = {
 	'gallery.filter.label': 'Filtrer les photos de la galerie',
 	'gallery.filter.all': 'Un peu de tout',
 	'gallery.filter.events': 'Événements',
-	'gallery.filter.food': 'Cuisine',
+	'gallery.filter.buffet': 'Buffet',
+	'gallery.filter.food': 'Plats',
 	'gallery.filter.space': 'Le lieu',
 	'gallery.filter.moments': 'Petits moments',
-	'gallery.summary': '{count} photos · {category}',
 	'gallery.aria': 'Galerie photo de My Little Paris',
 	'gallery.lightbox.open': 'Agrandir la photo : {description}',
 	'gallery.lightbox.label': 'Photo agrandie de la galerie',
@@ -204,6 +204,13 @@ const fr: Dictionary = {
 	'gallery.photo.parent-afternoon-tea-beside-playground': 'Un parent prend le thé pendant que les enfants jouent dans l’aire de jeux intérieure',
 	'gallery.photo.wooden-playhouse-indoor-play-area': 'Maisonnette en bois et éléphant en peluche dans l’espace de jeux pour enfants',
 	'gallery.photo.private-party-room-pink-table-setup': 'Salon privé préparé avec une longue table rose pour enfants et des chaises grises',
+	'gallery.photo.bright-indoor-playground-corner-overview': 'Vue d’ensemble lumineuse de l’aire de jeux intérieure My Little Paris avec toboggans en bois et espaces de jeu imaginatif',
+	'gallery.photo.soft-play-room-foam-steps': 'Salle de motricité calme avec marches en mousse bleue, tapis de sol, étagères à jouets et vue sur l’aire de jeux principale',
+	'gallery.photo.red-toddler-slide-playground-center': 'Petit toboggan rouge entre les structures d’escalade en bois de l’aire de jeux intérieure My Little Paris',
+	'gallery.photo.wooden-playhouse-pretend-kitchen-area': 'Maisonnette en bois et cuisine miniature colorée dans l’aire de jeux intérieure pour enfants',
+	'gallery.photo.wooden-climbing-slide-ride-on-toys': 'Structure d’escalade en bois avec toboggan vert menthe et rangée de porteurs pour jeunes enfants',
+	'gallery.photo.playhouse-activity-tables-wide-view': 'Vue d’ensemble de la maisonnette en bois, des tables d’activités pour enfants, des toboggans et de l’espace de jeu libre',
+	'gallery.photo.colorful-indoor-playground-rear-view': 'Vue arrière de l’aire de jeux intérieure colorée avec maisonnette, structures d’escalade, petit toboggan et jeux de motricité',
 	'gallery.photo.cafe-sandwich-beside-indoor-playground': 'Tartine et salade du café servies devant l’aire de jeux intérieure en arrière-plan',
 	'gallery.photo.toddler-montessori-pretend-play': 'Un tout-petit explore des jouets d’imitation d’inspiration Montessori sur un tapis moelleux',
 	'gallery.photo.baby-playing-with-wooden-tricycle': 'Un bébé assis à côté d’un tricycle coloré en bois dans l’aire de jeux',
@@ -346,6 +353,7 @@ const fr: Dictionary = {
 	'party.addons': 'Options',
 	'party.details.view': 'Voir les détails',
 	'party.details.heading': 'Comparer les formules Salon privé',
+	'party.details.fullspace.heading': 'Comparer les formules Salle entière',
 	'party.details.sub': 'Découvrez combien de plats vous pouvez choisir et les options disponibles dans chaque formule.',
 	'party.details.category': 'Détail de la formule',
 	'party.details.note': 'Les options du menu peuvent être modifiées sans préavis.',
@@ -466,6 +474,7 @@ const fr: Dictionary = {
 	'menu.eat': 'La carte',
 	'menu.drink': 'Les boissons',
 	'menu.kids': 'Menu enfants',
+	'menu.all': '← Tous les menus',
 
 	// Eat page
 	'eat.heading': 'Manger',
@@ -473,6 +482,7 @@ const fr: Dictionary = {
 	'eat.jump': 'Aller à',
 	'eat.kids.link': 'Menu enfants',
 	'eat.drinks.link': 'Boissons',
+	'eat.desserts.link': 'Desserts',
 	'eat.new': 'NOUVEAU',
 
 	// Kids menu page

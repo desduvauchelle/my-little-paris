@@ -67,7 +67,7 @@ const zh: Dictionary = {
 	'home.about.quote':
 		'“一个孩子可以在安全、美好的空间里自由玩耍、探索和想象，家长可以放松、交流、享受咖啡馆时光的地方：在一起，又各得其乐。”',
 	'home.about.p1':
-		'我们是来自巴黎的法国家庭。在一次台湾之旅中，我们发现了一家孩子可以玩耍、父母可以安心用餐的餐厅，深受启发。我们把这个理念带到了圣盖博，并注入了我们从小熟悉的法式生活艺术（art de vivre）：用心的料理、法式甜点，以及慢慢享受它们的时光。',
+		'My Little Paris 由一个来自巴黎的法国家庭创办并亲自经营。在一次台湾之旅中，我们发现了一家孩子可以玩耍、父母可以安心用餐的餐厅，深受启发。我们把这个理念带到了圣盖博，并注入了我们从小熟悉的法式生活艺术（art de vivre）：用心的料理、法式甜点，以及慢慢享受它们的时光。',
 	'home.about.p2':
 		'一个小小的约定，让彼此都开心：请提前预订。答应了孩子来游乐场、到了却客满，最让人失落。订好位子，小朋友直接入场。',
 	'home.about.directions': '获取路线',
@@ -86,7 +86,7 @@ const zh: Dictionary = {
 	// 首页 — 场地相册
 	'home.gallery.kicker': '咖啡馆、游乐区与私人活动空间',
 	'home.gallery.heading': '走进欢乐发生的地方',
-	'home.gallery.sub': '一个让全家都舒心的空间：明亮的室内游乐区让小小探险家尽情玩耍，旁边就是可以放松用餐的咖啡座，还有可为庆祝活动焕然一新的私人派对房。',
+	'home.gallery.sub': '我们位于圣盖博的明亮空间专为 0 至 7 岁儿童家庭设计，设有蒙特梭利风格木制游乐设施、方便家长在旁放松的咖啡座，以及适合生日与特别活动的私人派对房。',
 	'home.gallery.book': '来和我们一起玩',
 	'home.gallery.view': '浏览完整相册',
 	'home.gallery.follow': '在 Instagram 查看更多精彩瞬间',
@@ -103,10 +103,10 @@ const zh: Dictionary = {
 	'gallery.filter.label': '筛选相册照片',
 	'gallery.filter.all': '缤纷一览',
 	'gallery.filter.events': '活动',
-	'gallery.filter.food': '美食',
+	'gallery.filter.buffet': '自助餐',
+	'gallery.filter.food': '单点菜品',
 	'gallery.filter.space': '空间',
 	'gallery.filter.moments': '欢乐瞬间',
-	'gallery.summary': '{count} 张照片 · {category}',
 	'gallery.aria': 'My Little Paris 照片相册',
 	'gallery.lightbox.open': '放大查看：{description}',
 	'gallery.lightbox.label': '相册大图浏览',
@@ -204,6 +204,13 @@ const zh: Dictionary = {
 	'gallery.photo.parent-afternoon-tea-beside-playground': '家长在室内游乐场旁享用下午茶，孩子们在一旁玩耍',
 	'gallery.photo.wooden-playhouse-indoor-play-area': '儿童游乐区内的木制游戏屋与柔软大象玩偶',
 	'gallery.photo.private-party-room-pink-table-setup': '摆有粉色儿童长桌和灰色座椅的私人派对房',
+	'gallery.photo.bright-indoor-playground-corner-overview': 'My Little Paris 明亮室内游乐场全景，设有木制滑梯和多种想象游戏区',
+	'gallery.photo.soft-play-room-foam-steps': '安静的软体活动室，设有蓝色泡棉台阶、地垫、玩具架和通往主游乐区的观察窗',
+	'gallery.photo.red-toddler-slide-playground-center': 'My Little Paris 室内游乐场木制攀爬设施之间的红色幼儿滑梯',
+	'gallery.photo.wooden-playhouse-pretend-kitchen-area': '儿童室内游乐场里的木制游戏屋和彩色迷你厨房',
+	'gallery.photo.wooden-climbing-slide-ride-on-toys': '配有薄荷绿滑梯的木制攀爬设施和一排幼儿骑乘玩具',
+	'gallery.photo.playhouse-activity-tables-wide-view': '木制游戏屋、儿童活动桌、滑梯和开放式游乐区全景',
+	'gallery.photo.colorful-indoor-playground-rear-view': '缤纷室内游乐场后方视角，包含游戏屋、攀爬架、幼儿滑梯和软体游乐设施',
 	'gallery.photo.cafe-sandwich-beside-indoor-playground': '室内游乐场旁供应的开放式咖啡馆三明治与沙拉',
 	'gallery.photo.toddler-montessori-pretend-play': '幼儿在软垫上探索蒙特梭利风格的角色扮演玩具',
 	'gallery.photo.baby-playing-with-wooden-tricycle': '宝宝坐在室内游乐区的彩色木制三轮车旁',
@@ -346,6 +353,7 @@ const zh: Dictionary = {
 	'party.addons': '加购项目',
 	'party.details.view': '查看详情',
 	'party.details.heading': '私人派对房套餐对比',
+	'party.details.fullspace.heading': '整场包场套餐对比',
 	'party.details.sub': '查看每个套餐可选择的菜单项目数量及具体选项。',
 	'party.details.category': '套餐详情',
 	'party.details.note': '菜单选项如有变更，恕不另行通知。',
@@ -463,6 +471,7 @@ const zh: Dictionary = {
 	'menu.eat': '美食菜单',
 	'menu.drink': '饮品菜单',
 	'menu.kids': '儿童菜单',
+	'menu.all': '← 全部菜单',
 
 	// Eat page
 	'eat.heading': '美食',
@@ -470,6 +479,7 @@ const zh: Dictionary = {
 	'eat.jump': '快速跳转',
 	'eat.kids.link': '儿童菜单',
 	'eat.drinks.link': '饮品',
+	'eat.desserts.link': '甜点',
 	'eat.new': '新品',
 
 	// Kids menu page
