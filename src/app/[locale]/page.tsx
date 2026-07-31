@@ -8,7 +8,6 @@ import { getDb, safeQuery } from '@/lib/db'
 import { localePrefix, localizedPath } from '@/lib/i18n-utils'
 import { buildPageMetadata } from '@/lib/seo'
 import { LINKS } from '@/data/site'
-import { FEATURED_DISHES } from '@/data/menu'
 import { Hero } from '@/components/landing/Hero'
 import { Pillars } from '@/components/landing/Pillars'
 import { Newsletter } from '@/components/landing/Newsletter'
@@ -18,7 +17,6 @@ import { HowItWorks } from '@/components/landing/HowItWorks'
 import { PhotoGallery } from '@/components/gallery/PhotoGallery'
 import { InstagramPostEmbed } from '@/components/social/InstagramPostEmbed'
 import { getInstagramPost } from '@/lib/instagram'
-import { cn } from '@/lib/utils'
 
 export const revalidate = 60
 
@@ -92,46 +90,6 @@ export default async function HomePage({
 						<a href={LINKS.instagram} target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-sm text-primary">
 							{dict['home.gallery.follow']} →
 						</a>
-					</div>
-				</div>
-			</section>
-
-			{/* Food showcase */}
-			<section className="py-20 bg-base-200">
-				<div className="container mx-auto px-4">
-					<div className="text-center mb-12">
-						<h2 className="font-display text-4xl text-primary mb-3">{dict['home.food.heading']}</h2>
-						<p className="text-base-content/70 max-w-2xl mx-auto">{dict['home.food.sub']}</p>
-					</div>
-					<ScrollReveal y={40} stagger={0.12} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-						{FEATURED_DISHES.map((dish) => (
-							<div key={dish.name} className="card bg-base-100 shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
-								<figure className="relative h-60">
-									<Image
-										src={dish.image}
-										alt={dish.name}
-										fill
-										sizes="(max-width: 768px) 100vw, 33vw"
-										className={cn('object-cover', dish.imagePosition)}
-									/>
-								</figure>
-								<div className="card-body py-5">
-									<div className="flex items-baseline justify-between gap-3">
-										<h3 className="card-title font-display text-xl text-primary">{dish.name}</h3>
-										<span className="font-semibold text-primary whitespace-nowrap text-sm">{dish.price}</span>
-									</div>
-									<p className="text-sm text-base-content/70">{dish.description}</p>
-								</div>
-							</div>
-						))}
-					</ScrollReveal>
-					<div className="flex flex-wrap justify-center gap-3 mt-10">
-						<Link href={localizedPath('/eat', locale)} className="btn btn-primary">
-							{dict['home.food.cta']}
-						</Link>
-						<Link href={localizedPath('/kidsmenu', locale)} className="btn btn-outline btn-primary">
-							{dict['menu.kids']}
-						</Link>
 					</div>
 				</div>
 			</section>
