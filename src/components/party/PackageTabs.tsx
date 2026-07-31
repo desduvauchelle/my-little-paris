@@ -236,12 +236,12 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 						aria-label={detailsHeading}
 						className="overflow-x-auto overscroll-x-contain rounded-box border border-base-300 bg-base-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
 					>
-						<table className="table table-fixed min-w-[64rem] align-top">
+						<table className="table table-fixed min-w-[52rem] align-top">
 							<caption className="sr-only">{detailsHeading}</caption>
 							<colgroup>
-								<col className="w-36" />
+								<col className="w-32" />
 								{packageDetails.map((details) => (
-									<col key={details.id} className="w-72" />
+									<col key={details.id} className="w-60" />
 								))}
 							</colgroup>
 							<thead>
@@ -259,15 +259,20 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 												details.id === popularPackageId && 'bg-secondary/10',
 											)}
 										>
-											<span className="block text-xs uppercase tracking-wide text-base-content/65">{details.level}</span>
+											<span className="flex h-5 items-start">
+												{details.id === popularPackageId ? (
+													<span className="badge badge-secondary badge-sm normal-case">
+														{dict['party.badge.popular']}
+													</span>
+												) : (
+													<span className="text-xs uppercase tracking-wide text-base-content/65">{details.level}</span>
+												)}
+											</span>
 											<span className="block font-display text-2xl normal-case text-primary mt-1">{details.name}</span>
-											{details.id === popularPackageId && (
-												<span className="badge badge-secondary badge-sm mt-2 normal-case">
-													{dict['party.badge.popular']}
-												</span>
-											)}
-											<span className="block text-xs normal-case font-normal text-base-content/65 mt-2 leading-relaxed">
-												{details.summary}
+											<span className="block whitespace-normal text-xs normal-case font-normal text-base-content/65 mt-2 leading-relaxed">
+												{details.summary.split(' · ').map((item) => (
+													<span key={item} className="block">{item}</span>
+												))}
 											</span>
 										</th>
 									))}
