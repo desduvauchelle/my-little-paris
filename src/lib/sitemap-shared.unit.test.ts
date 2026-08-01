@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+import { GALLERY_CATEGORIES, GALLERY_PHOTOS } from '@/data/gallery'
 
 describe('sitemap-shared', () => {
 	const originalEnv = process.env
@@ -103,10 +104,18 @@ describe('sitemap-shared', () => {
 		it('includes every gallery photo in the gallery image sitemap entry', async () => {
 			const { buildStaticEntries } = await load()
 			const gallery = buildStaticEntries().find((entry) => entry.url === 'https://example.com/gallery')
-			expect(gallery?.images).toHaveLength(72)
+			const galleryPhotoCount = GALLERY_CATEGORIES.reduce(
+				(total, category) => total + GALLERY_PHOTOS[category].length,
+				0,
+			)
+			expect(gallery?.images).toHaveLength(galleryPhotoCount)
 			expect(gallery?.images?.[0]).toEqual({
 				loc: 'https://example.com/gallery/processed/events/pink-floral-first-birthday-table-san-gabriel.jpg',
 				caption: 'Pink and peach floral first birthday table with a balloon arch at My Little Paris in San Gabriel',
+			})
+			expect(gallery?.images).toContainEqual({
+				loc: 'https://example.com/gallery/processed/food/tomato-bruschetta-mixed-greens-cafe.jpg',
+				caption: 'Tomato bruschetta with herbed cheese, balsamic glaze, and mixed greens served beside the playground',
 			})
 		})
 

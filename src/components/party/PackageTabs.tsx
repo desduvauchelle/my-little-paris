@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { Dictionary } from '@/i18n'
 import {
 	PACKAGE_FORM_VALUES,
@@ -39,6 +39,8 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 	const [active, setActive] = useState(0)
 	const [catered, setCatered] = useState(true)
 	const [selectedPackage, setSelectedPackage] = useState<PartyPackageSelection | null>(null)
+	const [selectedPackageDetails, setSelectedPackageDetails] = useState<PackageComparisonDetail | null>(null)
+	const detailsDialogRef = useRef<HTMLDialogElement>(null)
 	const group = PACKAGE_GROUPS[active]
 	const variant = catered ? group.catered : group.rentalOnly
 	const detailRows = group.id === 'private-room' ? PRIVATE_ROOM_DETAIL_ROWS : FULL_SPACE_DETAIL_ROWS
@@ -74,30 +76,35 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 	}
 
 	function handleViewDetails(packageId: PrivateRoomPackageId | FullSpacePackageId) {
-		requestAnimationFrame(() => {
-			const scroller = document.getElementById('package-details-table-scroll')
-			const column = document.querySelector<HTMLElement>(`[data-detail-package="${packageId}"]`)
-			const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-			if (scroller && column) {
-				scroller.scrollTo({
-					left: Math.max(0, column.offsetLeft - 144),
-					behavior: reduceMotion ? 'auto' : 'smooth',
-				})
-			}
-		})
+		const details = packageDetails.find((partyPackage) => partyPackage.id === packageId)
+		if (details) setSelectedPackageDetails(details)
 	}
+
+	function closePackageDetails() {
+		detailsDialogRef.current?.close()
+	}
+
+	useEffect(() => {
+		if (selectedPackageDetails && !detailsDialogRef.current?.open) {
+			detailsDialogRef.current?.showModal()
+		}
+	}, [selectedPackageDetails])
 
 	return (
 		<div>
 			{/* Tab buttons */}
-			<div role="group" aria-label={dict['party.packages.heading']} className="flex flex-wrap justify-center gap-3 mb-5">
+			<div role="group" aria-label={dict['party.packages.heading']} className="flex flex-wrap justify-center gap-3 md:gap-5 mb-5">
 				{PACKAGE_GROUPS.map((g, i) => (
 					<button
 						key={g.id}
 						aria-pressed={active === i}
 						onClick={() => setActive(i)}
-						className={cn('btn rounded-full', active === i ? 'btn-primary' : 'btn-outline btn-primary')}
+						className={cn(
+							'btn rounded-full transition-all md:min-h-14 md:min-w-60 md:border-2 md:px-8 md:text-lg',
+							active === i
+								? 'btn-primary md:shadow-lg'
+								: 'btn-outline btn-primary md:bg-base-100 md:shadow-sm md:hover:shadow-md',
+						)}
 					>
 						{g.emoji} {g.label}
 					</button>
@@ -187,13 +194,13 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 							</div>
 							<div className="card-actions flex-col gap-2 mt-6">
 								{showPackageDetails && hasDetails && (
-									<a
-										href="#package-details"
+									<button
+										type="button"
 										onClick={() => handleViewDetails(pkg.id as PrivateRoomPackageId | FullSpacePackageId)}
 										className="btn btn-ghost btn-sm btn-block text-primary font-medium"
 									>
-										{dict['party.details.view']} ↓
-									</a>
+										{dict['party.details.view']}
+									</button>
 								)}
 								<BalloonCelebration>
 									<button type="button" onClick={() => handlePackageInquiry(pkg)} className="btn btn-primary btn-block">
@@ -221,13 +228,12 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 			</div>
 
 			{showPackageDetails && (
-				<section id="package-details" className="scroll-mt-24 mt-16" aria-labelledby="package-details-heading">
+				<section id="package-details" className="hidden scroll-mt-24 mt-16 md:block" aria-labelledby="package-details-heading">
 					<div className="text-center max-w-2xl mx-auto mb-8">
 						<h3 id="package-details-heading" className="font-display text-3xl text-primary">
 							{detailsHeading}
 						</h3>
 						<p className="text-sm text-base-content/65 mt-2">{dict['party.details.sub']}</p>
-						<p className="sm:hidden text-xs font-medium text-primary mt-3">{dict['party.details.swipe']} →</p>
 					</div>
 
 					<div
@@ -317,6 +323,78 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 					<p className="text-xs text-base-content/65 text-center mt-4">{dict['party.details.note']}</p>
 				</section>
 			)}
+
+			<dialog
+				ref={detailsDialogRef}
+				onClose={() => setSelectedPackageDetails(null)}
+				onCancel={(event) => {
+					event.preventDefault()
+					closePackageDetails()
+				}}
+				onClick={(event) => {
+					if (event.target === event.currentTarget) closePackageDetails()
+				}}
+				aria-modal="true"
+				aria-labelledby="package-details-dialog-heading"
+				className="fixed inset-0 m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-xl overflow-y-auto rounded-box bg-base-100 p-0 text-base-content shadow-2xl backdrop:bg-primary/70"
+			>
+				{selectedPackageDetails && (
+					<div className="relative p-6 sm:p-8">
+						<button
+							type="button"
+							onClick={closePackageDetails}
+							autoFocus
+							aria-label={dict['party.details.close']}
+							className="btn btn-circle btn-ghost btn-sm absolute right-4 top-4 text-xl text-primary"
+						>
+							<span aria-hidden="true">×</span>
+						</button>
+
+						<div className="border-b border-base-300 pb-5 pr-10">
+							{selectedPackageDetails.id === popularPackageId ? (
+								<span className="badge badge-secondary badge-sm">{dict['party.badge.popular']}</span>
+							) : (
+								<p className="text-xs uppercase tracking-wide text-base-content/65">{selectedPackageDetails.level}</p>
+							)}
+							<h3 id="package-details-dialog-heading" className="mt-2 font-display text-3xl text-primary">
+								{selectedPackageDetails.name}
+							</h3>
+							<p className="mt-2 text-sm leading-relaxed text-base-content/70">
+								{selectedPackageDetails.summary}
+							</p>
+						</div>
+
+						<dl className="divide-y divide-base-300">
+							{detailRows.map((row) => {
+								const cell = selectedPackageDetails.details[row.id]
+
+								return (
+									<div key={row.id} className="py-5">
+										<dt className="text-sm font-semibold text-primary">{row.label}</dt>
+										<dd className="mt-2">
+											<p className="text-sm font-semibold">{cell.selection}</p>
+											{cell.items.length > 0 && (
+												<ul className="mt-2 space-y-1 text-sm leading-relaxed text-base-content/70">
+													{cell.items.map((item) => (
+														<li key={item} className="flex gap-2">
+															<span className="text-secondary" aria-hidden="true">•</span>
+															<span>{item}</span>
+														</li>
+													))}
+												</ul>
+											)}
+										</dd>
+									</div>
+								)
+							})}
+						</dl>
+
+						<p className="border-t border-base-300 pt-5 text-center text-xs text-base-content/65">
+							{dict['party.details.note']}
+						</p>
+					</div>
+				)}
+			</dialog>
 
 			<section id="party-inquiry" className="scroll-mt-24 max-w-2xl mx-auto mt-16 pt-16 border-t border-base-300">
 				<div className="text-center mb-8">

@@ -146,7 +146,6 @@ export default async function PartyPage({
 							seed={gallerySeed}
 							filteredLimit={8}
 							shuffleFiltered
-							showFilters={false}
 							variant="compact"
 						/>
 					</ScrollReveal>

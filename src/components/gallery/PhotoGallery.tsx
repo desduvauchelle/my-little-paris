@@ -18,6 +18,7 @@ import {
 	type GalleryCategory,
 	type GalleryPhoto,
 } from '@/data/gallery'
+import { getGalleryPhotoAlt } from '@/lib/gallery-alt'
 import { cn } from '@/lib/utils'
 
 export type GallerySelection = GalleryCategory | 'all'
@@ -50,13 +51,18 @@ function sample(items: GalleryPhoto[], count: number, random: () => number) {
 	return copy.slice(0, count)
 }
 
-function mixedOverview(seed: number, perCategory: number) {
+function mixedOverview(seed: number) {
 	const random = seededRandom(seed)
-	const sampled = GALLERY_CATEGORIES.map((category) =>
-		sample(GALLERY_PHOTOS[category], perCategory, random),
+	const shuffledCategories = GALLERY_CATEGORIES.map((category) =>
+		sample(GALLERY_PHOTOS[category], GALLERY_PHOTOS[category].length, random),
 	)
-	return Array.from({ length: perCategory }, (_, imageIndex) =>
-		sampled.map((categoryPhotos) => categoryPhotos[imageIndex]),
+	const longestCategory = Math.max(...shuffledCategories.map((photos) => photos.length))
+
+	return Array.from({ length: longestCategory }, (_, imageIndex) =>
+		shuffledCategories.flatMap((categoryPhotos) => {
+			const photo = categoryPhotos[imageIndex]
+			return photo ? [photo] : []
+		}),
 	).flat()
 }
 
@@ -67,7 +73,6 @@ export function PhotoGallery({
 	mixedCountPerCategory = 2,
 	filteredLimit,
 	shuffleFiltered = false,
-	showFilters = true,
 	syncSelectionToUrl = false,
 	variant = 'default',
 }: {
@@ -77,7 +82,6 @@ export function PhotoGallery({
 	mixedCountPerCategory?: number
 	filteredLimit?: number
 	shuffleFiltered?: boolean
-	showFilters?: boolean
 	syncSelectionToUrl?: boolean
 	variant?: 'default' | 'compact'
 }) {
@@ -87,10 +91,16 @@ export function PhotoGallery({
 	const dialogRef = useRef<HTMLDialogElement>(null)
 	const lightboxTitleId = useId()
 	const lightboxDescriptionId = useId()
+	const pageSize = filteredLimit ?? mixedCountPerCategory * GALLERY_CATEGORIES.length
+	const [visibleCount, setVisibleCount] = useState(pageSize)
 
 	useEffect(() => {
 		setActiveCategory(initialCategory)
 	}, [initialCategory])
+
+	useEffect(() => {
+		setVisibleCount(pageSize)
+	}, [activeCategory, pageSize])
 
 	useEffect(() => {
 		if (!syncSelectionToUrl) return
@@ -105,22 +115,20 @@ export function PhotoGallery({
 		window.addEventListener('popstate', handleHistoryChange)
 		return () => window.removeEventListener('popstate', handleHistoryChange)
 	}, [syncSelectionToUrl])
-	const overview = useMemo(
-		() => mixedOverview(seed, mixedCountPerCategory),
-		[seed, mixedCountPerCategory],
-	)
+	const overview = useMemo(() => mixedOverview(seed), [seed])
 
-	const visiblePhotos = useMemo(() => {
+	const availablePhotos = useMemo(() => {
 		if (activeCategory === 'all') return overview
-		const categoryPhotos = shuffleFiltered
+		return shuffleFiltered
 			? sample(GALLERY_PHOTOS[activeCategory], GALLERY_PHOTOS[activeCategory].length, seededRandom(seed))
 			: GALLERY_PHOTOS[activeCategory]
-		return filteredLimit ? categoryPhotos.slice(0, filteredLimit) : categoryPhotos
-	}, [activeCategory, filteredLimit, overview, seed, shuffleFiltered])
+	}, [activeCategory, overview, seed, shuffleFiltered])
+	const visiblePhotos = availablePhotos.slice(0, visibleCount)
+	const hasMorePhotos = visibleCount < availablePhotos.length
 
 	const lightboxPhoto = lightboxIndex === null ? null : visiblePhotos[lightboxIndex]
 	const lightboxAlt = lightboxPhoto
-		? dict[lightboxPhoto.altKey as keyof Dictionary]
+		? getGalleryPhotoAlt(dict, lightboxPhoto)
 		: ''
 
 	const selectCategory = (category: GallerySelection) => {
@@ -158,35 +166,33 @@ export function PhotoGallery({
 
 	return (
 		<div className="w-full">
-			{showFilters && (
-				<div className="mb-7 flex flex-col gap-4 border-b border-primary/15 pb-5 sm:flex-row sm:items-center sm:justify-between">
-					<div
-						className="flex max-w-full gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible"
-						aria-label={dict['gallery.filter.label']}
-					>
-						{(['all', ...GALLERY_CATEGORIES] as GallerySelection[]).map((category) => {
-							const isActive = activeCategory === category
-							const label = category === 'all' ? dict['gallery.filter.all'] : dict[CATEGORY_KEYS[category]]
-							return (
-								<button
-									key={category}
-									type="button"
-									aria-pressed={isActive}
-									onClick={() => selectCategory(category)}
-									className={cn(
-										'focus-visible:outline-primary shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
-										isActive
-											? 'border-primary bg-primary text-primary-content'
-											: 'border-primary/20 bg-base-100 text-primary hover:border-secondary hover:bg-secondary/10',
-									)}
-								>
-									{label}
-								</button>
-							)
-						})}
-					</div>
+			<div className="mb-7 flex flex-col gap-4 border-b border-primary/15 pb-5 sm:flex-row sm:items-center sm:justify-between">
+				<div
+					className="flex max-w-full gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible"
+					aria-label={dict['gallery.filter.label']}
+				>
+					{(['all', ...GALLERY_CATEGORIES] as GallerySelection[]).map((category) => {
+						const isActive = activeCategory === category
+						const label = category === 'all' ? dict['gallery.filter.all'] : dict[CATEGORY_KEYS[category]]
+						return (
+							<button
+								key={category}
+								type="button"
+								aria-pressed={isActive}
+								onClick={() => selectCategory(category)}
+								className={cn(
+									'focus-visible:outline-primary shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
+									isActive
+										? 'border-primary bg-primary text-primary-content'
+										: 'border-primary/20 bg-base-100 text-primary hover:border-secondary hover:bg-secondary/10',
+								)}
+							>
+								{label}
+							</button>
+						)
+					})}
 				</div>
-			)}
+			</div>
 
 			<div
 				key={activeCategory}
@@ -200,7 +206,7 @@ export function PhotoGallery({
 			>
 				{visiblePhotos.map((photo, index) => {
 					const landscape = index % 5 === 0 || index % 7 === 0
-					const alt = dict[photo.altKey as keyof Dictionary]
+					const alt = getGalleryPhotoAlt(dict, photo)
 					return (
 						<figure
 							key={photo.src}
@@ -238,6 +244,18 @@ export function PhotoGallery({
 					)
 				})}
 			</div>
+
+			{hasMorePhotos && (
+				<div className="mt-8 flex justify-center">
+					<button
+						type="button"
+						onClick={() => setVisibleCount((count) => count + pageSize)}
+						className="btn btn-outline btn-primary"
+					>
+						{dict['gallery.loadMore']}
+					</button>
+				</div>
+			)}
 
 			<dialog
 				ref={dialogRef}

@@ -12,10 +12,18 @@ const allPhotos = GALLERY_CATEGORIES.flatMap((category) => GALLERY_PHOTOS[catego
 
 describe('gallery SEO metadata', () => {
 	it('separates birthday buffet photos from individual dishes', () => {
-		expect(GALLERY_PHOTOS.buffet).toHaveLength(11)
-		expect(GALLERY_PHOTOS.food).toHaveLength(17)
+		expect(GALLERY_PHOTOS.buffet).toHaveLength(17)
+		expect(GALLERY_PHOTOS.food).toHaveLength(12)
 		expect(GALLERY_PHOTOS.buffet.every((photo) => photo.category === 'buffet')).toBe(true)
 		expect(GALLERY_PHOTOS.food.every((photo) => photo.category === 'food')).toBe(true)
+		expect(GALLERY_PHOTOS.buffet.map((photo) => photo.altKey)).toEqual(expect.arrayContaining([
+			'gallery.photo.prosciutto-salad-party-appetizers',
+			'gallery.photo.croque-monsieur-party-bites-platter',
+			'gallery.photo.birthday-toasted-sandwiches-party-platter',
+			'gallery.photo.smoked-salmon-canapes-hello-kitty-party',
+			'gallery.photo.pizza-sliders-fries-party-buffet',
+			'gallery.photo.smoked-salmon-crostini-party-platter-closeup',
+		]))
 		expect(GALLERY_PHOTOS.food).toContainEqual({
 			src: '/gallery/processed/the-space/cafe-sandwich-beside-indoor-playground.jpg',
 			category: 'food',
@@ -29,7 +37,7 @@ describe('gallery SEO metadata', () => {
 	})
 
 	it('keeps every gallery photo in the manifest with a descriptive filename', () => {
-		expect(allPhotos).toHaveLength(98)
+		expect(allPhotos).toHaveLength(99)
 		expect(new Set(allPhotos.map((photo) => photo.src)).size).toBe(allPhotos.length)
 
 		for (const photo of allPhotos) {

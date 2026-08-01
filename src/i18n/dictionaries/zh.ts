@@ -47,7 +47,8 @@ const zh: Dictionary = {
 	// Homepage — pillars
 	'home.pillar.play.title': '玩',
 	'home.pillar.play.tagline': '两小时 Eat & Play',
-	'home.pillar.play.body': '每位儿童 $12.99（兄弟姐妹 $10.99，婴儿免费），即可享受两小时蒙特梭利风格游乐时光（0–7 岁），您也能安心坐下吃顿好饭。',
+	'home.pillar.play.special': '☀️ 特惠 · $5 PlayPass',
+	'home.pillar.play.body': '限时优惠：每位儿童仅需 $5，需达到最低餐饮消费（原价 $12.99）。1 岁以下婴儿免费。优惠有效期至 8 月 31 日，欢迎直接到店。',
 	'home.pillar.play.cta': '查看入场详情',
 	'home.pillar.party.title': '派对',
 	'home.pillar.party.tagline': '生日派对，全程包办',
@@ -107,6 +108,7 @@ const zh: Dictionary = {
 	'gallery.filter.food': '单点菜品',
 	'gallery.filter.space': '空间',
 	'gallery.filter.moments': '欢乐瞬间',
+	'gallery.loadMore': '加载更多',
 	'gallery.aria': 'My Little Paris 照片相册',
 	'gallery.lightbox.open': '放大查看：{description}',
 	'gallery.lightbox.label': '相册大图浏览',
@@ -194,6 +196,7 @@ const zh: Dictionary = {
 	'gallery.photo.fresh-berry-melon-party-fruit-platter': '包含哈密瓜、菠萝、草莓、覆盆子和蓝莓的派对果盘',
 	'gallery.photo.croissants-pain-au-chocolat-party-breakfast': '晨间庆典供应的新鲜可颂、巧克力可颂与水果拼盘',
 	'gallery.photo.kids-turkey-sandwich-fries-cafe': 'My Little Paris 咖啡馆供应的儿童火鸡三明治与薯条',
+	'gallery.photo.tomato-bruschetta-mixed-greens-cafe': '游乐场旁供应的番茄香草奶酪意式烤面包，搭配黑醋汁和混合绿叶菜',
 	'gallery.photo.steak-avocado-feta-salad': '游乐场旁供应的牛排沙拉，搭配牛油果、菲达奶酪、黄瓜和焦糖洋葱',
 	'gallery.photo.prosciutto-salad-party-appetizers': '为庆典餐饮单独准备的意式火腿沙拉小食',
 	'gallery.photo.smoked-salmon-avocado-salad': '搭配萝卜、黄瓜、番茄和混合绿叶菜的烟熏三文鱼牛油果沙拉',
@@ -371,6 +374,7 @@ const zh: Dictionary = {
 	'party.badge.allinclusive': '✦ 一价全包',
 	'party.addons': '加购项目',
 	'party.details.view': '查看详情',
+	'party.details.close': '关闭套餐详情',
 	'party.details.heading': '私人派对房套餐对比',
 	'party.details.fullspace.heading': '整场包场套餐对比',
 	'party.details.sub': '查看每个套餐可选择的菜单项目数量及具体选项。',
@@ -598,6 +602,7 @@ const zh: Dictionary = {
 	'footer.waiver': '提前签署免责声明更省时',
 	'footer.reserve': '立即预订',
 	'footer.visit.heading': '到店地址',
+	'footer.languages': '我们会说英语、法语和普通话。',
 	'footer.map.title': '谷歌地图：位于圣盖博的 My Little Paris Café & Play',
 
 	// Contact

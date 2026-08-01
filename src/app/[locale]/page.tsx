@@ -102,13 +102,15 @@ export default async function HomePage({
 				<div className="container mx-auto px-4">
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
 						<ScrollReveal y={30}>
-							<Image
-								src="/images/party-photo-1.webp"
-								alt="Children playing in the My Little Paris play space"
-								width={640}
-								height={480}
-								className="rounded-box shadow-md w-full object-cover"
-							/>
+							<div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-box shadow-md lg:max-w-none">
+								<Image
+									src="/images/my-little-paris-family.jpg"
+									alt="The My Little Paris family celebrating together beneath a pastel balloon arch"
+									fill
+									sizes="(max-width: 1024px) 448px, 50vw"
+									className="object-cover"
+								/>
+							</div>
 						</ScrollReveal>
 						<ScrollReveal y={30} delay={0.1}>
 							<h2 className="font-display text-4xl text-primary mb-4">{dict['home.about.heading']}</h2>

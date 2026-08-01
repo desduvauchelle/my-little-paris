@@ -6,7 +6,7 @@ import { ScrollReveal } from './ScrollReveal'
 
 const PILLARS = [
 	{ key: 'eat', href: '/eat', image: '/images/pesto-sandwich.webp' },
-	{ key: 'drink', href: '/drink', image: '/images/drink-menu-tile.webp' },
+	{ key: 'drink', href: '/drink', image: '/images/drink-menu-card.jpg' },
 	{ key: 'play', href: '/play', image: '/images/playspace.webp' },
 	{ key: 'party', href: '/party', image: '/images/party-photo-2.webp' },
 ] as const
@@ -26,6 +26,11 @@ export function Pillars({ dict, locale }: { dict: Dictionary; locale: string }) 
 									sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
 									className="object-cover"
 								/>
+								{pillar.key === 'play' && (
+									<span className="badge badge-secondary absolute left-4 top-4 h-auto px-3 py-2 text-sm font-bold shadow-md">
+										{dict['home.pillar.play.special']}
+									</span>
+								)}
 							</figure>
 							<div className="card-body">
 								<h2 className="card-title font-display text-2xl text-primary">

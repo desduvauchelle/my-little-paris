@@ -46,13 +46,15 @@ export default async function OurStoryPage({
 					</ScrollReveal>
 
 					<ScrollReveal y={30}>
-						<Image
-							src="/images/playspace.webp"
-							alt="The My Little Paris indoor play space"
-							width={800}
-							height={600}
-							className="rounded-box shadow-md w-full object-cover mb-12"
-						/>
+						<div className="relative mx-auto mb-12 aspect-[4/5] w-full max-w-xl overflow-hidden rounded-box shadow-md">
+							<Image
+								src="/images/my-little-paris-family.jpg"
+								alt="The My Little Paris family celebrating together beneath a pastel balloon arch"
+								fill
+								sizes="(max-width: 640px) 100vw, 576px"
+								className="object-cover"
+							/>
+						</div>
 					</ScrollReveal>
 
 					<ScrollReveal y={30}>

@@ -45,7 +45,8 @@ const en = {
 	// Homepage — pillars
 	'home.pillar.play.title': 'Play',
 	'home.pillar.play.tagline': 'The 2-hour Eat & Play',
-	'home.pillar.play.body': '$12.99 per child ($10.99 siblings, babies free) buys two full hours of Montessori-inspired play for ages 0–7, and buys you an actual sit-down meal.',
+	'home.pillar.play.special': '☀️ Special · $5 PlayPass',
+	'home.pillar.play.body': 'Limited-time offer: just $5 per child with a minimum food purchase (regularly $12.99). Babies under 1 are free. Valid through August 31; walk-ins welcome.',
 	'home.pillar.play.cta': 'See Play Admission',
 	'home.pillar.party.title': 'Party',
 	'home.pillar.party.tagline': 'Birthdays, fully handled',
@@ -105,6 +106,7 @@ const en = {
 	'gallery.filter.food': 'Dishes',
 	'gallery.filter.space': 'The Space',
 	'gallery.filter.moments': 'Little Moments',
+	'gallery.loadMore': 'Load more',
 	'gallery.aria': 'Photo gallery of My Little Paris',
 	'gallery.lightbox.open': 'Open larger view: {description}',
 	'gallery.lightbox.label': 'Expanded gallery photo',
@@ -192,6 +194,7 @@ const en = {
 	'gallery.photo.fresh-berry-melon-party-fruit-platter': 'Party fruit platter with cantaloupe, pineapple, strawberries, raspberries, and blueberries',
 	'gallery.photo.croissants-pain-au-chocolat-party-breakfast': 'Fresh croissants and pains au chocolat served with a fruit platter at a morning celebration',
 	'gallery.photo.kids-turkey-sandwich-fries-cafe': 'Kids turkey sandwich with french fries served in the My Little Paris café',
+	'gallery.photo.tomato-bruschetta-mixed-greens-cafe': 'Tomato bruschetta with herbed cheese, balsamic glaze, and mixed greens served beside the playground',
 	'gallery.photo.steak-avocado-feta-salad': 'Steak salad with avocado, feta, cucumber, and caramelized onions served beside the playground',
 	'gallery.photo.prosciutto-salad-party-appetizers': 'Individual prosciutto salad appetizers prepared for a catered celebration',
 	'gallery.photo.smoked-salmon-avocado-salad': 'Smoked salmon and avocado salad with radishes, cucumber, tomatoes, and mixed greens',
@@ -369,6 +372,7 @@ const en = {
 	'party.badge.allinclusive': '✦ All-Inclusive',
 	'party.addons': 'Add-ons',
 	'party.details.view': 'View details',
+	'party.details.close': 'Close package details',
 	'party.details.heading': 'Compare Private Room Packages',
 	'party.details.fullspace.heading': 'Compare Full Space Packages',
 	'party.details.sub': 'See exactly how many menu items you can choose and which options are available with each package.',
@@ -599,6 +603,7 @@ const en = {
 	'footer.waiver': 'Sign your waiver to save time',
 	'footer.reserve': 'Make a Reservation',
 	'footer.visit.heading': 'Visit Us',
+	'footer.languages': 'We speak English, French, and Mandarin.',
 	'footer.map.title': 'Google map showing My Little Paris Café & Play in San Gabriel',
 
 	// Contact

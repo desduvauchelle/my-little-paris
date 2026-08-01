@@ -44,6 +44,28 @@ export function VisitMap({ dict }: { dict: Dictionary }) {
 						</a>
 
 						<p className="mt-5 text-sm text-base-content/70">{dict['footer.hours.body']}</p>
+						<div className="mt-2 flex flex-col items-start gap-1 text-sm text-base-content/70">
+							<a
+								href={LINKS.hoursGoogle}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="underline hover:text-primary"
+							>
+								{dict['footer.hours.google']}
+							</a>
+							<a
+								href={LINKS.yelp}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="underline hover:text-primary"
+							>
+								{dict['footer.hours.yelp']}
+							</a>
+						</div>
+						<p className="mt-2 text-sm font-medium text-primary">
+							<span aria-hidden="true">🌐 </span>
+							{dict['footer.languages']}
+						</p>
 
 						<div className="mt-6">
 							<a href={LINKS.directions} target="_blank" rel="noopener noreferrer" className="btn btn-primary gap-2">

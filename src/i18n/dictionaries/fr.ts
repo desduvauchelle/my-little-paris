@@ -47,7 +47,8 @@ const fr: Dictionary = {
 	// Homepage — pillars
 	'home.pillar.play.title': 'Jouer',
 	'home.pillar.play.tagline': 'L’Eat & Play de 2 heures',
-	'home.pillar.play.body': 'Pour 12,99 $ par enfant (10,99 $ par frère ou sœur, bébés gratuits) : deux heures pleines de jeux d’inspiration Montessori pour les 0–7 ans, et un vrai repas assis pour vous.',
+	'home.pillar.play.special': '☀️ Offre spéciale · PlayPass à 5 $',
+	'home.pillar.play.body': 'Offre à durée limitée : seulement 5 $ par enfant avec un achat minimum de nourriture (prix habituel : 12,99 $). Gratuit pour les moins d’un an. Valable jusqu’au 31 août ; les clients sans réservation sont les bienvenus.',
 	'home.pillar.play.cta': 'Voir les tarifs d’entrée',
 	'home.pillar.party.title': 'Fêter',
 	'home.pillar.party.tagline': 'Des anniversaires clés en main',
@@ -107,6 +108,7 @@ const fr: Dictionary = {
 	'gallery.filter.food': 'Plats',
 	'gallery.filter.space': 'Le lieu',
 	'gallery.filter.moments': 'Petits moments',
+	'gallery.loadMore': 'Afficher plus',
 	'gallery.aria': 'Galerie photo de My Little Paris',
 	'gallery.lightbox.open': 'Agrandir la photo : {description}',
 	'gallery.lightbox.label': 'Photo agrandie de la galerie',
@@ -194,6 +196,7 @@ const fr: Dictionary = {
 	'gallery.photo.fresh-berry-melon-party-fruit-platter': 'Plateau de fruits pour réception avec melon, ananas, fraises, framboises et myrtilles',
 	'gallery.photo.croissants-pain-au-chocolat-party-breakfast': 'Croissants et pains au chocolat frais servis avec un plateau de fruits pour une fête matinale',
 	'gallery.photo.kids-turkey-sandwich-fries-cafe': 'Sandwich de dinde pour enfant avec frites servi au café My Little Paris',
+	'gallery.photo.tomato-bruschetta-mixed-greens-cafe': 'Bruschettas à la tomate et au fromage aux herbes, avec réduction balsamique et jeunes pousses, servies près de l’aire de jeux',
 	'gallery.photo.steak-avocado-feta-salad': 'Salade au steak, avocat, feta, concombre et oignons confits servie à côté de l’aire de jeux',
 	'gallery.photo.prosciutto-salad-party-appetizers': 'Petites salades au prosciutto préparées individuellement pour une réception',
 	'gallery.photo.smoked-salmon-avocado-salad': 'Salade de saumon fumé et avocat avec radis, concombre, tomates et jeunes pousses',
@@ -371,6 +374,7 @@ const fr: Dictionary = {
 	'party.badge.allinclusive': '✦ Tout compris',
 	'party.addons': 'Options',
 	'party.details.view': 'Voir les détails',
+	'party.details.close': 'Fermer les détails de la formule',
 	'party.details.heading': 'Comparer les formules Salon privé',
 	'party.details.fullspace.heading': 'Comparer les formules Salle entière',
 	'party.details.sub': 'Découvrez combien de plats vous pouvez choisir et les options disponibles dans chaque formule.',
@@ -601,6 +605,7 @@ const fr: Dictionary = {
 	'footer.waiver': 'Signez votre décharge pour gagner du temps',
 	'footer.reserve': 'Réserver une table',
 	'footer.visit.heading': 'Venir nous voir',
+	'footer.languages': 'Nous parlons anglais, français et mandarin.',
 	'footer.map.title': 'Carte Google indiquant My Little Paris Café & Play à San Gabriel',
 
 	// Contact
