@@ -16,8 +16,9 @@ export async function generateMetadata({
 	return buildPageMetadata({
 		path: '/menu',
 		locale,
-		title: dict['menu.heading'],
-		description: dict['menu.tagline'],
+		title: dict['menu.meta.title'],
+		description: dict['menu.meta.description'],
+		brand: false,
 	})
 }
 

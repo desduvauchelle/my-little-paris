@@ -13,6 +13,7 @@ import { getDb, safeQuery } from '@/lib/db'
 import { formatDate, localePrefix, localizedPath } from '@/lib/i18n-utils'
 import { buildUrl } from '@/lib/sitemap-shared'
 import { buildPageMetadata } from '@/lib/seo'
+import { getBlogCtaKind, insertBlogCta } from '@/lib/blog-cta'
 import { AuthorByline } from '@/components/blog/AuthorByline'
 
 export const revalidate = 120
@@ -56,6 +57,11 @@ export default async function BlogPostPage({
 	])
 
 	const date = formatDate(post.createdAt, locale)
+	const ctaKind = getBlogCtaKind(post)
+	const ctaMarkdown =
+		ctaKind === 'party'
+			? `${dict['blog.cta.party.intro']} [${dict['blog.cta.party.link']}](${localizedPath('/party', locale)})`
+			: `[${dict['blog.cta.reservations.link']}](${localizedPath('/reservations', locale)})`
 
 	return (
 		<div className="container mx-auto px-4 py-12">
@@ -86,7 +92,7 @@ export default async function BlogPostPage({
 				)}
 
 				<BlogContent
-					html={post.content}
+					html={insertBlogCta(post.content, ctaMarkdown)}
 					post={post}
 					canonicalUrl={buildUrl(`/blog/${slug}`, locale)}
 					{...(author ? { author } : {})}

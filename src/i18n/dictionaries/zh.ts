@@ -284,6 +284,8 @@ const zh: Dictionary = {
 
 	// Play page
 	'play.title': '玩乐',
+	'play.meta.title': '室内游乐场与自由玩乐 | My Little Paris 圣盖博',
+	'play.meta.description': '了解 My Little Paris 两小时 Eat & Play 场次、室内游乐场票价、10 次卡与会员计划，适合 0–7 岁儿童，位于圣盖博。',
 	'play.quote': '“玩耍是最高形式的研究”',
 	'play.quote.author': '阿尔伯特·爱因斯坦',
 	'play.heading': '孩子欢笑，大人放松',
@@ -330,6 +332,8 @@ const zh: Dictionary = {
 
 	// Party page
 	'party.eyebrow': '圣盖博的法式主题儿童咖啡馆 & 室内游乐场',
+	'party.meta.title': '儿童生日派对 | My Little Paris 圣盖博',
+	'party.meta.description': '在圣盖博 My Little Paris 举办儿童生日派对：室内游乐、私人派对房或整场包场，可含餐饮、布置与清理。',
 	'party.hero.title': '每一个小小里程碑，都值得大大庆祝',
 	'party.hero.sub':
 		'从迎接新生儿到幼儿园毕业，为 0–7 岁成长的每一章庆祝。私人空间、室内游乐与完整餐饮，一站安排妥当。',
@@ -450,6 +454,8 @@ const zh: Dictionary = {
 
 	// Reservations page
 	'reservations.heading': '预订',
+	'reservations.meta.title': 'Eat & Play 预订 | My Little Paris 圣盖博',
+	'reservations.meta.description': '预订圣盖博 My Little Paris 两小时 Eat & Play 场次。6 人及以下可在线预订；7 人及以上请联系我们。',
 	'reservations.sub': '根据人数不同，共有三种预订方式。请在下方选择，我们马上告诉您最快的预订方法。',
 	'reservations.p1': '每个预订时段最多可容纳 6 人（含大人和儿童）。',
 	'reservations.p2':
@@ -489,6 +495,8 @@ const zh: Dictionary = {
 
 	// Menu hub page
 	'menu.heading': '菜单',
+	'menu.meta.title': '咖啡馆菜单与儿童菜单 | My Little Paris 圣盖博',
+	'menu.meta.description': '法式咖啡馆菜单含法式火腿芝士三明治、沙拉、甜点、咖啡、啤酒、葡萄酒与儿童菜单。Eat & Play 时每位成人须点一份主餐。',
 	'menu.sub': '点击菜单查看详情',
 	'menu.tagline': '让每个人都尽兴……',
 	'menu.eat': '美食菜单',
@@ -527,6 +535,8 @@ const zh: Dictionary = {
 
 	// Our Story page
 	'story.heading': '我们的故事',
+	'story.meta.title': '关于 My Little Paris | 圣盖博家庭经营咖啡馆',
+	'story.meta.description': '认识 My Little Paris 背后的法国家庭：从台湾亲子咖啡馆获得灵感，将法式美食、甜点与家庭玩乐带到圣盖博。',
 	'story.p1':
 		'在一次台湾之旅中，我们走进了一家用餐区旁设有游乐场的家庭餐厅。作为父母，我们第一次能够坐下来一起吃饭，不用一个人看孩子、另一个人匆匆扒饭，因为孩子在游乐场玩得不亦乐乎！那次经历太美好了，我们决定把这样的概念带给更多家庭，让其他父母也能享受带孩子外出用餐的乐趣……',
 	'story.p2':
@@ -565,6 +575,9 @@ const zh: Dictionary = {
 	'blog.post.not.found.description': '您要找的文章不存在。',
 	'blog.related.posts': '相关文章',
 	'blog.load.error': '加载文章失败：{error}',
+	'blog.cta.party.intro': '准备预订派对？',
+	'blog.cta.party.link': '查看派对套餐并提交咨询 →',
+	'blog.cta.reservations.link': '不到一分钟即可在线预订 Eat & Play 时段 →',
 
 	// Authors
 	'authors.heading': '作者',

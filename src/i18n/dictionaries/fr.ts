@@ -284,6 +284,9 @@ const fr: Dictionary = {
 
 	// Play page
 	'play.title': 'Jeux',
+	'play.meta.title': 'Aire de jeux & Open Play | My Little Paris San Gabriel',
+	'play.meta.description':
+		'Découvrez nos sessions Eat & Play de 2 heures, tarifs d’entrée, cartes de 10 visites et abonnements pour les 0–7 ans à San Gabriel.',
 	'play.quote': '« Le jeu est la forme la plus élevée de la recherche »',
 	'play.quote.author': 'Albert Einstein',
 	'play.heading': 'Les enfants rient, les parents respirent',
@@ -330,6 +333,9 @@ const fr: Dictionary = {
 
 	// Party page
 	'party.eyebrow': 'Le café-aire de jeux d’inspiration française de San Gabriel',
+	'party.meta.title': 'Anniversaires enfants | My Little Paris San Gabriel',
+	'party.meta.description':
+		'Organisez un anniversaire avec jeux couverts, salon privé ou privatisation, traiteur, installation et rangement chez My Little Paris à San Gabriel.',
 	'party.hero.title': 'Les petits moments méritent une grande fête',
 	'party.hero.sub':
 		'De l’arrivée de bébé à la remise de diplôme de maternelle, célébrez chaque chapitre de 0 à 7 ans avec salons privés, jeux couverts et menu traiteur complet.',
@@ -453,6 +459,9 @@ const fr: Dictionary = {
 
 	// Reservations page
 	'reservations.heading': 'Réservations',
+	'reservations.meta.title': 'Réserver Eat & Play | My Little Paris San Gabriel',
+	'reservations.meta.description':
+		'Réservez une session Eat & Play de 2 heures à San Gabriel. Réservation en ligne jusqu’à 6 personnes ; contactez-nous pour 7 personnes ou plus.',
 	'reservations.sub': 'Il y a trois façons de réserver, selon la taille de votre groupe. Choisissez la vôtre ci-dessous et nous vous montrons la plus rapide.',
 	'reservations.size.prompt': 'Vous êtes combien ?',
 	'reservations.size.small.title': 'Jusqu’à 6 personnes',
@@ -492,6 +501,9 @@ const fr: Dictionary = {
 
 	// Menu hub page
 	'menu.heading': 'Menu',
+	'menu.meta.title': 'Carte du café & menu enfants | My Little Paris San Gabriel',
+	'menu.meta.description':
+		'Carte de café français : croques, salades, pâtisseries, café, bières, vins et menu enfants. Un plat minimum par adulte pendant Eat & Play.',
 	'menu.sub': 'Cliquez sur un menu pour le découvrir',
 	'menu.tagline': 'Un bon moment pour tout le monde…',
 	'menu.eat': 'La carte',
@@ -530,6 +542,9 @@ const fr: Dictionary = {
 
 	// Our Story page
 	'story.heading': 'Notre Histoire',
+	'story.meta.title': 'Notre histoire | Café familial My Little Paris à San Gabriel',
+	'story.meta.description':
+		'Découvrez la famille française derrière My Little Paris, inspirée par un café taïwanais et installée à San Gabriel avec cuisine, pâtisseries et jeux.',
 	'story.p1':
 		'Lors d’un voyage à Taïwan, nous avons découvert un restaurant familial avec une aire de jeux à côté de la salle. Pour la première fois en tant que parents, nous avons pu déjeuner ensemble, tranquillement, sans que l’un de nous garde notre enfant pendant que l’autre mange en vitesse, parce que notre petit s’amusait comme un fou dans l’aire de jeux ! L’expérience était si belle que nous avons voulu créer un concept similaire, pour que d’autres parents puissent enfin profiter d’un restaurant avec leurs enfants…',
 	'story.p2':
@@ -568,6 +583,9 @@ const fr: Dictionary = {
 	'blog.post.not.found.description': 'L’article que vous cherchez n’existe pas.',
 	'blog.related.posts': 'Articles similaires',
 	'blog.load.error': 'Échec du chargement des articles : {error}',
+	'blog.cta.party.intro': 'Prêts à réserver ?',
+	'blog.cta.party.link': 'Découvrez nos formules et envoyez-nous une demande →',
+	'blog.cta.reservations.link': 'Réservez votre session Eat & Play en ligne en moins d’une minute →',
 
 	// Authors
 	'authors.heading': 'Auteurs',

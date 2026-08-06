@@ -22,8 +22,9 @@ export async function generateMetadata({
 	return buildPageMetadata({
 		path: '/party',
 		locale,
-		title: dict['party.hero.title'],
-		description: dict['party.hero.sub'],
+		title: dict['party.meta.title'],
+		description: dict['party.meta.description'],
+		brand: false,
 	})
 }
 

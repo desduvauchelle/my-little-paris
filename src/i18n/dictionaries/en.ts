@@ -282,6 +282,9 @@ const en = {
 
 	// Play page
 	'play.title': 'Play',
+	'play.meta.title': 'Indoor Playground & Open Play | My Little Paris San Gabriel',
+	'play.meta.description':
+		'Explore 2-hour Eat & Play sessions, indoor playground admission, play passes and memberships for ages 0–7 at My Little Paris in San Gabriel.',
 	'play.quote': '"Play is the Highest Form of Research"',
 	'play.quote.author': 'Albert Einstein',
 	'play.heading': 'Where Kids Laugh and Grown-Ups Relax',
@@ -328,6 +331,9 @@ const en = {
 
 	// Party page
 	'party.eyebrow': "San Gabriel's French-Themed Children's Café & Indoor Playground",
+	'party.meta.title': 'Kids Birthday Parties | My Little Paris San Gabriel',
+	'party.meta.description':
+		'Plan a kids birthday party with indoor play, private room or full venue options, catering, setup and cleanup at My Little Paris in San Gabriel.',
 	'party.hero.title': 'Little Milestones Deserve a Big Celebration',
 	'party.hero.sub':
 		'From baby welcomes to kindergarten graduation, celebrate every chapter from ages 0–7 with private spaces, indoor play, and a full catering menu.',
@@ -451,6 +457,9 @@ const en = {
 
 	// Reservations page
 	'reservations.heading': 'Reservations',
+	'reservations.meta.title': 'Eat & Play Reservations | My Little Paris San Gabriel',
+	'reservations.meta.description':
+		'Reserve a 2-hour Eat & Play session at My Little Paris in San Gabriel. Book online for up to 6 guests; contact us for groups of 7 or more.',
 	'reservations.sub': 'There are three ways to reserve, depending on the size of your group. Pick yours below and we’ll show you the fastest way.',
 	'reservations.size.prompt': 'How many people are you?',
 	'reservations.size.small.title': 'Up to 6 people',
@@ -490,6 +499,9 @@ const en = {
 
 	// Menu hub page
 	'menu.heading': 'Menu',
+	'menu.meta.title': 'Café Menu & Kids Menu | My Little Paris San Gabriel',
+	'menu.meta.description':
+		'French café menu with croques, salads, pastries, coffee, beer and wine, plus a kids menu. Every adult orders one entrée during Eat & Play sessions.',
 	'menu.sub': 'Click on a menu to explore',
 	'menu.tagline': 'A good time for everyone…',
 	'menu.eat': 'Eat Menu',
@@ -528,6 +540,9 @@ const en = {
 
 	// Our Story page
 	'story.heading': 'Our Story',
+	'story.meta.title': 'About My Little Paris | Family-Owned Café in San Gabriel',
+	'story.meta.description':
+		'Meet the French family behind My Little Paris, inspired by a Taiwan café and now serving French food, pastries and family playtime in San Gabriel.',
 	'story.p1':
 		'During a trip to Taiwan, we went to a family restaurant that had a playground next to the dining area. For the first time as parents, we were able to sit down and eat together, without having one of us take care of our kid while the other tries to eat quickly, because our kid was having so much fun in the playground! It was such a wonderful experience that we wanted to create a similar concept so that other parents could also enjoy dining out with their children…',
 	'story.p2':
@@ -566,6 +581,9 @@ const en = {
 	'blog.post.not.found.description': "The post you're looking for doesn't exist.",
 	'blog.related.posts': 'Related Posts',
 	'blog.load.error': 'Failed to load posts: {error}',
+	'blog.cta.party.intro': 'Ready to book?',
+	'blog.cta.party.link': 'See our party packages and send an inquiry →',
+	'blog.cta.reservations.link': 'Book your Eat & Play session online in under a minute →',
 
 	// Authors
 	'authors.heading': 'Authors',

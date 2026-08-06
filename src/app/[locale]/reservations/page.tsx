@@ -19,8 +19,9 @@ export async function generateMetadata({
 	return buildPageMetadata({
 		path: '/reservations',
 		locale,
-		title: dict['reservations.heading'],
-		description: dict['reservations.p1'],
+		title: dict['reservations.meta.title'],
+		description: dict['reservations.meta.description'],
+		brand: false,
 	})
 }
 

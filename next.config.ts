@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
 	async redirects() {
 		return [
 			{
+				source: '/menu-soft-opening',
+				destination: '/menu',
+				statusCode: 301,
+			},
+			{
 				source: '/party-reservation',
 				destination: '/party#party-inquiry',
 				permanent: true,
