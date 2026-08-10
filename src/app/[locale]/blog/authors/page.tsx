@@ -4,6 +4,7 @@ import { getDictionary } from '@/i18n'
 import { getDb, safeQuery } from '@/lib/db'
 import { buildPageMetadata } from '@/lib/seo'
 import { AuthorCard } from '@/components/blog/AuthorCard'
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd'
 
 export const revalidate = 300
 
@@ -33,6 +34,13 @@ export default async function AuthorsPage({
 
 	return (
 		<div className="container mx-auto px-4 py-12">
+			<BreadcrumbJsonLd
+				path="/blog/authors"
+				locale={locale}
+				homeName={dict['nav.home']}
+				name={dict['authors.heading']}
+				parent={{ name: dict['nav.blog'], path: '/blog' }}
+			/>
 			<h1 className="text-4xl font-bold text-center mb-2">
 				{dict['authors.heading']}
 			</h1>

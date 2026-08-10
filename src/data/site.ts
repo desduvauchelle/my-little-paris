@@ -12,6 +12,8 @@ export const BUSINESS = {
 	shortName: 'My Little Paris',
 	tagline: 'Café & Play',
 	city: 'San Gabriel, CA',
+	description:
+		"San Gabriel's French-themed children's café and indoor playground, with a full-service restaurant, open play, family events, and birthday party packages.",
 	// ⚠️ The live site shows two addresses: the site-wide footer says
 	// "416 E. Las Tunas Drive, Unit C" while the /party page footer says
 	// "232 W. Valley Blvd Suite 108". Using the site-wide one until the

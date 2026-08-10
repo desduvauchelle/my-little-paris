@@ -5,6 +5,7 @@ import { getDictionary } from '@/i18n'
 import { localizedPath } from '@/lib/i18n-utils'
 import { buildPageMetadata } from '@/lib/seo'
 import { ScrollReveal } from '@/components/landing/ScrollReveal'
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd'
 
 export async function generateMetadata({
 	params,
@@ -38,6 +39,7 @@ export default async function MenuPage({
 
 	return (
 		<>
+			<BreadcrumbJsonLd path="/menu" locale={locale} homeName={dict['nav.home']} name={dict['nav.menu']} />
 			<section className="navy-section py-16 text-center">
 				<h1 className="font-display text-5xl text-white mb-3">{dict['menu.heading']}</h1>
 				<p className="text-white/75">{dict['menu.sub']}</p>

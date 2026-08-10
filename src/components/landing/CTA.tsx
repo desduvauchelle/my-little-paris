@@ -12,7 +12,7 @@ export function CTA({ dict, locale }: { dict: Dictionary; locale: string }) {
 					{dict['cta.subtitle']}
 				</p>
 				<TrackedLink
-					href={localizedPath('/contact', locale)}
+					href={localizedPath('/reservations', locale)}
 					className="btn btn-secondary btn-lg"
 					eventName="cta_click"
 				>

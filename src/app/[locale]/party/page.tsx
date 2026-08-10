@@ -11,6 +11,7 @@ import { ScrollReveal } from '@/components/landing/ScrollReveal'
 import { BalloonCelebrationOnLoad } from '@/components/ui/BalloonCelebration'
 import { PhotoGallery } from '@/components/gallery/PhotoGallery'
 import { localizedPath } from '@/lib/i18n-utils'
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd'
 
 export async function generateMetadata({
 	params,
@@ -56,6 +57,7 @@ export default async function PartyPage({
 
 	return (
 		<>
+			<BreadcrumbJsonLd path="/party" locale={locale} homeName={dict['nav.home']} name={dict['nav.party']} />
 			<BalloonCelebrationOnLoad />
 			{/* Hero */}
 			<section className="navy-section relative overflow-hidden pb-12 pt-20 sm:pb-16">

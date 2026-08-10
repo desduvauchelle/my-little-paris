@@ -5,6 +5,7 @@ import { buildPageMetadata } from '@/lib/seo'
 import { localizedPath } from '@/lib/i18n-utils'
 import { GALLERY_CATEGORIES, GALLERY_PHOTOS, type GalleryCategory } from '@/data/gallery'
 import { PhotoGallery, type GallerySelection } from '@/components/gallery/PhotoGallery'
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd'
 
 export const revalidate = 86400
 
@@ -47,6 +48,7 @@ export default async function GalleryPage({
 
 	return (
 		<>
+			<BreadcrumbJsonLd path="/gallery" locale={locale} homeName={dict['nav.home']} name={dict['nav.gallery']} />
 			<section className="navy-section overflow-hidden py-14 sm:py-20">
 				<div className="container mx-auto max-w-5xl px-4 text-center">
 					<p className="mb-4 text-sm font-semibold text-secondary">{dict['gallery.kicker']}</p>

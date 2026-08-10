@@ -8,6 +8,7 @@ import { GroupSizeSelector } from '@/components/reservations/GroupSizeSelector'
 import { MailIcon, MessageIcon, PhoneIcon } from '@/components/layout/ContactIcons'
 import { BalloonCelebration } from '@/components/ui/BalloonCelebration'
 import { SpaceGallery } from '@/components/gallery/SpaceGallery'
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd'
 
 export async function generateMetadata({
 	params,
@@ -152,6 +153,7 @@ export default async function ReservationsPage({
 
 	return (
 		<>
+			<BreadcrumbJsonLd path="/reservations" locale={locale} homeName={dict['nav.home']} name={dict['nav.reservations']} />
 			<section className="navy-section py-16 text-center">
 				<div className="container mx-auto px-4">
 					<h1 className="font-display text-5xl text-white mb-4">{dict['reservations.heading']}</h1>

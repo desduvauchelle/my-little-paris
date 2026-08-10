@@ -6,6 +6,7 @@ import { getDb, safeQuery } from '@/lib/db'
 import { buildPageMetadata } from '@/lib/seo'
 import { ConfigDisplay } from '@/components/config/ConfigDisplay'
 import { ContactAnalytics } from './ContactAnalytics'
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd'
 
 const CONTACT_FORM_SLUG = 'contact-form'
 
@@ -41,6 +42,7 @@ export default async function ContactPage({
 
 	return (
 		<div className="container mx-auto px-4 py-12">
+			<BreadcrumbJsonLd path="/contact" locale={locale} homeName={dict['nav.home']} name={dict['nav.contact']} />
 			<ContactAnalytics />
 
 			<h1 className="text-4xl font-bold text-center mb-2">{dict['contact.heading']}</h1>

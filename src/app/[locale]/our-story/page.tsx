@@ -5,6 +5,7 @@ import { getDictionary } from '@/i18n'
 import { localizedPath } from '@/lib/i18n-utils'
 import { buildPageMetadata } from '@/lib/seo'
 import { ScrollReveal } from '@/components/landing/ScrollReveal'
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd'
 
 export async function generateMetadata({
 	params,
@@ -32,6 +33,7 @@ export default async function OurStoryPage({
 
 	return (
 		<>
+			<BreadcrumbJsonLd path="/our-story" locale={locale} homeName={dict['nav.home']} name={dict['nav.story']} />
 			<section className="navy-section py-16 text-center">
 				<h1 className="font-display text-5xl text-white">{dict['story.heading']}</h1>
 			</section>

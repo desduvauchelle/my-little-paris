@@ -4,6 +4,7 @@ import { localizedPath } from '@/lib/i18n-utils'
 import { buildPageMetadata } from '@/lib/seo'
 import { KIDS_MENU } from '@/data/menu'
 import { MenuJumpNav, MenuSections } from '@/components/menu/MenuSections'
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd'
 
 export async function generateMetadata({
 	params,
@@ -30,6 +31,13 @@ export default async function KidsMenuPage({
 
 	return (
 		<>
+			<BreadcrumbJsonLd
+				path="/kidsmenu"
+				locale={locale}
+				homeName={dict['nav.home']}
+				name={dict['kids.heading']}
+				parent={{ name: dict['nav.menu'], path: '/menu' }}
+			/>
 			<section className="navy-section py-16 text-center">
 				<h1 className="font-display text-5xl text-white mb-3">{dict['kids.heading']}</h1>
 				<p className="text-white/75">{dict['kids.sub']}</p>

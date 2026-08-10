@@ -1,11 +1,9 @@
 import { notFound } from 'next/navigation'
-import { getBusinessConfig } from '@growth-engine/sdk-server'
-import { BusinessJsonLd } from '@growth-engine/sdk-client/components'
 import { getDictionary } from '@/i18n'
 import { isSupportedLocale, supportedLocales } from '@/i18n/config'
-import { getDb, safeQuery } from '@/lib/db'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { SiteJsonLd } from '@/components/seo/JsonLd'
 
 export function generateStaticParams() {
 	return supportedLocales.map((locale) => ({ locale }))
@@ -31,12 +29,11 @@ export default async function LocaleLayout({
 	}
 
 	const dict = await getDictionary(locale)
-	const business = await safeQuery(null, () => getBusinessConfig(getDb()))
 
 	return (
 		<>
-			{/* Site-wide Organization / LocalBusiness structured data */}
-			{business && <BusinessJsonLd config={business} />}
+			{/* Static so entity markup remains present during CMS/database outages. */}
+			<SiteJsonLd />
 			<a href="#main-content" className="skip-link">
 				{dict['nav.skip']}
 			</a>

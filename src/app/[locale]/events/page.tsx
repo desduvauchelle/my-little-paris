@@ -3,6 +3,7 @@ import { AcuityEventsEmbed } from '@/components/events/AcuityEventsEmbed'
 import { LINKS } from '@/data/site'
 import { getDictionary } from '@/i18n'
 import { buildPageMetadata } from '@/lib/seo'
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd'
 
 export async function generateMetadata({
 	params,
@@ -29,6 +30,7 @@ export default async function EventsPage({
 
 	return (
 		<>
+			<BreadcrumbJsonLd path="/events" locale={locale} homeName={dict['nav.home']} name={dict['nav.events']} />
 			<section className="navy-section py-16 text-center">
 				<h1 className="mb-3 font-display text-5xl text-white">{dict['events.heading']}</h1>
 				<p className="mx-auto max-w-xl px-4 text-white/75">{dict['events.sub']}</p>

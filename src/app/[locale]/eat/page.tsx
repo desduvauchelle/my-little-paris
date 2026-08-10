@@ -4,6 +4,7 @@ import { localizedPath } from '@/lib/i18n-utils'
 import { buildPageMetadata } from '@/lib/seo'
 import { EAT_MENU } from '@/data/menu'
 import { MenuJumpNav, MenuSections } from '@/components/menu/MenuSections'
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd'
 
 export async function generateMetadata({
 	params,
@@ -30,6 +31,13 @@ export default async function EatPage({
 
 	return (
 		<>
+			<BreadcrumbJsonLd
+				path="/eat"
+				locale={locale}
+				homeName={dict['nav.home']}
+				name={dict['eat.heading']}
+				parent={{ name: dict['nav.menu'], path: '/menu' }}
+			/>
 			<section className="navy-section py-16 text-center">
 				<h1 className="font-display text-5xl text-white mb-3">{dict['eat.heading']}</h1>
 				<p className="text-white/75 max-w-xl mx-auto px-4">{dict['eat.sub']}</p>

@@ -8,6 +8,7 @@ import { LINKS } from '@/data/site'
 import { PLAY_PASS, MEMBERSHIP, PLAYGROUND_POLICY } from '@/data/play'
 import { ScrollReveal } from '@/components/landing/ScrollReveal'
 import { PhotoGallery } from '@/components/gallery/PhotoGallery'
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd'
 
 export async function generateMetadata({
 	params,
@@ -52,6 +53,7 @@ export default async function PlayPage({
 
 	return (
 		<>
+			<BreadcrumbJsonLd path="/play" locale={locale} homeName={dict['nav.home']} name={dict['nav.play']} />
 			{/* Hero */}
 			<section className="navy-section py-20 text-center relative overflow-hidden">
 				<div className="container mx-auto px-4 max-w-3xl">
