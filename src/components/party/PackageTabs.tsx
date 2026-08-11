@@ -197,7 +197,7 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 									<button
 										type="button"
 										onClick={() => handleViewDetails(pkg.id as PrivateRoomPackageId | FullSpacePackageId)}
-										className="btn btn-ghost btn-sm btn-block text-primary font-medium"
+										className="btn btn-outline btn-primary btn-sm btn-block font-medium"
 									>
 										{dict['party.details.view']}
 									</button>
