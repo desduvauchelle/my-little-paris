@@ -1,7 +1,7 @@
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it, vi } from 'vitest'
-import { CrawlableBlogList, parseBlogPage } from './CrawlableBlogList'
+import { CrawlableBlogList } from './CrawlableBlogList'
 
 vi.mock('next/link', async () => {
 	const { createElement } = await import('react')
@@ -65,16 +65,5 @@ describe('CrawlableBlogList', () => {
 		expect(html).toContain('href="/blog/post-18"')
 		expect(html).not.toContain('href="/blog/post-9"')
 		expect(html).not.toContain('href="/blog/post-19"')
-	})
-})
-
-describe('parseBlogPage', () => {
-	it('accepts positive page numbers and rejects invalid values', () => {
-		expect(parseBlogPage('3')).toBe(3)
-		expect(parseBlogPage(['2', '4'])).toBe(2)
-		expect(parseBlogPage('0')).toBe(1)
-		expect(parseBlogPage('-1')).toBe(1)
-		expect(parseBlogPage('2extra')).toBe(1)
-		expect(parseBlogPage('not-a-number')).toBe(1)
 	})
 })

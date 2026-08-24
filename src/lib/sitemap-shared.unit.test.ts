@@ -150,8 +150,8 @@ describe('sitemap-shared', () => {
 					ok: true,
 					json: () =>
 						Promise.resolve([
-							{ slug: 'hello-world', language: 'en', updatedAt: '2025-01-01', parentPostId: null },
-							{ slug: 'second-post', language: 'en', updatedAt: '2025-01-02', parentPostId: null },
+							{ id: 'post-1', slug: 'hello-world', language: 'en', updatedAt: '2025-01-01', parentPostId: null },
+							{ id: 'post-2', slug: 'second-post', language: 'en', updatedAt: '2025-01-02', parentPostId: null },
 						]),
 				}),
 			)
@@ -170,7 +170,7 @@ describe('sitemap-shared', () => {
 					ok: true,
 					json: () =>
 						Promise.resolve([
-							{ slug: 'p', language: 'en', updatedAt: null, parentPostId: null },
+							{ id: 'post-1', slug: 'p', language: 'en', updatedAt: null, parentPostId: null },
 						]),
 				}),
 			)
@@ -196,7 +196,7 @@ describe('sitemap-shared', () => {
 							ok: true,
 							json: () =>
 								Promise.resolve([
-									{ slug: 'hello-en', language: 'en', updatedAt: null, parentPostId: 'parent-1' },
+									{ id: 'parent-1', slug: 'hello-en', language: 'en', updatedAt: null, parentPostId: null },
 								]),
 						})
 					}
@@ -205,7 +205,7 @@ describe('sitemap-shared', () => {
 							ok: true,
 							json: () =>
 								Promise.resolve([
-									{ slug: 'hello-fr', language: 'fr', updatedAt: null, parentPostId: 'parent-1' },
+									{ id: 'child-fr', slug: 'hello-fr', language: 'fr', updatedAt: null, parentPostId: 'parent-1' },
 								]),
 						})
 					}
@@ -225,6 +225,47 @@ describe('sitemap-shared', () => {
 			}
 		})
 
+		it('builds article metadata alternates from the translation group slugs', async () => {
+			vi.stubGlobal(
+				'fetch',
+				vi.fn().mockImplementation((url: string) => {
+					if (url.includes('locale=en')) {
+						return Promise.resolve({
+							ok: true,
+							json: () => Promise.resolve([
+								{ id: 'parent-1', slug: 'hello-en', language: 'en', updatedAt: null, parentPostId: null },
+							]),
+						})
+					}
+					if (url.includes('locale=fr')) {
+						return Promise.resolve({
+							ok: true,
+							json: () => Promise.resolve([
+								{ id: 'child-fr', slug: 'bonjour-fr', language: 'fr', updatedAt: null, parentPostId: 'parent-1' },
+							]),
+						})
+					}
+					return Promise.resolve({ ok: false })
+				}),
+			)
+			const { buildBlogLanguageAlternates } = await load({
+				defaultLocale: 'en',
+				supportedLocales: ['en', 'fr'],
+				isMultiLang: true,
+			})
+			const result = await buildBlogLanguageAlternates({
+				id: 'child-fr',
+				slug: 'bonjour-fr',
+				language: 'fr',
+				parentPostId: 'parent-1',
+			})
+
+			expect(result).toEqual({
+				en: 'https://example.com/blog/hello-en',
+				fr: 'https://example.com/fr/blog/bonjour-fr',
+			})
+		})
+
 		it('deduplicates posts by slug', async () => {
 			vi.stubGlobal(
 				'fetch',
@@ -232,8 +273,8 @@ describe('sitemap-shared', () => {
 					ok: true,
 					json: () =>
 						Promise.resolve([
-							{ slug: 'dup', language: 'en', updatedAt: null, parentPostId: 'p1' },
-							{ slug: 'dup', language: 'en', updatedAt: null, parentPostId: 'p1' },
+							{ id: 'dup-1', slug: 'dup', language: 'en', updatedAt: null, parentPostId: 'p1' },
+							{ id: 'dup-2', slug: 'dup', language: 'en', updatedAt: null, parentPostId: 'p1' },
 						]),
 				}),
 			)

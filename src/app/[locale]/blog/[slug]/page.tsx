@@ -11,7 +11,7 @@ import { BlogContent, RelatedPosts } from '@growth-engine/sdk-client/components'
 import { getDictionary } from '@/i18n'
 import { getDb, safeQuery } from '@/lib/db'
 import { formatDate, localePrefix, localizedPath } from '@/lib/i18n-utils'
-import { buildUrl } from '@/lib/sitemap-shared'
+import { buildBlogLanguageAlternates, buildUrl } from '@/lib/sitemap-shared'
 import { buildPageMetadata } from '@/lib/seo'
 import { getBlogCtaKind, insertBlogCta } from '@/lib/blog-cta'
 import { AuthorByline } from '@/components/blog/AuthorByline'
@@ -26,6 +26,7 @@ export async function generateMetadata({
 	const { locale, slug } = await params
 	const post = await safeQuery(null, () => getBlogPost(getDb(), slug, locale))
 	if (!post) return {}
+	const languageAlternates = await buildBlogLanguageAlternates(post)
 	return buildPageMetadata({
 		path: `/blog/${slug}`,
 		locale,
@@ -34,6 +35,7 @@ export async function generateMetadata({
 		image: post.heroImageUrl,
 		type: 'article',
 		brand: false,
+		languageAlternates,
 	})
 }
 

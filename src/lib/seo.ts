@@ -28,6 +28,8 @@ interface PageMetadataInput {
 	type?: 'website' | 'article'
 	/** Set false to use `title` verbatim (e.g. the homepage already is the brand). */
 	brand?: boolean
+	/** Explicit absolute locale URLs for pages whose translated slugs differ. */
+	languageAlternates?: Record<string, string>
 }
 
 /**
@@ -47,15 +49,22 @@ export function buildPageMetadata({
 	imageAlt,
 	type = 'website',
 	brand = true,
+	languageAlternates,
 }: PageMetadataInput): Metadata {
 	const canonical = buildUrl(path, locale)
-	const languages = buildAlternates(path)
+	const languages = languageAlternates === undefined
+		? buildAlternates(path)
+		: languageAlternates
 	const fullTitle = brand ? `${title} | ${SITE_NAME}` : title
 	const resolvedImage = image || DEFAULT_OG_IMAGE
 	const resolvedImageAlt = imageAlt || (resolvedImage === DEFAULT_OG_IMAGE ? DEFAULT_OG_IMAGE_ALT : undefined)
 
-	const languagesWithDefault = languages
-		? { ...languages, 'x-default': buildUrl(path, defaultLocale) }
+	const defaultLanguageUrl = languages?.[defaultLocale]
+	const languagesWithDefault = languages && Object.keys(languages).length > 0
+		? {
+				...languages,
+				...(defaultLanguageUrl ? { 'x-default': defaultLanguageUrl } : {}),
+			}
 		: undefined
 
 	return {

@@ -59,11 +59,15 @@ export interface SitemapImage {
 	caption: string
 }
 
-interface BlogSitemapPost {
+export interface BlogTranslationPost {
+	id: string
 	slug: string
 	language: string
-	updatedAt: string | null
 	parentPostId: string | null
+}
+
+interface BlogSitemapPost extends BlogTranslationPost {
+	updatedAt: string | null
 }
 
 interface AuthorSitemapEntry {
@@ -107,7 +111,7 @@ async function fetchBlogBatch(
 ): Promise<BlogSitemapPost[]> {
 	try {
 		const res = await fetch(
-			`${SITE_URL}/api/rs/content?type=blog&locale=${locale}&limit=${limit}&offset=${offset}&fields=slug,updatedAt,language,parentPostId`,
+			`${SITE_URL}/api/rs/content?type=blog&locale=${locale}&limit=${limit}&offset=${offset}&fields=id,slug,updatedAt,language,parentPostId`,
 			{ next: { revalidate: 3600 } },
 		)
 		if (!res.ok) return []
@@ -115,6 +119,48 @@ async function fetchBlogBatch(
 	} catch {
 		return []
 	}
+}
+
+function translationGroupId(post: BlogTranslationPost): string {
+	return post.parentPostId ?? post.id
+}
+
+function groupBlogTranslations<T extends BlogTranslationPost>(
+	posts: T[],
+): Map<string, T[]> {
+	const groups = new Map<string, T[]>()
+	for (const post of posts) {
+		const groupId = translationGroupId(post)
+		const group = groups.get(groupId) ?? []
+		group.push(post)
+		groups.set(groupId, group)
+	}
+	return groups
+}
+
+function languageUrls(posts: BlogTranslationPost[]): Record<string, string> {
+	const alternates: Record<string, string> = {}
+	for (const post of posts) {
+		alternates[post.language] = buildUrl(`/blog/${post.slug}`, post.language)
+	}
+	return alternates
+}
+
+export async function buildBlogLanguageAlternates(
+	currentPost: BlogTranslationPost,
+): Promise<Record<string, string>> {
+	if (!isMultiLang) return {}
+
+	const results = await Promise.all(
+		supportedLocales.map((locale) => fetchBlogBatch(locale, 5000, 0)),
+	)
+	const posts: BlogTranslationPost[] = results.flat()
+	if (!posts.some((post) => post.id === currentPost.id)) {
+		posts.push(currentPost)
+	}
+
+	const group = groupBlogTranslations(posts).get(translationGroupId(currentPost)) ?? [currentPost]
+	return languageUrls(group)
 }
 
 async function fetchAuthors(): Promise<AuthorSitemapEntry[]> {
@@ -163,26 +209,13 @@ export async function buildBlogEntries(batchId: number): Promise<SitemapEntry[]>
 	const allPosts: BlogSitemapPost[] = []
 	for (const batch of results) allPosts.push(...batch)
 
-	const translationGroups = new Map<string, BlogSitemapPost[]>()
-	const standalone: BlogSitemapPost[] = []
-	for (const post of allPosts) {
-		if (post.parentPostId) {
-			const group = translationGroups.get(post.parentPostId) ?? []
-			group.push(post)
-			translationGroups.set(post.parentPostId, group)
-		} else {
-			standalone.push(post)
-		}
-	}
+	const translationGroups = groupBlogTranslations(allPosts)
 
 	const entries: SitemapEntry[] = []
 	const processed = new Set<string>()
 
 	for (const [, group] of translationGroups) {
-		const alternates: Record<string, string> = {}
-		for (const post of group) {
-			alternates[post.language] = buildUrl(`/blog/${post.slug}`, post.language)
-		}
+		const alternates = languageUrls(group)
 		for (const post of group) {
 			if (processed.has(post.slug)) continue
 			processed.add(post.slug)
@@ -191,24 +224,9 @@ export async function buildBlogEntries(batchId: number): Promise<SitemapEntry[]>
 				lastModified: post.updatedAt ? new Date(post.updatedAt) : undefined,
 				changeFrequency: 'weekly',
 				priority: 0.8,
-				alternates: Object.keys(alternates).length > 1 ? alternates : undefined,
+				alternates: group.length > 1 ? alternates : undefined,
 			})
 		}
-	}
-
-	for (const post of standalone) {
-		if (processed.has(post.slug)) continue
-		processed.add(post.slug)
-		const alternates = isMultiLang
-			? { [post.language]: buildUrl(`/blog/${post.slug}`, post.language) }
-			: undefined
-		entries.push({
-			url: buildUrl(`/blog/${post.slug}`, post.language),
-			lastModified: post.updatedAt ? new Date(post.updatedAt) : undefined,
-			changeFrequency: 'weekly',
-			priority: 0.8,
-			alternates: alternates && Object.keys(alternates).length > 1 ? alternates : undefined,
-		})
 	}
 
 	return entries

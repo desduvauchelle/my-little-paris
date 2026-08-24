@@ -51,6 +51,19 @@ export function LanguageSwitcher({
 	function switchTo(newLocale: string) {
 		if (newLocale === locale) return
 
+		// Article translations have different slugs. Follow the explicit metadata
+		// alternate when one exists instead of reusing the current locale's slug.
+		const alternate = document.head.querySelector<HTMLLinkElement>(
+			`link[rel="alternate"][hreflang="${newLocale}"]`,
+		)
+		if (alternate?.href) {
+			const url = new URL(alternate.href)
+			if (url.origin === window.location.origin) {
+				router.push(`${url.pathname}${url.search}${url.hash}`)
+				return
+			}
+		}
+
 		// Strip any existing locale prefix to recover the locale-agnostic path…
 		const segments = pathname.split('/')
 		const firstSegment = segments[1] ?? ''

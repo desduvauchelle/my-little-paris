@@ -2,14 +2,12 @@ import type { Metadata } from 'next'
 import { getBlogPosts, getBlogAuthors } from '@growth-engine/sdk-server'
 import { getDictionary } from '@/i18n'
 import { getDb, safeQuery } from '@/lib/db'
+import { parseBlogPage } from '@/lib/blog-pagination'
 import { localePrefix } from '@/lib/i18n-utils'
 import { buildPageMetadata } from '@/lib/seo'
 import { AuthorChips } from '@/components/blog/AuthorChips'
 import { BreadcrumbJsonLd } from '@/components/seo/JsonLd'
-import {
-	CrawlableBlogList,
-	parseBlogPage,
-} from '@/components/blog/CrawlableBlogList'
+import { CrawlableBlogList } from '@/components/blog/CrawlableBlogList'
 
 export const revalidate = 60
 
