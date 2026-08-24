@@ -364,6 +364,30 @@ const fr: Dictionary = {
 	'party.occasions.cta': 'Découvrir les formules',
 	'party.occasions.imageAlt': 'Des ballons arc-en-ciel autour d’une chaise haute pour un premier anniversaire',
 	'party.occasions.photoNote': 'Un premier anniversaire transformé par un arc-en-ciel de ballons.',
+	'party.faq.eyebrow': 'Réponses rapides pour les parents',
+	'party.faq.heading': 'Anniversaires pour enfants à San Gabriel',
+	'party.faq.intro': 'Commencez par l’essentiel, puis comparez les formules ci-dessous.',
+	'party.faq.cost.question': 'Combien coûte un anniversaire pour enfants à San Gabriel ?',
+	'party.faq.cost.answer':
+		'Les formules avec traiteur en salon privé coûtent de 460 $ à 990 $ : la formule Opéra commence à 460 $ en semaine et la formule Saint-Germain coûte 990 $ le week-end ; frais de service obligatoires et taxe de vente en sus.',
+	'party.faq.cost.link': 'Comparer les formules en salon privé',
+	'party.faq.included.question': 'Que comprennent les formules anniversaire ?',
+	'party.faq.included.answer':
+		'Les formules avec traiteur comprennent un salon privé ou la salle entière, l’accès à l’aire de jeux couverte, une sélection de plats et boissons, l’installation des tables et le rangement.',
+	'party.faq.included.link': 'Voir le contenu de chaque formule',
+	'party.faq.ages.question': 'À quels âges s’adressent les anniversaires ?',
+	'party.faq.ages.answer':
+		'Les anniversaires et les jeux couverts de My Little Paris sont conçus pour les enfants de 0 à 7 ans, du premier anniversaire à la remise de diplôme de maternelle.',
+	'party.faq.ages.link': 'Découvrir les jeux pour les 0–7 ans',
+	'party.faq.duration.question': 'Combien de temps dure un anniversaire ?',
+	'party.faq.duration.answer':
+		'La plupart des formules durent deux heures ; la formule Versailles tout compris dure trois heures et du temps supplémentaire peut être ajouté moyennant un supplément.',
+	'party.faq.duration.link': 'Consulter les horaires et les règles',
+	'party.faq.booking.question': 'Comment réserver un anniversaire pour enfants ?',
+	'party.faq.booking.answer':
+		'Choisissez une formule ci-dessous, envoyez le formulaire de demande, attendez la confirmation de disponibilité par e-mail, puis versez l’acompte non remboursable de 200 $ pour réserver la date et l’heure.',
+	'party.faq.booking.link': 'Commencer une demande de fête',
+	'party.faq.cta': 'Comparer les formules',
 	'party.packages.eyebrow': 'Formules anniversaire',
 	'party.packages.heading': 'Choisissez votre expérience',
 	'party.packages.sub':
@@ -532,6 +556,8 @@ const fr: Dictionary = {
 	// Events page
 	'events.heading': 'Événements',
 	'events.sub': 'Rencontres avec les personnages, tea parties et célébrations toute l’année.',
+	'events.meta.title': 'Événements',
+	'events.meta.description': 'Rencontres avec les personnages, tea parties et célébrations toute l’année.',
 	'events.current.badge': 'Prochain événement',
 	'events.admission': 'L’entrée comprend',
 	'events.pricing': 'Tarifs',

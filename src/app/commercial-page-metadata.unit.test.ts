@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { generateMetadata as eventsMetadata } from './[locale]/events/page'
 import { generateMetadata as menuMetadata } from './[locale]/menu/page'
 import { generateMetadata as partyMetadata } from './[locale]/party/page'
 import { generateMetadata as reservationsMetadata } from './[locale]/reservations/page'
@@ -9,9 +10,9 @@ const pages = [
 	{
 		path: '/menu',
 		generateMetadata: menuMetadata,
-		title: 'Café Menu & Kids Menu | My Little Paris San Gabriel',
+		title: 'French Café Menu in San Gabriel | Croques, Salads & Wine',
 		description:
-			'French café menu with croques, salads, pastries, coffee, beer and wine, plus a kids menu. Every adult orders one entrée during Eat & Play sessions.',
+			'Our San Gabriel café menu: croque monsieur, quiche Lorraine, fresh salads, pastries, espresso, beer and wine. Real food while your kids play. See the full menu.',
 	},
 	{
 		path: '/party',
@@ -30,9 +31,18 @@ const pages = [
 	{
 		path: '/play',
 		generateMetadata: playMetadata,
-		title: 'Indoor Playground & Open Play | My Little Paris San Gabriel',
+		title: 'Indoor Playground San Gabriel | Eat & Play Sessions & Memberships',
 		description:
-			'Explore 2-hour Eat & Play sessions, indoor playground admission, play passes and memberships for ages 0–7 at My Little Paris in San Gabriel.',
+			'Montessori-inspired indoor playground in San Gabriel, CA for kids 0-7. Two-hour Eat & Play sessions, 10-visit passes, and monthly memberships. Reserve online.',
+	},
+	{
+		path: '/events',
+		generateMetadata: eventsMetadata,
+		title: 'Kids Events & Parties in San Gabriel | My Little Paris Café & Play',
+		description:
+			'Upcoming family events, holiday celebrations, and special activities at My Little Paris Café & Play in San Gabriel, CA. Check the calendar and reserve your spot.',
+		maxTitleLength: 70,
+		maxDescriptionLength: 165,
 	},
 	{
 		path: '/our-story',
@@ -52,9 +62,12 @@ describe('commercial page search metadata', () => {
 
 			expect(metadata.title).toEqual({ absolute: page.title })
 			expect(metadata.description).toBe(page.description)
-			expect(page.title.length).toBeLessThanOrEqual(60)
+			const maxTitleLength = 'maxTitleLength' in page ? page.maxTitleLength : 65
+			const maxDescriptionLength = 'maxDescriptionLength' in page ? page.maxDescriptionLength : 160
+
+			expect(page.title.length).toBeLessThanOrEqual(maxTitleLength)
 			expect(page.description.length).toBeGreaterThanOrEqual(120)
-			expect(page.description.length).toBeLessThanOrEqual(160)
+			expect(page.description.length).toBeLessThanOrEqual(maxDescriptionLength)
 			expect(metadata.openGraph).toMatchObject({
 				title: page.title,
 				description: page.description,

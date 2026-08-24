@@ -282,9 +282,9 @@ const en = {
 
 	// Play page
 	'play.title': 'Play',
-	'play.meta.title': 'Indoor Playground & Open Play | My Little Paris San Gabriel',
+	'play.meta.title': 'Indoor Playground San Gabriel | Eat & Play Sessions & Memberships',
 	'play.meta.description':
-		'Explore 2-hour Eat & Play sessions, indoor playground admission, play passes and memberships for ages 0–7 at My Little Paris in San Gabriel.',
+		'Montessori-inspired indoor playground in San Gabriel, CA for kids 0-7. Two-hour Eat & Play sessions, 10-visit passes, and monthly memberships. Reserve online.',
 	'play.quote': '"Play is the Highest Form of Research"',
 	'play.quote.author': 'Albert Einstein',
 	'play.heading': 'Where Kids Laugh and Grown-Ups Relax',
@@ -362,6 +362,30 @@ const en = {
 	'party.occasions.cta': 'Explore party packages',
 	'party.occasions.imageAlt': 'Rainbow balloons framing a high chair for a child’s first birthday celebration',
 	'party.occasions.photoNote': 'A first birthday, transformed with a rainbow of balloons.',
+	'party.faq.eyebrow': 'Quick answers for parents',
+	'party.faq.heading': 'Kids Birthday Parties in San Gabriel',
+	'party.faq.intro': 'Start with the essentials, then compare the package details below.',
+	'party.faq.cost.question': 'How much does a kids birthday party cost in San Gabriel?',
+	'party.faq.cost.answer':
+		'Catered private-room birthday packages cost $460–$990: the Opéra package starts at $460 on weekdays, while the Saint-Germain package is $990 on weekends; mandatory service fees and sales tax are additional.',
+	'party.faq.cost.link': 'Compare private-room packages',
+	'party.faq.included.question': "What's included in the party packages?",
+	'party.faq.included.answer':
+		'Catered party packages include a private room or the full venue, indoor play access, selected food and drinks, table setup, and cleanup.',
+	'party.faq.included.link': 'See what each package includes',
+	'party.faq.ages.question': 'What ages are the birthday parties for?',
+	'party.faq.ages.answer':
+		'My Little Paris birthday parties and indoor play are designed for children ages 0–7, from first birthdays through kindergarten celebrations.',
+	'party.faq.ages.link': 'Explore play for ages 0–7',
+	'party.faq.duration.question': 'How long is a birthday party?',
+	'party.faq.duration.answer':
+		'Most party packages are two hours; the Versailles all-inclusive package is three hours, and extra time can be added for an additional fee.',
+	'party.faq.duration.link': 'Review party timing and guidelines',
+	'party.faq.booking.question': 'How do I book a kids birthday party?',
+	'party.faq.booking.answer':
+		'Choose a package below, submit the party inquiry form, wait for availability confirmation by email, and pay the $200 non-refundable deposit to secure your date and time.',
+	'party.faq.booking.link': 'Start a party inquiry',
+	'party.faq.cta': 'Compare party packages',
 	'party.packages.eyebrow': 'Party Packages',
 	'party.packages.heading': 'Choose Your Experience',
 	'party.packages.sub':
@@ -499,9 +523,9 @@ const en = {
 
 	// Menu hub page
 	'menu.heading': 'Menu',
-	'menu.meta.title': 'Café Menu & Kids Menu | My Little Paris San Gabriel',
+	'menu.meta.title': 'French Café Menu in San Gabriel | Croques, Salads & Wine',
 	'menu.meta.description':
-		'French café menu with croques, salads, pastries, coffee, beer and wine, plus a kids menu. Every adult orders one entrée during Eat & Play sessions.',
+		'Our San Gabriel café menu: croque monsieur, quiche Lorraine, fresh salads, pastries, espresso, beer and wine. Real food while your kids play. See the full menu.',
 	'menu.sub': 'Click on a menu to explore',
 	'menu.tagline': 'A good time for everyone…',
 	'menu.eat': 'Eat Menu',
@@ -530,6 +554,9 @@ const en = {
 	// Events page
 	'events.heading': 'Events',
 	'events.sub': 'Character meet & greets, tea parties, and celebrations all year round.',
+	'events.meta.title': 'Kids Events & Parties in San Gabriel',
+	'events.meta.description':
+		'Upcoming family events, holiday celebrations, and special activities at My Little Paris Café & Play in San Gabriel, CA. Check the calendar and reserve your spot.',
 	'events.current.badge': 'Next Event',
 	'events.admission': 'Admission Includes',
 	'events.pricing': 'Pricing',

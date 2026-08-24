@@ -15,8 +15,8 @@ export async function generateMetadata({
 	return buildPageMetadata({
 		path: '/events',
 		locale,
-		title: dict['events.heading'],
-		description: dict['events.sub'],
+		title: dict['events.meta.title'],
+		description: dict['events.meta.description'],
 	})
 }
 

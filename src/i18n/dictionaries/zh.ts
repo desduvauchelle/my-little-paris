@@ -362,6 +362,30 @@ const zh: Dictionary = {
 	'party.occasions.cta': '浏览派对套餐',
 	'party.occasions.imageAlt': '彩虹气球围绕着为孩子周岁庆典准备的高脚椅',
 	'party.occasions.photoNote': '用一道气球彩虹，点亮宝宝的周岁庆典。',
+	'party.faq.eyebrow': '家长常见问题速答',
+	'party.faq.heading': '圣盖博儿童生日派对',
+	'party.faq.intro': '先了解重要信息，再比较下方的套餐详情。',
+	'party.faq.cost.question': '在圣盖博办一场儿童生日派对多少钱？',
+	'party.faq.cost.answer':
+		'含餐饮的私人派对房套餐价格为 $460–$990：Opéra 套餐工作日起价 $460，Saint-Germain 套餐周末价 $990；另加规定服务费与销售税。',
+	'party.faq.cost.link': '比较私人派对房套餐',
+	'party.faq.included.question': '派对套餐包括哪些内容？',
+	'party.faq.included.answer':
+		'含餐饮的派对套餐包括私人派对房或整场包场、室内游乐区使用、指定餐食与饮品、餐桌布置及清理。',
+	'party.faq.included.link': '查看各套餐包含内容',
+	'party.faq.ages.question': '生日派对适合多大的孩子？',
+	'party.faq.ages.answer':
+		'My Little Paris 的生日派对和室内游乐适合 0–7 岁儿童，从周岁生日到幼儿园毕业庆祝都合适。',
+	'party.faq.ages.link': '了解 0–7 岁室内游乐',
+	'party.faq.duration.question': '生日派对有多长时间？',
+	'party.faq.duration.answer':
+		'大多数派对套餐为两小时；Versailles 一价全包套餐为三小时，也可付费增加时间。',
+	'party.faq.duration.link': '查看派对时间与须知',
+	'party.faq.booking.question': '如何预订儿童生日派对？',
+	'party.faq.booking.answer':
+		'请先在下方选择套餐并提交派对咨询表，等待电子邮件确认档期后，再支付不可退还的 $200 订金以锁定日期和时间。',
+	'party.faq.booking.link': '开始提交派对咨询',
+	'party.faq.cta': '比较派对套餐',
 	'party.packages.eyebrow': '派对套餐',
 	'party.packages.heading': '选择您的派对体验',
 	'party.packages.sub':
@@ -525,6 +549,8 @@ const zh: Dictionary = {
 	// Events page
 	'events.heading': '活动',
 	'events.sub': '卡通人物见面会、下午茶派对、全年不断的庆祝活动。',
+	'events.meta.title': '活动',
+	'events.meta.description': '卡通人物见面会、下午茶派对、全年不断的庆祝活动。',
 	'events.current.badge': '下一场活动',
 	'events.admission': '门票包含',
 	'events.pricing': '价格',

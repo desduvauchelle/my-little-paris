@@ -6,6 +6,7 @@ import { buildPageMetadata } from '@/lib/seo'
 import { BUSINESS, LINKS, SERVICE_AREA } from '@/data/site'
 import { PARTY_PROCESS, PARTY_POLICIES } from '@/data/party'
 import { PackageTabs } from '@/components/party/PackageTabs'
+import { PartyFaq } from '@/components/party/PartyFaq'
 import { EventPhotoMarquee } from '@/components/party/EventPhotoMarquee'
 import { ScrollReveal } from '@/components/landing/ScrollReveal'
 import { BalloonCelebrationOnLoad } from '@/components/ui/BalloonCelebration'
@@ -117,6 +118,8 @@ export default async function PartyPage({
 				</div>
 			</section>
 
+			<PartyFaq dict={dict} locale={locale} />
+
 			{/* Packages */}
 			<section id="party-packages" className="scroll-mt-20 py-20 bg-base-200">
 				<div className="container mx-auto px-4">
@@ -177,7 +180,7 @@ export default async function PartyPage({
 			</section>
 
 			{/* Policies */}
-			<section className="py-20 bg-base-100">
+			<section id="party-guidelines" className="scroll-mt-20 py-20 bg-base-100">
 				<div className="container mx-auto px-4 max-w-3xl">
 					<div className="text-center mb-10">
 						<p className="text-xs tracking-[0.25em] uppercase text-base-content/65 mb-2">{dict['party.policies.eyebrow']}</p>
