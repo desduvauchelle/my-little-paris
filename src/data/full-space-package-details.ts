@@ -19,6 +19,7 @@ export interface FullSpacePackageDetail {
 
 export const FULL_SPACE_DETAIL_ROWS: Array<{ id: FullSpaceDetailCategory; label: string }> = [
 	{ id: 'guest-pricing', label: 'Guest pricing' },
+	{ id: 'deposit', label: 'Deposit' },
 	{ id: 'event-time', label: 'Event time' },
 	{ id: 'appetizers', label: 'Appetizers' },
 	{ id: 'entrees', label: 'Adult entrées' },
@@ -112,6 +113,7 @@ export const FULL_SPACE_PACKAGE_DETAILS: FullSpacePackageDetail[] = [
 				selection: 'Up to 30 people',
 				items: ['20 adults + 10 kids', '$28 per additional adult', '$25 per additional child', 'Maximum 88 guests', 'Babies under 1 are free'],
 			},
+			deposit: { selection: '$400', items: [] },
 			'event-time': { selection: '2 hours', items: ['Entire venue private and closed to the public'] },
 			appetizers: { selection: 'Pick 1', items: VENDOME_APPETIZERS },
 			entrees: { selection: 'Pick 2', items: VENDOME_ENTREES },
@@ -135,6 +137,7 @@ export const FULL_SPACE_PACKAGE_DETAILS: FullSpacePackageDetail[] = [
 				selection: 'Up to 40 people',
 				items: ['25 adults + 15 kids', '$35 per additional adult', '$25 per additional child', 'Maximum 88 guests', 'Babies under 1 are free'],
 			},
+			deposit: { selection: '$400', items: [] },
 			'event-time': { selection: '2 hours', items: ['Entire venue private and closed to the public'] },
 			appetizers: { selection: 'Pick 2', items: CHAMPS_ELYSEE_APPETIZERS },
 			entrees: { selection: 'Pick 2', items: PREMIUM_ENTREES },
@@ -158,6 +161,7 @@ export const FULL_SPACE_PACKAGE_DETAILS: FullSpacePackageDetail[] = [
 				selection: 'Up to 50 people',
 				items: ['30 adults + 20 kids', '$45 per additional adult', '$30 per additional child', 'Maximum 88 guests', 'Babies under 1 are free'],
 			},
+			deposit: { selection: '$1,000', items: [] },
 			'event-time': { selection: '3 hours', items: ['Entire venue private and closed to the public'] },
 			appetizers: { selection: 'Pick 3', items: VERSAILLES_APPETIZERS },
 			entrees: { selection: 'Pick 2', items: PREMIUM_ENTREES },

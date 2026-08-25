@@ -383,7 +383,7 @@ const zh: Dictionary = {
 	'party.faq.duration.link': '查看派对时间与须知',
 	'party.faq.booking.question': '如何预订儿童生日派对？',
 	'party.faq.booking.answer':
-		'请先在下方选择套餐并提交派对咨询表，等待电子邮件确认档期后，再支付不可退还的 $200 订金以锁定日期和时间。',
+		'请先在下方选择套餐并提交派对咨询表，等待电子邮件确认档期后，再支付该套餐所示的不可退还订金，以锁定日期和时间。',
 	'party.faq.booking.link': '开始提交派对咨询',
 	'party.faq.cta': '比较派对套餐',
 	'party.packages.eyebrow': '派对套餐',
@@ -397,6 +397,7 @@ const zh: Dictionary = {
 	'party.included': '套餐包含',
 	'party.weekday': '工作日',
 	'party.weekend': '周末',
+	'party.deposit': '订金',
 	'party.book': '选择{name}',
 	'party.badge.popular': '⭐ 最受欢迎',
 	'party.badge.allinclusive': '✦ 一价全包',

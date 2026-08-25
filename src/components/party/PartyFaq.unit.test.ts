@@ -13,7 +13,7 @@ describe('PartyFaq', () => {
 		expect(markup).toContain('How much does a kids birthday party cost in San Gabriel?')
 		expect(markup).toContain('$460–$990')
 		expect(markup).toContain('children ages 0–7')
-		expect(markup).toContain('$200 non-refundable deposit')
+		expect(markup).toContain('non-refundable deposit shown for your package')
 		expect(markup).toContain('<dl')
 		expect(markup).toContain('href="#party-packages"')
 		expect(markup).toContain('href="/play"')

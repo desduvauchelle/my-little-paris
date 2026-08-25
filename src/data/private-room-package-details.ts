@@ -2,6 +2,7 @@ export type PrivateRoomPackageId = 'opera' | 'concorde' | 'saint-germain'
 
 export type PackageDetailCategory =
 	| 'guest-pricing'
+	| 'deposit'
 	| 'appetizers'
 	| 'entrees'
 	| 'sides'
@@ -25,6 +26,7 @@ export interface PrivateRoomPackageDetail {
 
 export const PRIVATE_ROOM_DETAIL_ROWS: Array<{ id: PackageDetailCategory; label: string }> = [
 	{ id: 'guest-pricing', label: 'Guest pricing' },
+	{ id: 'deposit', label: 'Deposit' },
 	{ id: 'appetizers', label: 'Appetizers' },
 	{ id: 'entrees', label: 'Entrées' },
 	{ id: 'sides', label: 'Sides' },
@@ -45,10 +47,11 @@ export const PRIVATE_ROOM_PACKAGE_DETAILS: PrivateRoomPackageDetail[] = [
 				selection: 'Up to 20 guests',
 				items: ['$20 per additional guest', 'Babies under 1 are free'],
 			},
+			deposit: { selection: '$200', items: [] },
 			appetizers: { selection: 'Not included', items: [] },
 			entrees: {
 				selection: 'Pick 1',
-				items: ['Pasta - butter, marinara, pesto or cream', 'Pizza - five 12-inch cheese or pepperoni pizzas'],
+				items: ['Pasta - butter, marinara, pesto or cream', 'Pizza – cheese or pepperoni (12-inch)'],
 			},
 			sides: {
 				selection: 'Pick 1',
@@ -79,6 +82,7 @@ export const PRIVATE_ROOM_PACKAGE_DETAILS: PrivateRoomPackageDetail[] = [
 				selection: 'Up to 20 guests',
 				items: ['$25 per additional guest', 'Babies under 1 are free'],
 			},
+			deposit: { selection: '$200', items: [] },
 			appetizers: {
 				selection: 'Pick 1',
 				items: ['Bruschetta', 'Caprese skewers', 'Chicken skewers', 'Mini quiches'],
@@ -119,9 +123,10 @@ export const PRIVATE_ROOM_PACKAGE_DETAILS: PrivateRoomPackageDetail[] = [
 				selection: 'Up to 20 guests',
 				items: ['$30 per additional guest', 'Babies under 1 are free'],
 			},
+			deposit: { selection: '$200', items: [] },
 			appetizers: {
 				selection: 'Pick 2',
-				items: ['Bruschetta', 'Hummus crostini', 'Smoked salmon crostini', 'Caprese skewers', 'Chicken skewers', 'Mini quiches'],
+				items: ['Bruschetta', 'Caprese skewers', 'Chicken skewers', 'Mini quiches'],
 			},
 			entrees: {
 				selection: 'Pick 2',

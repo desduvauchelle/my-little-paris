@@ -65,13 +65,13 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: string }) {
 							width={180}
 							height={41}
 							priority
-							className="h-9 w-auto"
+							className="h-7 w-auto max-w-none shrink-0 sm:h-9"
 						/>
 					</Link>
 				</div>
 
 				{/* Desktop nav */}
-				<nav className="hidden lg:flex items-center gap-5">
+				<nav className="hidden xl:flex items-center gap-5">
 					{NAV_LINKS.map((link) => (
 						<Link
 							key={link.href}
@@ -92,7 +92,7 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: string }) {
 				</nav>
 
 				{/* Mobile nav — client component handles toggle state */}
-				<div className="flex items-center gap-2 lg:hidden">
+				<div className="flex items-center gap-2 xl:hidden">
 					{primaryAction}
 					<MobileMenu
 						links={NAV_LINKS}

@@ -16,6 +16,7 @@ export interface PartyPackage {
 	tier: string
 	weekday: string
 	weekend: string
+	deposit?: string
 	capacity: string
 	includes: string[]
 	badge?: 'popular' | 'all-inclusive'
@@ -45,8 +46,6 @@ export interface PackageGroup {
 
 export const TIME_SLOTS = ['10:00 am – 12:00 pm', '1:00 pm – 3:00 pm', '4:00 pm – 6:00 pm'] as const
 
-export const PARTY_DEPOSIT = '$200 deposit required to reserve any package.'
-
 export const PACKAGE_GROUPS: PackageGroup[] = [
 	{
 		id: 'private-room',
@@ -64,6 +63,7 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 				tier: 'Private Room · Entry',
 				weekday: '$460',
 				weekend: '$590',
+				deposit: '$200',
 				capacity: 'Up to 20 guests (adults + kids) · +$20/extra guest · Max 30',
 				includes: [
 					'2-hour private party',
@@ -79,6 +79,7 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 				tier: 'Private Room · Mid',
 				weekday: '$560',
 				weekend: '$690',
+				deposit: '$200',
 				capacity: 'Up to 20 guests (adults + kids) · +$25/extra guest · Max 30',
 				includes: [
 					'Everything in Opéra, plus:',
@@ -93,6 +94,7 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 				tier: 'Private Room · Deluxe',
 				weekday: '$860',
 				weekend: '$990',
+				deposit: '$200',
 				capacity: 'Up to 20 guests (adults + kids) · +$30/extra guest · Max 30',
 				includes: [
 					'Everything in Concorde, plus:',
@@ -114,6 +116,7 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 					tier: 'Venue Rental · Private Room',
 					weekday: '$350',
 					weekend: '$450',
+					deposit: '$200',
 					capacity: 'Up to 20 guests · +$10/extra guest',
 					includes: [
 						'2-hour private room rental',
@@ -134,7 +137,7 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 		catered: {
 			description: 'The entire venue is exclusively yours, closed to the public. Ideal for 30+ guests or anyone wanting total privacy.',
 			serviceFee: '15% mandatory service fee added to all packages, covering gratuity for all staff. 3% credit card fee.',
-			extraTime: 'Extra hour: $300 weekday / $390 weekend',
+			extraTime: 'Extra time: 30 minutes $160 weekday / $220 weekend · 1 hour $300 weekday / $400 weekend',
 			addOns: ['Chinese Food option', 'Dietary Restrictions menu', 'Party Rentals'],
 			packages: [
 			{
@@ -143,6 +146,7 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 				tier: 'Full Space · Entry',
 				weekday: '$1,150',
 				weekend: '$1,400',
+				deposit: '$400',
 				capacity: 'Up to 30 people (20 adults + 10 kids) · +$28/adult, $25/child · Max 88',
 				includes: [
 					'2-hour party · Entire venue private',
@@ -158,6 +162,7 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 				tier: 'Full Space · Mid',
 				weekday: '$1,850',
 				weekend: '$2,200',
+				deposit: '$400',
 				capacity: 'Up to 40 people (25 adults + 15 kids) · +$35/adult, $25/child · Max 88',
 				includes: [
 					'Everything in Vendôme Privé, plus:',
@@ -175,6 +180,7 @@ export const PACKAGE_GROUPS: PackageGroup[] = [
 				tier: 'Full Space · All-Inclusive',
 				weekday: '$4,500',
 				weekend: '$5,000',
+				deposit: '$1,000',
 				capacity: 'Up to 50 people (30 adults + 20 kids) · +$45/adult, $30/child · Max 88',
 				includes: [
 					'Everything in Champs-Élysée, plus:',
@@ -225,7 +231,7 @@ export const PARTY_PROCESS = [
 	},
 	{
 		title: 'Pay Deposit to Reserve',
-		body: 'Once availability is confirmed, your $200 deposit secures the date and time.',
+		body: 'Once availability is confirmed, the deposit shown for your package secures the date and time.',
 	},
 	{
 		title: 'Show Up & Celebrate',
@@ -237,7 +243,7 @@ export const PARTY_POLICIES = [
 	{
 		title: 'Deposits & Cancellation Policy',
 		items: [
-			'A non-refundable $200 deposit is required to secure your date and time.',
+			'A non-refundable deposit is required to secure your date and time. The amount is shown with each package.',
 			'50% of the remaining balance is due 10 days before your event.',
 			'The remaining balance can be paid on the day of the party.',
 			"Deposits are not refundable if you cancel. You may postpone with at least 30 days' notice at no extra charge. Less than 30 days' notice requires a new deposit.",
@@ -249,7 +255,7 @@ export const PARTY_POLICIES = [
 			'You may arrive 30 minutes before your party time to decorate.',
 			'Cleanup begins 15–20 minutes before the party ends.',
 			'Private Room extra time: $150/30 min or $280/hr.',
-			'Full Space extra time: $200/30 min or $390/hr.',
+			'Full Space extra time: 30 minutes $160 weekday / $220 weekend; 1 hour $300 weekday / $400 weekend.',
 			'Holidays and Mondays are billed at the weekend rate.',
 		],
 	},

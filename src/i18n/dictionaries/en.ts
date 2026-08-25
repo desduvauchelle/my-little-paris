@@ -383,7 +383,7 @@ const en = {
 	'party.faq.duration.link': 'Review party timing and guidelines',
 	'party.faq.booking.question': 'How do I book a kids birthday party?',
 	'party.faq.booking.answer':
-		'Choose a package below, submit the party inquiry form, wait for availability confirmation by email, and pay the $200 non-refundable deposit to secure your date and time.',
+		'Choose a package below, submit the party inquiry form, wait for availability confirmation by email, and pay the non-refundable deposit shown for your package to secure your date and time.',
 	'party.faq.booking.link': 'Start a party inquiry',
 	'party.faq.cta': 'Compare party packages',
 	'party.packages.eyebrow': 'Party Packages',
@@ -397,6 +397,7 @@ const en = {
 	'party.included': "What's Included",
 	'party.weekday': 'Weekday',
 	'party.weekend': 'Weekend',
+	'party.deposit': 'Deposit',
 	'party.book': 'Select {name}',
 	'party.badge.popular': '⭐ Most Popular',
 	'party.badge.allinclusive': '✦ All-Inclusive',

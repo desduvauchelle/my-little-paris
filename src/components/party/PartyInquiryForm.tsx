@@ -87,7 +87,7 @@ export function PartyInquiryForm({
 								{dict['partyform.package.change']}
 							</button>
 						</div>
-						<div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-base-300">
+						<div className={`grid gap-4 mt-4 pt-4 border-t border-base-300 ${selectedPackage.package.deposit ? 'grid-cols-2 sm:grid-cols-3' : 'grid-cols-2'}`}>
 							<div>
 								<p className="text-xs uppercase tracking-wide text-base-content/70">{dict['party.weekday']}</p>
 								<p className="text-lg font-bold text-primary">{selectedPackage.package.weekday}</p>
@@ -96,6 +96,12 @@ export function PartyInquiryForm({
 								<p className="text-xs uppercase tracking-wide text-base-content/70">{dict['party.weekend']}</p>
 								<p className="text-lg font-bold text-primary">{selectedPackage.package.weekend}</p>
 							</div>
+							{selectedPackage.package.deposit && (
+								<div className="col-span-2 sm:col-span-1">
+									<p className="text-xs uppercase tracking-wide text-base-content/70">{dict['party.deposit']}</p>
+									<p className="text-lg font-bold text-primary">{selectedPackage.package.deposit}</p>
+								</div>
+							)}
 						</div>
 						<p className="text-sm leading-relaxed text-base-content/70 mt-3">{selectedPackage.package.capacity}</p>
 					</div>

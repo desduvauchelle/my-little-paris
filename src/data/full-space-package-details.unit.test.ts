@@ -29,6 +29,19 @@ describe('full-space package comparison data', () => {
 		expect(versailles?.details['alcoholic-drinks'].selection).toBe('Pick 1')
 		expect(versailles?.details['alcoholic-drinks'].items).toContain('Mimosa')
 		expect(versailles?.details['celebration-extras'].items).toEqual(['Decoration', 'Cake', 'Party favors'])
+		expect(versailles?.details.deposit.selection).toBe('$1,000')
+	})
+
+	it('shows the current deposit for each Full Space package', () => {
+		expect(
+			Object.fromEntries(
+				FULL_SPACE_PACKAGE_DETAILS.map((partyPackage) => [partyPackage.id, partyPackage.details.deposit.selection]),
+			),
+		).toEqual({
+			vendome: '$400',
+			'champs-elysee': '$400',
+			versailles: '$1,000',
+		})
 	})
 
 	it('lists the available choices for every included food and drink selection', () => {

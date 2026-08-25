@@ -5,7 +5,6 @@ import type { Dictionary } from '@/i18n'
 import {
 	PACKAGE_FORM_VALUES,
 	PACKAGE_GROUPS,
-	PARTY_DEPOSIT,
 	type PartyPackage,
 	type PartyPackageSelection,
 } from '@/data/party'
@@ -176,6 +175,11 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 									<p className="text-2xl font-bold text-primary">{pkg.weekend}</p>
 								</div>
 							</div>
+							{pkg.deposit && (
+								<p className="text-sm font-semibold text-primary mb-3">
+									{dict['party.deposit']}: {pkg.deposit}
+								</p>
+							)}
 
 							<p className="text-xs leading-relaxed text-base-content/70 lg:min-h-12 mb-4">👥 {pkg.capacity}</p>
 
@@ -216,7 +220,6 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 
 			{/* Secondary booking details follow the package comparison. */}
 			<div className="max-w-3xl mx-auto mt-10 pt-6 border-t border-base-300 text-center space-y-2">
-				<p className="text-sm font-semibold text-primary">{PARTY_DEPOSIT}</p>
 				<p className="text-sm text-base-content/75">{variant.description}</p>
 				<p className="text-xs text-base-content/65">{variant.serviceFee}</p>
 				{variant.extraTime && <p className="text-xs text-base-content/65">{variant.extraTime}</p>}

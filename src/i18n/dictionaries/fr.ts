@@ -385,7 +385,7 @@ const fr: Dictionary = {
 	'party.faq.duration.link': 'Consulter les horaires et les règles',
 	'party.faq.booking.question': 'Comment réserver un anniversaire pour enfants ?',
 	'party.faq.booking.answer':
-		'Choisissez une formule ci-dessous, envoyez le formulaire de demande, attendez la confirmation de disponibilité par e-mail, puis versez l’acompte non remboursable de 200 $ pour réserver la date et l’heure.',
+		'Choisissez une formule ci-dessous, envoyez le formulaire de demande, attendez la confirmation de disponibilité par e-mail, puis versez l’acompte non remboursable indiqué pour votre formule afin de réserver la date et l’heure.',
 	'party.faq.booking.link': 'Commencer une demande de fête',
 	'party.faq.cta': 'Comparer les formules',
 	'party.packages.eyebrow': 'Formules anniversaire',
@@ -399,6 +399,7 @@ const fr: Dictionary = {
 	'party.included': 'Ce qui est inclus',
 	'party.weekday': 'Semaine',
 	'party.weekend': 'Week-end',
+	'party.deposit': 'Acompte',
 	'party.book': 'Choisir {name}',
 	'party.badge.popular': '⭐ Le plus demandé',
 	'party.badge.allinclusive': '✦ Tout compris',
