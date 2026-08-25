@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { getDictionary } from '@/i18n'
 import { buildPageMetadata } from '@/lib/seo'
 import { BUSINESS, LINKS, SERVICE_AREA } from '@/data/site'
-import { PARTY_PROCESS, PARTY_POLICIES } from '@/data/party'
+import { getLocalizedPartyContent } from '@/data/party-localized'
 import { PackageTabs } from '@/components/party/PackageTabs'
 import { PartyFaq } from '@/components/party/PartyFaq'
 import { EventPhotoMarquee } from '@/components/party/EventPhotoMarquee'
@@ -37,6 +37,7 @@ export default async function PartyPage({
 }) {
 	const { locale } = await params
 	const dict = await getDictionary(locale)
+	const partyContent = getLocalizedPartyContent(locale)
 	const gallerySeed = new Date().getUTCDate() + locale.length * 47
 
 	const badges = [
@@ -128,7 +129,7 @@ export default async function PartyPage({
 						<h2 id="party-packages-heading" tabIndex={-1} className="font-display text-4xl text-primary mb-3 focus:outline-none">{dict['party.packages.heading']}</h2>
 						<p className="text-base-content/70 max-w-2xl mx-auto">{dict['party.packages.sub']}</p>
 					</div>
-					<PackageTabs dict={dict} />
+					<PackageTabs dict={dict} locale={locale} />
 				</div>
 			</section>
 
@@ -166,7 +167,7 @@ export default async function PartyPage({
 						<h2 className="font-display text-4xl text-primary">{dict['party.process.heading']}</h2>
 					</div>
 					<ScrollReveal y={30} stagger={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-						{PARTY_PROCESS.map((step, i) => (
+						{partyContent.partyProcess.map((step, i) => (
 							<div key={step.title} className="card bg-base-100 shadow-sm">
 								<div className="card-body">
 									<span className="font-display text-4xl text-secondary">{i + 1}</span>
@@ -187,15 +188,15 @@ export default async function PartyPage({
 						<h2 className="font-display text-4xl text-primary">{dict['party.policies.heading']}</h2>
 					</div>
 					<div className="space-y-3">
-						{PARTY_POLICIES.map((policy) => (
+						{partyContent.partyPolicies.map((policy, policyIndex) => (
 							<div key={policy.title} className="collapse collapse-arrow bg-base-200 border border-base-300">
 								<input type="radio" name="party-policies" />
 								<div className="collapse-title font-semibold">{policy.title}</div>
 								<div className="collapse-content">
 									<ul className="list-disc pl-5 space-y-1 text-sm text-base-content/75">
-										{policy.items.map((item) => (
+										{policy.items.map((item, itemIndex) => (
 											<li key={item}>
-												{item.includes('waiver') ? (
+												{policyIndex === 2 && itemIndex === 3 ? (
 													<>
 														{item}{' '}
 														<a href={LINKS.waiver} target="_blank" rel="noopener noreferrer" className="link link-primary">

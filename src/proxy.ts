@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { isMultiLang, supportedLocales, defaultLocale } from './i18n/config'
 import { defaultLocaleRedirectTarget } from './lib/i18n-utils'
+import { LOCALE_PREFERENCE_COOKIE } from './lib/locale-preference'
 
 const SKIP_PREFIXES = ['/_next/', '/sitemap', '/admin']
 const SKIP_PATHS = ['/favicon.ico', '/sitemap.xml', '/robots.txt', '/opengraph-image']
@@ -29,7 +30,7 @@ function getLocaleFromHeaders(request: NextRequest): string {
 
 function detectLocale(request: NextRequest): string {
 	// 1. Cookie
-	const cookieLocale = request.cookies.get('ge-locale')?.value
+	const cookieLocale = request.cookies.get(LOCALE_PREFERENCE_COOKIE)?.value
 	if (cookieLocale && supportedLocales.includes(cookieLocale)) {
 		return cookieLocale
 	}
@@ -108,7 +109,7 @@ export function proxy(request: NextRequest) {
 		response.headers.set('x-locale', locale)
 
 		if (paramLocale && supportedLocales.includes(paramLocale)) {
-			response.cookies.set('ge-locale', paramLocale, {
+			response.cookies.set(LOCALE_PREFERENCE_COOKIE, paramLocale, {
 				path: '/',
 				maxAge: 60 * 60 * 24 * 365,
 				sameSite: 'lax',
@@ -138,7 +139,7 @@ export function proxy(request: NextRequest) {
 		response.headers.set('x-locale', locale)
 
 		if (paramLocale && supportedLocales.includes(paramLocale)) {
-			response.cookies.set('ge-locale', paramLocale, {
+			response.cookies.set(LOCALE_PREFERENCE_COOKIE, paramLocale, {
 				path: '/',
 				maxAge: 60 * 60 * 24 * 365,
 				sameSite: 'lax',
@@ -155,7 +156,7 @@ export function proxy(request: NextRequest) {
 	response.headers.set('x-locale', defaultLocale)
 
 	if (paramLocale && supportedLocales.includes(paramLocale)) {
-		response.cookies.set('ge-locale', paramLocale, {
+		response.cookies.set(LOCALE_PREFERENCE_COOKIE, paramLocale, {
 			path: '/',
 			maxAge: 60 * 60 * 24 * 365,
 			sameSite: 'lax',

@@ -454,6 +454,7 @@ const en = {
 	'partyform.pref.both': 'Both (email for main info and text for quick info)',
 	'partyform.date': 'Desired Party Date',
 	'partyform.time': 'Desired Party Time',
+	'partyform.time.other': 'Other',
 	'partyform.package': 'Party Package',
 	'partyform.package.selected': 'Your selected package',
 	'partyform.package.change': 'Change package',

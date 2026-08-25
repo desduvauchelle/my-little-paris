@@ -456,6 +456,7 @@ const fr: Dictionary = {
 	'partyform.pref.both': 'Les deux (e-mail pour l’essentiel, SMS pour le rapide)',
 	'partyform.date': 'Date souhaitée',
 	'partyform.time': 'Heure souhaitée',
+	'partyform.time.other': 'Autre',
 	'partyform.package': 'Formule',
 	'partyform.package.selected': 'Votre formule sélectionnée',
 	'partyform.package.change': 'Changer de formule',

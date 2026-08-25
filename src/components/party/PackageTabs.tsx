@@ -4,21 +4,17 @@ import { useEffect, useRef, useState } from 'react'
 import type { Dictionary } from '@/i18n'
 import {
 	PACKAGE_FORM_VALUES,
-	PACKAGE_GROUPS,
 	type PartyPackage,
 	type PartyPackageSelection,
 } from '@/data/party'
 import {
-	PRIVATE_ROOM_DETAIL_ROWS,
-	PRIVATE_ROOM_PACKAGE_DETAILS,
 	type PackageDetailCell,
 	type PrivateRoomPackageId,
 } from '@/data/private-room-package-details'
 import {
-	FULL_SPACE_DETAIL_ROWS,
-	FULL_SPACE_PACKAGE_DETAILS,
 	type FullSpacePackageId,
 } from '@/data/full-space-package-details'
+import { getLocalizedPartyContent } from '@/data/party-localized'
 import { cn } from '@/lib/utils'
 import { BalloonCelebration } from '@/components/ui/BalloonCelebration'
 import { PartyInquiryForm } from './PartyInquiryForm'
@@ -34,18 +30,19 @@ interface PackageComparisonDetail {
 	details: Record<string, PackageDetailCell>
 }
 
-export function PackageTabs({ dict }: { dict: Dictionary }) {
+export function PackageTabs({ dict, locale }: { dict: Dictionary; locale: string }) {
 	const [active, setActive] = useState(0)
 	const [catered, setCatered] = useState(true)
 	const [selectedPackage, setSelectedPackage] = useState<PartyPackageSelection | null>(null)
 	const [selectedPackageDetails, setSelectedPackageDetails] = useState<PackageComparisonDetail | null>(null)
 	const detailsDialogRef = useRef<HTMLDialogElement>(null)
-	const group = PACKAGE_GROUPS[active]
+	const partyContent = getLocalizedPartyContent(locale)
+	const group = partyContent.packageGroups[active]
 	const variant = catered ? group.catered : group.rentalOnly
-	const detailRows = group.id === 'private-room' ? PRIVATE_ROOM_DETAIL_ROWS : FULL_SPACE_DETAIL_ROWS
+	const detailRows = group.id === 'private-room' ? partyContent.privateRoomDetailRows : partyContent.fullSpaceDetailRows
 	const packageDetails: PackageComparisonDetail[] = group.id === 'private-room'
-		? PRIVATE_ROOM_PACKAGE_DETAILS
-		: FULL_SPACE_PACKAGE_DETAILS
+		? partyContent.privateRoomPackageDetails
+		: partyContent.fullSpacePackageDetails
 	const popularPackageId = group.id === 'private-room' ? POPULAR_PRIVATE_ROOM_PACKAGE_ID : POPULAR_FULL_SPACE_PACKAGE_ID
 	const showPackageDetails = catered
 	const detailsHeading = group.id === 'private-room'
@@ -93,7 +90,7 @@ export function PackageTabs({ dict }: { dict: Dictionary }) {
 		<div>
 			{/* Tab buttons */}
 			<div role="group" aria-label={dict['party.packages.heading']} className="flex flex-wrap justify-center gap-3 md:gap-5 mb-5">
-				{PACKAGE_GROUPS.map((g, i) => (
+				{partyContent.packageGroups.map((g, i) => (
 					<button
 						key={g.id}
 						aria-pressed={active === i}

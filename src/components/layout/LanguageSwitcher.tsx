@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation'
 import { localizedPath } from '@/lib/i18n-utils'
+import { buildLocalePreferenceCookie } from '@/lib/locale-preference'
 import { cn } from '@/lib/utils'
 
 // Short pill labels — the switcher shows the locale code, not the full name.
@@ -50,6 +51,13 @@ export function LanguageSwitcher({
 
 	function switchTo(newLocale: string) {
 		if (newLocale === locale) return
+
+		// Save the explicit choice before navigating. English has no URL prefix,
+		// so a French-locale browser otherwise gets redirected straight back to /fr.
+		document.cookie = buildLocalePreferenceCookie(
+			newLocale,
+			window.location.protocol === 'https:',
+		)
 
 		// Article translations have different slugs. Follow the explicit metadata
 		// alternate when one exists instead of reusing the current locale's slug.

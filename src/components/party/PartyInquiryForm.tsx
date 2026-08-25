@@ -139,7 +139,7 @@ export function PartyInquiryForm({
 						<option>10:00 am – 12:00 pm</option>
 						<option>1:00 pm – 3:00 pm</option>
 						<option>4:00 pm – 6:00 pm</option>
-						<option>Other</option>
+						<option>{dict['partyform.time.other']}</option>
 					</select>
 				</Field>
 			</div>

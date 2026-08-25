@@ -453,6 +453,7 @@ const zh: Dictionary = {
 	'partyform.pref.both': '两者皆可（重要信息用邮件，快捷信息用短信）',
 	'partyform.date': '期望派对日期',
 	'partyform.time': '期望派对时间',
+	'partyform.time.other': '其他',
 	'partyform.package': '派对套餐',
 	'partyform.package.selected': '您选择的套餐',
 	'partyform.package.change': '更换套餐',
