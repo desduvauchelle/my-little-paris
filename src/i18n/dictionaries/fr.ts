@@ -668,6 +668,30 @@ const fr: Dictionary = {
 	'forms.load.error': 'Échec du chargement des formulaires : {error}',
 	'forms.empty': 'Aucun formulaire disponible pour le moment.',
 
+	// Review funnel (/review)
+	'review.title': 'Comment s’est passée votre visite ?',
+	'review.meta.description':
+		'Dites-nous comment s’est passée votre visite chez My Little Paris Café & Play — partagez votre expérience ou aidez-nous à nous améliorer.',
+	'review.heading': 'Comment s’est passée votre visite ?',
+	'review.subtitle': 'Moins d’une minute, et cela compte énormément pour notre petit café.',
+	'review.choice.good': 'C’était super !',
+	'review.choice.bad': 'Pas terrible…',
+	'review.good.heading': 'Merci beaucoup ! 💛',
+	'review.good.body':
+		'Voulez-vous partager votre expérience dans un avis public ? Cela aide d’autres familles de la vallée de San Gabriel à nous trouver.',
+	'review.good.google': 'Laisser un avis sur Google',
+	'review.good.yelp': 'Laisser un avis sur Yelp',
+	'review.bad.heading': 'Nous sommes vraiment désolés.',
+	'review.bad.body':
+		'Racontez-nous ce qui s’est passé — les propriétaires lisent chaque message, et nous aimerions avoir la chance d’arranger les choses.',
+	'review.bad.submit': 'Envoyer mon retour',
+	'review.bad.fallback':
+		'Notre formulaire est indisponible pour le moment — écrivez-nous à {email} ou appelez-nous au {phone}. Nous lisons tout.',
+	'review.sent.heading': 'Merci de nous l’avoir dit 💛',
+	'review.sent.body':
+		'Votre message est parti directement aux propriétaires. Si vous avez laissé votre e-mail, nous vous répondrons personnellement.',
+	'review.back': '← Retour',
+
 	// Page titles
 	'page.privacy.policy': 'Politique de confidentialité',
 	'page.terms.of.service': 'Conditions d’utilisation',

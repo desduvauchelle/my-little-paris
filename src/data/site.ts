@@ -43,6 +43,9 @@ export const LINKS = {
 	facebook: 'https://www.facebook.com/mylittlepariscafeplay',
 	instagram: 'https://www.instagram.com/mylittlepariscafeplay/',
 	yelp: 'https://www.yelp.com/biz/my-little-paris-cafe-and-play-san-gabriel',
+	/** Direct "write a review" deep link (Place ID verified against the live Maps listing). */
+	googleReview: 'https://search.google.com/local/writereview?placeid=ChIJS5VoEqTbwoARwU2PSxn5Spc',
+	yelpReview: 'https://www.yelp.com/writeareview/biz/my-little-paris-cafe-and-play-san-gabriel',
 } as const
 
 /** Cities called out on the party page for local SEO. */

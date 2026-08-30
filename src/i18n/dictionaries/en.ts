@@ -667,6 +667,30 @@ const en = {
 	'forms.load.error': 'Failed to load forms: {error}',
 	'forms.empty': 'No forms available at the moment.',
 
+	// Review funnel (/review)
+	'review.title': 'How was your visit?',
+	'review.meta.description':
+		'Tell us how your visit to My Little Paris Café & Play went — share the love or help us do better.',
+	'review.heading': 'How was your visit?',
+	'review.subtitle': 'It takes less than a minute, and it means the world to our little café.',
+	'review.choice.good': 'It was great!',
+	'review.choice.bad': 'Not so great…',
+	'review.good.heading': 'Merci beaucoup! 💛',
+	'review.good.body':
+		'Would you share the love in a quick public review? It helps other San Gabriel Valley families find us.',
+	'review.good.google': 'Review us on Google',
+	'review.good.yelp': 'Review us on Yelp',
+	'review.bad.heading': 'We’re so sorry to hear that.',
+	'review.bad.body':
+		'Tell us what happened — the owners read every single message, and we’d love the chance to make it right.',
+	'review.bad.submit': 'Send feedback',
+	'review.bad.fallback':
+		'Our feedback form isn’t available right now — please email us at {email} or call/text {phone}. We read everything.',
+	'review.sent.heading': 'Thank you for telling us 💛',
+	'review.sent.body':
+		'Your message went straight to the owners. If you left your email, we’ll follow up personally.',
+	'review.back': '← Go back',
+
 	// Page titles
 	'page.privacy.policy': 'Privacy Policy',
 	'page.terms.of.service': 'Terms of Service',

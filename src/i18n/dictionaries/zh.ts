@@ -660,6 +660,25 @@ const zh: Dictionary = {
 	'forms.load.error': '加载表单失败：{error}',
 	'forms.empty': '暂无可用表单。',
 
+	// Review funnel (/review)
+	'review.title': '这次光临体验如何？',
+	'review.meta.description': '告诉我们您在 My Little Paris Café & Play 的体验——分享您的喜爱，或帮助我们做得更好。',
+	'review.heading': '这次光临体验如何？',
+	'review.subtitle': '只需不到一分钟，对我们的小咖啡馆意义重大。',
+	'review.choice.good': '非常棒！',
+	'review.choice.bad': '不太满意…',
+	'review.good.heading': '非常感谢！💛',
+	'review.good.body': '愿意留下一条公开好评吗？这能帮助圣盖博谷的更多家庭找到我们。',
+	'review.good.google': '在 Google 上留评价',
+	'review.good.yelp': '在 Yelp 上留评价',
+	'review.bad.heading': '非常抱歉给您带来不好的体验。',
+	'review.bad.body': '请告诉我们发生了什么——店主会阅读每一条留言，我们希望有机会弥补。',
+	'review.bad.submit': '提交反馈',
+	'review.bad.fallback': '反馈表单暂时无法使用——请发邮件至 {email} 或致电 {phone}，我们会认真阅读每一条反馈。',
+	'review.sent.heading': '感谢您的反馈 💛',
+	'review.sent.body': '您的留言已直接送达店主。如果您留下了邮箱，我们会亲自回复您。',
+	'review.back': '← 返回',
+
 	// Page titles
 	'page.privacy.policy': '隐私政策',
 	'page.terms.of.service': '服务条款',
