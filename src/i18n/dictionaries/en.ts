@@ -20,8 +20,8 @@ const en = {
 
 	// Hero (homepage)
 	'hero.title': 'My Little Paris Café & Play',
-	'hero.subtitle':
-		'French café + indoor playground in San Gabriel, CA. Two-hour Eat & Play sessions, all-inclusive birthday parties, memberships, and real food for parents and kids. Reserve online in minutes.',
+	'home.meta.description':
+		'French café and indoor playground in San Gabriel, CA. Two-hour Eat & Play sessions, all-inclusive birthday parties, and real food for grown-ups.',
 	'hero.eyebrow': 'French Café & Indoor Playground · San Gabriel, CA',
 	'hero.headline': 'Kids play freely. Parents dine peacefully.',
 	'hero.sub':
@@ -282,9 +282,9 @@ const en = {
 
 	// Play page
 	'play.title': 'Play',
-	'play.meta.title': 'Indoor Playground San Gabriel | Eat & Play Sessions & Memberships',
+	'play.meta.title': 'Indoor Playground San Gabriel | My Little Paris Café & Play',
 	'play.meta.description':
-		'Montessori-inspired indoor playground in San Gabriel, CA for kids 0-7. Two-hour Eat & Play sessions, 10-visit passes, and monthly memberships. Reserve online.',
+		'Montessori-inspired indoor playground in San Gabriel, CA for kids 0-7. Two-hour Eat & Play sessions, 10-visit passes and monthly memberships.',
 	'play.quote': '"Play is the Highest Form of Research"',
 	'play.quote.author': 'Albert Einstein',
 	'play.heading': 'Where Kids Laugh and Grown-Ups Relax',
@@ -535,6 +535,39 @@ const en = {
 	'menu.kids': "Kid's Menu",
 	'menu.all': '← All Menus',
 
+	// Menu hub — supporting copy (added to fix the crawl's thin-content finding)
+	'menu.intro.p1':
+		'My Little Paris is a French café first. Everything comes out of our own kitchen, cooked to order, while your children play a few steps away — croque monsieur and croque madame on sourdough, smoked salmon toast, signature salads, housemade tomato bisque, four pastas, and a pastry case of macarons, mini croissants and chocolate lava cake.',
+	'menu.intro.p2':
+		'There are three menus. The Eat menu is the main kitchen. The Drink menu covers coffee, Mighty Leaf tea, beer, cocktails and French wine by the glass. The Kid\u2019s menu is built for children 10 and younger, including the My Little Combo & Play, which bundles a little entrée, drink and dessert with a 2-hour play pass.',
+	'menu.eat.desc': 'Appetizers to share, housemade soup, signature salads, handcrafted toasts and sandwiches, pasta, and the dessert case.',
+	'menu.drink.desc': 'Coffee and Mighty Leaf tea, cold drinks, beers and hard seltzers, sparkling wine and cocktails, plus red, white and rosé by the glass.',
+	'menu.kids.desc': 'Little entrées, desserts and drinks for children 10 and younger — plus the combo that includes a 2-hour play pass.',
+	'menu.sections.heading': 'What you’ll find on each menu',
+	'menu.sections.sub': 'Every dish is made in our San Gabriel kitchen. Open a menu for the full list with prices.',
+	'menu.sections.view': 'See the full {menu}',
+	'menu.know.heading': 'Good to know before you order',
+	'menu.know.session.title': 'Eating and playing happen together',
+	'menu.know.session.body':
+		'Visits run as 2-hour Eat & Play sessions: the children play while you order from the café. Play admission is {child} per child and {sibling} per sibling, and babies under 1 year old are free.',
+	'menu.know.adults.title': 'One entrée per adult',
+	'menu.know.adults.body':
+		'Each adult orders a minimum of one entrée from the restaurant. That minimum is what lets us keep a full kitchen and a supervised play space under one roof.',
+	'menu.know.happyhour.title': 'Weekday happy hour',
+	'menu.know.happyhour.body':
+		'Arrive between 2:00 pm and 3:30 pm on a weekday and the requirement drops to a $10 minimum order per adult instead of a full entrée.',
+	'menu.know.kids.title': 'The Kid’s menu is for under-11s',
+	'menu.know.kids.body':
+		'My Little Entrées are portioned and priced for children 10 and younger — not for pre-teens, teenagers or adults. Bigger appetites order from the Eat menu.',
+	'menu.know.dietary.title': 'Gluten-free bread and allergens',
+	'menu.know.dietary.body':
+		'Most toasts and sandwiches can be made on gluten-free bread for $1.50. Dishes that contain gluten are marked on the menu, and our macarons contain almond. Please tell your server about any allergy before ordering.',
+	'menu.know.reserve.title': 'Reserve ahead at busy times',
+	'menu.know.reserve.body':
+		'Walk-ins are welcome, but weekend and late-afternoon sessions fill up. Booking ahead guarantees both a table and a play spot.',
+	'menu.know.cta.reserve': 'Reserve a session',
+	'menu.know.cta.play': 'Play pricing & memberships',
+
 	// Eat page
 	'eat.heading': 'Eat',
 	'eat.sub': 'Fresh, satisfying bites for every moment, made for both parents and little ones.',
@@ -547,18 +580,22 @@ const en = {
 	// Kids menu page
 	'kids.heading': "Kid's Menu",
 	'kids.sub': 'For children 10 and younger, please.',
+	'kids.meta.description':
+		'Menu for children 10 and under: nuggets, mac & cheese, mini burgers, macarons, and the My Little Combo with a 2-hour play pass in San Gabriel, CA.',
 	'kids.main.link': 'Main Menu',
 
 	// Drink page
 	'drink.heading': 'Drink',
 	'drink.sub': 'Coffee, tea, beer & wine. Something for everyone.',
+	'drink.meta.description':
+		'Coffee, Mighty Leaf tea, French wine by the glass, beer, mimosas and Kir Royal — the full drinks list at My Little Paris Café & Play, San Gabriel.',
 
 	// Events page
 	'events.heading': 'Events',
 	'events.sub': 'Character meet & greets, tea parties, and celebrations all year round.',
-	'events.meta.title': 'Kids Events & Parties in San Gabriel',
+	'events.meta.title': 'Family Events in San Gabriel',
 	'events.meta.description':
-		'Upcoming family events, holiday celebrations, and special activities at My Little Paris Café & Play in San Gabriel, CA. Check the calendar and reserve your spot.',
+		"Character meet and greets, tea parties and seasonal celebrations for kids in San Gabriel, CA. See what's coming up and reserve your family's spot.",
 	'events.current.badge': 'Next Event',
 	'events.admission': 'Admission Includes',
 	'events.pricing': 'Pricing',
@@ -566,6 +603,51 @@ const en = {
 	'events.reserve.cta': 'Reserve Your Seats',
 	'events.stay.heading': "Don't miss the next one",
 	'events.stay.body': 'Follow us on Instagram or subscribe to the newsletter to hear about character meet & greets, princess and superhero events first.',
+
+	// Events page — supporting copy (added to fix the crawl's thin-content finding)
+	'events.intro.p1':
+		'Alongside everyday open play, we run ticketed events all year round: costumed characters who visit table to table, tea parties laid out in the café, and seasonal celebrations that mark the holidays. They are the days families plan their weekend around.',
+	'events.intro.p2':
+		'An event is different from a regular Eat & Play session. Seats are reserved in advance, the room is set up for the occasion, and each event has its own price and inclusions. Everything happens in our San Gabriel café, so the play space and the kitchen are open as usual.',
+	'events.types.heading': 'The kinds of events we host',
+	'events.types.characters.title': 'Character meet & greets',
+	'events.types.characters.body':
+		'Princesses and superheroes come to visit, move between the tables, and stay long enough for photos with every child. Popular with the 2–8 crowd, and the days that sell out first.',
+	'events.types.tea.title': 'Tea parties',
+	'events.types.tea.body':
+		'The café is set for a proper little tea: pastries from our own case, drinks the children can pour themselves, and time to sit before they head back into the playground.',
+	'events.types.seasonal.title': 'Seasonal celebrations',
+	'events.types.seasonal.body':
+		'Holidays and turning points in the year get their own day, decorated and themed, from spring egg hunts through to the winter holidays.',
+	'events.booking.heading': 'How booking an event works',
+	'events.booking.step1.title': 'Pick a date',
+	'events.booking.step1.body':
+		'The calendar below lists every event we have on sale, newest first. Choose the one you want to open its details.',
+	'events.booking.step2.title': 'Check what’s included',
+	'events.booking.step2.body':
+		'Each event carries its own price, age guidance and inclusions on its booking page. Read that page before you pay — events vary.',
+	'events.booking.step3.title': 'Reserve your seats',
+	'events.booking.step3.body':
+		'Book a seat for every person attending, children and grown-ups alike. Capacity is set per event and popular dates close early.',
+	'events.before.heading': 'Before you arrive',
+	'events.before.waiver.title': 'Sign the waiver online',
+	'events.before.waiver.body':
+		'Every child who plays needs a waiver on file. Signing it at home saves you the queue at the door — it only takes a minute.',
+	'events.before.arrive.title': 'Come a little early',
+	'events.before.arrive.body':
+		'Arriving ten minutes ahead gives you time to check in, hang up coats and settle the children before the event starts.',
+	'events.before.cafe.title': 'The café is open throughout',
+	'events.before.cafe.body':
+		'Order coffee, wine or a full meal while the event runs. Grown-ups get to sit down and eat properly — that is the whole point of this place.',
+	'events.calendar.heading': 'What’s coming up',
+	'events.calendar.sub': 'Live availability, straight from our booking calendar. If a date is not listed, it is not on sale yet.',
+	'events.private.heading': 'Looking for a private celebration?',
+	'events.private.body':
+		'Birthdays, baby showers, christenings and family get-togethers are booked separately as party packages, with the room and the play space held for your group.',
+	'events.private.cta': 'See party packages',
+	'events.location.heading': 'Where events happen',
+	'events.location.body':
+		'All events take place at {address} in San Gabriel — an easy drive from {cities}. Questions about a specific date? Call or text us at {phone}.',
 
 	// Our Story page
 	'story.heading': 'Our Story',
@@ -602,6 +684,8 @@ const en = {
 	// Blog
 	'blog.heading': 'Blog',
 	'blog.subtitle': 'News, events and little stories from the café',
+	'blog.meta.description':
+		'News, events and little stories from My Little Paris Café & Play in San Gabriel, CA — new dishes, upcoming family events and play space tips.',
 	'blog.search.placeholder': 'Search posts...',
 	'blog.no.posts': 'No posts found',
 	'blog.clear.search': 'Clear search',
@@ -656,9 +740,32 @@ const en = {
 	// Contact
 	'contact.heading': 'Contact Us',
 	'contact.subtitle': "We'd love to hear from you",
+	'contact.meta.description':
+		'Questions about play sessions, birthday parties or the menu? Call, email or visit My Little Paris Café & Play at 416 E. Las Tunas Dr, San Gabriel.',
 	'contact.load.error': 'Failed to load contact information',
 	'contact.business.hours': 'Business Hours',
 	'contact.info': 'Contact Information',
+	'contact.form.heading': 'Send us a message',
+	'contact.form.submit': 'Send Message',
+	'contact.form.submitting': 'Sending…',
+	'contact.form.select': 'Select…',
+	'contact.form.success': 'Thank you — your message is on its way. We usually reply within one business day.',
+	'contact.form.error': 'Something went wrong. Please try again, or call us at 626-657-8811.',
+	'contact.reach.heading': 'The fastest way to reach us',
+	'contact.reach.body':
+		'For anything happening today — a table tonight, whether we are busy, a forgotten jacket — call or text; someone is on the floor and will answer quicker than email. Use the form for everything else: menu and allergy questions, memberships, feedback, or working with us. We read every message and normally reply within one business day.',
+	'contact.reach.party':
+		'Planning a birthday or a private celebration? The party page has packages, capacity and pricing, plus an inquiry form that reaches the events team directly.',
+	'contact.reach.party.cta': 'Party packages & inquiries',
+	'contact.visit.heading': 'Where to find us',
+	'contact.visit.body':
+		'We are on East Las Tunas Drive in San Gabriel, with the café and the play space in one room, so you can see your children the whole time you are eating.',
+	'contact.visit.address': 'Address',
+	'contact.visit.phone': 'Phone & text',
+	'contact.visit.email': 'Email',
+	'contact.visit.hours': 'Hours',
+	'contact.visit.directions': 'Get directions',
+	'contact.visit.languages': 'We speak English, French and Mandarin.',
 
 	// Forms
 	'nav.forms': 'Forms',

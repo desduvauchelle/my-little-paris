@@ -32,7 +32,7 @@ export async function generateMetadata({
 		path: '',
 		locale,
 		title: dict['hero.title'],
-		description: dict['hero.subtitle'],
+		description: dict['home.meta.description'],
 		brand: false,
 	})
 }

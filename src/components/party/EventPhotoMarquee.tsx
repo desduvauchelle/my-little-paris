@@ -53,6 +53,10 @@ export function EventPhotoMarquee({ dict }: { dict: Dictionary }) {
 			>
 				<div className={cn('party-event-marquee-track', isPaused && 'is-paused')}>
 					{[false, true].map((duplicate) => (
+						/* The second copy is what makes the marquee loop seamlessly. It is
+						   `aria-hidden`, so assistive tech never announces it twice — the
+						   photos still carry their real alt text so that crawlers (and
+						   Google Images) see every image described. */
 						<ul
 							key={String(duplicate)}
 							className="party-event-marquee-copy"
@@ -65,7 +69,7 @@ export function EventPhotoMarquee({ dict }: { dict: Dictionary }) {
 										<figure className="relative h-28 w-36 overflow-hidden rounded-box border border-white/15 bg-primary shadow-[0_10px_24px_-16px_rgba(0,0,0,0.8)] sm:h-32 sm:w-44">
 											<Image
 												src={photo.src}
-												alt={duplicate ? '' : alt}
+												alt={alt}
 												fill
 												loading={!duplicate && index < 4 ? 'eager' : 'lazy'}
 												sizes="(max-width: 640px) 144px, 176px"

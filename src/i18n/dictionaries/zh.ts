@@ -22,8 +22,8 @@ const zh: Dictionary = {
 
 	// Hero (homepage)
 	'hero.title': 'My Little Paris Café & Play',
-	'hero.subtitle':
-		'位于加州圣盖博的法式咖啡馆＋室内游乐场。两小时 Eat & Play 亲子时光、一站式生日派对、会员计划，还有为家长和孩子精心准备的美食。在线预订只需几分钟。',
+	'home.meta.description':
+		'位于加州圣盖博的法式咖啡馆与室内游乐场。两小时 Eat & Play 亲子时光、一站式生日派对，以及为家长和孩子准备的正宗法式美食。',
 	'hero.eyebrow': '法式咖啡馆 & 室内游乐场 · 加州圣盖博',
 	'hero.headline': '孩子尽情玩，爸妈安心吃。',
 	'hero.sub':
@@ -285,7 +285,7 @@ const zh: Dictionary = {
 	// Play page
 	'play.title': '玩乐',
 	'play.meta.title': '室内游乐场与自由玩乐 | My Little Paris 圣盖博',
-	'play.meta.description': '了解 My Little Paris 两小时 Eat & Play 场次、室内游乐场票价、10 次卡与会员计划，适合 0–7 岁儿童，位于圣盖博。',
+	'play.meta.description': '圣盖博的蒙特梭利风格室内游乐场，适合 0–7 岁儿童。提供两小时 Eat & Play 场次、10 次卡与月度会员计划，可在线预订。',
 	'play.quote': '“玩耍是最高形式的研究”',
 	'play.quote.author': '阿尔伯特·爱因斯坦',
 	'play.heading': '孩子欢笑，大人放松',
@@ -530,6 +530,39 @@ const zh: Dictionary = {
 	'menu.kids': '儿童菜单',
 	'menu.all': '← 全部菜单',
 
+	// 菜单页 — 补充内容
+	'menu.intro.p1':
+		'My Little Paris 首先是一家法式咖啡馆。所有餐点都出自我们自己的厨房、现点现做，而孩子就在几步之外玩耍——酸种面包法式火腿芝士三明治（croque monsieur 与 croque madame）、烟熏三文鱼吐司、招牌沙拉、自制番茄浓汤、四款意面，以及马卡龙、迷你可颂和熔岩巧克力蛋糕组成的甜点柜。',
+	'menu.intro.p2':
+		'我们有三份菜单。「用餐」是主厨房的菜单；「饮品」涵盖咖啡、Mighty Leaf 茶、啤酒、鸡尾酒与法国杯装葡萄酒；「儿童」菜单专为 10 岁及以下的孩子设计，其中 My Little Combo & Play 套餐包含一份小主餐、一杯饮品、一份甜点，以及 2 小时游玩通行证。',
+	'menu.eat.desc': '分享前菜、自制浓汤、招牌沙拉、手作吐司与三明治、意面，以及甜点柜。',
+	'menu.drink.desc': '咖啡与 Mighty Leaf 茶、冷饮、啤酒与气泡酒精饮料、气泡酒与鸡尾酒，以及红酒、白酒和粉红酒杯装。',
+	'menu.kids.desc': '为 10 岁及以下孩子准备的小主餐、甜点与饮品——以及包含 2 小时游玩通行证的套餐。',
+	'menu.sections.heading': '每份菜单包含什么',
+	'menu.sections.sub': '所有餐点都在我们位于 San Gabriel 的厨房制作。点开菜单查看完整品项与价格。',
+	'menu.sections.view': '查看完整{menu}',
+	'menu.know.heading': '点餐前须知',
+	'menu.know.session.title': '用餐与游玩同时进行',
+	'menu.know.session.body':
+		'每次造访为 2 小时的 Eat & Play 时段：孩子玩耍，家长在咖啡馆点餐。游玩入场费为每位孩童 {child}，同行兄弟姐妹 {sibling}，未满 1 岁的宝宝免费。',
+	'menu.know.adults.title': '每位成人至少点一份主餐',
+	'menu.know.adults.body':
+		'每位成人需至少点一份餐厅主餐。正是这项低消，让我们能在同一个屋檐下同时经营完整的厨房与有人看顾的游玩空间。',
+	'menu.know.happyhour.title': '平日欢乐时光',
+	'menu.know.happyhour.body':
+		'平日于下午 2:00 至 3:30 之间入场，低消可改为每位成人 10 美元，无需点整份主餐。',
+	'menu.know.kids.title': '儿童菜单限 10 岁及以下',
+	'menu.know.kids.body':
+		'My Little Entrées 的份量与价格是为 10 岁及以下孩童设计的——不适用于青少年或成人。食量较大者请从「用餐」菜单点选。',
+	'menu.know.dietary.title': '无麸质面包与过敏原',
+	'menu.know.dietary.body':
+		'多数吐司与三明治可加 1.50 美元换成无麸质面包。含麸质的餐点已在菜单上标示，马卡龙含杏仁。点餐前请告知服务人员任何过敏情况。',
+	'menu.know.reserve.title': '尖峰时段请提前预约',
+	'menu.know.reserve.body':
+		'欢迎现场入座，但周末与傍晚时段容易额满。提前预约可同时确保座位与游玩名额。',
+	'menu.know.cta.reserve': '预约时段',
+	'menu.know.cta.play': '游玩价格与会员方案',
+
 	// Eat page
 	'eat.heading': '美食',
 	'eat.sub': '新鲜满足的美味，适合每个时刻，为家长和小朋友共同打造。',
@@ -542,17 +575,22 @@ const zh: Dictionary = {
 	// Kids menu page
 	'kids.heading': '儿童菜单',
 	'kids.sub': '仅限 10 岁及以下儿童。',
+	'kids.meta.description':
+		'专为 10 岁及以下儿童准备的菜单：鸡块、芝士通心粉、迷你汉堡、马卡龙，以及含两小时游乐通行证的 My Little Combo 套餐，位于加州圣盖博。',
 	'kids.main.link': '主菜单',
 
 	// Drink page
 	'drink.heading': '饮品',
 	'drink.sub': '咖啡、茶、啤酒与葡萄酒，总有一款适合您。',
+	'drink.meta.description':
+		'咖啡、Mighty Leaf 茶、法国单杯葡萄酒、啤酒、含羞草与皇家基尔——圣盖博 My Little Paris Café & Play 的完整饮品单。',
 
 	// Events page
 	'events.heading': '活动',
 	'events.sub': '卡通人物见面会、下午茶派对、全年不断的庆祝活动。',
-	'events.meta.title': '活动',
-	'events.meta.description': '卡通人物见面会、下午茶派对、全年不断的庆祝活动。',
+	'events.meta.title': '圣盖博亲子活动',
+	'events.meta.description':
+		'卡通人物见面会、下午茶派对与全年应季庆祝活动，在加州圣盖博的 My Little Paris 举行。查看活动日程，为全家预订名额。',
 	'events.current.badge': '下一场活动',
 	'events.admission': '门票包含',
 	'events.pricing': '价格',
@@ -560,6 +598,45 @@ const zh: Dictionary = {
 	'events.reserve.cta': '预订座位',
 	'events.stay.heading': '别错过下一场',
 	'events.stay.body': '关注我们的 Instagram 或订阅电子报，第一时间了解卡通人物见面会、公主与超级英雄活动。',
+
+	// 活动页 — 补充内容
+	'events.intro.p1':
+		'除了日常的自由游玩，我们全年都会举办需购票的活动：换上戏服的角色逐桌与孩子互动、在咖啡馆里布置的下午茶派对，以及标记节庆的季节性庆祝活动。这些正是家庭会围绕着安排週末的日子。',
+	'events.intro.p2':
+		'活动与一般的 Eat & Play 时段不同：座位需提前预订，场地会为该活动布置，每场活动也有各自的价格与包含内容。活动皆在我们位于 San Gabriel 的咖啡馆举行，游玩区与厨房照常开放。',
+	'events.types.heading': '我们举办的活动类型',
+	'events.types.characters.title': '卡通人物见面会',
+	'events.types.characters.body':
+		'公主与超级英雄前来造访，在桌与桌之间穿梭，并停留足够长的时间与每位孩子合影。特别受 2 至 8 岁的孩子欢迎，也是最快额满的场次。',
+	'events.types.tea.title': '下午茶派对',
+	'events.types.tea.body':
+		'咖啡馆会布置成一场正式的小型茶会：我们自家甜点柜的糕点、孩子可以自己倒的饮品，还有在重返游乐场之前坐下来聊天的时间。',
+	'events.types.seasonal.title': '季节性庆祝活动',
+	'events.types.seasonal.body':
+		'节庆与一年中的重要时刻都有专属的主题布置日，从春天的寻蛋活动到年末的冬季节庆。',
+	'events.booking.heading': '如何预订活动',
+	'events.booking.step1.title': '挑选日期',
+	'events.booking.step1.body': '下方日历列出所有开放售票的活动，最新的排在前面。点选想参加的活动即可查看详情。',
+	'events.booking.step2.title': '确认包含内容',
+	'events.booking.step2.body': '每场活动的预订页面都会列出价格、建议年龄与包含项目。付款前请先阅读该页面，各场活动内容并不相同。',
+	'events.booking.step3.title': '预订座位',
+	'events.booking.step3.body': '请为每一位出席者预订座位，孩童与成人皆同。每场活动的名额固定，热门日期会提早额满。',
+	'events.before.heading': '出发前须知',
+	'events.before.waiver.title': '线上签署免责同意书',
+	'events.before.waiver.body': '每位进入游玩区的孩子都需要一份已签署的免责同意书。在家先签好，就不必在门口排队，只需要一分钟。',
+	'events.before.arrive.title': '请提早一些抵达',
+	'events.before.arrive.body': '提前十分钟抵达，就有时间办理报到、挂好外套，让孩子在活动开始前安顿下来。',
+	'events.before.cafe.title': '活动期间咖啡馆照常营业',
+	'events.before.cafe.body': '活动进行时，您可以点咖啡、葡萄酒或一份完整的餐点。让大人能好好坐下来吃饭——这正是这个地方存在的意义。',
+	'events.calendar.heading': '近期活动',
+	'events.calendar.sub': '以下为预订系统的即时名额。若某个日期未出现，表示尚未开放售票。',
+	'events.private.heading': '想办一场私人庆祝活动？',
+	'events.private.body':
+		'生日会、baby shower、洗礼与家庭聚会属于另行预订的派对方案，我们会为您的团体保留包厢与游玩空间。',
+	'events.private.cta': '查看派对方案',
+	'events.location.heading': '活动地点',
+	'events.location.body':
+		'所有活动都在 San Gabriel 的 {address} 举行，从 {cities} 前来都相当方便。对特定日期有疑问？请致电或传讯息至 {phone}。',
 
 	// Our Story page
 	'story.heading': '我们的故事',
@@ -595,6 +672,8 @@ const zh: Dictionary = {
 	// Blog
 	'blog.heading': '博客',
 	'blog.subtitle': '咖啡馆的新闻、活动与小故事',
+	'blog.meta.description':
+		'来自加州圣盖博 My Little Paris Café & Play 的新闻、活动与小故事——新菜品、即将举行的亲子活动，以及游乐场使用小贴士。',
 	'blog.search.placeholder': '搜索文章……',
 	'blog.no.posts': '未找到文章',
 	'blog.clear.search': '清除搜索',
@@ -649,9 +728,32 @@ const zh: Dictionary = {
 	// Contact
 	'contact.heading': '联系我们',
 	'contact.subtitle': '期待听到您的声音',
+	'contact.meta.description':
+		'对游乐场次、生日派对或菜单有疑问？欢迎致电、发送邮件，或前往圣盖博 416 E. Las Tunas Dr 的 My Little Paris Café & Play。',
 	'contact.load.error': '无法加载联系信息',
 	'contact.business.hours': '营业时间',
 	'contact.info': '联系信息',
+	'contact.form.heading': '给我们留言',
+	'contact.form.submit': '发送讯息',
+	'contact.form.submitting': '发送中…',
+	'contact.form.select': '请选择…',
+	'contact.form.success': '感谢您的留言，我们通常会在一个工作日内回覆。',
+	'contact.form.error': '发生错误，请重试，或致电 626-657-8811。',
+	'contact.reach.heading': '最快的联络方式',
+	'contact.reach.body':
+		'若是当天的事情——今晚想订位、想知道现场是否客满、孩子遗落的外套——请直接致电或传讯息，店内有人会比电子邮件更快回覆您。其他事项请使用表单：菜单与过敏相关问题、会员方案、意见回馈，或商务合作。我们会阅读每一则讯息，通常在一个工作日内回覆。',
+	'contact.reach.party':
+		'正在筹备生日会或私人庆祝活动？派对页面列有各项方案、容纳人数与价格，并提供可直接送达活动团队的洽询表单。',
+	'contact.reach.party.cta': '派对方案与洽询',
+	'contact.visit.heading': '如何找到我们',
+	'contact.visit.body':
+		'我们位于 San Gabriel 的 East Las Tunas Drive，咖啡馆与游玩区在同一个空间里，用餐全程都能看顾到孩子。',
+	'contact.visit.address': '地址',
+	'contact.visit.phone': '电话与简讯',
+	'contact.visit.email': '电子邮件',
+	'contact.visit.hours': '营业时间',
+	'contact.visit.directions': '查看路线',
+	'contact.visit.languages': '我们提供英语、法语与中文服务。',
 
 	// Forms
 	'nav.forms': '表单',

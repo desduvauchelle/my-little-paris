@@ -17,7 +17,7 @@ export async function generateMetadata({
 		path: '/kidsmenu',
 		locale,
 		title: dict['kids.heading'],
-		description: dict['kids.sub'],
+		description: dict['kids.meta.description'],
 	})
 }
 

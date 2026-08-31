@@ -30,12 +30,13 @@ export function Hero({ dict, locale }: { dict: Dictionary; locale: string }) {
 			<div aria-hidden className="pointer-events-none absolute inset-0 select-none">
 				<div className="absolute -left-40 -top-40 h-[34rem] w-[34rem] rounded-full bg-[#3d6b9e]/30 blur-3xl" />
 				<div className="absolute -bottom-56 right-1/3 h-[36rem] w-[36rem] rounded-full bg-[#e08aad]/20 blur-3xl" />
-				<Image
-					src="/images/paris-motif.svg"
-					alt=""
-					width={400}
-					height={300}
-					className="absolute -left-20 top-1/2 hidden w-80 -translate-y-1/2 opacity-15 lg:block"
+				{/* Painted as a CSS background rather than an <img>: it is pure
+				    decoration, so it belongs to the styling layer. Keeping it out
+				    of the image tree also stops crawlers from reporting it as an
+				    image with no alt text. */}
+				<div
+					className="absolute -left-20 top-1/2 hidden h-60 w-80 -translate-y-1/2 bg-contain bg-center bg-no-repeat opacity-15 lg:block"
+					style={{ backgroundImage: "url('/images/paris-motif.svg')" }}
 				/>
 			</div>
 

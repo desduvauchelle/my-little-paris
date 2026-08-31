@@ -17,7 +17,7 @@ export async function generateMetadata({
 		path: '/drink',
 		locale,
 		title: dict['drink.heading'],
-		description: dict['drink.sub'],
+		description: dict['drink.meta.description'],
 	})
 }
 

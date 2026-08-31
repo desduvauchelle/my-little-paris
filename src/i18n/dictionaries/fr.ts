@@ -22,8 +22,8 @@ const fr: Dictionary = {
 
 	// Hero (homepage)
 	'hero.title': 'My Little Paris Café & Play',
-	'hero.subtitle':
-		'Café français + aire de jeux couverte à San Gabriel, Californie. Sessions Eat & Play de 2 heures, anniversaires tout compris, abonnements, et une vraie cuisine pour petits et grands. Réservation en ligne en quelques minutes.',
+	'home.meta.description':
+		'Café français et aire de jeux couverte à San Gabriel, Californie. Sessions Eat & Play de 2 heures, anniversaires tout compris et vraie cuisine.',
 	'hero.eyebrow': 'Café français & aire de jeux couverte · San Gabriel, Californie',
 	'hero.headline': 'Les enfants jouent. Les parents savourent.',
 	'hero.sub':
@@ -286,7 +286,7 @@ const fr: Dictionary = {
 	'play.title': 'Jeux',
 	'play.meta.title': 'Aire de jeux & Open Play | My Little Paris San Gabriel',
 	'play.meta.description':
-		'Découvrez nos sessions Eat & Play de 2 heures, tarifs d’entrée, cartes de 10 visites et abonnements pour les 0–7 ans à San Gabriel.',
+		'Aire de jeux couverte d’inspiration Montessori à San Gabriel pour les 0–7 ans. Sessions Eat & Play de 2 heures, cartes de 10 visites et abonnements.',
 	'play.quote': '« Le jeu est la forme la plus élevée de la recherche »',
 	'play.quote.author': 'Albert Einstein',
 	'play.heading': 'Les enfants rient, les parents respirent',
@@ -537,6 +537,39 @@ const fr: Dictionary = {
 	'menu.kids': 'Menu enfants',
 	'menu.all': '← Tous les menus',
 
+	// Menu hub — texte d’accompagnement
+	'menu.intro.p1':
+		'My Little Paris est d’abord un café français. Tout sort de notre cuisine, préparé à la commande, pendant que vos enfants jouent à quelques pas — croque-monsieur et croque-madame sur pain au levain, tartine au saumon fumé, salades signature, velouté de tomate maison, quatre pâtes, et une vitrine de macarons, mini-croissants et fondant au chocolat.',
+	'menu.intro.p2':
+		'Il y a trois cartes. La carte Manger, c’est la cuisine principale. La carte Boire réunit café, thé Mighty Leaf, bière, cocktails et vins français au verre. La carte Enfants est pensée pour les moins de 11 ans, avec le My Little Combo & Play : une petite entrée, une boisson et un dessert accompagnés d’un pass de jeu de 2 heures.',
+	'menu.eat.desc': 'Entrées à partager, velouté maison, salades signature, tartines et sandwichs, pâtes, et la vitrine de desserts.',
+	'menu.drink.desc': 'Café et thé Mighty Leaf, boissons fraîches, bières et hard seltzers, bulles et cocktails, ainsi que rouges, blancs et rosés au verre.',
+	'menu.kids.desc': 'Petites entrées, desserts et boissons pour les enfants de 10 ans et moins — et le combo qui inclut un pass de jeu de 2 heures.',
+	'menu.sections.heading': 'Ce que vous trouverez sur chaque carte',
+	'menu.sections.sub': 'Tout est préparé dans notre cuisine à San Gabriel. Ouvrez une carte pour la liste complète et les prix.',
+	'menu.sections.view': 'Voir toute la carte {menu}',
+	'menu.know.heading': 'À savoir avant de commander',
+	'menu.know.session.title': 'On mange et on joue en même temps',
+	'menu.know.session.body':
+		'Les visites se déroulent en sessions Eat & Play de 2 heures : les enfants jouent pendant que vous commandez au café. L’entrée au jeu est de {child} par enfant et {sibling} par frère ou sœur ; c’est gratuit pour les bébés de moins d’un an.',
+	'menu.know.adults.title': 'Un plat par adulte',
+	'menu.know.adults.body':
+		'Chaque adulte commande au minimum un plat au restaurant. C’est ce minimum qui nous permet de faire vivre une vraie cuisine et un espace de jeu surveillé sous le même toit.',
+	'menu.know.happyhour.title': 'Happy hour en semaine',
+	'menu.know.happyhour.body':
+		'Arrivez entre 14h00 et 15h30 en semaine et le minimum passe à 10 $ de commande par adulte au lieu d’un plat complet.',
+	'menu.know.kids.title': 'La carte Enfants est réservée aux moins de 11 ans',
+	'menu.know.kids.body':
+		'Les My Little Entrées sont portionnées et tarifées pour les enfants de 10 ans et moins — pas pour les pré-ados, les ados ni les adultes. Les grandes faims commandent sur la carte Manger.',
+	'menu.know.dietary.title': 'Pain sans gluten et allergènes',
+	'menu.know.dietary.body':
+		'La plupart des tartines et sandwichs peuvent être préparés avec du pain sans gluten pour 1,50 $. Les plats contenant du gluten sont signalés sur la carte, et nos macarons contiennent de l’amande. Merci de signaler toute allergie avant de commander.',
+	'menu.know.reserve.title': 'Réservez aux heures chargées',
+	'menu.know.reserve.body':
+		'Les visites sans réservation sont les bienvenues, mais les week-ends et les fins d’après-midi se remplissent vite. Réserver garantit à la fois une table et une place au jeu.',
+	'menu.know.cta.reserve': 'Réserver une session',
+	'menu.know.cta.play': 'Tarifs de jeu et abonnements',
+
 	// Eat page
 	'eat.heading': 'Manger',
 	'eat.sub': 'Des plats frais et gourmands à tout moment, pour les parents comme pour les petits.',
@@ -549,17 +582,22 @@ const fr: Dictionary = {
 	// Kids menu page
 	'kids.heading': 'Menu enfants',
 	'kids.sub': 'Réservé aux enfants de 10 ans et moins.',
+	'kids.meta.description':
+		'Menu pour les enfants de 10 ans et moins : nuggets, mac & cheese, mini burgers, macarons et le My Little Combo avec 2 heures de jeu à San Gabriel.',
 	'kids.main.link': 'Carte principale',
 
 	// Drink page
 	'drink.heading': 'Boire',
 	'drink.sub': 'Café, thé, bière & vin. Il y en a pour tous les goûts.',
+	'drink.meta.description':
+		'Café, thés Mighty Leaf, vins français au verre, bières, mimosas et Kir Royal — toute la carte des boissons de My Little Paris à San Gabriel.',
 
 	// Events page
 	'events.heading': 'Événements',
 	'events.sub': 'Rencontres avec les personnages, tea parties et célébrations toute l’année.',
-	'events.meta.title': 'Événements',
-	'events.meta.description': 'Rencontres avec les personnages, tea parties et célébrations toute l’année.',
+	'events.meta.title': 'Événements en famille à San Gabriel',
+	'events.meta.description':
+		'Rencontres avec les personnages, tea parties et célébrations de saison pour les enfants à San Gabriel. Découvrez le programme et réservez votre place.',
 	'events.current.badge': 'Prochain événement',
 	'events.admission': 'L’entrée comprend',
 	'events.pricing': 'Tarifs',
@@ -567,6 +605,51 @@ const fr: Dictionary = {
 	'events.reserve.cta': 'Réserver vos places',
 	'events.stay.heading': 'Ne ratez pas le prochain',
 	'events.stay.body': 'Suivez-nous sur Instagram ou abonnez-vous à la newsletter pour être informés en premier des rencontres personnages, princesses et super-héros.',
+
+	// Page Événements — texte d’accompagnement
+	'events.intro.p1':
+		'En plus du jeu libre quotidien, nous organisons toute l’année des événements sur réservation : des personnages costumés qui passent de table en table, des goûters dressés dans le café, et des célébrations saisonnières qui rythment les fêtes. Ce sont les journées autour desquelles les familles organisent leur week-end.',
+	'events.intro.p2':
+		'Un événement, ce n’est pas une session Eat & Play classique. Les places se réservent à l’avance, la salle est installée pour l’occasion, et chaque événement a son propre tarif et son propre contenu. Tout se passe dans notre café de San Gabriel : l’espace de jeu et la cuisine restent ouverts comme d’habitude.',
+	'events.types.heading': 'Les types d’événements que nous organisons',
+	'events.types.characters.title': 'Rencontres avec les personnages',
+	'events.types.characters.body':
+		'Princesses et super-héros viennent nous rendre visite, circulent entre les tables et restent assez longtemps pour une photo avec chaque enfant. Très appréciées des 2–8 ans, et ce sont les dates qui partent le plus vite.',
+	'events.types.tea.title': 'Goûters et thés',
+	'events.types.tea.body':
+		'Le café est dressé pour un vrai petit goûter : pâtisseries de notre vitrine, boissons que les enfants peuvent se servir eux-mêmes, et le temps de s’asseoir avant de repartir jouer.',
+	'events.types.seasonal.title': 'Célébrations saisonnières',
+	'events.types.seasonal.body':
+		'Les fêtes et les grands moments de l’année ont leur journée dédiée, décorée et thématisée, de la chasse aux œufs au printemps jusqu’aux fêtes de fin d’année.',
+	'events.booking.heading': 'Comment réserver un événement',
+	'events.booking.step1.title': 'Choisissez une date',
+	'events.booking.step1.body':
+		'Le calendrier ci-dessous liste tous les événements en vente, les plus récents en premier. Sélectionnez celui qui vous intéresse pour voir le détail.',
+	'events.booking.step2.title': 'Vérifiez ce qui est inclus',
+	'events.booking.step2.body':
+		'Chaque événement indique son tarif, l’âge conseillé et ce qui est compris sur sa page de réservation. Lisez cette page avant de payer : les événements varient.',
+	'events.booking.step3.title': 'Réservez vos places',
+	'events.booking.step3.body':
+		'Réservez une place pour chaque personne présente, enfants comme adultes. La capacité est fixée par événement et les dates populaires se remplissent vite.',
+	'events.before.heading': 'Avant de venir',
+	'events.before.waiver.title': 'Signez la décharge en ligne',
+	'events.before.waiver.body':
+		'Chaque enfant qui joue doit avoir une décharge signée. La remplir à la maison vous évite la file à l’entrée — cela ne prend qu’une minute.',
+	'events.before.arrive.title': 'Arrivez un peu en avance',
+	'events.before.arrive.body':
+		'Dix minutes d’avance suffisent pour vous enregistrer, poser les manteaux et installer les enfants avant le début de l’événement.',
+	'events.before.cafe.title': 'Le café reste ouvert',
+	'events.before.cafe.body':
+		'Commandez un café, un verre de vin ou un vrai repas pendant l’événement. Les adultes peuvent enfin s’asseoir et manger tranquillement — c’est tout l’objet de cet endroit.',
+	'events.calendar.heading': 'À venir',
+	'events.calendar.sub': 'Disponibilités en direct, depuis notre calendrier de réservation. Si une date n’apparaît pas, c’est qu’elle n’est pas encore en vente.',
+	'events.private.heading': 'Vous cherchez une fête privée ?',
+	'events.private.body':
+		'Anniversaires, baby showers, baptêmes et retrouvailles en famille se réservent séparément, sous forme de formules fête, avec la salle et l’espace de jeu réservés à votre groupe.',
+	'events.private.cta': 'Voir les formules fête',
+	'events.location.heading': 'Où se déroulent les événements',
+	'events.location.body':
+		'Tous les événements ont lieu au {address}, à San Gabriel — facilement accessible depuis {cities}. Une question sur une date précise ? Appelez-nous ou envoyez-nous un SMS au {phone}.',
 
 	// Our Story page
 	'story.heading': 'Notre Histoire',
@@ -603,6 +686,8 @@ const fr: Dictionary = {
 	// Blog
 	'blog.heading': 'Blog',
 	'blog.subtitle': 'Actus, événements et petites histoires du café',
+	'blog.meta.description':
+		'Actus, événements et petites histoires de My Little Paris Café & Play à San Gabriel — nouveaux plats, événements en famille et conseils pratiques.',
 	'blog.search.placeholder': 'Rechercher des articles...',
 	'blog.no.posts': 'Aucun article trouvé',
 	'blog.clear.search': 'Effacer la recherche',
@@ -657,9 +742,32 @@ const fr: Dictionary = {
 	// Contact
 	'contact.heading': 'Contactez-nous',
 	'contact.subtitle': 'Nous serions ravis d’avoir de vos nouvelles',
+	'contact.meta.description':
+		'Une question sur les sessions de jeu, les anniversaires ou la carte ? Appelez, écrivez ou passez nous voir au 416 E. Las Tunas Dr, San Gabriel.',
 	'contact.load.error': 'Échec du chargement des informations de contact',
 	'contact.business.hours': 'Horaires d’ouverture',
 	'contact.info': 'Coordonnées',
+	'contact.form.heading': 'Écrivez-nous',
+	'contact.form.submit': 'Envoyer le message',
+	'contact.form.submitting': 'Envoi…',
+	'contact.form.select': 'Choisir…',
+	'contact.form.success': 'Merci — votre message est bien parti. Nous répondons généralement sous un jour ouvré.',
+	'contact.form.error': 'Une erreur est survenue. Merci de réessayer ou de nous appeler au 626-657-8811.',
+	'contact.reach.heading': 'Le moyen le plus rapide de nous joindre',
+	'contact.reach.body':
+		'Pour tout ce qui concerne la journée même — une table ce soir, savoir si c’est complet, une veste oubliée — appelez ou envoyez un SMS : quelqu’un est en salle et répondra plus vite que par e-mail. Utilisez le formulaire pour le reste : questions sur la carte et les allergies, abonnements, retours, ou pour travailler avec nous. Nous lisons chaque message et répondons généralement sous un jour ouvré.',
+	'contact.reach.party':
+		'Vous préparez un anniversaire ou une fête privée ? La page Fêtes présente les formules, les capacités et les tarifs, ainsi qu’un formulaire qui arrive directement à l’équipe événements.',
+	'contact.reach.party.cta': 'Formules fête et demandes',
+	'contact.visit.heading': 'Où nous trouver',
+	'contact.visit.body':
+		'Nous sommes sur East Las Tunas Drive, à San Gabriel : le café et l’espace de jeu sont dans la même pièce, vous gardez donc vos enfants à l’œil pendant tout le repas.',
+	'contact.visit.address': 'Adresse',
+	'contact.visit.phone': 'Téléphone et SMS',
+	'contact.visit.email': 'E-mail',
+	'contact.visit.hours': 'Horaires',
+	'contact.visit.directions': 'Itinéraire',
+	'contact.visit.languages': 'Nous parlons anglais, français et mandarin.',
 
 	// Forms
 	'nav.forms': 'Formulaires',
