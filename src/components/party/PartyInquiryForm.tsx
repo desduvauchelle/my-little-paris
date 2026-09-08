@@ -2,7 +2,7 @@
 
 import type { Dictionary } from '@/i18n'
 import { BUSINESS } from '@/data/site'
-import type { PartyPackageSelection } from '@/data/party'
+import { TIME_SLOTS, VERSAILLES_TIME_SLOTS, type PartyPackageSelection } from '@/data/party'
 import { trackEvent } from '@/components/analytics/GoogleAnalytics'
 import { MailIcon, MessageIcon, PhoneIcon } from '@/components/layout/ContactIcons'
 
@@ -37,6 +37,9 @@ export function PartyInquiryForm({
 	selectedPackage: PartyPackageSelection | null
 	onChoosePackage: () => void
 }) {
+	const isVersailles = selectedPackage?.package.id === 'versailles'
+	const timeSlots = isVersailles ? VERSAILLES_TIME_SLOTS : TIME_SLOTS
+
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault()
 		const data = Object.fromEntries(new FormData(e.currentTarget).entries())
@@ -56,6 +59,7 @@ export function PartyInquiryForm({
 			`${dict['partyform.date']}: ${value('partyDate')}`,
 			`${dict['partyform.time']}: ${value('partyTime')}`,
 			`${dict['partyform.guests']}: ${value('guestCount')}`,
+			...(value('discovery') ? [`${dict['partyform.discovery']}: ${value('discovery')}`] : []),
 			'',
 			dict['partyform.email.closing'],
 		].join('\n')
@@ -134,11 +138,9 @@ export function PartyInquiryForm({
 					<input type="date" name="partyDate" required className={inputCls} />
 				</Field>
 				<Field label={dict['partyform.time']} required>
-					<select name="partyTime" required className="select w-full" defaultValue="">
+					<select key={isVersailles ? 'versailles' : 'standard'} name="partyTime" required className="select w-full" defaultValue="">
 						<option value="" disabled>{dict['partyform.select.placeholder']}</option>
-						<option>10:00 am – 12:00 pm</option>
-						<option>1:00 pm – 3:00 pm</option>
-						<option>4:00 pm – 6:00 pm</option>
+						{timeSlots.map((slot) => <option key={slot}>{slot}</option>)}
 						<option>{dict['partyform.time.other']}</option>
 					</select>
 				</Field>
@@ -146,6 +148,10 @@ export function PartyInquiryForm({
 
 			<Field label={dict['partyform.guests']} required>
 				<input type="number" name="guestCount" min={1} max={88} required className={inputCls} placeholder={dict['partyform.placeholder.guests']} />
+			</Field>
+
+			<Field label={dict['partyform.discovery']}>
+				<input type="text" name="discovery" className={inputCls} />
 			</Field>
 
 			<button type="submit" className="btn btn-primary btn-lg btn-block" disabled={!selectedPackage}>

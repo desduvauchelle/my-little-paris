@@ -46,6 +46,20 @@ export interface PackageGroup {
 
 export const TIME_SLOTS = ['10:00 am – 12:00 pm', '1:00 pm – 3:00 pm', '4:00 pm – 6:00 pm'] as const
 
+export const VERSAILLES_TIME_SLOTS = [
+	'10:00 am – 1:00 pm',
+	'10:30 am – 1:30 pm',
+	'11:00 am – 2:00 pm',
+	'11:30 am – 2:30 pm',
+	'1:30 pm – 4:30 pm',
+	'2:30 pm – 5:30 pm',
+	'3:00 pm – 6:00 pm',
+	'3:30 pm – 6:30 pm',
+	'4:00 pm – 7:00 pm',
+	'4:30 pm – 7:30 pm',
+	'5:00 pm – 8:00 pm',
+] as const
+
 export const PACKAGE_GROUPS: PackageGroup[] = [
 	{
 		id: 'private-room',

@@ -95,6 +95,13 @@ export default async function PlayPage({
 						<div className="card bg-base-100 shadow-sm">
 							<div className="card-body">
 								<h3 className="card-title text-primary">{dict['play.rates.heading']}</h3>
+								<div className="rounded-box border border-secondary/30 bg-secondary/15 p-4 mb-3">
+									<h4 className="font-semibold text-primary mb-2">{dict['play.rates.september.heading']}</h4>
+									<ul className="space-y-2 text-sm">
+										<li>{dict['play.rates.september.eat']}</li>
+										<li>{dict['play.rates.september.play']}</li>
+									</ul>
+								</div>
 								<ul className="space-y-2">
 									<li className="flex justify-between gap-4">
 										<span>{dict['play.rates.babies']}</span>
@@ -151,23 +158,8 @@ export default async function PlayPage({
 				</div>
 			</section>
 
-			{/* Play Pass */}
-			<section className="py-16 bg-base-100">
-				<div className="container mx-auto px-4 max-w-3xl">
-					<ScrollReveal y={30}>
-						<h2 className="font-display text-3xl text-primary text-center mb-3">{dict['play.pass.heading']}</h2>
-						<p className="text-base-content/70 mb-2">{dict['play.pass.body']}</p>
-						<p className="font-medium mb-6">{dict['play.pass.tagline']}</p>
-						<div className="space-y-3">
-							<Accordion name="playpass" title={dict['play.pass.how']} items={PLAY_PASS.perks} />
-							<Accordion name="playpass" title={dict['play.pass.know']} items={PLAY_PASS.thingsToKnow} />
-						</div>
-					</ScrollReveal>
-				</div>
-			</section>
-
 			{/* Membership */}
-			<section className="py-16 bg-base-200">
+			<section className="py-16 bg-base-100">
 				<div className="container mx-auto px-4 max-w-3xl">
 					<ScrollReveal y={30}>
 						<h2 className="font-display text-3xl text-primary text-center mb-3">{dict['play.membership.heading']}</h2>
@@ -198,6 +190,21 @@ export default async function PlayPage({
 							<a href={LINKS.memberships} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
 								{dict['play.membership.cta']}
 							</a>
+						</div>
+					</ScrollReveal>
+				</div>
+			</section>
+
+			{/* Play Pass */}
+			<section className="py-16 bg-base-200">
+				<div className="container mx-auto px-4 max-w-3xl">
+					<ScrollReveal y={30}>
+						<h2 className="font-display text-3xl text-primary text-center mb-3">{dict['play.pass.heading']}</h2>
+						<p className="text-base-content/70 mb-2">{dict['play.pass.body']}</p>
+						<p className="font-medium mb-6">{dict['play.pass.tagline']}</p>
+						<div className="space-y-3">
+							<Accordion name="playpass" title={dict['play.pass.how']} items={PLAY_PASS.perks} />
+							<Accordion name="playpass" title={dict['play.pass.know']} items={PLAY_PASS.thingsToKnow} />
 						</div>
 					</ScrollReveal>
 				</div>
