@@ -705,6 +705,7 @@ const zh: Dictionary = {
 
 	// Home (template blog strip)
 	'home.latest.blog': '最新博客',
+	'home.updates.heading': 'My Little Paris 最新动态',
 	'home.view.all': '查看全部',
 	'home.no.posts': '暂无文章，敬请期待！',
 

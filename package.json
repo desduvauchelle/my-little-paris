@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
-    "pull-forms": "growth-engine-pull-forms",
+    "pull-forms": "node node_modules/@growth-engine/sdk-server/pull-forms.js",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -18,12 +18,13 @@
     ]
   },
   "dependencies": {
-    "@growth-engine/sdk-client": "github:recursive-solutions-ai/growth-engine-sdk-client#v0.1.48",
-    "@growth-engine/sdk-server": "github:recursive-solutions-ai/growth-engine-sdk-server#v0.1.48",
+    "@growth-engine/sdk-client": "github:recursive-solutions-ai/growth-engine-sdk-client#v0.1.88",
+    "@growth-engine/sdk-server": "github:recursive-solutions-ai/growth-engine-sdk-server#v0.1.88",
     "canvas-confetti": "1.9.4",
     "clsx": "2.1.1",
     "daisyui": "5.0.35",
     "gsap": "3.12.7",
+    "marked": "18.0.0",
     "next": "16.2.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",

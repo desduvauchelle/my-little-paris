@@ -717,6 +717,7 @@ const en = {
 
 	// Home (template blog strip)
 	'home.latest.blog': 'Latest from the Blog',
+	'home.updates.heading': 'The latest at My Little Paris',
 	'home.view.all': 'View all',
 	'home.no.posts': 'No posts yet. Check back soon!',
 

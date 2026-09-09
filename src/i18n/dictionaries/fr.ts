@@ -719,6 +719,7 @@ const fr: Dictionary = {
 
 	// Home (template blog strip)
 	'home.latest.blog': 'Derniers articles du blog',
+	'home.updates.heading': 'Les nouvelles de My Little Paris',
 	'home.view.all': 'Tout voir',
 	'home.no.posts': 'Pas encore d’articles. Revenez bientôt !',
 

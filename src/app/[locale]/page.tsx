@@ -8,6 +8,7 @@ import { getDb, safeQuery } from '@/lib/db'
 import { localePrefix, localizedPath } from '@/lib/i18n-utils'
 import { buildPageMetadata } from '@/lib/seo'
 import { LINKS } from '@/data/site'
+import { LandingUpdates } from '@/components/landing/LandingUpdates'
 import { Hero } from '@/components/landing/Hero'
 import { Pillars } from '@/components/landing/Pillars'
 import { Newsletter } from '@/components/landing/Newsletter'
@@ -96,6 +97,8 @@ export default async function HomePage({
 
 			{/* How it works (Acuity booking) */}
 			<HowItWorks dict={dict} locale={locale} />
+
+			<LandingUpdates locale={locale} heading={dict['home.updates.heading']} />
 
 			{/* About / story */}
 			<section className="py-20 bg-base-200">
