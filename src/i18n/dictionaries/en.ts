@@ -281,7 +281,7 @@ const en = {
 	'newsletter.error': "We couldn't sign you up right now. Please try again later or email us.",
 
 	// Play page
-	'play.title': 'Play',
+	'play.title': 'Indoor Playground in San Gabriel',
 	'play.meta.title': 'Indoor Playground San Gabriel | My Little Paris Café & Play',
 	'play.meta.description':
 		'Montessori-inspired indoor playground in San Gabriel, CA for kids 0-7. Two-hour Eat & Play sessions, 10-visit passes and monthly memberships.',

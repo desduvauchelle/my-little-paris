@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { headers } from 'next/headers'
 import { DM_Sans, Playfair_Display } from 'next/font/google'
 import { GrowthEngineProvider } from '@growth-engine/sdk-client'
@@ -24,6 +24,11 @@ const playfair = Playfair_Display({
 // the single canonical host, so absolute asset URLs are never host-inconsistent.
 // The `title.default` is only used as a fallback — every page sets its own
 // unique title via `buildPageMetadata`.
+export const viewport: Viewport = {
+	width: 'device-width',
+	initialScale: 1,
+}
+
 export const metadata: Metadata = {
 	metadataBase: new URL(SITE_URL),
 	title: {

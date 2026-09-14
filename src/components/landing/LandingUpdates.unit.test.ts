@@ -7,6 +7,7 @@ import { LandingUpdates } from './LandingUpdates'
 vi.mock('@growth-engine/sdk-client', () => ({ useUpdates: vi.fn() }))
 
 const item = {
+	language: 'en',
 	id: 'one', title: 'A little celebration', body: '**Come along** for [details](/party).',
 	imageUrl: '/images/example.jpg', eventDate: '2026-09-20T00:00:00Z', publishedAt: '2026-09-09T00:00:00Z',
 }

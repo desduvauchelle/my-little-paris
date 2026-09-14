@@ -11,15 +11,6 @@ vi.mock('next/link', async () => {
 	}
 })
 
-vi.mock('@growth-engine/sdk-client/components', async () => {
-	const { createElement } = await import('react')
-	return {
-		BlogSearch: ({ placeholder }: { placeholder: string }) =>
-			createElement('input', { placeholder }),
-		BlogCard: ({ slug, localePrefix }: { slug: string; localePrefix: string }) =>
-			createElement('a', { href: `${localePrefix}/blog/${slug}` }, slug),
-	}
-})
 
 const posts = Array.from({ length: 27 }, (_, index) => ({
 	slug: `post-${index + 1}`,

@@ -14,6 +14,7 @@ import { formatDate, localePrefix, localizedPath } from '@/lib/i18n-utils'
 import { buildBlogLanguageAlternates, buildUrl } from '@/lib/sitemap-shared'
 import { buildPageMetadata } from '@/lib/seo'
 import { getBlogCtaKind, insertBlogCta } from '@/lib/blog-cta'
+import { normalizeBlogKeywords } from '@/lib/blog-keywords'
 import { AuthorByline } from '@/components/blog/AuthorByline'
 
 export const revalidate = 120
@@ -95,7 +96,7 @@ export default async function BlogPostPage({
 
 				<BlogContent
 					html={insertBlogCta(post.content, ctaMarkdown)}
-					post={post}
+					post={{ ...post, keywords: normalizeBlogKeywords(post.keywords) }}
 					canonicalUrl={buildUrl(`/blog/${slug}`, locale)}
 					{...(author ? { author } : {})}
 					{...(business ? { business } : {})}
