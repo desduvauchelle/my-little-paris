@@ -19,12 +19,23 @@ import { AuthorByline } from '@/components/blog/AuthorByline'
 
 export const revalidate = 120
 
+// Next passes dynamic params still percent-encoded, so a slug like `adapté`
+// arrives as `adapt%C3%A9` and the DB lookup misses → 404 on a sitemap URL.
+function decodeSlug(slug: string) {
+	try {
+		return decodeURIComponent(slug).normalize('NFC')
+	} catch {
+		return slug
+	}
+}
+
 export async function generateMetadata({
 	params,
 }: {
 	params: Promise<{ locale: string; slug: string }>
 }): Promise<Metadata> {
-	const { locale, slug } = await params
+	const { locale, slug: rawSlug } = await params
+	const slug = decodeSlug(rawSlug)
 	const post = await safeQuery(null, () => getBlogPost(getDb(), slug, locale))
 	if (!post) return {}
 	const languageAlternates = await buildBlogLanguageAlternates(post)
@@ -45,7 +56,8 @@ export default async function BlogPostPage({
 }: {
 	params: Promise<{ locale: string; slug: string }>
 }) {
-	const { locale, slug } = await params
+	const { locale, slug: rawSlug } = await params
+	const slug = decodeSlug(rawSlug)
 	const dict = await getDictionary(locale)
 
 	const post = await safeQuery(null, () => getBlogPost(getDb(), slug, locale))
