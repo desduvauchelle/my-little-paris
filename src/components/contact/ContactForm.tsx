@@ -62,6 +62,7 @@ export function ContactForm({ form, dict }: { form: ContactFormShape; dict: Dict
 				return
 			}
 			trackEvent('contact_form_submit', { form_slug: form.slug })
+			trackEvent('generate_lead', { lead_source: 'contact_form', form_slug: form.slug })
 			setSubmitted(true)
 		} catch {
 			setError(dict['contact.form.error'])

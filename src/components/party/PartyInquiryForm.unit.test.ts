@@ -6,6 +6,7 @@ import dict from '@/i18n/dictionaries/en'
 import { PartyInquiryForm } from './PartyInquiryForm'
 
 vi.mock('@/components/analytics/GoogleAnalytics', () => ({ trackEvent: vi.fn() }))
+vi.mock('@growth-engine/sdk-client', () => ({ onContactClick: vi.fn() }))
 
 const packages = PACKAGE_GROUPS.flatMap((group) => [...group.catered.packages, ...group.rentalOnly.packages])
 const propsFor = (id: string) => ({

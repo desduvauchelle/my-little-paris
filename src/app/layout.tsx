@@ -2,7 +2,9 @@ import type { Metadata, Viewport } from 'next'
 import { headers } from 'next/headers'
 import { DM_Sans, Playfair_Display } from 'next/font/google'
 import { GrowthEngineProvider } from '@growth-engine/sdk-client'
+import { BOOKING_HOSTS } from '@/data/site'
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics'
+import { ClickTracker } from '@/components/analytics/ClickTracker'
 import { SITE_URL } from '@/lib/sitemap-shared'
 import { DEFAULT_OG_IMAGE, DEFAULT_OG_IMAGE_ALT, SITE_NAME, SITE_NOINDEX } from '@/lib/seo'
 import './globals.css'
@@ -69,7 +71,8 @@ export default async function RootLayout({
 		<html lang={locale} data-theme="light" className={`${dmSans.variable} ${playfair.variable}`}>
 			<body className="min-h-screen flex flex-col">
 				<GoogleAnalytics />
-				<GrowthEngineProvider>
+				<ClickTracker />
+				<GrowthEngineProvider bookingHosts={[...BOOKING_HOSTS]}>
 					{children}
 				</GrowthEngineProvider>
 			</body>

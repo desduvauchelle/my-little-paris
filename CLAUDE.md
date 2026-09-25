@@ -233,7 +233,9 @@ import { trackEvent } from '@/components/analytics/GoogleAnalytics'
 trackEvent('form_submit', { form_slug: 'contact' })  // no-op when GA not configured
 ```
 
-Built-in events: `cta_click`, `contact_view`, `contact_form_submit`.
+Built-in events: `cta_click`, `contact_view`, `contact_form_submit`, `generate_lead` (contact form + party inquiry, `lead_source` param), `newsletter_signup`, `party_inquiry_email_open`, `review_*`.
+
+Link clicks are tracked site-wide by `ClickTracker` (mounted in the root layout) — no per-link wiring. `classifyClick()` in `src/lib/click-analytics.ts` maps hrefs to `click_booking` (`booking_type`: reservation/membership/event), `click_email`, `click_phone`, `click_text`, `click_directions`, `click_waiver`, `click_social` (`platform`). Internal CTAs opt in with `data-ga-event="cta_click" data-ga-location="…"`. Booking/phone/email clicks also reach Lucy via the Growth SDK's own listener (`bookingHosts` in `BOOKING_HOSTS`).
 
 ## Environment Variables
 

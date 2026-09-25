@@ -3,6 +3,7 @@
 import type { Dictionary } from '@/i18n'
 import { BUSINESS } from '@/data/site'
 import { TIME_SLOTS, VERSAILLES_TIME_SLOTS, type PartyPackageSelection } from '@/data/party'
+import { onContactClick } from '@growth-engine/sdk-client'
 import { trackEvent } from '@/components/analytics/GoogleAnalytics'
 import { MailIcon, MessageIcon, PhoneIcon } from '@/components/layout/ContactIcons'
 
@@ -64,8 +65,12 @@ export function PartyInquiryForm({
 			dict['partyform.email.closing'],
 		].join('\n')
 
+		const href = `mailto:${BUSINESS.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 		trackEvent('party_inquiry_email_open', { party_package: value('partyPackage') })
-		window.location.href = `mailto:${BUSINESS.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+		trackEvent('generate_lead', { lead_source: 'party_inquiry', party_package: value('partyPackage') })
+		// Not an anchor click, so the SDK's listener never sees it — report it to Lucy as an email conversion.
+		void onContactClick({ kind: 'email', href: `mailto:${BUSINESS.email}`, pagePath: window.location.pathname })
+		window.location.href = href
 	}
 
 	const inputCls = 'input w-full placeholder:text-base-content/65'

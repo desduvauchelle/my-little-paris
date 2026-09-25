@@ -10,6 +10,8 @@ export function HeaderBookButton({
 	return (
 		<Link
 			href={reservationsPath}
+			data-ga-event="cta_click"
+			data-ga-location="header"
 			className="btn btn-secondary btn-sm min-h-11 border-0 font-semibold"
 		>
 			{label}

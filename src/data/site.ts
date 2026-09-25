@@ -33,6 +33,25 @@ export const BUSINESS = {
 	legalUpdated: '2026-07-31',
 } as const
 
+/**
+ * Hostnames whose links count as a booking click. The Growth SDK records a
+ * click on any anchor pointing at these (or any subdomain of them) as a
+ * `booking` conversion, which is the only way we can see the reservation and
+ * membership handoffs: both leave this domain for Acuity, so GA4 reports the
+ * visit as a bounce and the booking itself happens somewhere we cannot read.
+ *
+ * Deliberately NOT listed: waiver.smartwaiver.com (signing a waiver is a
+ * prerequisite, not a booking) and the directions links (no click kind fits
+ * them yet, and calling them bookings would inflate the booking metric).
+ */
+export const BOOKING_HOSTS = [
+	// The Eat & Play reservation calendar (LINKS.reservations).
+	'mylittleparis.as.me',
+	// The events calendar and the membership catalog (LINKS.events, LINKS.memberships).
+	// Subdomains match, so this covers app.acuityscheduling.com.
+	'acuityscheduling.com',
+] as const
+
 export const LINKS = {
 	reservations: 'https://mylittleparis.as.me/schedule/829c0aaf/appointment/22832985/calendar/5514130',
 	events: 'https://app.acuityscheduling.com/schedule.php?owner=22945936&ref=sched_block&isInConfig=false&calendarID=6310492',
