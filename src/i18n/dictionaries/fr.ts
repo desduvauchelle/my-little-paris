@@ -739,6 +739,7 @@ const fr: Dictionary = {
 	'footer.hours.google': 'Consultez nos horaires à jour sur Google.',
 	'footer.hours.yelp': 'Ou vérifiez sur Yelp.',
 	'footer.waiver': 'Signez votre décharge pour gagner du temps',
+	'footer.alhambra': 'Près d’Alhambra',
 	'footer.reserve': 'Réserver une table',
 	'footer.visit.heading': 'Venir nous voir',
 	'footer.languages': 'Nous parlons anglais, français et mandarin.',

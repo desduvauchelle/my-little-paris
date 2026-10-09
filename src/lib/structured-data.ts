@@ -107,3 +107,16 @@ export function serializeJsonLd(data: JsonLdValue): string {
 		.replace(/\u2028/g, '\\u2028')
 		.replace(/\u2029/g, '\\u2029')
 }
+
+/** FAQPage structured data. Pass exactly the Q&As that are visible on the page. */
+export function buildFaqJsonLd(items: readonly { question: string; answer: string }[]): JsonLdValue {
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: items.map((item) => ({
+			'@type': 'Question',
+			name: item.question,
+			acceptedAnswer: { '@type': 'Answer', text: item.answer },
+		})),
+	}
+}

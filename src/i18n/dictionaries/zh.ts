@@ -725,6 +725,7 @@ const zh: Dictionary = {
 	'footer.hours.google': '请在 Google 上查看最新营业时间。',
 	'footer.hours.yelp': '或在 Yelp 上查看。',
 	'footer.waiver': '提前签署免责声明更省时',
+	'footer.alhambra': '阿罕布拉附近',
 	'footer.reserve': '立即预订',
 	'footer.visit.heading': '到店地址',
 	'footer.languages': '我们会说英语、法语和普通话。',

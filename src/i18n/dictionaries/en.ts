@@ -737,6 +737,7 @@ const en = {
 	'footer.hours.google': 'Check on Google for our updated hours.',
 	'footer.hours.yelp': 'Or check on Yelp.',
 	'footer.waiver': 'Sign your waiver to save time',
+	'footer.alhambra': 'Near Alhambra',
 	'footer.reserve': 'Make a Reservation',
 	'footer.visit.heading': 'Visit Us',
 	'footer.languages': 'We speak English, French, and Mandarin.',

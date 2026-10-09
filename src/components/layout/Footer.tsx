@@ -15,6 +15,7 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: string }) {
 		{ href: localizedPath('/menu', locale), label: dict['nav.menu'] },
 		{ href: localizedPath('/play', locale), label: dict['nav.play'] },
 		{ href: localizedPath('/party', locale), label: dict['nav.party'] },
+		{ href: localizedPath('/indoor-playground-alhambra', locale), label: dict['footer.alhambra'] },
 		{ href: localizedPath('/events', locale), label: dict['nav.events'] },
 		{ href: localizedPath('/gallery', locale), label: dict['nav.gallery'] },
 		{ href: localizedPath('/our-story', locale), label: dict['nav.story'] },

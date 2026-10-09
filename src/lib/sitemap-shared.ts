@@ -25,6 +25,7 @@ export const STATIC_PAGES = [
 	'/drink',
 	'/play',
 	'/party',
+	'/indoor-playground-alhambra',
 	'/events',
 	'/gallery',
 	'/our-story',

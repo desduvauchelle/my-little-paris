@@ -9,6 +9,7 @@ import { generateMetadata as menuMetadata } from './[locale]/menu/page'
 import { generateMetadata as partyMetadata } from './[locale]/party/page'
 import { generateMetadata as reservationsMetadata } from './[locale]/reservations/page'
 import { generateMetadata as playMetadata } from './[locale]/play/page'
+import { generateMetadata as alhambraMetadata } from './[locale]/indoor-playground-alhambra/page'
 import { generateMetadata as storyMetadata } from './[locale]/our-story/page'
 
 const pages = [
@@ -88,6 +89,13 @@ const pages = [
 		title: 'Drink | My Little Paris Café & Play',
 		description:
 			'Coffee, Mighty Leaf tea, French wine by the glass, beer, mimosas and Kir Royal — the full drinks list at My Little Paris Café & Play, San Gabriel.',
+	},
+	{
+		path: '/indoor-playground-alhambra',
+		generateMetadata: alhambraMetadata,
+		title: 'Indoor Playground Near Alhambra, CA | My Little Paris',
+		description:
+			'Indoor playground near Alhambra? My Little Paris in San Gabriel is about 10 minutes away, with a French café and 2-hour Eat & Play sessions for ages 0–7.',
 	},
 ] as const
 

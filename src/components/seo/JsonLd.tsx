@@ -1,5 +1,6 @@
 import {
 	buildBreadcrumbJsonLd,
+	buildFaqJsonLd,
 	buildSiteEntityJsonLd,
 	serializeJsonLd,
 	type BreadcrumbParent,
@@ -39,4 +40,8 @@ export function BreadcrumbJsonLd({
 			data={buildBreadcrumbJsonLd({ path, locale, homeName, name, parent })}
 		/>
 	)
+}
+
+export function FaqJsonLd({ items }: { items: readonly { question: string; answer: string }[] }) {
+	return <JsonLd id="faq-json-ld" data={buildFaqJsonLd(items)} />
 }
