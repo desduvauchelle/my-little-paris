@@ -2,6 +2,7 @@
 
 export interface MenuItem {
 	name: string
+	image?: string
 	description?: string
 	price: string
 	note?: string
@@ -20,7 +21,7 @@ export const EAT_MENU: MenuSection[] = [
 		id: 'appetizers',
 		title: 'Appetizers to Share',
 		items: [
-			{ name: 'House Special Bruschetta', description: 'Goat cheese, tomatoes, basil, olive oil with balsamic reduction on toasted baguette', price: '$13.99' },
+			{ name: 'House Special Bruschetta', image: '/gallery/processed/food/tomato-bruschetta-mixed-greens-cafe.jpg', description: 'Goat cheese, tomatoes, basil, olive oil with balsamic reduction on toasted baguette', price: '$13.99' },
 			{ name: 'Pizzetta Margherita', description: 'Housemade roasted tomato & garlic sauce, fresh mozzarella, mixed green, pesto drizzle', price: '$13.99' },
 			{ name: 'Chicken Nuggets', price: '$10.99' },
 			{ name: 'Popcorn Chicken', price: '$10.99', isNew: true },
@@ -45,10 +46,10 @@ export const EAT_MENU: MenuSection[] = [
 		items: [
 			{ name: 'Veggie Salad', description: 'Mixed greens, shaved carrots, cherry tomatoes, cucumbers, lemon vinaigrette', price: '$11.99' },
 			{ name: 'Caprese Salad', description: 'Fresh mozzarella, arugula, tomatoes, basil, balsamic vinaigrette', price: '$15.99' },
-			{ name: 'California Salmon Salad', description: 'Smoked salmon, arugula, avocado, shaved carrots, cherry tomatoes, radishes, cilantro, lemon vinaigrette', price: '$17.99' },
+			{ name: 'California Salmon Salad', image: '/gallery/processed/food/smoked-salmon-avocado-salad.jpg', description: 'Smoked salmon, arugula, avocado, shaved carrots, cherry tomatoes, radishes, cilantro, lemon vinaigrette', price: '$17.99' },
 			{ name: 'Chicken Caesar Salad', description: 'Grilled chicken breast, hearts of romaine, cherry tomatoes, shaved Parmesan Reggiano, toasted croutons, creamy Caesar dressing', price: '$17.99', note: 'contains gluten' },
 			{ name: 'Cobb Salad', description: 'Grilled chicken breast, romaine and arugula, hard-boiled eggs, avocado, bacon, tomatoes, blue cheese, parsley, Dijon mustard vinaigrette', price: '$19.99' },
-			{ name: 'Steak Salad', description: 'Grilled top sirloin, romaine and arugula, avocado, tomatoes, cucumbers, blue cheese crumbles, caramelized onions, parsley, balsamic vinaigrette', price: '$19.99' },
+			{ name: 'Steak Salad', image: '/gallery/processed/food/steak-avocado-feta-salad.jpg', description: 'Grilled top sirloin, romaine and arugula, avocado, tomatoes, cucumbers, blue cheese crumbles, caramelized onions, parsley, balsamic vinaigrette', price: '$19.99' },
 		],
 	},
 	{
@@ -56,14 +57,14 @@ export const EAT_MENU: MenuSection[] = [
 		title: 'Handcrafted Toasts & Sandwiches',
 		intro: 'Served with green salad, French fries or garlic French fries (+$1)',
 		items: [
-			{ name: 'Grilled Chicken Pesto Sandwich', description: 'Grilled chicken breast, arugula, shaved Parmesan Reggiano, fresh tomatoes, housemade basil pesto on sourdough', price: '$18.99', note: 'gluten-free bread +$1.50' },
+			{ name: 'Grilled Chicken Pesto Sandwich', image: '/images/pesto-sandwich.webp', description: 'Grilled chicken breast, arugula, shaved Parmesan Reggiano, fresh tomatoes, housemade basil pesto on sourdough', price: '$18.99', note: 'gluten-free bread +$1.50' },
 			{ name: 'Chicken Swiss Avocado Sandwich', description: 'Grilled chicken breast, avocado, Swiss cheese, arugula, tomatoes, housemade shallot aioli on sandwich bread', price: '$18.99', note: 'gluten-free bread +$1.50' },
 			{ name: 'Grilled Chicken Club Sandwich', description: 'Grilled chicken breast, bacon, Swiss cheese, lettuce, tomatoes, housemade shallot aioli on sandwich bread', price: '$19.99', note: 'contains gluten' },
-			{ name: 'Smoked Salmon Toast', description: 'Smoked salmon, arugula, avocado, shaved carrots, cherry tomatoes, cilantro, radishes, lemon dressing on cereal bread', price: '$18.99', note: 'gluten-free bread +$1.50' },
+			{ name: 'Smoked Salmon Toast', image: '/gallery/processed/food/smoked-salmon-toast-caesar-salad.jpg', description: 'Smoked salmon, arugula, avocado, shaved carrots, cherry tomatoes, cilantro, radishes, lemon dressing on cereal bread', price: '$18.99', note: 'gluten-free bread +$1.50' },
 			{ name: 'Italian Toast', description: 'Prosciutto, fresh mozzarella, fresh tomatoes, arugula, fresh basil, balsamic drizzle on sourdough', price: '$18.99', note: 'gluten-free bread +$1.50' },
-			{ name: 'Croque Monsieur', description: 'French ham, béchamel sauce, Dijon mustard, nutmeg, Swiss cheese on sourdough', price: '$18.99', note: 'contains gluten' },
+			{ name: 'Croque Monsieur', image: '/gallery/processed/food/croque-monsieur-fries-cafe-plate.jpg', description: 'French ham, béchamel sauce, Dijon mustard, nutmeg, Swiss cheese on sourdough', price: '$18.99', note: 'contains gluten' },
 			{ name: 'Croque Madame', description: 'French ham, béchamel sauce, Dijon mustard, nutmeg, Swiss cheese, topped with a fried egg on sourdough', price: '$19.99', note: 'contains gluten' },
-			{ name: 'Cheeseburger', description: 'Beef patty, bacon, cheddar, tomatoes, arugula, housemade shallot aioli on a brioche bun', price: '$19.99', note: 'contains gluten' },
+			{ name: 'Cheeseburger', image: '/gallery/processed/food/cheeseburger-fries-beside-playground.jpg', description: 'Beef patty, bacon, cheddar, tomatoes, arugula, housemade shallot aioli on a brioche bun', price: '$19.99', note: 'contains gluten' },
 		],
 	},
 	{

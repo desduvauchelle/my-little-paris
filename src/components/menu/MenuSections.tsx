@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import type { Dictionary } from '@/i18n'
 import type { MenuSection } from '@/data/menu'
 import { ScrollReveal } from '@/components/landing/ScrollReveal'
@@ -38,16 +39,23 @@ export function MenuSections({ sections, dict }: { sections: MenuSection[]; dict
 						<div className="divider mt-0 mb-4" />
 						<ul className="space-y-5">
 							{section.items.map((item) => (
-								<li key={item.name} className="grid grid-cols-[1fr_auto] gap-x-4">
-									<div>
-										<h3 className="font-semibold">
-											{item.name}
-											{item.isNew && <span className="badge badge-secondary badge-sm ml-2 align-middle">{dict['eat.new']}</span>}
-										</h3>
-										{item.description && <p className="text-sm text-base-content/70">{item.description}</p>}
-										{item.note && <p className="text-xs text-base-content/65 italic">* {item.note}</p>}
+								<li key={item.name} className="flex items-start gap-3 sm:gap-4">
+									{item.image && (
+										<div className="relative size-20 sm:size-28 shrink-0 overflow-hidden rounded-xl">
+											<Image src={item.image} alt={item.name} fill sizes="(min-width: 640px) 112px, 80px" className="object-cover" />
+										</div>
+									)}
+									<div className="grid min-w-0 flex-1 grid-cols-[minmax(0,1fr)_auto] gap-x-3">
+										<div>
+											<h3 className="font-semibold">
+												{item.name}
+												{item.isNew && <span className="badge badge-secondary badge-sm ml-2 align-middle">{dict['eat.new']}</span>}
+											</h3>
+											{item.description && <p className="text-sm text-base-content/70">{item.description}</p>}
+											{item.note && <p className="text-xs text-base-content/65 italic">* {item.note}</p>}
+										</div>
+										<span className="font-medium text-primary whitespace-nowrap">{item.price}</span>
 									</div>
-									<span className="font-medium text-primary whitespace-nowrap">{item.price}</span>
 								</li>
 							))}
 						</ul>
