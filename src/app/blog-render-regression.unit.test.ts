@@ -34,6 +34,25 @@ function makePost(rawKeywords: unknown) {
 describe('blog article server rendering', () => {
 	beforeEach(() => vi.clearAllMocks())
 
+	it('optimizes article, inline and related images without changing metadata or links', async () => {
+		const image = 'https://storage.googleapis.com/rs-bucket-prod/tenants/my-little-paris/public/blog-assets/test/hero.png'
+		const post = { ...makePost(null), heroImageUrl: image, content: `Before\n\n![Play & café](${image})\n\n[Book](/reservations)\n\n\`![Code](${image})\`\n\n\`\`\`\n![Example](${image})\n\nPreserve blank line\n\`\`\`` }
+		vi.mocked(getBlogPost).mockResolvedValue(post)
+		vi.mocked(getBlogPosts).mockResolvedValue([{ ...post, slug: 'related-post' }])
+		const html = renderToStaticMarkup(await BlogPostPage({ params: Promise.resolve({ locale: 'zh', slug }) }))
+		const images = [...html.matchAll(/<img\b[^>]*>/g)].map(([tag]) => tag)
+		expect(images).toHaveLength(3)
+		for (const tag of images) {
+			expect(tag).toContain('src="/_next/image?')
+			expect(tag).toMatch(/srcset=/i)
+		}
+		expect(html).toContain('href="/reservations"')
+		expect(html).toContain('href="/zh/blog/related-post"')
+		expect(post.heroImageUrl).toBe(image)
+		expect(html).toContain(`<code>![Code](${image})</code>`)
+		expect(html).toContain(`![Example](${image})\n\nPreserve blank line`)
+	})
+
 	it.each([
 		['database JSON text', JSON.stringify(keywords), keywords],
 		['already decoded keywords', keywords, keywords],

@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getBlogAuthor, getAuthorPosts } from '@growth-engine/sdk-server'
 import { BlogList } from '@growth-engine/sdk-client/components'
+import { getImageProps } from 'next/image'
+import { canOptimizeBlogImage } from '@/lib/blog-images'
 import { getDictionary } from '@/i18n'
 import { getDb, safeQuery } from '@/lib/db'
 import { localePrefix, localizedPath } from '@/lib/i18n-utils'
@@ -92,7 +94,14 @@ export default async function AuthorDetailPage({
 					</div>
 				) : (
 					<BlogList
-						posts={posts}
+						// The SDK listing has no image renderer slot. Give its cards a
+						// bounded optimized URL while retaining its search/pagination.
+						posts={posts.map((post) => ({
+							...post,
+							heroImageUrl: post.heroImageUrl && canOptimizeBlogImage(post.heroImageUrl)
+								? getImageProps({ src: post.heroImageUrl, alt: post.title, width: 640, height: 360 }).props.src
+								: post.heroImageUrl,
+						}))}
 						locale={locale}
 						localePrefix={localePrefix(locale)}
 						translations={{

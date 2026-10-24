@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import {
@@ -7,7 +8,9 @@ import {
 	getBlogAuthorById,
 	getBusinessConfig,
 } from '@growth-engine/sdk-server'
-import { BlogContent, RelatedPosts } from '@growth-engine/sdk-client/components'
+import { OptimizedBlogContent } from '@/components/blog/OptimizedBlogContent'
+import { RelatedPosts } from '@/components/blog/RelatedPosts'
+import { BLOG_ARTICLE_SIZES, canOptimizeBlogImage } from '@/lib/blog-images'
 import { getDictionary } from '@/i18n'
 import { getDb, safeQuery } from '@/lib/db'
 import { formatDate, localePrefix, localizedPath } from '@/lib/i18n-utils'
@@ -88,8 +91,12 @@ export default async function BlogPostPage({
 
 			<article className="max-w-3xl mx-auto">
 				{post.heroImageUrl && (
-					<figure className="aspect-video overflow-hidden rounded-xl mb-8">
-						<img
+					<figure className="relative aspect-video overflow-hidden rounded-xl mb-8">
+						<Image
+							fill
+							loading="eager"
+							sizes={BLOG_ARTICLE_SIZES}
+							unoptimized={!canOptimizeBlogImage(post.heroImageUrl)}
 							src={post.heroImageUrl}
 							alt={post.title}
 							className="w-full h-full object-cover"
@@ -106,7 +113,7 @@ export default async function BlogPostPage({
 					</div>
 				)}
 
-				<BlogContent
+				<OptimizedBlogContent
 					html={insertBlogCta(post.content, ctaMarkdown)}
 					post={{ ...post, keywords: normalizeBlogKeywords(post.keywords) }}
 					canonicalUrl={buildUrl(`/blog/${slug}`, locale)}

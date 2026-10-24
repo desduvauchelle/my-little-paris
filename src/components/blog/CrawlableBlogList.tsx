@@ -3,10 +3,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import {
-	BlogCard,
 	BlogSearch,
 	type BlogListProps,
 } from '@growth-engine/sdk-client/components'
+import { BlogCard } from './BlogCard'
 
 const POSTS_PER_PAGE = 9
 

@@ -10,6 +10,7 @@ export default defineConfig({
 			// real file lets page modules that pull in SDK components be imported
 			// here (e.g. the metadata tests).
 			'next/link': fileURLToPath(new URL('./node_modules/next/link.js', import.meta.url)),
+			'next/image': fileURLToPath(new URL('./node_modules/next/image.js', import.meta.url)),
 		},
 	},
 	test: {
