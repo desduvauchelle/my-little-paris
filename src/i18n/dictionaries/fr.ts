@@ -283,7 +283,7 @@ const fr: Dictionary = {
 	'newsletter.error': 'Impossible de vous inscrire pour le moment. Réessayez plus tard ou écrivez-nous.',
 
 	// Play page
-	'play.title': 'Jeux',
+	'play.title': 'Aire de jeux intérieure & Eat & Play à San Gabriel',
 	'play.meta.title': 'Aire de jeux & Open Play | My Little Paris San Gabriel',
 	'play.meta.description':
 		'Aire de jeux couverte d’inspiration Montessori à San Gabriel pour les 0–7 ans. Sessions Eat & Play de 2 heures, cartes de 10 visites et abonnements.',

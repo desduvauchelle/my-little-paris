@@ -283,7 +283,7 @@ const zh: Dictionary = {
 	'newsletter.error': '暂时无法完成订阅，请稍后再试，或发邮件联系我们。',
 
 	// Play page
-	'play.title': '玩乐',
+	'play.title': '圣盖博室内游乐场 · Eat & Play',
 	'play.meta.title': '室内游乐场与自由玩乐 | My Little Paris 圣盖博',
 	'play.meta.description': '圣盖博的蒙特梭利风格室内游乐场，适合 0–7 岁儿童。提供两小时 Eat & Play 场次、10 次卡与月度会员计划，可在线预订。',
 	'play.quote': '“玩耍是最高形式的研究”',
