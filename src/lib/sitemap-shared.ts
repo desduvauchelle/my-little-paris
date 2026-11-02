@@ -233,6 +233,26 @@ export async function buildBlogEntries(batchId: number): Promise<SitemapEntry[]>
 	return entries
 }
 
+interface TopicSitemapEntry {
+	slug: string
+	postCount: number
+}
+
+/** Topic hubs for one locale, from the SDK's `blog-topics` content type. */
+async function fetchTopics(locale: string): Promise<TopicSitemapEntry[]> {
+	try {
+		const res = await fetch(
+			`${SITE_URL}/api/rs/content?type=blog-topics&locale=${encodeURIComponent(locale)}`,
+			{ next: { revalidate: 3600 } },
+		)
+		if (!res.ok) return []
+		const topics = (await res.json()) as TopicSitemapEntry[]
+		return Array.isArray(topics) ? topics : []
+	} catch {
+		return []
+	}
+}
+
 export async function buildAuthorEntries(): Promise<SitemapEntry[]> {
 	const authors = await fetchAuthors()
 	const entries: SitemapEntry[] = []
@@ -245,6 +265,30 @@ export async function buildAuthorEntries(): Promise<SitemapEntry[]> {
 			priority: 0.6,
 			alternates: buildAlternates(path),
 		})
+	}
+	return entries
+}
+
+/**
+ * Topic hub pages (`/blog/topic/<slug>`), one set per locale because a hub is
+ * built from the posts of one language. Priority 0.7: a pillar page that links
+ * to every post on a subject is worth more to a crawler than an author page
+ * and less than the posts themselves.
+ */
+export async function buildTopicEntries(): Promise<SitemapEntry[]> {
+	const perLocale = await Promise.all(
+		supportedLocales.map(async (locale) => ({ locale, topics: await fetchTopics(locale) })),
+	)
+	const entries: SitemapEntry[] = []
+	for (const { locale, topics } of perLocale) {
+		for (const topic of topics) {
+			if (typeof topic.slug !== 'string' || topic.slug.length === 0) continue
+			entries.push({
+				url: buildUrl(`/blog/topic/${encodeURIComponent(topic.slug)}`, locale),
+				changeFrequency: 'weekly',
+				priority: 0.7,
+			})
+		}
 	}
 	return entries
 }

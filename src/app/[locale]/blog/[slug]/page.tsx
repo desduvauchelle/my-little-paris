@@ -4,11 +4,13 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import {
 	getBlogPost,
-	getBlogPosts,
+	getBlogTopicsForPost,
+	getRelatedPosts,
 	getBlogAuthorById,
 	getBusinessConfig,
 } from '@growth-engine/sdk-server'
 import { OptimizedBlogContent } from '@/components/blog/OptimizedBlogContent'
+import { TopicChips } from '@growth-engine/sdk-client/components'
 import { RelatedPosts } from '@/components/blog/RelatedPosts'
 import { BLOG_ARTICLE_SIZES, canOptimizeBlogImage } from '@/lib/blog-images'
 import { getDictionary } from '@/i18n'
@@ -66,8 +68,9 @@ export default async function BlogPostPage({
 	const post = await safeQuery(null, () => getBlogPost(getDb(), slug, locale))
 	if (!post) notFound()
 
-	const [allPosts, author, business] = await Promise.all([
-		safeQuery([], () => getBlogPosts(getDb(), { locale, limit: 0 })),
+	const [relatedPosts, topics, author, business] = await Promise.all([
+		safeQuery([], () => getRelatedPosts(getDb(), post, { locale })),
+		safeQuery([], () => getBlogTopicsForPost(getDb(), post)),
 		post.authorId
 			? safeQuery(null, () => getBlogAuthorById(getDb(), post.authorId!))
 			: Promise.resolve(null),
@@ -120,11 +123,20 @@ export default async function BlogPostPage({
 					{...(author ? { author } : {})}
 					{...(business ? { business } : {})}
 				/>
+
+				<TopicChips
+					topics={topics}
+					locale={locale}
+					localePrefix={localePrefix(locale)}
+					label={dict['blog.filed.under']}
+					showCounts={false}
+					className="mt-10"
+				/>
 			</article>
 
 			<div className="max-w-5xl mx-auto">
 				<RelatedPosts
-					posts={allPosts}
+					posts={relatedPosts}
 					currentSlug={slug}
 					locale={locale}
 					localePrefix={localePrefix(locale)}

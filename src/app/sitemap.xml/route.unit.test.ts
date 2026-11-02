@@ -38,24 +38,25 @@ describe('GET /sitemap.xml (index)', () => {
 		expect(text).toContain('</sitemapindex>')
 	})
 
-	it('emits static + one blog batch + authors sitemap for small post counts', async () => {
+	it('emits static + one blog batch + authors + topics sitemap for small post counts', async () => {
 		const { GET } = await loadRoute({ count: 5 })
 		const res = await GET()
 		const text = await res.text()
 		expect(text).toContain('https://example.com/sitemap/0.xml')
 		expect(text).toContain('https://example.com/sitemap/1.xml')
 		expect(text).toContain('https://example.com/sitemap/2.xml')
+		expect(text).toContain('https://example.com/sitemap/3.xml')
 		const matches = text.match(/<sitemap>/g)
-		expect(matches).toHaveLength(3)
+		expect(matches).toHaveLength(4)
 	})
 
 	it('emits multiple blog batches plus authors when count exceeds batch size', async () => {
 		const { GET } = await loadRoute({ count: 2500 })
 		const res = await GET()
 		const text = await res.text()
-		// 1 static + 3 blog batches + 1 authors = 5
+		// 1 static + 3 blog batches + 1 authors + 1 topics = 6
 		const matches = text.match(/<sitemap>/g)
-		expect(matches).toHaveLength(5)
+		expect(matches).toHaveLength(6)
 		expect(text).toContain('https://example.com/sitemap/4.xml')
 	})
 
@@ -65,6 +66,6 @@ describe('GET /sitemap.xml (index)', () => {
 		const res = await GET()
 		const text = await res.text()
 		const matches = text.match(/<sitemap>/g)
-		expect(matches).toHaveLength(3)
+		expect(matches).toHaveLength(4)
 	})
 })

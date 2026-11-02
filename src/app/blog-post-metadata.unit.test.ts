@@ -6,7 +6,8 @@ import { SITE_URL } from '@/lib/sitemap-shared'
 
 vi.mock('@growth-engine/sdk-server', () => ({
 	getBlogPost: vi.fn(),
-	getBlogPosts: async () => [],
+	getRelatedPosts: async () => [],
+	getBlogTopicsForPost: async () => [],
 	getBusinessConfig: async () => null,
 	getBlogAuthorById: async () => null,
 }))

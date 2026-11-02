@@ -11,7 +11,7 @@ export interface RelatedPostsProps {
 }
 
 export function RelatedPosts({ posts, currentSlug, locale, localePrefix, heading }: RelatedPostsProps) {
-	const related = posts.filter((p) => p.slug !== currentSlug).slice(0, 3)
+	const related = posts.filter((p) => p.slug !== currentSlug).slice(0, 5)
 
 	if (related.length === 0) return null
 

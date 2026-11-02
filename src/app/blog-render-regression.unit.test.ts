@@ -1,11 +1,12 @@
 import { renderToStaticMarkup } from 'react-dom/server'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { getBlogPost, getBlogPosts } from '@growth-engine/sdk-server'
+import { getBlogPost, getRelatedPosts } from '@growth-engine/sdk-server'
 import BlogPostPage from './[locale]/blog/[slug]/page'
 
 vi.mock('@growth-engine/sdk-server', () => ({
 	getBlogPost: vi.fn(),
-	getBlogPosts: vi.fn(),
+	getRelatedPosts: vi.fn(),
+	getBlogTopicsForPost: vi.fn().mockResolvedValue([]),
 	getBlogAuthorById: vi.fn(),
 	getBusinessConfig: vi.fn().mockResolvedValue(null),
 }))
@@ -38,7 +39,7 @@ describe('blog article server rendering', () => {
 		const image = 'https://storage.googleapis.com/rs-bucket-prod/tenants/my-little-paris/public/blog-assets/test/hero.png'
 		const post = { ...makePost(null), heroImageUrl: image, content: `Before\n\n![Play & café](${image})\n\n[Book](/reservations)\n\n\`![Code](${image})\`\n\n\`\`\`\n![Example](${image})\n\nPreserve blank line\n\`\`\`` }
 		vi.mocked(getBlogPost).mockResolvedValue(post)
-		vi.mocked(getBlogPosts).mockResolvedValue([{ ...post, slug: 'related-post' }])
+		vi.mocked(getRelatedPosts).mockResolvedValue([{ ...post, slug: 'related-post' }])
 		const html = renderToStaticMarkup(await BlogPostPage({ params: Promise.resolve({ locale: 'zh', slug }) }))
 		const images = [...html.matchAll(/<img\b[^>]*>/g)].map(([tag]) => tag)
 		expect(images).toHaveLength(3)
@@ -63,7 +64,7 @@ describe('blog article server rendering', () => {
 	])('renders the article with %s', async (_label, raw, expected) => {
 		const post = makePost(raw)
 		vi.mocked(getBlogPost).mockResolvedValue(post)
-		vi.mocked(getBlogPosts).mockResolvedValue([{ ...makePost(null), slug: 'related-post' }])
+		vi.mocked(getRelatedPosts).mockResolvedValue([{ ...makePost(null), slug: 'related-post' }])
 
 		const html = renderToStaticMarkup(await BlogPostPage({ params: Promise.resolve({ locale: 'zh', slug }) }))
 		expect(html).toContain('什么是亲子咖啡馆？')
