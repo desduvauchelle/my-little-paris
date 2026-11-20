@@ -34,7 +34,7 @@ export async function generateMetadata({
 	if (!page) return {}
 	const dict = await getDictionary(locale)
 	return buildPageMetadata({
-		path: `/blog/topic/${page.topic.slug}`,
+		path: `/blog/topic/${encodeURIComponent(page.topic.slug)}`,
 		locale,
 		title: fill(dict['blog.topic.title'], { topic: page.topic.label }),
 		description: fill(dict['blog.topic.subtitle'], {

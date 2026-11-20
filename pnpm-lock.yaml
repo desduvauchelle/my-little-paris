@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@growth-engine/sdk-client':
-        specifier: github:recursive-solutions-ai/growth-engine-sdk-client#v0.1.179
-        version: https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-client/tar.gz/6422b29ef9a8656ad8d1fe5301fcae24a3e873fe(next@16.4.6(@babel/core@7.29.7)(@types/node@22.15.3)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)(zod@3.24.0)
+        specifier: github:recursive-solutions-ai/growth-engine-sdk-client#v0.1.184
+        version: https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-client/tar.gz/5454505b8ea154b421066d28081d557deca8be52(next@16.4.6(@babel/core@7.29.7)(@types/node@22.15.3)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)(zod@3.24.0)
       '@growth-engine/sdk-server':
-        specifier: github:recursive-solutions-ai/growth-engine-sdk-server#v0.1.179
-        version: https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-server/tar.gz/a6f9c792dd71e42d7972255b32760fdf344bb7c9
+        specifier: github:recursive-solutions-ai/growth-engine-sdk-server#v0.1.184
+        version: https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-server/tar.gz/cea55283149a6518ea7366662c83e4d469950f69
       canvas-confetti:
         specifier: 1.9.4
         version: 1.9.4
@@ -376,9 +376,9 @@ packages:
     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@growth-engine/sdk-client@https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-client/tar.gz/6422b29ef9a8656ad8d1fe5301fcae24a3e873fe':
-    resolution: {tarball: https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-client/tar.gz/6422b29ef9a8656ad8d1fe5301fcae24a3e873fe}
-    version: 0.1.179
+  '@growth-engine/sdk-client@https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-client/tar.gz/5454505b8ea154b421066d28081d557deca8be52':
+    resolution: {tarball: https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-client/tar.gz/5454505b8ea154b421066d28081d557deca8be52}
+    version: 0.1.184
     peerDependencies:
       next: ^14.0.0 || ^15.0.0 || ^16.0.0
       react: ^18.0.0 || ^19.0.0
@@ -387,9 +387,9 @@ packages:
       next:
         optional: true
 
-  '@growth-engine/sdk-server@https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-server/tar.gz/a6f9c792dd71e42d7972255b32760fdf344bb7c9':
-    resolution: {tarball: https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-server/tar.gz/a6f9c792dd71e42d7972255b32760fdf344bb7c9}
-    version: 0.1.179
+  '@growth-engine/sdk-server@https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-server/tar.gz/cea55283149a6518ea7366662c83e4d469950f69':
+    resolution: {tarball: https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-server/tar.gz/cea55283149a6518ea7366662c83e4d469950f69}
+    version: 0.1.184
     hasBin: true
 
   '@humanfs/core@0.19.2':
@@ -3222,7 +3222,7 @@ snapshots:
       '@eslint/core': 0.17.0
       levn: 0.4.1
 
-  '@growth-engine/sdk-client@https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-client/tar.gz/6422b29ef9a8656ad8d1fe5301fcae24a3e873fe(next@16.4.6(@babel/core@7.29.7)(@types/node@22.15.3)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)(zod@3.24.0)':
+  '@growth-engine/sdk-client@https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-client/tar.gz/5454505b8ea154b421066d28081d557deca8be52(next@16.4.6(@babel/core@7.29.7)(@types/node@22.15.3)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)(zod@3.24.0)':
     dependencies:
       marked: 18.1.2
       react: 19.2.4
@@ -3230,7 +3230,7 @@ snapshots:
     optionalDependencies:
       next: 16.4.6(@babel/core@7.29.7)(@types/node@22.15.3)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
 
-  '@growth-engine/sdk-server@https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-server/tar.gz/a6f9c792dd71e42d7972255b32760fdf344bb7c9':
+  '@growth-engine/sdk-server@https://codeload.github.com/recursive-solutions-ai/growth-engine-sdk-server/tar.gz/cea55283149a6518ea7366662c83e4d469950f69':
     dependencies:
       '@libsql/client': 0.15.15
       drizzle-orm: 0.45.4(@libsql/client@0.15.15)
